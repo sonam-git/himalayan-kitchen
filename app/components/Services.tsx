@@ -67,7 +67,7 @@ const Services = () => {
           
           {/* Dine-In Experience */}
           <div className={`group transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="relative bg-gradient-to-br from-red-50 via-orange-50 to-red-50/50 dark:from-red-900/20 dark:via-orange-900/20 dark:to-red-900/20 rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-red-100/50 dark:border-red-800/30 overflow-hidden backdrop-blur-sm">
+            <div className="relative bg-linear-to-br from-red-50 via-orange-50 to-red-50/50 dark:from-red-900/20 dark:via-orange-900/20 dark:to-red-900/20 rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-red-100/50 dark:border-red-800/30 overflow-hidden backdrop-blur-sm">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-red-200/20 to-transparent dark:from-red-700/20 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
               
@@ -112,7 +112,7 @@ const Services = () => {
 
           {/* Private Events */}
           <div className={`group transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-50/50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-blue-900/20 rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-blue-100/50 dark:border-blue-800/30 overflow-hidden backdrop-blur-sm">
+            <div className="relative bg-linear-to-br from-blue-50 via-indigo-50 to-blue-50/50 dark:from-blue-900/20 dark:via-indigo-900/20 dark:to-blue-900/20 rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-blue-100/50 dark:border-blue-800/30 overflow-hidden backdrop-blur-sm">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-200/20 to-transparent dark:from-blue-700/20 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
               
@@ -157,7 +157,7 @@ const Services = () => {
 
           {/* Catering & Takeout */}
           <div className={`group transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="relative bg-gradient-to-br from-green-50 via-emerald-50 to-green-50/50 dark:from-green-900/20 dark:via-emerald-900/20 dark:to-green-900/20 rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-green-100/50 dark:border-green-800/30 overflow-hidden backdrop-blur-sm md:col-span-2 lg:col-span-1">
+            <div className="relative bg-linear-to-br from-green-50 via-emerald-50 to-green-50/50 dark:from-green-900/20 dark:via-emerald-900/20 dark:to-green-900/20  rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-green-100/50 dark:border-green-800/30 overflow-hidden backdrop-blur-sm md:col-span-2 lg:col-span-1">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-green-200/20 to-transparent dark:from-green-700/20 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
               
@@ -204,7 +204,7 @@ const Services = () => {
 
         {/* Enhanced Call-to-Action Section */}
         <div className={`transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="text-center bg-gradient-to-br from-white/80 to-orange-50/80 dark:from-gray-800/80 dark:to-gray-700/80 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-orange-200/50 dark:border-orange-700/30">
+          <div className="text-center  from-white/80 to-orange-50/80 dark:from-gray-800/80 dark:to-gray-700/80 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-orange-200/50 dark:border-orange-700/30">
             <div className="max-w-4xl mx-auto">
               <h3 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6">
                 Ready to Plan Your Event?

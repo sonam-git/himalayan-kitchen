@@ -90,15 +90,15 @@ const Contact = () => {
                 <path d="M24 6L6 22h6v14h8V28h4v8h8V22h6L24 6z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" fill="currentColor" />
               </svg>
             </div>
-            <div className="relative z-10 flex flex-col gap-8 items-start justify-center bg-white dark:bg-gray-900 rounded-2xl shadow-lg px-8 py-10 border border-orange-100 dark:border-orange-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">We are located at:</h3>
+            <div className="relative z-10 flex flex-col gap-8 items-start justify-center bg-white dark:bg-gray-900 rounded-2xl shadow-lg px-8 py-10 border border-orange-100 dark:border-orange-700 dark:text-white text-gray-900">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Location</h3>
               <div className="flex items-center gap-3 mb-2">
                 <span className="inline-flex items-center justify-center w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-full">
                   <svg className="w-6 h-6 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm0 0c-4.418 0-8 3.582-8 8a8 8 0 0016 0c0-4.418-3.582-8-8-8z" />
                   </svg>
                 </span>
-                <span className="text-lg font-semibold text-gray-800 dark:text-white">227 3rd St, San Rafael, CA 94901</span>
+                <span className="text-lg font-semibold text-gray-900 dark:text-white">227 3rd St, San Rafael, CA 94901</span>
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <span className="inline-flex items-center justify-center w-10 h-10 bg-red-100 dark:bg-red-900 rounded-full">
@@ -106,7 +106,7 @@ const Contact = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </span>
-                <a href="tel:(415) 526-3161" className="text-lg font-semibold text-gray-800 dark:text-white hover:text-red-600 dark:hover:text-red-400 transition-colors">(415) 526-3161</a>
+                <a href="tel:(415) 526-3161" className="text-lg font-semibold text-gray-900 dark:text-white hover:text-red-600 dark:hover:text-red-400 transition-colors">(415) 526-3161</a>
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <span className="inline-flex items-center justify-center w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full">
@@ -114,7 +114,7 @@ const Contact = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12v1m0 4v1m-8-5v1m0 4v1m8-10V5a2 2 0 00-2-2H8a2 2 0 00-2 2v2m12 0V5a2 2 0 00-2-2H8a2 2 0 00-2 2v2m12 0V5a2 2 0 00-2-2H8a2 2 0 00-2 2v2" />
                   </svg>
                 </span>
-                <a href="mailto:himalayankitchenmarin@gmail.com" className="text-lg font-semibold text-gray-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">himalayankitchenmarin@gmail.com</a>
+                <a href="mailto:himalayankitchenmarin@gmail.com" className="text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">himalayankitchenmarin@gmail.com</a>
               </div>
             </div>
           </div>

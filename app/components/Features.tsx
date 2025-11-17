@@ -1,11 +1,11 @@
 const Features = () => {
   return (
-    <section className="py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm">
+    <section className="py-20 sm:py-24 lg:py-28 bg-gray-50 dark:bg-gray-400 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm border-2 border-gray-200 dark:border-gray-700 p-6 sm:p-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-center w-full ">
           
           {/* Fresh Ingredients */}
-          <div className="flex flex-col items-center group">
+          <div className="flex flex-col items-center group ">
             <div className="w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <svg className="w-10 h-10 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />

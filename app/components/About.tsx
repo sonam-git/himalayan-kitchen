@@ -77,8 +77,8 @@ const About = () => {
                 Welcome to <span className="font-bold text-red-700 dark:text-red-400">Himalayan Kitchen</span>, owned and run by a Sherpa family from the majestic Himalayan region of Nepal. While Sherpas are renowned worldwide as mountain guides and porters, we are proudly an ethnic group with rich culinary traditions from northern Nepal.
               </p>
               
-              <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 border-l-4 border-orange-500 dark:border-red-500">
-                <p className="text-lg font-medium text-gray-800 dark:text-white mb-2">
+              <div className=" from-orange-50 to-red-50 dark:from-gray-700 dark:bg-gray-600 rounded-xl p-6 border-l-4 border-orange-500 dark:border-red-500">
+                <p className="text-lg font-medium  text-gray-900 dark:text-gray-50 mb-2">
                   Our Philosophy
                 </p>
                 <p className="text-gray-700 dark:text-gray-100">
@@ -98,7 +98,7 @@ const About = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-2">
                       Meet Chef Nawang Sherpa
                     </h3>
                     <p className="text-gray-700 dark:text-gray-100 leading-relaxed">
@@ -194,7 +194,7 @@ const About = () => {
               {/* Background Image */}
               <div className="relative h-[400px] w-full">
                 <Image 
-                  src="/images/everest.jpg" 
+                  src="/images/gallery/everest.jpg" 
                   alt="Mt. Everest - World's Highest Peak" 
                   fill
                   className="object-contain bg-gray-900"
@@ -221,17 +221,17 @@ const About = () => {
                       A Historic Achievement
                     </h4>                      <div className="bg-white/10 dark:bg-white/5 rounded-2xl p-5 border border-white/10">
                       <p className="text-base md:text-lg leading-relaxed mb-3 text-gray-100">
-                        In <span className="font-black text-yellow-400">2024</span>, renowned climber <span className="font-bold text-red-400">Pasang Sherpa</span> proudly waved the <span className="font-bold text-orange-400">Himalayan Kitchen logo</span> at the summit of Mt. Everest, the world&apos;s highest peak at <span className="font-semibold">8,849 meters</span>.
+                        In <span className="font-black text-yellow-400">2024</span>, renowned climber <span className="font-bold text-red-400">Pema Chhiring Sherpa, </span> close relative of the HK family proudly waved the <span className="font-bold text-orange-400">Himalayan Kitchen logo</span> at the summit of Mt. Everest, the world&apos;s highest peak at <span className="font-semibold">8,849 meters</span>.
                       </p>
                       
                       <div className="bg-gradient-to-r from-red-600/20 to-orange-600/20 rounded-xl p-3 mb-3 border-l-4 border-yellow-400">
                         <p className="text-sm md:text-base text-gray-200 leading-relaxed">
-                          <span className="font-bold text-yellow-300">Pasang Sherpa</span> has successfully scaled the world&apos;s top mountain an incredible <span className="font-black text-xl text-red-400">24 times</span>, making him one of the most accomplished climbers in history.
+                          <span className="font-bold text-yellow-300">Pema Chhiring Sherpa</span> has successfully scaled the world&apos;s top mountain an incredible <span className="font-black text-xl text-red-400">24 times</span>, making him one of the most accomplished climbers in history.
                         </p>
                       </div>
                       
                       <p className="text-base italic text-gray-300 border-t border-white/20 pt-3">
-                        We are deeply honored and grateful to Pasang Sherpa for being part of this monumental achievement and for carrying our legacy to the top of the world. 🙏
+                        We are deeply honored and grateful to Mr Sherpa for being part of this monumental achievement and for carrying our legacy to the top of the world. 🙏
                       </p>
                     </div>
                   </div>
@@ -263,7 +263,7 @@ const About = () => {
         </div>
 
         {/* Additional Features Section */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className={`transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="text-center p-6 bg-white dark:bg-gray-700 rounded-2xl border border-red-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -299,7 +299,7 @@ const About = () => {
               <p className="text-gray-600 dark:text-gray-100 text-sm">All ingredients sourced fresh and prepared from scratch daily</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
