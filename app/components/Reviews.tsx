@@ -55,10 +55,10 @@ const Reviews = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 text-white overflow-hidden w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4"
+      className="relative py-20 sm:py-24 lg:py-28 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 text-white overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
     >
       {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-lg sm:rounded-xl md:rounded-2xl">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
         <div className="absolute top-0 -left-48 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 -right-48 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
       </div>

@@ -1,6 +1,6 @@
 const LocationInfo = () => {
   return (
-    <section className="py-12 bg-gray-800 text-white overflow-hidden w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gray-800 text-white overflow-hidden w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center w-full">
           

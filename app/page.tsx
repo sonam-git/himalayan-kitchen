@@ -4,6 +4,7 @@ import Features from "./components/Features";
 import About from "./components/About";
 import MenuSection from "./components/MenuSection";
 import ChefsSpecials from "./components/ChefsSpecials";
+import Gallery from "./components/Gallery";
 import Services from "./components/Services";
 import Reviews from "./components/Reviews";
 import LocationInfo from "./components/LocationInfo";
@@ -12,20 +13,35 @@ import MobileBottomBar from "./components/MobileBottomBar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 pb-16 md:pb-0 overflow-x-hidden w-full max-w-full">
-      <div className="overflow-x-hidden w-full px-2 sm:px-4 md:px-6">
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+      {/* Main content wrapper */}
+      <main className="w-full">
         <Header />
+        
+        {/* Hero - Full width, edge to edge */}
         <Hero />
-        <Features />
-        <MenuSection />
-        <ChefsSpecials />
-        <Services />
-        <Reviews />
-        <About />
+        
+        {/* Content sections with side spacing and gaps between sections */}
+        <div className="space-y-8 sm:space-y-12 lg:space-y-16 mx-4 sm:mx-6 lg:mx-8 xl:mx-12 2xl:mx-16 py-8 sm:py-12 lg:py-16">
+          <Features />
+          <MenuSection />
+          <ChefsSpecials />
+          <Gallery />
+          <Services />
+          <Reviews />
+          <About />
+        </div>
+        
+        {/* LocationInfo - Full width like Hero */}
         <LocationInfo />
+        
         <Footer />
-        <MobileBottomBar />
-      </div>
+        
+        {/* Mobile bottom navigation */}
+        <div className="md:hidden">
+          <MobileBottomBar />
+        </div>
+      </main>
     </div>
   );
 }

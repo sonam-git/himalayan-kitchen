@@ -26,7 +26,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="relative py-24 bg-gradient-to-br from-white via-gray-50/50 to-orange-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4">
+    <section id="services" className="relative py-20 sm:py-24 lg:py-28 bg-gradient-to-br from-white via-gray-50/50 to-orange-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-lg sm:rounded-xl md:rounded-2xl">
         {/* Geometric Patterns */}

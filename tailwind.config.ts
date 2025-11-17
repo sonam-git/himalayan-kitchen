@@ -18,6 +18,13 @@ export default {
         serif: ['var(--font-playfair)', 'Playfair Display', 'serif'],
         script: ['var(--font-dancing)', 'Dancing Script', 'cursive'],
       },
+      maxWidth: {
+        'container': '1400px',
+        'content': '1280px',
+      },
+      spacing: {
+        'section': '4rem',
+      },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
         'bounce': 'bounce 1s infinite',
@@ -32,6 +39,16 @@ export default {
           '0%, 100%': { opacity: '0.1' },
           '50%': { opacity: '0.3' },
         },
+      },
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1.5rem',
+        lg: '2rem',
+        xl: '3rem',
+        '2xl': '4rem',
       },
     },
   },

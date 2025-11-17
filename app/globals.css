@@ -72,12 +72,6 @@ section, div {
   --border: var(--border-light);
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 html {
   scroll-behavior: smooth;
   /* Prevent layout shift when scrollbar appears/disappears */
@@ -143,8 +137,8 @@ section {
 .max-w-4xl,
 .max-w-3xl,
 .max-w-2xl {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Custom scrollbar */
@@ -306,5 +300,18 @@ section {
 @media (max-width: 640px) {
   .hero-buttons .group {
     min-width: 140px;
+  }
+}
+
+/* Flip animation for button text */
+@keyframes flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
   }
 }

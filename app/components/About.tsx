@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,9 +27,9 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="relative py-24 bg-gradient-to-br from-slate-50 via-orange-50/30 to-red-50/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden transition-all duration-1000 w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4">
+    <section id="about" className="relative py-24 bg-gradient-to-br from-slate-50 via-orange-50/30 to-red-50/20 dark:bg-gray-600 overflow-hidden transition-all duration-1000 w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4">
       {/* Background Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-lg sm:rounded-xl md:rounded-2xl">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-lg sm:rounded-xl md:rounded-2xl dark:bg-gray-800">
         {/* Mountain Silhouettes */}
         <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-red-100/40 to-transparent dark:from-red-900/20"></div>
         
@@ -44,20 +45,20 @@ const About = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 ">
           <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <span className="inline-block px-6 py-2 bg-gradient-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-4">
               Our Story
             </span>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-gray-900 via-red-700 to-orange-700 dark:from-white dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent leading-tight mb-6 drop-shadow-lg">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-gray-900 via-red-700 to-orange-700 dark:from-white dark:via-red-300 dark:to-orange-300 bg-clip-text text-transparent leading-tight mb-6 drop-shadow-lg">
               Tastes from the
               <br />
-              <span className="relative">
+              <span >
                 Himalayas
                 <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full opacity-60"></div>
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-white max-w-3xl mx-auto leading-relaxed">
               Where ancient traditions meet modern culinary excellence in the heart of San Rafael
             </p>
           </div>
@@ -68,7 +69,7 @@ const About = () => {
           {/* Enhanced Content */}
           <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             {/* Greeting Card */}
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-orange-200/50 dark:border-orange-700/30 mb-8 transform hover:scale-105 transition-transform duration-300">
+            <div className="bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-orange-200/50 dark:border-red-500/50 mb-8 transform hover:scale-105 transition-transform duration-300">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="w-3 h-3 bg-gradient-to-r from-red-500 to-orange-500 rounded-full animate-pulse"></div>
                 <span className="text-2xl font-bold text-transparent bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 bg-clip-text">
@@ -76,21 +77,21 @@ const About = () => {
                 </span>
                 <div className="w-3 h-3 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full animate-pulse"></div>
               </div>
-              <div className="text-lg text-gray-700 dark:text-gray-300 italic">
+              <div className="text-lg text-gray-700 dark:text-white italic">
                 &quot;A warm welcome from our Sherpa family to yours&quot;
               </div>
             </div>
 
-            <div className="prose prose-lg text-gray-700 dark:text-gray-300 space-y-6">
+            <div className="prose prose-lg text-gray-700 dark:text-white space-y-6">
               <p className="text-xl leading-relaxed">
                 Welcome to <span className="font-bold text-red-700 dark:text-red-400">Himalayan Kitchen</span>, owned and run by a Sherpa family from the majestic Himalayan region of Nepal. While Sherpas are renowned worldwide as mountain guides and porters, we are proudly an ethnic group with rich culinary traditions from northern Nepal.
               </p>
               
-              <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl p-6 border-l-4 border-orange-500">
-                <p className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-2">
+              <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-gray-700/60 dark:to-gray-700/60 rounded-xl p-6 border-l-4 border-orange-500 dark:border-red-500">
+                <p className="text-lg font-medium text-gray-800 dark:text-white mb-2">
                   Our Philosophy
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 dark:text-gray-100">
                   We believe real food is better for you, your health, and our planet. That&apos;s why we craft everything from scratch with authentic ingredients and techniques passed down through generations.
                 </p>
                 <p className="text-red-700 dark:text-red-400 font-bold mt-3 text-lg">
@@ -99,7 +100,7 @@ const About = () => {
               </div>
 
               {/* Chef Spotlight */}
-              <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl p-6 border border-red-200/50 dark:border-red-700/30 shadow-lg">
+              <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-2xl p-6 border border-red-200/50 dark:border-red-500/50 shadow-lg">
                 <div className="flex items-start space-x-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,10 +108,10 @@ const About = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
                       Meet Chef Nawang Sherpa
                     </h3>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="text-gray-700 dark:text-gray-100 leading-relaxed">
                       Our Head Chef and co-owner <span className="font-bold text-red-700 dark:text-red-400">Nawang Sherpa</span> conquered Mt. Everest in 1998 and has brought that same determination to mastering authentic Himalayan cuisine for over <span className="font-semibold">2 decades</span>.
                     </p>
                   </div>
@@ -157,112 +158,115 @@ const About = () => {
 
           {/* Enhanced Visual Section */}
           <div className={`relative transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
-            {/* Main Stats Card */}
-            <div className="relative bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500 dark:from-red-600 dark:via-orange-700 dark:to-yellow-600 rounded-3xl p-10 text-white shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-500">
-              {/* Animated Background Pattern */}
-              <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full animate-pulse"></div>
-                <div className="absolute top-1/2 -left-8 w-32 h-32 bg-white/5 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                <div className="absolute -bottom-6 right-1/3 w-20 h-20 bg-white/10 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-                
-                {/* Prayer Flag Pattern */}
-                <div className="absolute top-4 right-4 flex space-x-1">
-                  <div className="w-2 h-8 bg-white/20 rounded"></div>
-                  <div className="w-2 h-6 bg-white/15 rounded"></div>
-                  <div className="w-2 h-10 bg-white/25 rounded"></div>
-                  <div className="w-2 h-7 bg-white/20 rounded"></div>
-                </div>
-              </div>
-
-              <div className="relative z-10 text-center">
-                {/* Mountain Peak Icon */}
-                <div className="w-28 h-28 mx-auto mb-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center relative overflow-hidden group">
-                  <svg className="w-16 h-16 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22l-9-12z"/>
-                  </svg>
-                  {/* Rotating Border */}
-                  <div className="absolute inset-0 border-2 border-white/30 rounded-full animate-spin" style={{ animationDuration: '8s' }}></div>
-                </div>
-
-                <h3 className="text-3xl md:text-4xl font-black mb-4 drop-shadow-lg">
-                  Award Winning
-                </h3>
-                <p className="text-xl mb-8 opacity-90 leading-relaxed">
-                  Recognized for exceptional Himalayan cuisine and outstanding service in the heart of Marin County
-                </p>
-
-                {/* Enhanced Stats Grid */}
-                <div className="grid grid-cols-2 gap-8">
-                  <div className="text-center group">
-                    <div className="relative">
-                      <div className="text-5xl md:text-6xl font-black mb-2 group-hover:scale-110 transition-transform duration-300">
-                        20<span className="text-3xl">+</span>
-                      </div>
-                      <div className="absolute -inset-2 bg-white/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div className="text-lg font-semibold opacity-90">Years Experience</div>
-                    <div className="text-sm opacity-75 mt-1">Master Chef Legacy</div>
-                  </div>
-                  <div className="text-center group">
-                    <div className="relative">
-                      <div className="text-5xl md:text-6xl font-black mb-2 group-hover:scale-110 transition-transform duration-300">
-                        4.8<span className="text-yellow-300">★</span>
-                      </div>
-                      <div className="absolute -inset-2 bg-white/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div className="text-lg font-semibold opacity-90">Star Rating</div>
-                    <div className="text-sm opacity-75 mt-1">Customer Reviews</div>
+            {/* Prayer Flags above the card */}
+            <div className="flex justify-center items-end mb-4 pb-2">
+              <div className="flex items-end space-x-1">
+                {/* Blue Flag */}
+                <div className="flex flex-col items-center">
+                  <div className="w-1 h-16 bg-gradient-to-b from-gray-400 to-gray-600"></div>
+                  <div className="w-14 h-12 bg-blue-500 border-2 border-blue-700 flex items-center justify-center text-white text-sm font-bold shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <span className="opacity-80">॰</span>
                   </div>
                 </div>
-
-                {/* Additional Achievement Badges */}
-                <div className="mt-10 flex justify-center space-x-6">
-                  <div className="flex flex-col items-center group">
-                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-2 group-hover:bg-white/30 transition-colors duration-300">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-medium">Authentic</span>
+                {/* White Flag */}
+                <div className="flex flex-col items-center">
+                  <div className="w-1 h-20 bg-gradient-to-b from-gray-400 to-gray-600"></div>
+                  <div className="w-14 h-12 bg-white border-2 border-gray-400 flex items-center justify-center text-gray-800 text-sm font-bold shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <span className="opacity-80">॰</span>
                   </div>
-                  <div className="flex flex-col items-center group">
-                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-2 group-hover:bg-white/30 transition-colors duration-300">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-medium">Fresh</span>
+                </div>
+                {/* Red Flag */}
+                <div className="flex flex-col items-center">
+                  <div className="w-1 h-14 bg-gradient-to-b from-gray-400 to-gray-600"></div>
+                  <div className="w-14 h-12 bg-red-500 border-2 border-red-700 flex items-center justify-center text-white text-sm font-bold shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                    <span className="opacity-80">॰</span>
                   </div>
-                  <div className="flex flex-col items-center group">
-                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-2 group-hover:bg-white/30 transition-colors duration-300">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-medium">Family</span>
+                </div>
+                {/* Green Flag */}
+                <div className="flex flex-col items-center">
+                  <div className="w-1 h-18 bg-gradient-to-b from-gray-400 to-gray-600"></div>
+                  <div className="w-14 h-12 bg-green-600 border-2 border-green-800 flex items-center justify-center text-white text-sm font-bold shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <span className="opacity-80">॰</span>
+                  </div>
+                </div>
+                {/* Yellow Flag */}
+                <div className="flex flex-col items-center">
+                  <div className="w-1 h-16 bg-gradient-to-b from-gray-400 to-gray-600"></div>
+                  <div className="w-14 h-12 bg-yellow-400 border-2 border-yellow-600 flex items-center justify-center text-gray-800 text-sm font-bold shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <span className="opacity-80">॰</span>
                   </div>
                 </div>
               </div>
-
-              {/* Floating Elements */}
-              <div className="absolute top-8 left-8 w-4 h-4 bg-white/30 rounded-full animate-bounce"></div>
-              <div className="absolute bottom-8 right-8 w-3 h-3 bg-yellow-300/50 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
             </div>
 
-            {/* Additional Info Cards */}
-            <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 border border-orange-200/50 dark:border-orange-700/30 hover:scale-105 transition-transform duration-300">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">🏔️</div>
-                  <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-1">Everest Veteran</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Mt. Everest 1998</div>
-                </div>
+            {/* Mt. Everest Image Card */}
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+              {/* Background Image */}
+              <div className="relative h-[400px] w-full">
+                <Image 
+                  src="/images/everest.jpg" 
+                  alt="Mt. Everest - World's Highest Peak" 
+                  fill
+                  className="object-contain bg-gray-900"
+                  priority
+                />
               </div>
-              <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-4 border border-red-200/50 dark:border-red-700/30 hover:scale-105 transition-transform duration-300">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-red-600 dark:text-red-400">🏃‍♂️</div>
-                  <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-1">Sherpa Pride</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">Traditional Heritage</div>
+
+              {/* Content Below Image */}
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black p-6 md:p-8">
+                <div className="text-white">
+                  {/* Summit Badge */}
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="inline-flex items-center bg-gradient-to-r from-red-600 to-orange-600 px-5 py-2 rounded-full border-2 border-yellow-400 shadow-lg">
+                      <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22l-9-12z"/>
+                      </svg>
+                      <span className="font-black text-base">Mt. Everest Summit 2024</span>
+                    </div>
+                  </div>
+                  
+                  {/* Main Story */}
+                  <div className="text-center mb-5">
+                    <h4 className="text-xl md:text-2xl font-black mb-3 text-transparent bg-gradient-to-r from-yellow-400 via-red-400 to-orange-400 bg-clip-text">
+                      A Historic Achievement
+                    </h4>
+                    
+                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10">
+                      <p className="text-base md:text-lg leading-relaxed mb-3 text-gray-100">
+                        In <span className="font-black text-yellow-400">2024</span>, renowned climber <span className="font-bold text-red-400">Pasang Sherpa</span> proudly waved the <span className="font-bold text-orange-400">Himalayan Kitchen logo</span> at the summit of Mt. Everest, the world&apos;s highest peak at <span className="font-semibold">8,849 meters</span>.
+                      </p>
+                      
+                      <div className="bg-gradient-to-r from-red-600/20 to-orange-600/20 rounded-xl p-3 mb-3 border-l-4 border-yellow-400">
+                        <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+                          <span className="font-bold text-yellow-300">Pasang Sherpa</span> has successfully scaled the world&apos;s top mountain an incredible <span className="font-black text-xl text-red-400">24 times</span>, making him one of the most accomplished climbers in history.
+                        </p>
+                      </div>
+                      
+                      <p className="text-base italic text-gray-300 border-t border-white/20 pt-3">
+                        We are deeply honored and grateful to Pasang Sherpa for being part of this monumental achievement and for carrying our legacy to the top of the world. 🙏
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Stats Grid - Smaller Size */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    <div className="text-center bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-lg p-3 border border-blue-400/30 hover:scale-105 transition-transform duration-300">
+                      <div className="text-xl md:text-2xl font-black text-blue-300">8,849m</div>
+                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-blue-200">Elevation</div>
+                    </div>
+                    <div className="text-center bg-gradient-to-br from-red-600/20 to-red-800/20 backdrop-blur-sm rounded-lg p-3 border border-red-400/30 hover:scale-105 transition-transform duration-300">
+                      <div className="text-xl md:text-2xl font-black text-red-300">24th</div>
+                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-red-200">Summit</div>
+                    </div>
+                    <div className="text-center bg-gradient-to-br from-orange-600/20 to-orange-800/20 backdrop-blur-sm rounded-lg p-3 border border-orange-400/30 hover:scale-105 transition-transform duration-300">
+                      <div className="text-xl md:text-2xl font-black text-orange-300">2024</div>
+                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-orange-200">Year</div>
+                    </div>
+                    <div className="text-center bg-gradient-to-br from-green-600/20 to-green-800/20 backdrop-blur-sm rounded-lg p-3 border border-green-400/30 hover:scale-105 transition-transform duration-300">
+                      <div className="text-xl md:text-2xl font-black text-green-300">🏔️</div>
+                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-green-200">Legend</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -273,38 +277,38 @@ const About = () => {
         {/* Additional Features Section */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className={`transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="text-center p-6 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-red-200/30 dark:border-red-700/30 hover:scale-105 transition-transform duration-300">
+            <div className="text-center p-6 bg-white/40 dark:bg-gray-700/40 backdrop-blur-sm rounded-2xl border border-red-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Traditional Spices</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">Imported directly from the Himalayan region for authentic flavors</p>
+              <p className="text-gray-600 dark:text-gray-100 text-sm">Imported directly from the Himalayan region for authentic flavors</p>
             </div>
           </div>
 
           <div className={`transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="text-center p-6 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-orange-200/30 dark:border-orange-700/30 hover:scale-105 transition-transform duration-300">
+            <div className="text-center p-6 bg-white/40 dark:bg-gray-700/40 backdrop-blur-sm rounded-2xl border border-orange-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Made with Love</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">Every dish is prepared with care by our family for yours</p>
+              <p className="text-gray-600 dark:text-gray-100 text-sm">Every dish is prepared with care by our family for yours</p>
             </div>
           </div>
 
           <div className={`transform transition-all duration-1000 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="text-center p-6 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-yellow-200/30 dark:border-yellow-700/30 hover:scale-105 transition-transform duration-300">
+            <div className="text-center p-6 bg-white/40 dark:bg-gray-700/40 backdrop-blur-sm rounded-2xl border border-yellow-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Fresh Daily</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">All ingredients sourced fresh and prepared from scratch daily</p>
+              <p className="text-gray-600 dark:text-gray-100 text-sm">All ingredients sourced fresh and prepared from scratch daily</p>
             </div>
           </div>
         </div>
