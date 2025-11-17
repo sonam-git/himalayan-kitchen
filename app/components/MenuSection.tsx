@@ -52,12 +52,16 @@ const MenuSection = () => {
   // Sticky nav scroll handler - triggers when allergen info goes behind header
   useEffect(() => {
     const handleScroll = () => {
+      if (!sectionRef.current || !navRef.current) return;
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const headerHeight = 96;
+      // Sticky only if menu section is in view and allergen info goes behind header
+      const menuInView = sectionRect.top <= headerHeight && sectionRect.bottom > headerHeight;
       if (allergenRef.current) {
-        const rect = allergenRef.current.getBoundingClientRect();
-        // Header height is approximately 80-96px (h-20 to h-24)
-        const headerHeight = 96;
-        // Make sticky when allergen info goes behind header
-        setIsNavSticky(rect.bottom <= headerHeight);
+        const allergenRect = allergenRef.current.getBoundingClientRect();
+        setIsNavSticky(menuInView && allergenRect.bottom <= headerHeight);
+      } else {
+        setIsNavSticky(false);
       }
     };
 
@@ -218,7 +222,7 @@ const MenuSection = () => {
     <section 
       ref={sectionRef}
       id="menu" 
-      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-900 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
@@ -226,15 +230,15 @@ const MenuSection = () => {
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/5 dark:bg-red-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block px-6 py-2 bg-gradient-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-6">
+          <span className="inline-block px-6 py-2 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-6">
             Our Delicious Menu
           </span>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6">
-            Explore Our <span className="bg-gradient-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">Menu</span>
+            Explore Our <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">Menu</span>
           </h2>
           
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -290,10 +294,10 @@ const MenuSection = () => {
             {/* Horizontal scrollable container with gradient indicators */}
             <div className="relative">
               {/* Left gradient indicator */}
-              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-gray-800 to-transparent z-10 pointer-events-none opacity-50"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-linear-to-r from-white dark:from-gray-800 to-transparent z-10 pointer-events-none opacity-50"></div>
               
               {/* Right gradient indicator */}
-              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-gray-800 to-transparent z-10 pointer-events-none opacity-50"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-linear-to-l from-white dark:from-gray-800 to-transparent z-10 pointer-events-none opacity-50"></div>
               
               <div className="overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8 w-full">
                 <div className={`flex gap-2 sm:gap-3 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -301,9 +305,9 @@ const MenuSection = () => {
                     <button
                       key={index}
                       onClick={() => setActiveCategory(index)}
-                      className={`flex-shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base whitespace-nowrap ${
+                      className={`shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base whitespace-nowrap ${
                         activeCategory === index
-                          ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-lg shadow-red-500/30 scale-105'
+                          ? 'bg-linear-to-r from-red-600 to-orange-600 text-white shadow-lg shadow-red-500/30 scale-105'
                           : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:border-red-500 dark:hover:border-red-500 hover:shadow-md'
                       }`}
                     >
@@ -315,7 +319,7 @@ const MenuSection = () => {
                   {/* Exit Button */}
                   <button
                     onClick={handleExitMenu}
-                    className="flex-shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base bg-gray-800 dark:bg-gray-700 text-white hover:bg-gray-900 dark:hover:bg-gray-600 border border-gray-700 dark:border-gray-600 hover:shadow-md whitespace-nowrap"
+                    className="shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base bg-gray-800 dark:bg-gray-700 text-white hover:bg-gray-900 dark:hover:bg-gray-600 border border-gray-700 dark:border-gray-600 hover:shadow-md whitespace-nowrap"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -342,7 +346,7 @@ const MenuSection = () => {
               {/* Category Title */}
               <div className="flex items-center justify-center mb-8 sm:mb-10">
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-red-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-red-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
                     <span className="text-2xl sm:text-3xl">{category.icon}</span>
                   </div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white">
@@ -373,7 +377,7 @@ const MenuSection = () => {
 
         {/* Call to Action */}
         <div className={`mt-16 sm:mt-20 text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-gradient-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-700 dark:via-orange-700 dark:to-red-700 rounded-2xl sm:rounded-3xl p-8 sm:p-12 md:p-16 text-white shadow-2xl overflow-hidden">
+          <div className="relative bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-700 dark:via-orange-700 dark:to-red-700 rounded-2xl sm:rounded-3xl p-8 sm:p-12 md:p-16 text-white shadow-2xl overflow-hidden">
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{

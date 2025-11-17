@@ -10,6 +10,7 @@ import Reviews from "./components/Reviews";
 import LocationInfo from "./components/LocationInfo";
 import Footer from "./components/Footer";
 import MobileBottomBar from "./components/MobileBottomBar";
+import Contact from "./components/Contact";
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
         <Hero />
         
         {/* Content sections with side spacing and gaps between sections */}
-        <div className="space-y-8 sm:space-y-12 lg:space-y-16 mx-4 sm:mx-6 lg:mx-8 xl:mx-12 2xl:mx-16 py-8 sm:py-12 lg:py-16">
+        <div className="space-y-8 sm:space-y-12 lg:space-y-16 mx-4 sm:mx-6 lg:mx-8 xl:mx-12 2xl:mx-16 py-8 sm:py-12 lg:py-16 ">
            <About />
           <Features />
           <MenuSection />
@@ -30,7 +31,7 @@ export default function Home() {
           <Gallery />
           <Services />
           <Reviews />
-         
+          <Contact />
         </div>
         
         {/* LocationInfo - Full width like Hero */}

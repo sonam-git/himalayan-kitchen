@@ -32,23 +32,8 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900 transition-all duration-300 w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4">
-      {/* Background Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-lg sm:rounded-xl md:rounded-2xl dark:bg-gray-900">
-        {/* Mountain Silhouettes */}
-        <div className="absolute bottom-0 left-0 w-full h-40 bg-linear-to-t from-red-100/40 to-transparent dark:from-red-900/20"></div>
-        
-        {/* Floating Prayer Flags - Adjusted for mobile */}
-        <div className="absolute top-20 -right-10 w-2 h-20 bg-linear-to-b from-red-400 via-orange-400 to-yellow-400 opacity-30 transform rotate-12 animate-pulse hidden md:block"></div>
-        <div className="absolute top-32 -right-20 md:-right-32 w-2 h-16 bg-linear-to-b from-blue-400 via-green-400 to-purple-400 opacity-20 transform -rotate-12 animate-pulse hidden md:block" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-16 -right-32 md:-right-64 w-2 h-24 bg-linear-to-b from-yellow-400 via-red-400 to-orange-400 opacity-25 transform rotate-6 animate-pulse hidden lg:block" style={{ animationDelay: '2s' }}></div>
-        
-        {/* Decorative Patterns - Kept within bounds */}
-        <div className="absolute top-0 -left-32 w-64 h-64 bg-gradient-radial from-orange-200/20 via-transparent to-transparent dark:from-orange-800/10 rounded-full"></div>
-        <div className="absolute bottom-0 -right-48 w-96 h-96 bg-gradient-radial from-red-200/20 via-transparent to-transparent dark:from-red-800/10 rounded-full"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-900 transition-all duration-300 w-full rounded-2xl sm:rounded-3xl shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 ">
           <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
