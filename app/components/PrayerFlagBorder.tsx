@@ -2,7 +2,7 @@ const PrayerFlagBorder = () => {
   // Prayer flag colors in traditional order: Blue (sky), White (clouds), Red (fire), Green (water), Yellow (earth)
   const flags = [
     'bg-blue-500',
-    'bg-white dark:bg-white', // Always white in both themes
+    'bg-gray-100 dark:bg-gray-50', // Always gray in both themes
     'bg-red-500',
     'bg-green-500',
     'bg-yellow-400'

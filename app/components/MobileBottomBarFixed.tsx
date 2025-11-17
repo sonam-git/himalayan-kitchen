@@ -2,7 +2,7 @@ const MobileBottomBar = () => {
   return (
     <>
       {/* Mobile Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700 z-50 md:hidden mobile-bottom-shadow">
+      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 z-50 md:hidden mobile-bottom-shadow transition-colors duration-300">
         <div className="grid grid-cols-4 gap-1 px-2 py-2">
           
           {/* Phone */}

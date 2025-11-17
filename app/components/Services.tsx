@@ -26,7 +26,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="relative py-20 sm:py-24 lg:py-28 bg-gradient-to-br from-white via-gray-50/50 to-orange-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm">
+    <section id="services" className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-800 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm transition-colors duration-300">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-lg sm:rounded-xl md:rounded-2xl">
         {/* Geometric Patterns */}
@@ -232,12 +232,13 @@ const Services = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12"></div>
                 </a>
                 
-                <div className="text-center">
-                  <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                    Or visit us at
-                  </div>
-                  <div className="font-semibold text-gray-700 dark:text-gray-300">
-                    227 3rd St, San Rafael, CA 94901
+                <div className="text-center flex flex-col items-center justify-center mt-2">
+                  <div className="text-xs uppercase tracking-wide text-orange-600 dark:text-orange-400 font-bold mb-1">Our Location</div>
+                  <div className="flex items-center gap-2 bg-white dark:bg-gray-900 border border-orange-200 dark:border-orange-700 rounded-xl px-4 py-2 shadow-sm">
+                    <svg className="w-5 h-5 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm0 0c-4.418 0-8 3.582-8 8a8 8 0 0016 0c0-4.418-3.582-8-8-8z" />
+                    </svg>
+                    <span className="font-semibold text-gray-900 dark:text-white text-base">227 3rd St, San Rafael, CA 94901</span>
                   </div>
                 </div>
               </div>

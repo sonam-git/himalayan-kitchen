@@ -6,6 +6,10 @@ import Image from 'next/image';
 const Gallery = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImg, setModalImg] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalDesc, setModalDesc] = useState("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,42 +35,35 @@ const Gallery = () => {
 
   const galleryItems = [
     {
-      image: "/images/food/momo.jpg",
-      title: "Traditional Momos",
-      description: "Handcrafted dumplings steamed to perfection, served with our special spicy sauce"
+      image: "/images/gallery/everestman.jpg",
+      title: "Everest Man Kami Rita Sherpa",
+      description: "The only person to have summited mount everest 31 times holding guinness world record visiting our restaurant."
     },
     {
-      image: "/images/food/tandoori.jpg",
-      title: "Tandoori Specialties",
-      description: "Succulent meats marinated in aromatic spices and cooked in our traditional clay oven"
+      image: "/images/gallery/hkitchen.jpg",
+      title: "Himalayan Kitchen",
+      description: "Himalayan Kitchen's cozy and inviting ambiance, perfect for enjoying authentic meals with family and friends."
     },
     {
-      image: "/images/food/tika masala.jpg",
-      title: "Tikka Masala",
-      description: "Rich and creamy curry with tender pieces in our signature tomato-based sauce"
-    },
-    {
-      image: "/images/food/chowmien.jpg",
-      title: "Nepali Chowmein",
-      description: "Stir-fried noodles tossed with fresh vegetables and your choice of protein"
-    },
-    {
-      image: "/images/food/thaliset.jpg",
-      title: "Thali Set",
-      description: "A complete meal featuring dal, rice, curry, vegetables, and traditional accompaniments"
-    },
-    {
-      image: "/images/food/food.jpg",
-      title: "Himalayan Delights",
-      description: "Authentic dishes from the mountains, prepared with love and traditional recipes"
+      image: "/images/gallery/everestsummiter.jpg",
+      title: "Everest Summiter",
+      description: "Some of the renowned mountaineers who have conquered the world's highest peak visiting our restaurant."
     }
   ];
+
+  const openModal = (img: string, title: string, desc: string) => {
+    setModalImg(img);
+    setModalTitle(title);
+    setModalDesc(desc);
+    setModalOpen(true);
+  };
+  const closeModal = () => setModalOpen(false);
 
   return (
     <section 
       ref={sectionRef}
       id="gallery" 
-      className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-white via-orange-50/20 to-gray-50 dark:from-gray-900 dark:via-gray-850 dark:to-gray-900 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
@@ -77,12 +74,12 @@ const Gallery = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block px-6 py-2 bg-gradient-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-6">
+          <span className="inline-block px-6 py-2 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-6">
             Visual Journey
           </span>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6">
-            Our <span className="bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Gallery</span>
+            Our <span className="bg-linear-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Gallery</span>
           </h2>
           
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -97,12 +94,16 @@ const Gallery = () => {
             <div 
               key={index}
               className="group relative bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 dark:border-gray-700 hover:border-orange-400 dark:hover:border-orange-500 hover:-translate-y-2"
-              style={{
-                transitionDelay: `${index * 100}ms`
-              }}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Image Container */}
-              <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
+              <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex flex-col justify-end">
+                <button
+                  className="w-full h-full focus:outline-none"
+                  onClick={() => openModal(item.image, item.title, item.description)}
+                  aria-label={`View full ${item.title}`}
+                  style={{ position: 'absolute', inset: 0, zIndex: 2 }}
+                ></button>
                 <Image 
                   src={item.image}
                   alt={item.title}
@@ -111,28 +112,16 @@ const Gallery = () => {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={index < 3}
                 />
-                
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
                 {/* Number Badge */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg">
                   <span className="text-orange-600 dark:text-orange-400 font-bold text-sm">{index + 1}</span>
                 </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5 sm:p-6 lg:p-7">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">
-                  {item.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {item.description}
-                </p>
-
-                {/* Decorative Bottom Bar */}
-                <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-700">
-                  <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full group-hover:w-full transition-all duration-500"></div>
+                {/* Title/Caption and Description at bottom of image */}
+                <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
+                  <h3 className="text-lg font-bold mb-1">{item.title}</h3>
+                  <p className="text-xs sm:text-sm leading-snug">{item.description}</p>
                 </div>
               </div>
             </div>
@@ -146,7 +135,7 @@ const Gallery = () => {
           </p>
           <a 
             href="#menu"
-            className="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold text-base sm:text-lg rounded-xl sm:rounded-2xl hover:from-orange-700 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
+            className="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-linear-to-r from-orange-600 to-red-600 text-white font-bold text-base sm:text-lg rounded-xl sm:rounded-2xl hover:from-orange-700 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
           >
             <span>View Full Menu</span>
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,6 +144,24 @@ const Gallery = () => {
           </a>
         </div>
       </div>
+
+      {/* Modal for full image view */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80" onClick={closeModal}>
+          <div className="relative max-w-3xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
+            <button
+              className="absolute top-2 right-2 text-white text-3xl font-bold bg-black bg-opacity-40 rounded-full px-3 py-1 hover:bg-opacity-70 focus:outline-none"
+              onClick={closeModal}
+              aria-label="Close full image view"
+            >
+              &times;
+            </button>
+            <Image src={modalImg} alt={modalTitle} width={900} height={650} className="rounded-xl shadow-2xl w-full h-auto max-h-[80vh] object-contain" />
+            <h3 className="mt-6 text-lg text-white font-bold text-center drop-shadow-lg">{modalTitle}</h3>
+            <p className="mt-2 text-base text-white text-center drop-shadow-lg max-w-2xl">{modalDesc}</p>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

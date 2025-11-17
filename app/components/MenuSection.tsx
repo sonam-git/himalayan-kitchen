@@ -22,7 +22,10 @@ interface MenuCategory {
 const MenuSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState(0);
+  const [isNavSticky, setIsNavSticky] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const allergenRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,6 +48,32 @@ const MenuSection = () => {
       }
     };
   }, []);
+
+  // Sticky nav scroll handler - triggers when allergen info goes behind header
+  useEffect(() => {
+    const handleScroll = () => {
+      if (allergenRef.current) {
+        const rect = allergenRef.current.getBoundingClientRect();
+        // Header height is approximately 80-96px (h-20 to h-24)
+        const headerHeight = 96;
+        // Make sticky when allergen info goes behind header
+        setIsNavSticky(rect.bottom <= headerHeight);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleExitMenu = () => {
+    // Scroll to the next section after menu
+    const gallerySection = document.getElementById('gallery');
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const menuCategories: MenuCategory[] = [
     {
@@ -189,7 +218,7 @@ const MenuSection = () => {
     <section 
       ref={sectionRef}
       id="menu" 
-      className="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 via-orange-50/30 to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
@@ -212,24 +241,91 @@ const MenuSection = () => {
             Discover the authentic flavors of the Himalayas with our carefully crafted dishes, 
             made from traditional recipes passed down through generations.
           </p>
+
+          {/* Allergen Notice */}
+          <div ref={allergenRef} className="mt-8 max-w-4xl mx-auto">
+            <div className="bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-300 dark:border-amber-700 rounded-xl p-4 sm:p-5 shadow-md">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="flex-shrink-0">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-amber-600 dark:text-amber-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base sm:text-lg font-bold text-amber-900 dark:text-amber-200 mb-1">
+                    Allergy Information
+                  </h3>
+                  <p className="text-sm sm:text-base text-amber-800 dark:text-amber-300 leading-relaxed">
+                    This facility uses nuts, wheat, dairy, and other common allergens. Please inform our staff of any food allergies so we can accommodate your needs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Category Navigation Pills */}
-        <div className={`flex justify-center gap-2 sm:gap-3 mb-10 sm:mb-12 flex-wrap px-2 sm:px-4 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {menuCategories.map((category, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveCategory(index)}
-              className={`flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base ${
-                activeCategory === index
-                  ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-lg shadow-red-500/30 scale-105'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-red-500 dark:hover:border-red-500 hover:shadow-md'
-              }`}
-            >
-              <span className="text-base sm:text-xl">{category.icon}</span>
-              <span className="hidden sm:inline">{category.name}</span>
-            </button>
-          ))}
+        {/* Category Navigation Pills - Horizontal Scrollable & Sticky */}
+        <div 
+          ref={navRef}
+          className={`${
+            isNavSticky 
+              ? 'fixed top-20 md:top-24 left-0 right-0 z-40 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-lg' 
+              : 'relative'
+          } transition-all duration-300 mb-10 sm:mb-12`}
+        >
+          <div className="py-4">
+            {/* Scroll instruction text */}
+            <div className="text-center mb-3 px-4">
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2">
+                <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                </svg>
+                <span>Slide to browse categories</span>
+                <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </p>
+            </div>
+
+            {/* Horizontal scrollable container with gradient indicators */}
+            <div className="relative">
+              {/* Left gradient indicator */}
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-gray-800 to-transparent z-10 pointer-events-none opacity-50"></div>
+              
+              {/* Right gradient indicator */}
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-gray-800 to-transparent z-10 pointer-events-none opacity-50"></div>
+              
+              <div className="overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8 w-full">
+                <div className={`flex gap-2 sm:gap-3 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                  {menuCategories.map((category, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveCategory(index)}
+                      className={`flex-shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base whitespace-nowrap ${
+                        activeCategory === index
+                          ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white shadow-lg shadow-red-500/30 scale-105'
+                          : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:border-red-500 dark:hover:border-red-500 hover:shadow-md'
+                      }`}
+                    >
+                      <span className="text-base sm:text-lg">{category.icon}</span>
+                      <span>{category.name}</span>
+                    </button>
+                  ))}
+                  
+                  {/* Exit Button */}
+                  <button
+                    onClick={handleExitMenu}
+                    className="flex-shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base bg-gray-800 dark:bg-gray-700 text-white hover:bg-gray-900 dark:hover:bg-gray-600 border border-gray-700 dark:border-gray-600 hover:shadow-md whitespace-nowrap"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <span>Exit Menu</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Menu Items Display */}
@@ -287,7 +383,7 @@ const MenuSection = () => {
             </div>
 
             <div className="relative z-10">
-              <div className="inline-block px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white font-semibold text-sm uppercase tracking-wider mb-6">
+              <div className="inline-block px-6 py-2 bg-white/30 dark:bg-white/20 rounded-full text-white font-semibold text-sm uppercase tracking-wider mb-6">
                 Order Now
               </div>
               

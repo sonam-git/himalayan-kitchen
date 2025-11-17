@@ -9,7 +9,12 @@ const About = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        // Always set visible true on small screens to avoid animation hiding content
+        if (window.innerWidth < 640) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(entry.isIntersecting);
+        }
       },
       { threshold: 0.3 }
     );
@@ -27,16 +32,16 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="relative py-24 bg-gradient-to-br from-slate-50 via-orange-50/30 to-red-50/20 dark:bg-gray-600 overflow-hidden transition-all duration-1000 w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4">
+    <section id="about" className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900 transition-all duration-300 w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4">
       {/* Background Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-lg sm:rounded-xl md:rounded-2xl dark:bg-gray-800">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-lg sm:rounded-xl md:rounded-2xl dark:bg-gray-900">
         {/* Mountain Silhouettes */}
-        <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-red-100/40 to-transparent dark:from-red-900/20"></div>
+        <div className="absolute bottom-0 left-0 w-full h-40 bg-linear-to-t from-red-100/40 to-transparent dark:from-red-900/20"></div>
         
         {/* Floating Prayer Flags - Adjusted for mobile */}
-        <div className="absolute top-20 -right-10 w-2 h-20 bg-gradient-to-b from-red-400 via-orange-400 to-yellow-400 opacity-30 transform rotate-12 animate-pulse hidden md:block"></div>
-        <div className="absolute top-32 -right-20 md:-right-32 w-2 h-16 bg-gradient-to-b from-blue-400 via-green-400 to-purple-400 opacity-20 transform -rotate-12 animate-pulse hidden md:block" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-16 -right-32 md:-right-64 w-2 h-24 bg-gradient-to-b from-yellow-400 via-red-400 to-orange-400 opacity-25 transform rotate-6 animate-pulse hidden lg:block" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 -right-10 w-2 h-20 bg-linear-to-b from-red-400 via-orange-400 to-yellow-400 opacity-30 transform rotate-12 animate-pulse hidden md:block"></div>
+        <div className="absolute top-32 -right-20 md:-right-32 w-2 h-16 bg-linear-to-b from-blue-400 via-green-400 to-purple-400 opacity-20 transform -rotate-12 animate-pulse hidden md:block" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-16 -right-32 md:-right-64 w-2 h-24 bg-linear-to-b from-yellow-400 via-red-400 to-orange-400 opacity-25 transform rotate-6 animate-pulse hidden lg:block" style={{ animationDelay: '2s' }}></div>
         
         {/* Decorative Patterns - Kept within bounds */}
         <div className="absolute top-0 -left-32 w-64 h-64 bg-gradient-radial from-orange-200/20 via-transparent to-transparent dark:from-orange-800/10 rounded-full"></div>
@@ -58,7 +63,7 @@ const About = () => {
                 <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full opacity-60"></div>
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-white max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-50 max-w-3xl mx-auto leading-relaxed ">
               Where ancient traditions meet modern culinary excellence in the heart of San Rafael
             </p>
           </div>
@@ -69,7 +74,7 @@ const About = () => {
           {/* Enhanced Content */}
           <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             {/* Greeting Card */}
-            <div className="bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-orange-200/50 dark:border-red-500/50 mb-8 transform hover:scale-105 transition-transform duration-300">
+            <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-xl border border-orange-200/50 dark:border-red-500/50 mb-8 transform hover:scale-105 transition-transform duration-300">
               <div className="flex items-center space-x-4 mb-4">
                 <div className="w-3 h-3 bg-gradient-to-r from-red-500 to-orange-500 rounded-full animate-pulse"></div>
                 <span className="text-2xl font-bold text-transparent bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 bg-clip-text">
@@ -87,7 +92,7 @@ const About = () => {
                 Welcome to <span className="font-bold text-red-700 dark:text-red-400">Himalayan Kitchen</span>, owned and run by a Sherpa family from the majestic Himalayan region of Nepal. While Sherpas are renowned worldwide as mountain guides and porters, we are proudly an ethnic group with rich culinary traditions from northern Nepal.
               </p>
               
-              <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-gray-700/60 dark:to-gray-700/60 rounded-xl p-6 border-l-4 border-orange-500 dark:border-red-500">
+              <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 border-l-4 border-orange-500 dark:border-red-500">
                 <p className="text-lg font-medium text-gray-800 dark:text-white mb-2">
                   Our Philosophy
                 </p>
@@ -100,7 +105,7 @@ const About = () => {
               </div>
 
               {/* Chef Spotlight */}
-              <div className="bg-white/60 dark:bg-gray-700/60 backdrop-blur-sm rounded-2xl p-6 border border-red-200/50 dark:border-red-500/50 shadow-lg">
+              <div className="bg-white dark:bg-gray-700 rounded-2xl p-6 border border-red-200/50 dark:border-red-500/50 shadow-lg">
                 <div className="flex items-start space-x-4">
                   <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +150,7 @@ const About = () => {
                 href="https://www.google.com/maps/search/227%203rd%20St,%20San%20Rafael,%20CA%2094901"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center border-3 border-orange-300 dark:border-orange-600 hover:border-orange-500 dark:hover:border-orange-400 bg-white/80 dark:bg-gray-800/80 hover:bg-orange-50 dark:hover:bg-orange-900/30 text-orange-700 dark:text-orange-300 hover:text-orange-800 dark:hover:text-orange-200 font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl backdrop-blur-sm"
+                className="group relative inline-flex items-center justify-center border-3 border-orange-300 dark:border-orange-600 hover:border-orange-500 dark:hover:border-orange-400 bg-white dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-orange-900/30 text-orange-700 dark:text-orange-300 hover:text-orange-800 dark:hover:text-orange-200 font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
               >
                 <svg className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -229,9 +234,7 @@ const About = () => {
                   <div className="text-center mb-5">
                     <h4 className="text-xl md:text-2xl font-black mb-3 text-transparent bg-gradient-to-r from-yellow-400 via-red-400 to-orange-400 bg-clip-text">
                       A Historic Achievement
-                    </h4>
-                    
-                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10">
+                    </h4>                      <div className="bg-white/10 dark:bg-white/5 rounded-2xl p-5 border border-white/10">
                       <p className="text-base md:text-lg leading-relaxed mb-3 text-gray-100">
                         In <span className="font-black text-yellow-400">2024</span>, renowned climber <span className="font-bold text-red-400">Pasang Sherpa</span> proudly waved the <span className="font-bold text-orange-400">Himalayan Kitchen logo</span> at the summit of Mt. Everest, the world&apos;s highest peak at <span className="font-semibold">8,849 meters</span>.
                       </p>
@@ -277,7 +280,7 @@ const About = () => {
         {/* Additional Features Section */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className={`transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="text-center p-6 bg-white/40 dark:bg-gray-700/40 backdrop-blur-sm rounded-2xl border border-red-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
+            <div className="text-center p-6 bg-white dark:bg-gray-700 rounded-2xl border border-red-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -289,7 +292,7 @@ const About = () => {
           </div>
 
           <div className={`transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="text-center p-6 bg-white/40 dark:bg-gray-700/40 backdrop-blur-sm rounded-2xl border border-orange-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
+            <div className="text-center p-6 bg-white dark:bg-gray-700 rounded-2xl border border-orange-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -301,7 +304,7 @@ const About = () => {
           </div>
 
           <div className={`transform transition-all duration-1000 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="text-center p-6 bg-white/40 dark:bg-gray-700/40 backdrop-blur-sm rounded-2xl border border-yellow-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
+            <div className="text-center p-6 bg-white dark:bg-gray-700 rounded-2xl border border-yellow-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
               <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />

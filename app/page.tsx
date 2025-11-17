@@ -13,7 +13,7 @@ import MobileBottomBar from "./components/MobileBottomBar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Main content wrapper */}
       <main className="w-full">
         <Header />
@@ -23,13 +23,14 @@ export default function Home() {
         
         {/* Content sections with side spacing and gaps between sections */}
         <div className="space-y-8 sm:space-y-12 lg:space-y-16 mx-4 sm:mx-6 lg:mx-8 xl:mx-12 2xl:mx-16 py-8 sm:py-12 lg:py-16">
+           <About />
           <Features />
           <MenuSection />
           <ChefsSpecials />
           <Gallery />
           <Services />
           <Reviews />
-          <About />
+         
         </div>
         
         {/* LocationInfo - Full width like Hero */}

@@ -7,14 +7,14 @@
 }
 
 html {
-  overflow-x: hidden !important;
+  overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
   position: relative;
 }
 
 body {
-  overflow-x: hidden !important;
+  overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
   margin: 0;
@@ -22,10 +22,16 @@ body {
   position: relative;
 }
 
-/* Ensure all sections and divs don't overflow */
-section, div {
+/* Ensure all sections don't overflow */
+section {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+/* Allow horizontal scroll for specific containers */
+.overflow-x-auto {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
 }
 
 /* Prevent transforms from causing overflow */
@@ -39,6 +45,36 @@ section, div {
 /* Ensure grids don't overflow */
 .grid {
   max-width: 100%;
+}
+
+/* Enhanced scrollbar hiding with smooth scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-x-auto.scrollbar-hide {
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* Ensure scrolling works on all screen sizes */
+  max-width: 100%;
+}
+
+/* Add momentum scrolling for iOS */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+/* Smooth scroll snap for buttons */
+.overflow-x-auto button {
+  scroll-snap-align: start;
 }
 
 :root {
@@ -78,7 +114,7 @@ html {
   overflow-y: scroll;
   /* Ensure proper width calculation */
   width: 100%;
-  overflow-x: hidden;
+  /* Allow child elements to scroll horizontally when needed */
 }
 
 body {
@@ -94,7 +130,7 @@ body {
   /* Ensure body takes full width and centers content properly */
   width: 100%;
   margin: 0 auto;
-  overflow-x: hidden;
+  /* Allow child elements to scroll horizontally when needed */
 }
 
 /* Dark mode support for sections */

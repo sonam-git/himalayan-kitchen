@@ -44,21 +44,21 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {/* Spicy Indicator */}
           {spicy && (
-            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-red-500 px-2.5 py-1.5 rounded-full shadow-lg border border-red-200 dark:border-red-700">
+            <div className="bg-white dark:bg-gray-800 text-red-500 px-2.5 py-1.5 rounded-full shadow-lg border border-red-200 dark:border-red-700">
               <span className="text-lg">🌶️</span>
             </div>
           )}
           
           {/* Vegan Indicator */}
           {vegan && (
-            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-green-600 dark:text-green-400 px-2.5 py-1.5 rounded-full shadow-lg border border-green-200 dark:border-green-700">
+            <div className="bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 px-2.5 py-1.5 rounded-full shadow-lg border border-green-200 dark:border-green-700">
               <span className="text-lg">🌱</span>
             </div>
           )}
           
           {/* Vegetarian Indicator (only if not vegan) */}
           {vegetarian && !vegan && (
-            <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-green-600 dark:text-green-400 px-2.5 py-1.5 rounded-full shadow-lg border border-green-200 dark:border-green-700">
+            <div className="bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 px-2.5 py-1.5 rounded-full shadow-lg border border-green-200 dark:border-green-700">
               <span className="text-lg">🥬</span>
             </div>
           )}

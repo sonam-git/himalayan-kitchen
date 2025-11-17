@@ -3,26 +3,12 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import PrayerFlagBorder from './PrayerFlagBorder';
+import { useTheme } from '../context/ThemeContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    const savedTheme = localStorage.getItem('theme');
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return savedTheme === 'dark' || (!savedTheme && systemTheme);
-  });
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
+  const { isDarkMode, toggleTheme, mounted } = useTheme();
 
   // Track active section on scroll
   useEffect(() => {
@@ -52,8 +38,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeSection]);
 
-  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
-
   // Handle click to immediately update active section
   const handleNavClick = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -62,7 +46,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="w-full bg-white dark:bg-gray-900 backdrop-blur-md shadow-lg transition-all duration-300">
+      <div className="w-full bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
         <div className="max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
           <div className="flex items-center justify-between h-20 md:h-24">
             {/* Logo / Title */}
@@ -78,8 +62,8 @@ const Header = () => {
                 </div>
                 <div className="flex flex-col justify-center space-y-0.5">
                   <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-gradient-to-r from-red-500 via-orange-500 to-red-600 dark:from-red-300 dark:via-orange-300 dark:to-red-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">HIMALAYAN</h1>
-                  <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-script text-gray-700 dark:text-gray-200 -mt-1.5 tracking-wide font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
-                  <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-500 dark:text-gray-400 -mt-1 tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
+                  <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-wide font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
+                  <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-500 dark:text-gray-300 -mt-1 tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
                   <div className="w-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500 group-hover:w-full transition-[width] duration-700 rounded-full"></div>
                 </div>
               </div>
@@ -103,7 +87,7 @@ const Header = () => {
                     className={`group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 ${
                       activeSection === id 
                         ? 'text-red-500 dark:text-red-400' 
-                        : 'text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400'
+                        : 'text-gray-600 dark:text-white hover:text-red-500 dark:hover:text-red-400'
                     }`}
                   >
                     <svg className={`w-7 h-7 mb-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 ${activeSection === id ? 'scale-110' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,13 +119,17 @@ const Header = () => {
 
               {/* Theme Toggle */}
               <button 
-                onClick={toggleDarkMode} 
+                onClick={toggleTheme} 
                 aria-label="Toggle dark mode" 
                 aria-pressed={isDarkMode} 
-                className="relative inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-gray-800 dark:bg-white border-2 border-gray-700 dark:border-gray-300 shadow-lg transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-400/50"
+                className="relative inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-gray-800 dark:bg-yellow-400 hover:bg-gray-700 dark:hover:bg-yellow-300 border-2 border-gray-700 dark:border-yellow-500 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-400/50 dark:focus:ring-yellow-400/50 hover:scale-105 active:scale-95"
               >
-                {isDarkMode ? (
-                  <svg className="w-6 h-6 lg:w-7 lg:h-7 text-yellow-100 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {!mounted ? (
+                  <svg className="w-6 h-6 lg:w-7 lg:h-7 text-white dark:text-gray-800 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                ) : isDarkMode ? (
+                  <svg className="w-6 h-6 lg:w-7 lg:h-7 text-gray-800 transition-all duration-500 animate-pulse" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 ) : (
@@ -170,7 +158,7 @@ const Header = () => {
 
           {/* Mobile Navigation */}
           <div className={`lg:hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-            <div className="px-4 pt-6 pb-8 space-y-3 bg-gray-50 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700/30 shadow-2xl">
+            <div className="px-4 pt-6 pb-8 space-y-3 bg-gray-50 dark:bg-gray-700 backdrop-blur-md border-t border-gray-200 dark:border-gray-700/30 shadow-2xl">
               {[
                 { id: 'home', label: 'Home', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /> },
                 { id: 'about', label: 'About', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> },
@@ -186,7 +174,7 @@ const Header = () => {
                   className={`group flex items-center space-x-5 px-5 py-4 rounded-xl border border-transparent transition-all duration-300 ${
                     activeSection === id
                       ? 'border-red-500/50 dark:border-red-400/50 text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/20'
-                      : 'hover:border-red-300/50 dark:hover:border-red-800/50 text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20'
+                      : 'hover:border-red-300/50 dark:hover:border-red-800/50 text-gray-700 dark:text-white hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20'
                   }`}
                 >
                   <svg className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${activeSection === id ? 'scale-110' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
