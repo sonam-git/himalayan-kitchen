@@ -194,7 +194,7 @@ const About = () => {
               {/* Background Image */}
               <div className="relative h-[400px] w-full">
                 <Image 
-                  src="/images/gallery/everest.jpg" 
+                  src="/images/gallery/everest.JPG" 
                   alt="Mt. Everest - World's Highest Peak" 
                   fill
                   className="object-contain bg-gray-900"
