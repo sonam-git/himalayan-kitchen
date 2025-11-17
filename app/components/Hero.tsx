@@ -17,7 +17,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 w-full rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden">
         <video
           ref={videoRef}
-          src="/videos/heroclip.mp4"
+          src="/videos/herovideo.mp4"
           autoPlay
           loop
           muted
