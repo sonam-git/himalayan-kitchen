@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const Reviews = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [googleReviews, setGoogleReviews] = useState<Array<any>>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,6 +27,12 @@ const Reviews = () => {
         observer.unobserve(currentSection);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/google-reviews')
+      .then(res => res.json())
+      .then(setGoogleReviews);
   }, []);
 
   const reviews = [
@@ -127,7 +134,7 @@ const Reviews = () => {
               </div>
               
               {/* Review Text */}
-              <blockquote className="dark:text-gray-200 text-gray-800 mb-6 leading-relaxed text-base group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+              <blockquote className="text-gray-900 dark:text-white mb-6 leading-relaxed text-base group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                 &quot;{review.text}&quot;
               </blockquote>
               
@@ -158,6 +165,43 @@ const Reviews = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Google Reviews Section */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white text-center">Google Reviews</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {googleReviews && googleReviews.length > 0 ? (
+              googleReviews.map((review: any, index: number) => (
+                <div key={index} className="group relative bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-300 dark:border-gray-700 shadow-lg">
+                  {/* Stars */}
+                  <div className="flex text-yellow-600 dark:text-yellow-400 mb-6 gap-1">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <svg key={i} className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                      </svg>
+                    ))}
+                  </div>
+                  {/* Review Text */}
+                  <blockquote className="text-gray-900 dark:text-white mb-6 leading-relaxed text-base">
+                    &quot;{review.text}&quot;
+                  </blockquote>
+                  {/* Author Info */}
+                  <div className="flex items-center pt-4 border-t border-gray-300 dark:border-gray-700">
+                    <div className="w-12 h-12 bg-gradient-to-br from-red-100 to-orange-100 dark:bg-linear-to-br dark:from-red-600 dark:to-orange-600 rounded-full flex items-center justify-center text-red-700 dark:text-white font-bold text-lg mr-4">
+                      {review.author_name && review.author_name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-900 dark:text-white text-lg">{review.author_name}</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm">{review.relative_time_description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-500 dark:text-gray-400 col-span-3 text-center">No Google reviews found.</p>
+            )}
+          </div>
         </div>
 
         {/* Call to Action Section */}

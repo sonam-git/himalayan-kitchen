@@ -1,22 +1,32 @@
 'use client';
 
-import Image from 'next/image';
+import { useRef, useEffect } from 'react';
 
 const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 w-full">
-      {/* Hero Background Image */}
-      <div className="absolute inset-0 z-0 w-full rounded-lg sm:rounded-xl md:rounded-2xl">
-        <Image
-          src="/images/hero.jpg"
-          alt="Himalayan Kitchen Restaurant"
-          fill
-          className="object-cover rounded-lg sm:rounded-xl md:rounded-2xl"
-          priority
+      {/* Hero Background Video */}
+      <div className="absolute inset-0 z-0 w-full rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden">
+        <video
+          ref={videoRef}
+          src="/videos/heroclip.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="object-cover w-full h-full rounded-lg sm:rounded-xl md:rounded-2xl"
         />
         {/* Gradient overlays for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60 rounded-lg sm:rounded-xl md:rounded-2xl"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30 rounded-lg sm:rounded-xl md:rounded-2xl"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-black/60 via-black/40 to-black/60 rounded-lg sm:rounded-xl md:rounded-2xl"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-black/30 rounded-lg sm:rounded-xl md:rounded-2xl"></div>
       </div>
 
       {/* Content */}
@@ -24,7 +34,7 @@ const Hero = () => {
         {/* Main Heading */}
         <div className="mb-8">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 leading-tight hero-title">
-            <span className="block bg-gradient-to-r from-orange-300 via-yellow-300 to-red-300 bg-clip-text text-transparent drop-shadow-2xl">
+            <span className="block bg-linear-to-r from-orange-300 via-yellow-300 to-red-300 bg-clip-text text-transparent drop-shadow-2xl">
               TASTES FROM THE
             </span>
             <span className="block text-white drop-shadow-2xl">
@@ -48,7 +58,7 @@ const Hero = () => {
           {/* Primary CTA - Explore Menu */}
           <button
             onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group relative overflow-hidden bg-gradient-to-r from-orange-500 via-red-500 to-red-600 hover:bg-sky-400 text-white font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-[160px] sm:min-w-[180px] lg:min-w-[200px] cursor-pointer"
+            className="group relative overflow-hidden bg-linear-to-r from-orange-500 via-red-500 to-red-600 hover:bg-sky-400 text-white font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] cursor-pointer"
             aria-label="Explore our restaurant menu"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -60,7 +70,7 @@ const Hero = () => {
           {/* Secondary CTA - Order Now */}
           <button
             onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
-            className="group relative overflow-hidden bg-white hover:bg-sky-400 hover:text-white backdrop-blur-sm text-gray-900 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-[160px] sm:min-w-[180px] lg:min-w-[200px] border-2 border-white/30 hover:border-white cursor-pointer"
+            className="group relative overflow-hidden bg-white hover:bg-sky-400 hover:text-white backdrop-blur-sm text-gray-900 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] border-2 border-white/30 hover:border-white cursor-pointer"
             aria-label="Order food online for delivery or pickup"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -73,7 +83,7 @@ const Hero = () => {
           {/* Tertiary CTA - Reservation */}
           <a
             href="#reservation"
-            className="group relative overflow-hidden bg-gradient-to-r from-yellow-500 via-amber-500 to-amber-600 hover:bg-sky-400 text-white font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-[160px] sm:min-w-[180px] lg:min-w-[200px] cursor-pointer"
+            className="group relative overflow-hidden bg-linear-to-r from-yellow-500 via-amber-500 to-amber-600 hover:bg-sky-400 text-white font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] cursor-pointer"
             aria-label="Make a reservation"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
