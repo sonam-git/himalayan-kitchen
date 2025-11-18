@@ -1,12 +1,9 @@
 import React from 'react';
 
-interface MenuHeadingProps {
-  allergenRef: React.RefObject<HTMLDivElement>;
-  isVisible: boolean;
-}
 
-const MenuHeading: React.FC<MenuHeadingProps> = ({ allergenRef, isVisible }) => (
-  <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+
+const MenuHeading: React.FC = () => (
+  <div className="text-center mb-4 sm:mb-16 transition-all duration-1000 opacity-100 translate-y-0">
     <span className="inline-block px-6 py-2 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-6">
       Our Delicious Menu
     </span>
@@ -18,7 +15,7 @@ const MenuHeading: React.FC<MenuHeadingProps> = ({ allergenRef, isVisible }) => 
       made from traditional recipes passed down through generations.
     </p>
     {/* Allergen Notice */}
-    <div ref={allergenRef} className="mt-8 max-w-4xl mx-auto">
+    <div className="mt-8 max-w-4xl mx-auto">
       <div className="bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-300 dark:border-amber-700 rounded-xl p-4 sm:p-5 shadow-md">
         <div className="flex items-start gap-3 sm:gap-4">
           <div className="flex-shrink-0">

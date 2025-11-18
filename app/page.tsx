@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import MobileBottomBar from "./components/MobileBottomBar";
 import Contact from "./components/Contact";
 import CallToAction from "./components/CallToAction";
+import MenuHeading from "./components/MenuHeading";
 
 export default function Home() {
   return (
@@ -19,15 +20,11 @@ export default function Home() {
       {/* Main content wrapper */}
       <main className="w-full">
         <Header />
-
-        {/* Hero - Full width, edge to edge */}
         <Hero />
-
-        {/* Content sections with side spacing and gaps between sections */}
         <div className="space-y-8 sm:space-y-12 lg:space-y-16 mx-4 sm:mx-6 lg:mx-8 xl:mx-12 2xl:mx-16 py-8 sm:py-12 lg:py-16 ">
+          <MenuHeading />
           <MenuSection />
-            {/* CallToAction moved to its own component */}
-        <CallToAction />
+          <CallToAction />
           <Services />
           <Reviews />
           <Gallery />

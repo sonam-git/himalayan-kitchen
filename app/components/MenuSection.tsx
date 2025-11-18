@@ -2,7 +2,6 @@
 
 import  { useEffect, useRef, useState } from 'react';
 import MenuItemCard from './MenuItemCard';
-import MenuHeading from './MenuHeading';
 import MenuNavBar from './MenuNavBar';
 
 
@@ -26,10 +25,8 @@ const MenuSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const allergenRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
-  const navbarRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
   const [menuInView, setMenuInView] = useState(false);
+  const categoryRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,14 +59,17 @@ const MenuSection = () => {
   // Scroll menu section into view when category is clicked
   const handleCategoryClick = (index: number) => {
     setActiveCategory(index);
-    if (navbarRef.current) {
-      navbarRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // On small screens, scroll menu section to top
+    if (window.innerWidth < 1024 && sectionRef.current) {
+      const yOffset = -80; // Adjust for fixed navbar height (bottom-16)
+      const y = sectionRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
   const menuCategories: MenuCategory[] = [
     {
-      name: "Appetizers, Soup & Salad",
+      name: "Appetizers, Soup & Salad | चटपटी, सूप र सलाद",
       icon: "🥟",
       items: [
         { name: "Chicken Soup", description: "Light creamy chicken broth, cabbage, carrot.", price: "$7.95 (12oz) / $9.95 (16oz)", image: "/images/food/food.jpg" },
@@ -82,7 +82,7 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Mo:Mo (Dumplings)",
+      name: "Mo:Mo (Dumplings) | म:म:",
       icon: "🥟",
       items: [
         { name: "Chicken Momo", description: "Dumplings filled with ground chicken breast, cabbage, onions, herbs & chef's spices", price: "$13.95 / $17.95", image: "/images/food/momo.jpg" },
@@ -93,7 +93,7 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Chowmein",
+      name: "Chowmein | चाउमिन",
       icon: "🍜",
       items: [
         { name: "Chicken Chowmein", description: "Tender Chicken thigh, carrot, cabbage, onions, soy.", price: "$17.95", image: "/images/food/chowmien.jpg" },
@@ -103,8 +103,8 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Chicken Curries",
-      icon: "🍛",
+      name: "Chicken Curries | कुखुराको तरकारी",
+      icon: "🐔",
       items: [
         { name: "Butter Chicken", description: "Chicken slow cooked in homemade buttery sauce.", price: "$19.75", image: "/images/food/tika masala.jpg"},
         { name: "Butter Chicken", description: "Chicken slow cooked in homemade buttery sauce.", price: "$19.75", image: "/images/food/tika masala.jpg" },
@@ -121,8 +121,8 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Lamb Curries",
-      icon: "�",
+      name: "Lamb Curries | भेड़को तरकारी",
+      icon: "🐑",
       items: [
         { name: "Lamb Aloo", description: "Boneless lamb cooked with potatoes in special homemade red chilli sauce.", price: "$19.75", image: "/images/food/tika masala.jpg", spicy: true },
         { name: "Classic Lamb Curry", description: "Slowed cooked tender lamb with tomato, onion based sauce.", price: "$19.95", image: "/images/menu/classic-lamb-curry.jpg" },
@@ -133,7 +133,7 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Vegetarian Curry",
+      name: "Vegetarian Curry | साग सब्जीको तरकारी",
       icon: "🥬",
       items: [
         { name: "Aloo Bhanta", description: "Potato & egg plant made with homemade sauce.", price: "$16.25", image: "/images/food/tika masala.jpg", vegetarian: true, vegan: true },
@@ -148,7 +148,7 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Seafood Curry",
+      name: "Seafood Curry | समुद्री खानाको तरकारी",
       icon: "🦐",
       items: [
         { name: "Fish Curry", description: "Salmon simmered in creamy coconut sauce with chef's special spices.", price: "$19.95", image: "/images/food/tika masala.jpg" },
@@ -158,7 +158,7 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Himalayan Tandoori",
+      name: "Himalayan Tandoori | हिमालयन तन्दुरी",
       icon: "🔥",
       items: [
         { name: "Chicken Kabab", description: "Tender boneless chicken breast marinated with spices & yogurt.", price: "$18.95", image: "/images/food/tandoori.jpg" },
@@ -170,7 +170,7 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Biryani",
+      name: "Biryani | बिरियानी",
       icon: "🍚",
       items: [
         { name: "Chicken Biryani", description: "Aromatic, saffron flavored fried rice caramelized with onions, house spices, boneless chicken & served with side Raita.", price: "$18.95", image: "/images/food/thaliset.jpg" },
@@ -179,7 +179,7 @@ const MenuSection = () => {
       ]
     },
     {
-      name: "Sides",
+      name: "Sides | साइड डिश",
       icon: "🍞",
       items: [
         { name: "Basmati Rice / Brown Rice", description: "Traditional indian rice", price: "$3.45", image: "/images/food/thaliset.jpg", vegetarian: true, vegan: true },
@@ -219,10 +219,6 @@ const MenuSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header and allergen info always at top */}
-        <div ref={headerRef}>
-          <MenuHeading allergenRef={allergenRef} isVisible={isVisible} />
-        </div>
         {/* Small screens: MenuNavBar as fixed bottom bar when menu section is in view */}
         {menuInView && (
           <div className="fixed left-0 right-0 bottom-16 z-40 lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-xl">
@@ -252,7 +248,7 @@ const MenuSection = () => {
         <div className="min-h-[600px]">
           {/* Small screens: show only active category title and items below sticky navbar */}
           <div className="lg:hidden">
-            <div className="flex items-center justify-center mb-8 sm:mb-10">
+            <div ref={el => { categoryRefs.current[activeCategory] = el; }} className="flex items-center justify-center mb-8 sm:mb-10">
               <div className="flex items-center gap-3 sm:gap-4">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-red-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
                   <span className="text-2xl sm:text-3xl">{menuCategories[activeCategory].icon}</span>
