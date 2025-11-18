@@ -6,7 +6,6 @@ import Image from 'next/image';
 interface MenuItemCardProps {
   name: string;
   description: string;
-  price: string;
   image: string;
   spicy?: boolean;
   vegetarian?: boolean;
@@ -17,7 +16,6 @@ interface MenuItemCardProps {
 const MenuItemCard: React.FC<MenuItemCardProps> = ({
   name,
   description,
-  price,
   image,
   spicy = false,
   vegetarian = false,
@@ -76,7 +74,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
             {name}
           </h4>
           <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg flex-shrink-0">
-            <span className="text-xs sm:text-sm font-bold whitespace-nowrap">{price}</span>
+            <span className="text-xs sm:text-sm font-bold whitespace-nowrap">food icon</span>
           </div>
         </div>
         

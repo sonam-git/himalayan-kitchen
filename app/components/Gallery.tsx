@@ -59,6 +59,50 @@ const Gallery = () => {
   };
   const closeModal = () => setModalOpen(false);
 
+  const foodGalleryItems = [
+    {
+      image: "/images/food/momo.jpg",
+      title: "Momo (Dumplings)",
+      description: "Handmade Himalayan dumplings filled with seasoned meat or vegetables, served with spicy tomato chutney."
+    },
+    {
+      image: "/images/food/chowmien.jpg",
+      title: "Himalayan Chow Mein",
+      description: "Stir-fried noodles with fresh vegetables and your choice of protein, tossed in savory Himalayan spices."
+    },
+    {
+      image: "/images/food/thaliset.jpg",
+      title: "Thali Set",
+      description: "A complete meal platter featuring a variety of dishes, including rice, lentils, vegetables, and pickles."
+    },
+    {
+      image: "/images/food/tandoori.jpg",
+      title: "Tandoori",
+      description: "Marinated meat or vegetables cooked in a traditional clay oven, served with naan and chutney."
+    },
+    {
+      image: "/images/food/tika masala.jpg",
+      title: "Tika Masala",
+      description: "Tender pieces of meat cooked in a rich and creamy tomato-based sauce, served with rice or naan."
+    },
+    {
+      image: "/images/food/chicken65.jpg",
+      title: "Chicken 65",
+      description: "Spicy and crispy fried chicken pieces, marinated in a blend of South Indian spices."
+    }
+  ];
+
+  const [foodModalOpen, setFoodModalOpen] = useState(false);
+  const [foodModalIndex, setFoodModalIndex] = useState(0);
+
+  const openFoodModal = (index: number) => {
+    setFoodModalIndex(index);
+    setFoodModalOpen(true);
+  };
+  const closeFoodModal = () => setFoodModalOpen(false);
+  const nextFoodModal = () => setFoodModalIndex((i) => (i + 1) % foodGalleryItems.length);
+  const prevFoodModal = () => setFoodModalIndex((i) => (i - 1 + foodGalleryItems.length) % foodGalleryItems.length);
+
   return (
     <section 
       ref={sectionRef}
@@ -128,7 +172,39 @@ const Gallery = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* Food Gallery Section */}
+        <div className="mt-24">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-4">A Feast for Your Eyes</h2>
+            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-100 max-w-2xl mx-auto">
+              Explore the beauty of our authentic and mouth-watering Himalayan dishes. Let the gallery inspire your next dining experience!
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {foodGalleryItems.map((item, idx) => (
+              <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-500">
+                <button
+                  className="w-full h-full focus:outline-none"
+                  onClick={() => openFoodModal(idx)}
+                  aria-label={`View full ${item.title}`}
+                  style={{ position: 'absolute', inset: 0, zIndex: 2 }}
+                ></button>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={500}
+                  height={350}
+                  className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-700 ease-out"
+                  priority={idx < 3}
+                />
+                <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
+                  <h3 className="text-lg font-bold mb-1">{item.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      {/* Call to Action */}
         <div className={`mt-16 sm:mt-20 text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6">
             Come taste the authentic flavors of the Himalayas
@@ -143,25 +219,50 @@ const Gallery = () => {
             </svg>
           </a>
         </div>
-      </div>
-
-      {/* Modal for full image view */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80" onClick={closeModal}>
-          <div className="relative max-w-3xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
-            <button
-              className="absolute top-2 right-2 text-white text-3xl font-bold bg-black bg-opacity-40 rounded-full px-3 py-1 hover:bg-opacity-70 focus:outline-none"
-              onClick={closeModal}
-              aria-label="Close full image view"
-            >
-              &times;
-            </button>
-            <Image src={modalImg} alt={modalTitle} width={900} height={650} className="rounded-xl shadow-2xl w-full h-auto max-h-[80vh] object-contain" />
-            <h3 className="mt-6 text-lg text-white font-bold text-center drop-shadow-lg">{modalTitle}</h3>
-            <p className="mt-2 text-base text-white text-center drop-shadow-lg max-w-2xl">{modalDesc}</p>
+        {/* Modal for full image view */}
+        {modalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80" onClick={closeModal}>
+            <div className="relative max-w-3xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
+              <button
+                className="absolute top-2 right-2 text-white text-3xl font-bold bg-black bg-opacity-40 rounded-full px-3 py-1 hover:bg-opacity-70 focus:outline-none"
+                onClick={closeModal}
+                aria-label="Close full image view"
+              >
+                &times;
+              </button>
+              <Image src={modalImg} alt={modalTitle} width={900} height={650} className="rounded-xl shadow-2xl w-full h-auto max-h-[80vh] object-contain" />
+              <h3 className="mt-6 text-lg text-white font-bold text-center drop-shadow-lg">{modalTitle}</h3>
+              <p className="mt-2 text-base text-white text-center drop-shadow-lg max-w-2xl">{modalDesc}</p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Food Modal */}
+        {foodModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80" onClick={closeFoodModal}>
+            <div className="relative max-w-2xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
+              <button
+                className="absolute top-2 right-2 text-white text-3xl font-bold bg-black bg-opacity-40 rounded-full px-3 py-1 hover:bg-opacity-70 focus:outline-none"
+                onClick={closeFoodModal}
+                aria-label="Close full image view"
+              >
+                &times;
+              </button>
+              <Image src={foodGalleryItems[foodModalIndex].image} alt={foodGalleryItems[foodModalIndex].title} width={900} height={650} className="rounded-xl shadow-2xl w-full h-auto max-h-[80vh] object-contain" />
+              <h3 className="mt-6 text-lg text-white font-bold text-center drop-shadow-lg">{foodGalleryItems[foodModalIndex].title}</h3>
+              <p className="mt-2 text-base text-white text-center drop-shadow-lg max-w-2xl">{foodGalleryItems[foodModalIndex].description}</p>
+              <div className="flex justify-between w-full mt-6 px-8">
+                <button onClick={prevFoodModal} aria-label="Previous image" className="text-white text-2xl bg-black bg-opacity-40 rounded-full px-4 py-2 hover:bg-opacity-70 focus:outline-none">
+                  &#8592;
+                </button>
+                <button onClick={nextFoodModal} aria-label="Next image" className="text-white text-2xl bg-black bg-opacity-40 rounded-full px-4 py-2 hover:bg-opacity-70 focus:outline-none">
+                  &#8594;
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </section>
   );
 };

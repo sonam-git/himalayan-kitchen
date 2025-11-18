@@ -1,9 +1,15 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [showHeading, setShowHeading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowHeading(false), 5000); // 5 seconds
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -33,22 +39,26 @@ const Hero = () => {
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         {/* Main Heading */}
         <div className="mb-8">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 leading-tight hero-title">
-            <span className="block bg-linear-to-r from-orange-300 via-yellow-300 to-red-300 bg-clip-text text-transparent drop-shadow-2xl">
-              TASTES FROM THE
-            </span>
-            <span className="block text-white drop-shadow-2xl">
-              HIMALAYAS
-            </span>
-          </h1>
-          
-          {/* Subtitle */}
-          <div className="mt-6 max-w-3xl mx-auto hero-subtitle">
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-light text-gray-100 leading-relaxed backdrop-blur-sm bg-black/20 rounded-2xl px-4 sm:px-6 md:px-8 py-3 sm:py-4 border border-white/10">
-              SERVING AND SHARING THE HIMALAYAN CUISINES & CULTURES 
-              <span className="block text-orange-300 font-medium mt-2">in the heart of San Rafael</span>
-            </p>
-          </div>
+          {showHeading && (
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 leading-tight hero-title animate-fade-in-out">
+              <span className="block bg-linear-to-r from-orange-300 via-yellow-300 to-red-300 bg-clip-text text-transparent drop-shadow-2xl">
+                TASTES FROM THE
+              </span>
+              <span className="block text-white drop-shadow-2xl">
+                HIMALAYAS
+              </span>
+            </h1>
+          )}
+          {!showHeading && (
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 leading-tight hero-title invisible">
+              <span className="block bg-linear-to-r from-orange-300 via-yellow-300 to-red-300 bg-clip-text text-transparent drop-shadow-2xl">
+                TASTES FROM THE
+              </span>
+              <span className="block text-white drop-shadow-2xl">
+                HIMALAYAS
+              </span>
+            </h1>
+          )}
         </div>
       </div>
 
@@ -79,18 +89,6 @@ const Hero = () => {
             <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Order Online</span>
             <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
           </button>
-
-          {/* Tertiary CTA - Reservation */}
-          <a
-            href="#reservation"
-            className="group relative overflow-hidden bg-linear-to-r from-yellow-500 via-amber-500 to-amber-600 hover:bg-sky-400 text-white font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] cursor-pointer"
-            aria-label="Make a reservation"
-          >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Reservation</span>
-          </a>
         </div>
       </div>
     </section>
@@ -98,3 +96,15 @@ const Hero = () => {
 };
 
 export default Hero;
+
+/* Add this to your CSS (e.g. globals.css or in a style tag):
+@keyframes fade-in-out {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+.animate-fade-in-out {
+  animation: fade-in-out 2.5s ease-in-out;
+}
+*/
