@@ -37,15 +37,15 @@ const About = () => {
         {/* Section Header */}
         <div className="text-center mb-16 ">
           <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <span className="inline-block px-6 py-2 bg-gradient-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-4">
+            <span className="inline-block px-6 py-2 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-4">
               Our Story
             </span>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-gray-900 via-red-700 to-orange-700 dark:from-white dark:via-red-300 dark:to-orange-300 bg-clip-text text-transparent leading-tight mb-6 drop-shadow-lg">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black bg-linear-to-r from-gray-400 via-red-700 to-orange-700 dark:from-white dark:via-red-300 dark:to-orange-300 bg-clip-text text-transparent leading-tight mb-6 drop-shadow-lg">
               Tastes from the
               <br />
               <span >
                 Himalayas
-                <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full opacity-60"></div>
+                <div className="absolute -bottom-2 left-0 w-full h-1 bg-linear-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full opacity-60"></div>
               </span>
             </h2>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-50 max-w-3xl mx-auto leading-relaxed ">
@@ -190,69 +190,66 @@ const About = () => {
             </div>
 
             {/* Mt. Everest Image Card */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500 bg-gray-100 dark:border-2-gray-50">
               {/* Background Image */}
               <div className="relative h-[400px] w-full">
                 <Image 
                   src="/images/gallery/everest.JPG" 
                   alt="Mt. Everest - World's Highest Peak" 
                   fill
-                  className="object-contain bg-gray-900"
+                  className="object-contain bg-white dark:bg-gray-900"
                   priority
                 />
               </div>
 
               {/* Content Below Image */}
-              <div className="bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black p-6 md:p-8">
-                <div className="text-white">
+              <div className="bg-white dark:bg-gray-900 p-6 md:p-8">
+                <div className="text-gray-900 dark:text-white">
                   {/* Summit Badge */}
                   <div className="flex items-center justify-center mb-4">
-                    <div className="inline-flex items-center bg-gradient-to-r from-red-600 to-orange-600 px-5 py-2 rounded-full border-2 border-yellow-400 shadow-lg">
-                      <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="inline-flex items-center bg-linear-to-r from-red-600 to-orange-600 px-5 py-2 rounded-full border-2 border-yellow-400 shadow-lg">
+                      <svg className="w-5 h-5 mr-2 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22l-9-12z"/>
                       </svg>
-                      <span className="font-black text-base">Mt. Everest Summit 2024</span>
+                      <span className="font-black text-white text-base">Mt. Everest Summit 2024</span>
                     </div>
                   </div>
-                  
                   {/* Main Story */}
                   <div className="text-center mb-5">
-                    <h4 className="text-xl md:text-2xl font-black mb-3 text-transparent bg-gradient-to-r from-yellow-400 via-red-400 to-orange-400 bg-clip-text">
+                    <h4 className="text-xl md:text-2xl font-black mb-3 text-transparent bg-linear-to-r from-yellow-400 via-red-400 to-orange-400 bg-clip-text">
                       A Historic Achievement
-                    </h4>                      <div className="bg-white/10 dark:bg-white/5 rounded-2xl p-5 border border-white/10">
-                      <p className="text-base md:text-lg leading-relaxed mb-3 text-gray-100">
-                        In <span className="font-black text-yellow-400">2024</span>, renowned climber <span className="font-bold text-red-400">Pema Chhiring Sherpa, </span> close relative of the HK family proudly waved the <span className="font-bold text-orange-400">Himalayan Kitchen logo</span> at the summit of Mt. Everest, the world&apos;s highest peak at <span className="font-semibold">8,849 meters</span>.
+                    </h4>
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+                      <p className="text-base md:text-lg leading-relaxed mb-3 text-gray-900 dark:text-white">
+                        In <span className="font-black dark:text-yellow-400">2024</span>, renowned climber <span className="font-bold text-red-400">Pema Chhiring Sherpa, </span> close relative of the HK family proudly waved the <span className="font-bold text-orange-400">Himalayan Kitchen logo</span> at the summit of Mt. Everest, the world&apos;s highest peak at <span className="font-semibold">8,849 meters</span>.
                       </p>
-                      
-                      <div className="bg-gradient-to-r from-red-600/20 to-orange-600/20 rounded-xl p-3 mb-3 border-l-4 border-yellow-400">
-                        <p className="text-sm md:text-base text-gray-200 leading-relaxed">
-                          <span className="font-bold text-yellow-300">Pema Chhiring Sherpa</span> has successfully scaled the world&apos;s top mountain an incredible <span className="font-black text-xl text-red-400">24 times</span>, making him one of the most accomplished climbers in history.
+                      <div className="bg-linear-to-r from-red-600/20 to-orange-600/20 rounded-xl p-3 mb-3 border-l-4 border-yellow-400">
+                        <p className="text-sm md:text-base text-gray-900 dark:text-white leading-relaxed">
+                          <span className="font-bold dark:text-yellow-300">Pema Chhiring Sherpa</span> has successfully scaled the world&apos;s top mountain an incredible <span className="font-black text-xl text-red-400">24 times</span>, making him one of the most accomplished climbers in history.
                         </p>
                       </div>
-                      
-                      <p className="text-base italic text-gray-300 border-t border-white/20 pt-3">
+                      <p className="text-base italic text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-700 pt-3">
                         We are deeply honored and grateful to Mr Sherpa for being part of this monumental achievement and for carrying our legacy to the top of the world. 🙏
                       </p>
                     </div>
                   </div>
-                  
                   {/* Stats Grid - Smaller Size */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <div className="text-center bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-lg p-3 border border-blue-400/30 hover:scale-105 transition-transform duration-300">
-                      <div className="text-xl md:text-2xl font-black text-blue-300">8,849m</div>
-                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-blue-200">Elevation</div>
+                    <div className="text-center bg-blue-50 dark:bg-blue-900/30 backdrop-blur-sm rounded-lg p-3 border border-blue-400/30 hover:scale-105 transition-transform duration-300 text-gray-900 dark:text-blue-200">
+                      <div className="text-xl md:text-2xl font-black text-blue-600 dark:text-blue-300">8,849m</div>
+                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-blue-800 dark:text-blue-200">Elevation</div>
                     </div>
-                    <div className="text-center bg-gradient-to-br from-red-600/20 to-red-800/20 backdrop-blur-sm rounded-lg p-3 border border-red-400/30 hover:scale-105 transition-transform duration-300">
-                      <div className="text-xl md:text-2xl font-black text-red-300">24th</div>
-                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-red-200">Summit</div>
+                    <div className="text-center bg-red-50 dark:bg-red-900/30 backdrop-blur-sm rounded-lg p-3 border border-red-400/30 hover:scale-105 transition-transform duration-300 text-gray-900 dark:text-red-200">
+                      <div className="text-xl md:text-2xl font-black text-red-600 dark:text-red-300">24th</div>
+                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-red-800 dark:text-red-200">Summit</div>
                     </div>
-                    <div className="text-center bg-gradient-to-br from-orange-600/20 to-orange-800/20 backdrop-blur-sm rounded-lg p-3 border border-orange-400/30 hover:scale-105 transition-transform duration-300">
-                      <div className="text-xl md:text-2xl font-black text-orange-300">2024</div>
-                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-orange-200">Year</div>
+                    <div className="text-center bg-orange-50 dark:bg-orange-900/30 backdrop-blur-sm rounded-lg p-3 border border-orange-400/30 hover:scale-105 transition-transform duration-300 text-gray-900 dark:text-orange-200">
+                      <div className="text-xl md:text-2xl font-black text-orange-600 dark:text-orange-300">2024</div>
+                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-orange-800 dark:text-orange-200">Year</div>
                     </div>
-                    <div className="text-center bg-gradient-to-br from-green-600/20 to-green-800/20 backdrop-blur-sm rounded-lg p-3 border border-green-400/30 hover:scale-105 transition-transform duration-300">
-                      <div className="text-xl md:text-2xl font-black text-green-300">🏔️</div>
-                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-green-200">Legend</div>
+                    <div className="text-center bg-green-50 dark:bg-green-900/30 backdrop-blur-sm rounded-lg p-3 border border-green-400/30 hover:scale-105 transition-transform duration-300 text-gray-900 dark:text-green-200">
+                      <div className="text-xl md:text-2xl font-black text-green-600 dark:text-green-300">🏔️</div>
+                      <div className="text-[10px] uppercase tracking-wider opacity-90 text-green-800 dark:text-green-200">Legend</div>
                     </div>
                   </div>
                 </div>

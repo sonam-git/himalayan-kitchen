@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 import MenuItemCard from './MenuItemCard';
+import MenuHeading from './MenuHeading';
+import MenuNavBar from './MenuNavBar';
 
 interface MenuItem {
   name: string;
@@ -22,26 +24,27 @@ interface MenuCategory {
 const MenuSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState(0);
-  const [isNavSticky, setIsNavSticky] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const navRef = useRef<HTMLDivElement>(null);
-  const allergenRef = useRef<HTMLDivElement>(null);
+  const allergenRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  const navbarRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [menuInView, setMenuInView] = useState(false);
+  const [showNavBar, setShowNavBar] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+        setMenuInView(entry.isIntersecting);
         if (entry.isIntersecting) {
           setIsVisible(true);
         }
       },
       { threshold: 0.1 }
     );
-
     const currentSection = sectionRef.current;
     if (currentSection) {
       observer.observe(currentSection);
     }
-
     return () => {
       if (currentSection) {
         observer.unobserve(currentSection);
@@ -49,33 +52,33 @@ const MenuSection = () => {
     };
   }, []);
 
-  // Sticky nav scroll handler - triggers when allergen info goes behind header
+  // Show navbar only when allergen info is out of view
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || !navRef.current) return;
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const headerHeight = 96;
-      // Sticky only if menu section is in view and allergen info goes behind header
-      const menuInView = sectionRect.top <= headerHeight && sectionRect.bottom > headerHeight;
-      if (allergenRef.current) {
-        const allergenRect = allergenRef.current.getBoundingClientRect();
-        setIsNavSticky(menuInView && allergenRect.bottom <= headerHeight);
-      } else {
-        setIsNavSticky(false);
-      }
+    if (!allergenRef.current) return;
+    const allergenObserver = new IntersectionObserver(
+      ([entry]) => {
+        setShowNavBar(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    allergenObserver.observe(allergenRef.current);
+    return () => {
+      if (allergenRef.current) allergenObserver.unobserve(allergenRef.current);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial position
-
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleExitMenu = () => {
-    // Scroll to the next section after menu
     const gallerySection = document.getElementById('gallery');
     if (gallerySection) {
       gallerySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Scroll menu section into view when category is clicked
+  const handleCategoryClick = (index: number) => {
+    setActiveCategory(index);
+    if (navbarRef.current) {
+      navbarRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -87,7 +90,6 @@ const MenuSection = () => {
         { name: "Chicken Soup", description: "Light creamy chicken broth, cabbage, carrot.", price: "$7.95 (12oz) / $9.95 (16oz)", image: "/images/food/food.jpg" },
         { name: "Daal Soup", description: "Slow cooked lentil soup with ginger-garlic, carrot & herbs.", price: "$6.95 (12oz) / $8.95 (16oz)", image: "/images/food/thaliset.jpg", vegetarian: true, vegan: true },
         { name: "Papadum", description: "Thin crisp chips made from black gram flour & served with mint & tamarind sauce.", price: "$4.95", image: "/images/food/food.jpg", vegetarian: true, vegan: true },
-        { name: "Garlic Tikki Fries", description: "Potato fries tossed w/ fresh minced garlic. Served with creamy tikka masala sauce", price: "$8.00", image: "/images/food/food.jpg", vegetarian: true },
         { name: "Samosa Chat", description: "Yummy, 2 samosas split in halves on the bed of spiced garbanzo beans & garnished with mint, tamarind & yoghurt", price: "$12.95", image: "/images/food/food.jpg", vegetarian: true },
         { name: "Samosas", description: "Crispy patty stuffed with potato, green peas & served with mint & tamarind sauce.", price: "$8.95", image: "/images/food/food.jpg", vegetarian: true, vegan: true },
         { name: "Himalayan Salad", description: "Organic mix greens, cucumber, carrots, tomato w/ homemade dressing ~add chicken/paneer for $5.", price: "$10.95", image: "/images/food/thaliset.jpg", vegetarian: true, vegan: true },
@@ -119,6 +121,7 @@ const MenuSection = () => {
       name: "Chicken Curries",
       icon: "🍛",
       items: [
+        { name: "Butter Chicken", description: "Chicken slow cooked in homemade buttery sauce.", price: "$19.75", image: "/images/food/tika masala.jpg"},
         { name: "Butter Chicken", description: "Chicken slow cooked in homemade buttery sauce.", price: "$19.75", image: "/images/food/tika masala.jpg" },
         { name: "Chicken 65", description: "Boneless chicken marinated in special spices, ginger, garlic, egg, yogurt, lemon juice & soy sauce. Sautéed with curry leaves & mustard seeds.", price: "$19.75", image: "/images/food/tika masala.jpg" },
         { name: "Chicken Korma", description: "Boneless chicken slow cooked with spices in cashew creamy curry sauce.", price: "$19.75", image: "/images/food/tika masala.jpg" },
@@ -231,154 +234,110 @@ const MenuSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block px-6 py-2 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-6">
-            Our Delicious Menu
-          </span>
-          
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6">
-            Explore Our <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">Menu</span>
-          </h2>
-          
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Discover the authentic flavors of the Himalayas with our carefully crafted dishes, 
-            made from traditional recipes passed down through generations.
-          </p>
-
-          {/* Allergen Notice */}
-          <div ref={allergenRef} className="mt-8 max-w-4xl mx-auto">
-            <div className="bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-300 dark:border-amber-700 rounded-xl p-4 sm:p-5 shadow-md">
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="flex-shrink-0">
-                  <svg className="w-6 h-6 sm:w-7 sm:h-7 text-amber-600 dark:text-amber-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base sm:text-lg font-bold text-amber-900 dark:text-amber-200 mb-1">
-                    Allergy Information
-                  </h3>
-                  <p className="text-sm sm:text-base text-amber-800 dark:text-amber-300 leading-relaxed">
-                    This facility uses nuts, wheat, dairy, and other common allergens. Please inform our staff of any food allergies so we can accommodate your needs.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Header and allergen info always at top */}
+        <div ref={headerRef}>
+          <MenuHeading allergenRef={allergenRef} isVisible={isVisible} />
         </div>
-
-        {/* Category Navigation Pills - Horizontal Scrollable & Sticky */}
-        <div 
-          ref={navRef}
-          className={`${
-            isNavSticky 
-              ? 'fixed top-20 md:top-24 left-0 right-0 z-40 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-lg' 
-              : 'relative'
-          } transition-all duration-300 mb-10 sm:mb-12`}
-        >
-          <div className="py-4">
-            {/* Scroll instruction text */}
-            <div className="text-center mb-3 px-4">
-              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2">
-                <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-                </svg>
-                <span>Slide to browse categories</span>
-                <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </p>
-            </div>
-
-            {/* Horizontal scrollable container with gradient indicators */}
-            <div className="relative">
-              {/* Left gradient indicator */}
-              <div className="absolute left-0 top-0 bottom-0 w-8 bg-linear-to-r from-white dark:from-gray-800 to-transparent z-10 pointer-events-none opacity-50"></div>
-              
-              {/* Right gradient indicator */}
-              <div className="absolute right-0 top-0 bottom-0 w-8 bg-linear-to-l from-white dark:from-gray-800 to-transparent z-10 pointer-events-none opacity-50"></div>
-              
-              <div className="overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-8 w-full">
-                <div className={`flex gap-2 sm:gap-3 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                  {menuCategories.map((category, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActiveCategory(index)}
-                      className={`shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base whitespace-nowrap ${
-                        activeCategory === index
-                          ? 'bg-linear-to-r from-red-600 to-orange-600 text-white shadow-lg shadow-red-500/30 scale-105'
-                          : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:border-red-500 dark:hover:border-red-500 hover:shadow-md'
-                      }`}
-                    >
-                      <span className="text-base sm:text-lg">{category.icon}</span>
-                      <span>{category.name}</span>
-                    </button>
-                  ))}
-                  
-                  {/* Exit Button */}
-                  <button
-                    onClick={handleExitMenu}
-                    className="shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base bg-gray-800 dark:bg-gray-700 text-white hover:bg-gray-900 dark:hover:bg-gray-600 border border-gray-700 dark:border-gray-600 hover:shadow-md whitespace-nowrap"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    <span>Exit Menu</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+        {/* Category navbar only appears and sticks after allergen info is out of view */}
+        {showNavBar && (
+          <div ref={navbarRef} className="lg:hidden sticky top-0 z-30 transition-all duration-300">
+            <MenuNavBar
+              menuCategories={menuCategories.map(({ name, icon }) => ({ name, icon }))}
+              activeCategory={activeCategory}
+              onCategoryClick={handleCategoryClick}
+              onExitMenu={handleExitMenu}
+              isVisible={isVisible}
+            />
           </div>
-        </div>
-
-        {/* Menu Items Display */}
-        <div className="min-h-[600px]">
-          {menuCategories.map((category, categoryIndex) => (
-            <div 
-              key={categoryIndex} 
-              className={`transition-all duration-500 ${
-                activeCategory === categoryIndex
-                  ? 'opacity-100 translate-y-0 relative' 
-                  : 'opacity-0 absolute pointer-events-none'
-              }`}
+        )}
+        {/* Category navbar for large screens: two-row grid, always visible under allergen info */}
+        <div className="hidden lg:grid grid-cols-5 grid-rows-2 gap-4 mt-8 mb-10">
+          {menuCategories.map(({ name, icon }, idx) => (
+            <button
+              key={name}
+              onClick={() => handleCategoryClick(idx)}
+              className={`flex flex-col items-center justify-center px-4 py-3 rounded-xl border-2 font-semibold text-lg transition-all duration-200 shadow-sm hover:bg-orange-50 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500 ${activeCategory === idx ? 'bg-orange-100 dark:bg-orange-900 border-orange-500 text-orange-700 dark:text-orange-300' : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white'}`}
             >
-              {/* Category Title */}
-              <div className="flex items-center justify-center mb-8 sm:mb-10">
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-red-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
-                    <span className="text-2xl sm:text-3xl">{category.icon}</span>
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white">
-                    {category.name}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Menu Items Grid */}
-              <div className="grid gap-5 sm:gap-7 md:grid-cols-2 lg:grid-cols-3 px-2 sm:px-0">
-                {category.items.map((item, itemIndex) => (
-                  <MenuItemCard
-                    key={itemIndex}
-                    name={item.name}
-                    description={item.description}
-                    price={item.price}
-                    image={item.image}
-                    spicy={item.spicy}
-                    vegetarian={item.vegetarian}
-                    vegan={item.vegan}
-                    index={itemIndex}
-                  />
-                ))}
-              </div>
-            </div>
+              <span className="text-2xl mb-1">{icon}</span>
+              <span className="text-sm text-center">{name}</span>
+            </button>
           ))}
         </div>
-           {/* Additional Features Section */}
+        {/* Category title and menu items for active category only, always below navbar */}
+        <div className="min-h-[600px]">
+          {/* Small screens: show only active category title and items below sticky navbar */}
+          <div className="lg:hidden">
+            <div className="flex items-center justify-center mb-8 sm:mb-10">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-red-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-2xl sm:text-3xl">{menuCategories[activeCategory].icon}</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white">
+                  {menuCategories[activeCategory].name}
+                </h3>
+              </div>
+            </div>
+            <div className="grid gap-5 sm:gap-7 md:grid-cols-2 lg:grid-cols-3 px-2 sm:px-0">
+              {menuCategories[activeCategory].items.map((item, itemIndex) => (
+                <MenuItemCard
+                  key={itemIndex}
+                  name={item.name}
+                  description={item.description}
+                  price={item.price}
+                  image={item.image}
+                  spicy={item.spicy}
+                  vegetarian={item.vegetarian}
+                  vegan={item.vegan}
+                  index={itemIndex}
+                />
+              ))}
+            </div>
+          </div>
+          {/* Large screens: show all categories as before */}
+          <div className="hidden lg:block">
+            {menuCategories.map((category, categoryIndex) => (
+              <div 
+                key={categoryIndex} 
+                className={`transition-all duration-500 ${
+                  activeCategory === categoryIndex
+                    ? 'opacity-100 translate-y-0 relative' 
+                    : 'opacity-0 absolute pointer-events-none'
+                }`}
+              >
+                <div className="flex items-center justify-center mb-8 sm:mb-10">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-red-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+                      <span className="text-2xl sm:text-3xl">{category.icon}</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white">
+                      {category.name}
+                    </h3>
+                  </div>
+                </div>
+                <div className="grid gap-5 sm:gap-7 md:grid-cols-2 lg:grid-cols-3 px-2 sm:px-0">
+                  {category.items.map((item, itemIndex) => (
+                    <MenuItemCard
+                      key={itemIndex}
+                      name={item.name}
+                      description={item.description}
+                      price={item.price}
+                      image={item.image}
+                      spicy={item.spicy}
+                      vegetarian={item.vegetarian}
+                      vegan={item.vegan}
+                      index={itemIndex}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+         {/* Additional Features Section */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 border-2 border-gray-200 dark:border-gray-700 p-6 sm:p-8 rounded-2xl bg-gray-50 dark:bg-gray-800">
           <div className={`transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="text-center p-6 bg-white dark:bg-gray-700 rounded-2xl border border-red-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-linear-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
@@ -390,7 +349,7 @@ const MenuSection = () => {
 
           <div className={`transform transition-all duration-1000 delay-800 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="text-center p-6 bg-white dark:bg-gray-700 rounded-2xl border border-orange-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-linear-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
@@ -402,7 +361,7 @@ const MenuSection = () => {
 
           <div className={`transform transition-all duration-1000 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="text-center p-6 bg-white dark:bg-gray-700 rounded-2xl border border-yellow-200/30 dark:border-red-500/50 hover:scale-105 transition-transform duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-linear-to-br from-yellow-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
