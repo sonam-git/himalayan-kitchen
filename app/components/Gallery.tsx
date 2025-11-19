@@ -50,7 +50,7 @@ const Gallery = () => {
       description: "Some of the renowned mountaineers who have conquered the world's highest peak visiting our restaurant."
     },
        {
-      image: "/images/gallery/everest.jpg",
+      image: "/images/gallery/everest.JPG",
       title: "Pema Chhiring Sherpa",
       description: "Famous mountaineer Pema Chhiring Sherpa, known for his 24 times Everest summits, waving the logo of Himalayan Kitchen on the top of the world."
     },
