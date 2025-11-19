@@ -32,20 +32,18 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-900 transition-all duration-300 w-full rounded-2xl sm:rounded-3xl shadow-sm overflow-hidden">
-      {/* Full-section blurred background image */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <Image
-          src="/images/gallery/kanchanjungabc.jpg"
-          alt="Kanchanjunga Base Camp - Himalayan Kitchen Story"
-          fill
-          className="object-cover w-full h-full blur-md scale-105"
-          priority
-        />
-        {/* Dark overlay for text clarity */}
-        <div className="absolute inset-0 bg-black/40 dark:bg-black/60 z-10" />
+    <section id="about" className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
+        <div className="absolute top-1/4 -right-48 w-96 h-96 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
-      <div className="relative z-20">
+      {/* Image as Section Background with Blur Overlay */}
+      <div className="absolute inset-0 w-full h-full sm:h-full aspect-video sm:aspect-auto z-0">
+        <Image src="/images/other/backdrop2.png" alt="About Background" fill priority className="object-cover object-center w-full h-full rounded-2xl sm:rounded-3xl opacity-80" />
+        <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/90 dark:via-gray-900/80 dark:to-black/90 rounded-2xl sm:rounded-3xl"></div>
+      </div>
+      <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16 ">
@@ -53,14 +51,9 @@ const About = () => {
               <span className="inline-block px-6 py-2 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-4">
                 Our Story
               </span>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black bg-linear-to-r from-gray-400 via-red-700 to-orange-700 dark:from-white dark:via-red-300 dark:to-orange-300 bg-clip-text text-transparent leading-tight mb-6 drop-shadow-lg">
-                Tastes from the
-                <br />
-                <span >
-                  Himalayas
-                  <div className="absolute -bottom-2 left-0 w-full h-1 bg-linear-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full opacity-60"></div>
-                </span>
-              </h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
+      Taste From <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">The Himalayas</span>
+    </h2>
               <p className="text-xl md:text-2xl text-gray-100 dark:text-gray-50 max-w-3xl mx-auto leading-relaxed ">
                 Where ancient traditions meet modern culinary excellence in the heart of San Rafael
               </p>
@@ -73,12 +66,52 @@ const About = () => {
             <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
               {/* Greeting Card */}
               <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-xl border border-orange-200/50 dark:border-red-500/50 mb-8 transform hover:scale-105 transition-transform duration-300">
+                  {/* Prayer Flags above the card */}
+              <div className="flex justify-center items-end mb-4 pb-2">
+                <div className="flex items-end space-x-1">
+                  {/* Blue Flag */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-1 h-16 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                    <div className="w-14 h-12 bg-blue-500 border-2 border-blue-700 flex items-center justify-center text-white text-sm font-bold shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+                      <span className="opacity-80">॰</span>
+                    </div>
+                  </div>
+                  {/* White Flag */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-1 h-20 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                    <div className="w-14 h-12 bg-white border-2 border-gray-400 flex items-center justify-center text-gray-800 text-sm font-bold shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                      <span className="opacity-80">॰</span>
+                    </div>
+                  </div>
+                  {/* Red Flag */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-1 h-14 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                    <div className="w-14 h-12 bg-red-500 border-2 border-red-700 flex items-center justify-center text-white text-sm font-bold shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                      <span className="opacity-80">॰</span>
+                    </div>
+                  </div>
+                  {/* Green Flag */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-1 h-18 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                    <div className="w-14 h-12 bg-green-600 border-2 border-green-800 flex items-center justify-center text-white text-sm font-bold shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                      <span className="opacity-80">॰</span>
+                    </div>
+                  </div>
+                  {/* Yellow Flag */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-1 h-16 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                    <div className="w-14 h-12 bg-yellow-400 border-2 border-yellow-600 flex items-center justify-center text-gray-800 text-sm font-bold shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                      <span className="opacity-80">॰</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-3 h-3 bg-gradient-to-r from-red-500 to-orange-500 rounded-full animate-pulse"></div>
-                  <span className="text-2xl font-bold text-transparent bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 bg-clip-text">
-                    Hello! Namaste! & Tashi Delek!
+                  <div className="w-3 h-3 bg-linear-to-r from-red-500 to-orange-500 rounded-full animate-pulse"></div>
+                  <span className="text-2xl sm:text-md font-bold text-center text-transparent bg-linear-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 bg-clip-text">
+                    🙏 Hello | Namaste | Tashi Delek 🙏
                   </span>
-                  <div className="w-3 h-3 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-linear-to-r from-orange-500 to-yellow-500 rounded-full animate-pulse"></div>
                 </div>
                 <div className="text-lg text-gray-700 dark:text-white italic">
                   &quot;A warm welcome from our Sherpa family to yours&quot;
@@ -86,23 +119,23 @@ const About = () => {
               </div>
 
               <div className="prose prose-lg text-gray-700 dark:text-white space-y-6">
-                <p className="text-xl leading-relaxed">
-                  Welcome to <span className="font-bold text-red-700 dark:text-red-400">Himalayan Kitchen</span>, owned and run by a Sherpa family from the majestic Himalayan region of Nepal. While Sherpas are renowned worldwide as mountain guides and porters, we are proudly an ethnic group with rich culinary traditions from northern Nepal.
+                <p className="text-xl leading-relaxed text-white">
+                  Welcome to <span className="font-bold text-red-300 dark:text-red-400">Himalayan Kitchen</span>, owned and run by a Sherpa family from the majestic Himalayan region of Nepal. While Sherpas are renowned worldwide as mountain guides and porters, we are proudly an ethnic group with rich culinary traditions from northern Nepal.
                 </p>
                 
                 <div className=" from-orange-50 to-red-50 dark:from-gray-700 dark:bg-gray-600 rounded-xl p-6 border-l-4 border-orange-500 dark:border-red-500">
-                  <p className="text-lg font-medium  text-gray-900 dark:text-gray-50 mb-2">
+                  <p className="text-lg font-medium  text-gray-50 dark:text-gray-50 mb-2">
                     Our Philosophy
                   </p>
-                  <p className="text-gray-700 dark:text-gray-100">
+                  <p className="text-gray-200 dark:text-gray-100">
                     We believe real food is better for you, your health, and our planet. That&apos;s why we craft everything from scratch with authentic ingredients and techniques passed down through generations.
                   </p>
-                  <p className="text-red-700 dark:text-red-400 font-bold mt-3 text-lg">
+                  <p className="text-red-500 dark:text-red-400 font-bold mt-3 text-lg">
                     &quot;Simply Fresh and Made With Love&quot;
                   </p>
                 </div>
 
-                <p className="text-lg">
+                <p className="text-lg text-gray-50">
                   We opened our doors on <span className="font-bold text-orange-600 dark:text-orange-400">February 24, 2023</span>, and have been serving authentic Himalayan cuisine with passion, tradition, and love ever since.
                 </p>
               </div>
@@ -111,10 +144,10 @@ const About = () => {
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
                 <a
                   href="tel:(415) 526-3161"
-                  className="group relative inline-flex items-center justify-center bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 dark:from-red-500 dark:to-red-600 dark:hover:from-red-600 dark:hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl overflow-hidden"
+                  className="group relative inline-flex items-center justify-center bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 dark:from-red-500 dark:to-red-600 dark:hover:from-red-600 dark:hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl overflow-hidden"
                 >
                   {/* Button Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-red-300/20 to-orange-300/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-md scale-110"></div>
+                  <div className="absolute inset-0 bg-linear-to-r from-red-300/20 to-orange-300/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-md scale-110"></div>
                   
                   <svg className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -142,46 +175,7 @@ const About = () => {
 
             {/* Enhanced Visual Section */}
             <div className={`relative transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
-              {/* Prayer Flags above the card */}
-              <div className="flex justify-center items-end mb-4 pb-2">
-                <div className="flex items-end space-x-1">
-                  {/* Blue Flag */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-1 h-16 bg-gradient-to-b from-gray-400 to-gray-600"></div>
-                    <div className="w-14 h-12 bg-blue-500 border-2 border-blue-700 flex items-center justify-center text-white text-sm font-bold shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                      <span className="opacity-80">॰</span>
-                    </div>
-                  </div>
-                  {/* White Flag */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-1 h-20 bg-gradient-to-b from-gray-400 to-gray-600"></div>
-                    <div className="w-14 h-12 bg-white border-2 border-gray-400 flex items-center justify-center text-gray-800 text-sm font-bold shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
-                      <span className="opacity-80">॰</span>
-                    </div>
-                  </div>
-                  {/* Red Flag */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-1 h-14 bg-gradient-to-b from-gray-400 to-gray-600"></div>
-                    <div className="w-14 h-12 bg-red-500 border-2 border-red-700 flex items-center justify-center text-white text-sm font-bold shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-                      <span className="opacity-80">॰</span>
-                    </div>
-                  </div>
-                  {/* Green Flag */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-1 h-18 bg-gradient-to-b from-gray-400 to-gray-600"></div>
-                    <div className="w-14 h-12 bg-green-600 border-2 border-green-800 flex items-center justify-center text-white text-sm font-bold shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                      <span className="opacity-80">॰</span>
-                    </div>
-                  </div>
-                  {/* Yellow Flag */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-1 h-16 bg-gradient-to-b from-gray-400 to-gray-600"></div>
-                    <div className="w-14 h-12 bg-yellow-400 border-2 border-yellow-600 flex items-center justify-center text-gray-800 text-sm font-bold shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-                      <span className="opacity-80">॰</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          
 
               {/* Mt. Everest Image Card */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500 bg-gray-100 dark:border-2-gray-50">

@@ -1,7 +1,21 @@
+import Image from "next/image";
+
 const LocationInfo = () => {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white overflow-hidden w-full transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section className="relative py-20 sm:py-24 lg:py-28 bg-gray-500 dark:bg-gray-400 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm border-2 border-gray-200 dark:border-gray-700 p-6 sm:p-8">
+      {/* Image as Section Background with Blur Overlay */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <Image 
+          src="/images/other/stone.webp" 
+          alt="Features Background" 
+          fill
+          sizes="100vw"
+          className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-80"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/90 dark:via-gray-900/80 dark:to-black/90 rounded-2xl sm:rounded-3xl z-0"></div>
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center w-full">
           
           {/* Location */}
@@ -12,8 +26,8 @@ const LocationInfo = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Prime Location</h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <h3 className={`text-lg text-gray-50 font-semibold mb-2 `}>Prime Location</h3>
+            <p className="text-gray-100 dark:text-gray-300">
               Located in the heart of downtown San Rafael on 3rd Street
             </p>
           </div>
@@ -25,8 +39,8 @@ const LocationInfo = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Easy Parking</h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <h3  className={`text-lg text-gray-50 font-semibold mb-2 `}>Easy Parking</h3>
+            <p className="text-gray-100 dark:text-gray-300">
               Convenient street parking and nearby parking structures available
             </p>
           </div>
@@ -38,8 +52,8 @@ const LocationInfo = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Fresh Daily</h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <h3  className={`text-lg text-gray-50 font-semibold mb-2 `}>Fresh Daily</h3>
+            <p className="text-gray-100 dark:text-gray-300">
               All ingredients sourced fresh daily and prepared from scratch with love
             </p>
           </div>

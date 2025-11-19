@@ -18,17 +18,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const html = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldBeDark = savedTheme === 'dark' || (!savedTheme && systemTheme);
-    
+    // Default to dark if no theme is saved
+    const shouldBeDark = savedTheme ? savedTheme === 'dark' : true;
     // Apply theme to DOM immediately
     if (shouldBeDark) {
       html.classList.add('dark');
     } else {
       html.classList.remove('dark');
     }
-    
-    // Batch state updates using setTimeout to avoid cascading render warning
     requestAnimationFrame(() => {
       setIsDarkMode(shouldBeDark);
       setMounted(true);
@@ -38,9 +35,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Update theme when isDarkMode changes
   useEffect(() => {
     if (!mounted) return;
-    
+
     const html = document.documentElement;
-    
+
     if (isDarkMode) {
       html.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -51,7 +48,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [isDarkMode, mounted]);
 
   const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
+    setIsDarkMode((prev) => !prev);
   };
 
   return (

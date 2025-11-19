@@ -14,14 +14,14 @@ const AwardsMedia = () => {
       caption: "Certificate of Excellence"
     },
     {
-      src: "/images/awards/hk-rg2.jpg",
-      alt: "Google Guru Article",
-      caption: "Featured in Google Guru"
-    },
-    {
       src: "/images/awards/hk-news.jpg",
       alt: "News Media",
       caption: "Local News Media Recognition"
+    },
+    {
+      src: "/images/awards/hk-rg2.jpg",
+      alt: "Google Guru Article",
+      caption: "Featured in Google Guru"
     }
   ];
 
@@ -34,17 +34,33 @@ const AwardsMedia = () => {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <section id="awards" className="py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section id="awards" className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
+        <div className="absolute top-1/4 -right-48 w-96 h-96 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
+      </div>
+         {/* Image as Section Background with Blur Overlay */}
+         <div className="absolute inset-0 w-full h-full z-0">
+           <Image
+             src="/images/other/backdrop.png"
+             alt="Menu Background"
+             fill
+             priority
+             className="object-cover w-full h-full rounded-2xl sm:rounded-3xl  opacity-100"
+           />
+           <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/90 dark:via-gray-900/80 dark:to-black/90 rounded-2xl sm:rounded-3xl"></div>
+         </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-6 py-2 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-4">
             Recognitions & Press
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-200 dark:text-gray-50 mb-6">
             Awards & <span className="bg-linear-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Media</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Honored by the community and featured in renowned publications for our culinary excellence and service.
           </p>
         </div>
