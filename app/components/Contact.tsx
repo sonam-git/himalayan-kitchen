@@ -30,7 +30,7 @@ const Contact = () => {
           <Image src="/images/other/backdrop4.png" alt="Contact Background" fill priority className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-80" />
           <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/90 dark:via-gray-900/80 dark:to-black/90 rounded-2xl sm:rounded-3xl z-0"></div>
         </div>
-        <div className="relative z-10">
+        <div className="relative ">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
@@ -104,7 +104,7 @@ const Contact = () => {
                     <path d="M24 6L6 22h6v14h8V28h4v8h8V22h6L24 6z" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" fill="currentColor" />
                   </svg>
                 </div>
-                <div className="relative z-10 flex flex-col gap-8 items-start justify-center bg-white dark:bg-gray-900 rounded-2xl shadow-lg px-8 py-10 border border-orange-100 dark:border-orange-700 dark:text-white text-gray-900">
+                <div className="relative flex flex-col gap-8 items-start justify-center bg-white dark:bg-gray-900 rounded-2xl shadow-lg px-8 py-10 border border-orange-100 dark:border-orange-700 dark:text-white text-gray-900">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Location</h3>
                   <div className="flex items-center gap-3 mb-2">
                     <span className="inline-flex items-center justify-center w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-full">

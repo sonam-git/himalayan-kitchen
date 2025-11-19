@@ -36,10 +36,28 @@ const SocialMedia = () => {
               <svg className="w-7 h-7 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.6 0 0 .6 0 1.326v21.348C0 23.4.6 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.4 24 24 23.4 24 22.674V1.326C24 .6 23.4 0 22.675 0" /></svg>
               Facebook
             </h3>
-            <div className="w-full h-[500px] rounded-xl overflow-hidden">
-              {/* Accessible label and fallback for Facebook */}
+            {/* Mobile: horizontal scroll with gray scrollbar */}
+            <div className="w-full h-[500px] rounded-xl overflow-x-auto whitespace-nowrap sm:hidden scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
               <iframe 
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhimalayankitchenmarin&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhimalayankitchenmarin&tabs=timeline&width=600&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                width="600"
+                height="500"
+                style={{ border: 'none', overflow: 'hidden' }}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen={true}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                title="Facebook Feed"
+                aria-label="Himalayan Kitchen Facebook Feed"
+              ></iframe>
+              <noscript>
+                <div className="text-center text-gray-500 text-sm mt-4">Facebook feed requires JavaScript enabled.</div>
+              </noscript>
+            </div>
+            {/* Desktop: normal display */}
+            <div className="w-full h-[500px] rounded-xl overflow-hidden sm:block hidden">
+              <iframe 
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhimalayankitchenmarin&tabs=timeline&width=600&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
                 width="100%"
                 height="500"
                 style={{ border: 'none', overflow: 'hidden' }}

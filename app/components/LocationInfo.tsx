@@ -15,7 +15,7 @@ const LocationInfo = () => {
         />
         <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/90 dark:via-gray-900/80 dark:to-black/90 rounded-2xl sm:rounded-3xl z-0"></div>
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center w-full">
           
           {/* Location */}

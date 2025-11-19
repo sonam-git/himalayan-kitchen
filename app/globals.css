@@ -200,6 +200,22 @@ section {
   background: #9b2c2c;
 }
 
+/* Custom gray scrollbar for Facebook slider on mobile */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+.custom-scrollbar {
+  scrollbar-color: #9ca3af #f3f4f6;
+  scrollbar-width: thin;
+}
+
 /* Card styles for dark mode */
 .dark .shadow-lg {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);

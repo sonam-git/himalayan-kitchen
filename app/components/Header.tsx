@@ -63,7 +63,7 @@ const Header = () => {
                 <div className="flex flex-col justify-center space-y-0.5">
                   <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-gradient-to-r from-red-500 via-orange-500 to-red-600 dark:from-red-300 dark:via-orange-300 dark:to-red-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">HIMALAYAN</h1>
                   <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-wide font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
-                  <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-500 dark:text-gray-300 -mt-1 tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
+                  <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-200 dark:text-gray-300 -mt-1 tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
                   <div className="w-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500 group-hover:w-full transition-[width] duration-700 rounded-full"></div>
                 </div>
               </div>
