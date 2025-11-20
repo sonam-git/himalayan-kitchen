@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import PrayerFlagBorder from './PrayerFlagBorder';
 import { useTheme } from '../context/ThemeContext';
@@ -158,35 +158,56 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className={`lg:hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-            <div className="px-4 pt-6 pb-8 space-y-3 bg-gray-50 dark:bg-gray-700 backdrop-blur-md border-t border-gray-200 dark:border-gray-700/30 shadow-2xl">
-              {[
-                { id: 'home', label: 'Home', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /> },
-                { id: 'about', label: 'About', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> },
-                { id: 'menu', label: 'Menu', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /> },
-                { id: 'gallery', label: 'Gallery', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /> },
-                { id: 'services', label: 'Services', icon: <><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.89 3.31.876 2.42 2.42a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.89 1.543-.876 3.31-2.42 2.42a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.89-3.31-.876-2.42-2.42A1.724 1.724 0 004.61 13.725c-1.756-.426-1.756-2.924 0-3.35A1.724 1.724 0 005.676 7.8c-.89-1.543.876-3.31 2.42-2.42.996.575 2.254.24 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></> },
-                { id: 'catering', label: 'Caterings', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M8 17l4-4 4 4m0 0V7a4 4 0 00-8 0v10z" /> },
-                { id: 'contact', label: 'Contact', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /> }
-              ].map(({ id, label, icon }) => (
-                <a 
-                  key={id} 
-                  href={`#${id}`} 
-                  onClick={() => handleNavClick(id)} 
-                  className={`group flex items-center space-x-5 px-5 py-4 rounded-xl border border-transparent transition-all duration-300 ${
-                    activeSection === id
-                      ? 'border-red-500/50 dark:border-red-400/50 text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/20'
-                      : 'hover:border-red-300/50 dark:hover:border-red-800/50 text-gray-700 dark:text-white hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20'
-                  }`}
-                >
-                  <svg className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${activeSection === id ? 'scale-110' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {icon}
-                  </svg>
-                  <span className="text-base font-semibold tracking-wide">{label}</span>
-                  <div className={`ml-auto w-2.5 h-2.5 bg-red-500 rounded-full transition-opacity duration-300 ${activeSection === id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></div>
-                </a>
-              ))}
+          <div className={`lg:hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'} md:rounded-bl-2xl md:rounded-br-2xl lg:rounded-bl-3xl lg:rounded-br-3xl`}>
+            <div className="relative px-4 pt-6 pb-8 space-y-3 bg-gray-50 dark:bg-gray-700 backdrop-blur-md border-t border-gray-200 dark:border-gray-700/30 shadow-2xl">
+              {/* Background image for mobile menu */}
+              <div className="absolute inset-0 w-full h-full z-0">
+                <Image
+                  src="/images/other/stone.webp"
+                  alt="Menu Background"
+                  fill
+                  className="object-cover w-full h-full rounded-xl opacity-20"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-gray-700/60 dark:from-gray-900/60 dark:to-gray-900/80 "></div>
+              </div>
+              <div className="relative z-10">
+                {[
+                  { id: 'home', label: 'Home', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /> },
+                  { id: 'about', label: 'About', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> },
+                  { id: 'menu', label: 'Menu', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /> },
+                  { id: 'gallery', label: 'Gallery', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /> },
+                  { id: 'services', label: 'Services', icon: <><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.89 3.31.876 2.42 2.42a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.89 1.543-.876 3.31-2.42 2.42a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.89-3.31-.876-2.42-2.42A1.724 1.724 0 004.61 13.725c-1.756-.426-1.756-2.924 0-3.35A1.724 1.724 0 005.676 7.8c-.89-1.543.876-3.31 2.42-2.42.996.575 2.254.24 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></> },
+                  { id: 'catering', label: 'Caterings', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M8 17l4-4 4 4m0 0V7a4 4 0 00-8 0v10z" /> },
+                  { id: 'contact', label: 'Contact', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.4} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /> }
+                ].map(({ id, label, icon }, idx, arr) => (
+                  <React.Fragment key={id}>
+                    <a 
+                      href={`#${id}`} 
+                      onClick={() => handleNavClick(id)} 
+                      className={`group flex items-center space-x-5 px-5 py-4 rounded-xl border border-transparent transition-all duration-300 ${
+                        activeSection === id
+                          ? 'border-red-500/50 dark:border-red-400/50 text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/20'
+                          : 'hover:border-red-300/50 dark:hover:border-red-800/50 text-gray-700 dark:text-white hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20'
+                      }`}
+                    >
+                      <svg className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${activeSection === id ? 'scale-110' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {icon}
+                      </svg>
+                      <span className="text-base font-semibold tracking-wide">{label}</span>
+                      <div className={`ml-auto w-2.5 h-2.5 bg-red-500 rounded-full transition-opacity duration-300 ${activeSection === id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}></div>
+                    </a>
+                    {/* Divider under each menu item except last */}
+                    {idx < arr.length && (
+                      <div className="w-full border-b border-gray-200 dark:border-gray-300 "></div>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
             </div>
+            {isMenuOpen && (
+              <PrayerFlagBorder />
+            )}
           </div>
         </div>
         

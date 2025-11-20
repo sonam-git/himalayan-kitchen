@@ -160,18 +160,18 @@ const Reviews = () => {
           {reviews.map((review, index) => (
             <div
               key={review.id}
-              className={`group relative flex flex-col justify-between h-[500px] w-full min-w-0 max-w-full
+              className={`group relative flex flex-col justify-between
+                h-[500px] sm:h-[500px] w-full max-w-full
                 dark:bg-linear-to-br dark:from-gray-800/80 dark:to-gray-900/80 dark:border-gray-200/50 dark:hover:border-yellow-500/50 dark:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 dark:text-gray-200 dark:hover:text-white dark:border dark:backdrop-blur-sm
                 bg-white border-gray-300 hover:border-yellow-600 shadow-lg hover:shadow-2xl hover:shadow-yellow-500/10 text-gray-900 
                 p-8 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
                 font-body
-                sm:h-[500px] h-[600px]
                 sm:p-8 p-4
                 sm:text-base text-sm
                 sm:rounded-2xl rounded-xl
                 sm:mb-0 mb-4
-                sm:max-w-full max-w-[98vw]
+                sm:max-w-full max-w-full
                 `}
               style={{ transitionDelay: `${index * 150}ms` }}
             >

@@ -63,7 +63,7 @@ const About = () => {
             alt="About Background"
             fill
             priority
-            className="object-cover object-center w-full h-full rounded-2xl sm:rounded-3xl opacity-80"
+            className="object-content object-center w-full h-full rounded-2xl sm:rounded-3xl opacity-80"
           />
           <div className="absolute inset-0 bg-black/70 dark:bg-black/80 rounded-2xl sm:rounded-3xl"></div>
         </div>

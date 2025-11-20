@@ -47,7 +47,7 @@ const AwardsMedia = () => {
              alt="Menu Background"
              fill
              priority
-             className="object-cover w-full h-full rounded-2xl sm:rounded-3xl  opacity-100"
+             className="object-content w-full h-full rounded-2xl sm:rounded-3xl  opacity-100"
            />
             <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
          </div>
