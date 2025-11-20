@@ -254,7 +254,7 @@ const MenuSection = () => {
               </p>
             </div>
             {/* Modal controls at bottom center */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4 z-30">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-20 z-30">
               <button
                 aria-label="Previous"
                 onClick={prevItem}
