@@ -91,7 +91,7 @@ const Services = () => {
                 : "translate-y-10 opacity-0"
             } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
           >
-            <div className="relative h-full flex flex-col justify-between bg-linear-to-br from-red-50 via-orange-50 to-red-50/50 dark:bg-[rgba(220,38,38,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-red-100/50 dark:border-red-800/30 overflow-hidden backdrop-blur-sm">
+            <div className="relative h-full flex flex-col justify-between  dark:bg-[rgba(220,38,38,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-red-100/50 dark:border-red-800/30 overflow-hidden backdrop-blur-sm">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-bl from-red-200/20 to-transparent dark:from-red-700/20 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
 
@@ -116,11 +116,11 @@ const Services = () => {
                 <div className="absolute top-1 right-1 w-2 h-2 bg-yellow-400 rounded-full opacity-80 animate-ping transition-opacity duration-300"></div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-6 group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors duration-300">
+              <h3 className="text-2xl md:text-3xl font-black  text-white mb-6 group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors duration-300">
                 Dine-In
               </h3>
 
-              <p className="text-md text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-md text-gray-200 dark:text-gray-300 mb-8 leading-relaxed">
                 Immerse yourself in authentic Himalayan cuisine within our warm,
                 welcoming atmosphere designed to transport you to the heart of
                 Nepal.
@@ -128,12 +128,12 @@ const Services = () => {
 
               {/* Enhanced Time Information */}
               <div className="space-y-3 text-sm">
-                <div className="flex items-center justify-center space-x-3 text-gray-700 dark:text-gray-300">
+                <div className="flex items-center justify-center space-x-3 text-gray-200 dark:text-gray-300">
                   <div className="w-2 h-2 bg-linear-to-r from-red-500 to-orange-500 rounded-full"></div>
                   <span className="font-bold">Lunch:</span>
                   <span>11:30 AM - 2:30 PM</span>
                 </div>
-                <div className="flex items-center justify-center space-x-3 text-gray-700 dark:text-gray-300">
+                <div className="flex items-center justify-center space-x-3 text-gray-200 dark:text-gray-300">
                   <div className="w-2 h-2 bg-linear-to-r from-orange-500 to-yellow-500 rounded-full"></div>
                   <span className="font-bold">Dinner:</span>
                   <span>4:30 PM - 9:00 PM</span>
@@ -150,7 +150,7 @@ const Services = () => {
                 aria-label="Call Himalayan Kitchen"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                Call Us: (415) 526-3161
+                Call Us
               </a>
             </div>
           </div>
@@ -163,7 +163,7 @@ const Services = () => {
                 : "translate-y-10 opacity-0"
             } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
           >
-            <div className="relative h-full flex flex-col justify-between bg-linear-to-br from-blue-50 via-indigo-50 to-blue-50/50 dark:bg-[rgba(37,99,235,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-blue-100/50 dark:border-blue-800/30 overflow-hidden backdrop-blur-sm">
+            <div className="relative h-full flex flex-col justify-between dark:bg-[rgba(37,99,235,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-blue-100/50 dark:border-blue-800/30 overflow-hidden backdrop-blur-sm">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-bl from-blue-200/20 to-transparent dark:from-blue-700/20 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
 
@@ -188,11 +188,11 @@ const Services = () => {
                 <div className="absolute top-1 right-1 w-2 h-2 bg-cyan-400 rounded-full opacity-80 animate-ping transition-opacity duration-300"></div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-6 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors duration-300">
+              <h3 className="text-2xl md:text-3xl font-black  text-white mb-6 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors duration-300">
                 Take-out
               </h3>
 
-              <p className="text-md text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-md text-gray-200 mb-8 leading-relaxed">
                 Order your favourite food from anywhere by calling or using our
                 online ordering system. You can also preorder your meal and get
                 it ready once you arrive.
@@ -200,12 +200,12 @@ const Services = () => {
 
               {/* Enhanced Time Information */}
               <div className="space-y-3 text-sm">
-                <div className="flex items-center justify-center space-x-3 text-gray-700 dark:text-gray-300">
+                <div className="flex items-center justify-center space-x-3 text-gray-200 dark:text-gray-300">
                   <div className="w-2 h-2 bg-linear-to-r from-red-500 to-orange-500 rounded-full"></div>
                   <span className="font-bold">Lunch:</span>
                   <span>11:30 AM - 2:30 PM</span>
                 </div>
-                <div className="flex items-center justify-center space-x-3 text-gray-700 dark:text-gray-300">
+                <div className="flex items-center justify-center space-x-3 text-gray-200 dark:text-gray-300">
                   <div className="w-2 h-2 bg-linear-to-r from-orange-500 to-yellow-500 rounded-full"></div>
                   <span className="font-bold">Dinner:</span>
                   <span>4:30 PM - 9:00 PM</span>
@@ -237,7 +237,7 @@ const Services = () => {
                 : "translate-y-10 opacity-0"
             } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
           >
-            <div className="relative h-full flex flex-col justify-between bg-linear-to-br from-green-50 via-emerald-50 to-green-50/50 dark:bg-[rgba(16,185,129,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-green-100/50 dark:border-green-800/30 overflow-hidden backdrop-blur-sm md:col-span-2 lg:col-span-1">
+            <div className="relative h-full flex flex-col justify-between dark:bg-[rgba(16,185,129,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-green-100/50 dark:border-green-800/30 overflow-hidden backdrop-blur-sm md:col-span-2 lg:col-span-1">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-bl from-green-200/20 to-transparent dark:from-green-700/20 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
 
@@ -262,11 +262,11 @@ const Services = () => {
                 <div className="absolute top-1 right-1 w-2 h-2 bg-lime-400 rounded-full opacity-80 animate-ping transition-opacity duration-300"></div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-6 group-hover:text-green-700 dark:group-hover:text-green-400 transition-colors duration-300">
+              <h3 className="text-2xl md:text-3xl font-black text-white mb-6 group-hover:text-green-700 dark:group-hover:text-green-400 transition-colors duration-300">
                 Catering
               </h3>
 
-              <p className="text-md text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-md text-gray-200 dark:text-gray-300 mb-8 leading-relaxed">
                 Bring our exceptional Himalayan flavors to your location with
                 professional catering services and convenient takeout party
                 trays.
@@ -274,12 +274,12 @@ const Services = () => {
 
               {/* Enhanced Catering Information */}
               <div className="space-y-3 text-sm">
-                <div className="flex items-center justify-center space-x-3 text-gray-700 dark:text-gray-300">
+                <div className="flex items-center justify-center space-x-3 text-gray-200 dark:text-gray-300">
                   <div className="w-2 h-2 bg-linear-to-r from-green-500 to-emerald-500 rounded-full"></div>
                   <span className="font-bold">Catering:</span>
                   <span>Any size events</span>
                 </div>
-                <div className="flex items-center justify-center space-x-3 text-gray-700 dark:text-gray-300">
+                <div className="flex items-center justify-center space-x-3 text-gray-200 dark:text-gray-300">
                   <div className="w-2 h-2 bg-linear-to-r from-emerald-500 to-teal-500 rounded-full"></div>
                   <span className="font-bold">Party Trays:</span>
                   <span>Perfect for gatherings</span>

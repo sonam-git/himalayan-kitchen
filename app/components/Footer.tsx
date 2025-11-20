@@ -111,22 +111,22 @@ const Footer = () => {
                 <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
               </div>
               <div className="relative z-10">
-                <h3 className="text-xl font-bold mb-6 text-orange-700 dark:text-orange-300 flex items-center gap-2">
+               <h3 className="text-xl font-bold mb-6 text-yellow-100 dark:text-yellow-300 flex items-center gap-2">
                   <svg className="w-6 h-6 text-gray-100 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                   Contact Info
                 </h3>
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
                     <svg className="w-5 h-5 text-orange-400 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    <span>227 3rd St, San Rafael, CA 94901</span>
+                   { <span className="text-white">227 3rd St, San Rafael, CA 94901</span>}
                   </li>
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
                     <svg className="w-5 h-5 text-orange-400 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    <span>(415) 526-3161</span>
+                    {<span className="text-white">(415) 526-3161</span>}
                   </li>
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
                     <svg className="w-5 h-5 text-orange-400 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    <span>himalayankitchenmarin@gmail.com</span>
+                    {<span className="text-white">himalayankitchenmarin@gmail.com</span>}
                   </li>
                 </ul>
               </div>
@@ -138,7 +138,7 @@ const Footer = () => {
                 <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
               </div>
               <div className="relative z-10">
-                <h3 className="text-xl font-bold mb-6 text-yellow-700 dark:text-yellow-300 flex items-center gap-2">
+                <h3 className="text-xl font-bold mb-6 text-yellow-100 dark:text-yellow-300 flex items-center gap-2">
                   <svg className="w-6 h-6  text-gray-100 dark:text-yellow-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                   Opening Hours
                 </h3>
@@ -157,11 +157,11 @@ const Footer = () => {
                       Dinner: <span className="ml-2">04:30PM</span> <span className="mx-1 text-gray-400">-</span> <span>09:00PM</span>
                     </div>
                   </li>
-                  <li className="flex justify-between items-center text-gray-700 dark:text-gray-200">
+                  <li className="flex justify-between items-center text-gray-100 dark:text-gray-200">
                     <span className="font-semibold flex items-center gap-2">
                       {/* Restaurant Icon for Open Days */}
                       <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
-                      | Open Monday - Sunday |
+                      | Open : Monday - Sunday |
                     </span>
                   </li>
                 </ul>
