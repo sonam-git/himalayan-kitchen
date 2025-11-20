@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { title } from "process";
 
 const Reviews = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -121,7 +120,7 @@ const Reviews = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <span className="inline-block px-6 py-2 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-6">
+          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-6">
             Customer Reviews
           </span>
     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
@@ -259,7 +258,7 @@ const Reviews = () => {
               <div className="pt-4 border-t dark:border-gray-700/50 border-gray-300 group-hover:border-yellow-500/30 transition-colors w-full">
                 <div className="flex flex-col sm:flex-row sm:items-center w-full">
                   <div className="flex items-center mb-2 sm:mb-0 sm:mr-4">
-                    <div className="w-12 h-12 dark:bg-linear-to-br dark:from-red-600 dark:to-orange-600 bg-linear-to-br from-red-100 to-orange-100 rounded-full flex items-center justify-center dark:text-white text-red-700 font-bold text-lg mr-4 shadow-lg group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 border-1 dark:from-red-600 dark:to-orange-600 bg-linear-to-br from-gray-200 to-gray-100 dark:bg-gray-100 rounded-full flex items-center justify-center dark:text-white text-red-700 font-bold text-lg mr-4 shadow-lg group-hover:scale-110 transition-transform">
                       {review.author.charAt(0)}
                     </div>
                     <p className="font-semibold dark:text-white text-gray-900 text-lg font-body break-word">

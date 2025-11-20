@@ -4,7 +4,57 @@ import { useState } from "react";
 import Image from "next/image";
 
 const Caterings = () => {
-  const [deliveryType, setDeliveryType] = useState("Pickup");
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    datetime: "",
+    time: "",
+    numPeople: "",
+    deliveryType: "Pickup",
+    address: "",
+    order: "",
+    dietary: "",
+    details: ""
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    if (e.target.name === "deliveryType") setForm({ ...form, deliveryType: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("Sending...");
+    try {
+      const res = await fetch("/api/catering", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("Thank you! Your catering request has been sent.");
+        setForm({
+          fullName: "",
+          email: "",
+          phone: "",
+          datetime: "",
+          time: "",
+          numPeople: "",
+          deliveryType: "Pickup",
+          address: "",
+          order: "",
+          dietary: "",
+          details: ""
+        });
+      } else {
+        setStatus("Failed to send. Please try again.");
+      }
+    } catch {
+      setStatus("Failed to send. Please try again.");
+    }
+  };
 
   return (
     <section
@@ -30,7 +80,7 @@ const Caterings = () => {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 items-center z-10">
         {/* Section Header Styled Like Services */}
         <div className="text-center mb-16">
-          <span className="inline-block px-6 py-2 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-6">
+          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-6">
             Catering & Events
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
@@ -49,7 +99,7 @@ const Caterings = () => {
           </div>
         </div>
         {/* Form - Second Row, Full Width */}
-        <form className="w-full bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 flex flex-col gap-6 border border-orange-100 dark:border-orange-900/30">
+        <form className="w-full bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 flex flex-col gap-6 border border-orange-100 dark:border-orange-900/30" onSubmit={handleSubmit}>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-orange-700 dark:text-orange-300 mb-2 text-center">
             Catering Request
           </h2>
@@ -65,6 +115,8 @@ const Caterings = () => {
               required
               aria-label="Full Name"
               className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
+              value={form.fullName}
+              onChange={handleChange}
             />
             <input
               type="email"
@@ -73,6 +125,8 @@ const Caterings = () => {
               required
               aria-label="Email"
               className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
+              value={form.email}
+              onChange={handleChange}
             />
             <input
               type="tel"
@@ -81,6 +135,8 @@ const Caterings = () => {
               required
               aria-label="Phone Number"
               className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
+              value={form.phone}
+              onChange={handleChange}
             />
             <input
               type="datetime-local"
@@ -89,6 +145,8 @@ const Caterings = () => {
               required
               aria-label="Date "
               className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
+              value={form.datetime}
+              onChange={handleChange}
             />
             <input
               type="time"
@@ -97,6 +155,8 @@ const Caterings = () => {
               aria-label="Time"
               placeholder="Time"
               className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
+              value={form.time}
+              onChange={handleChange}
             />
             <input
               type="number"
@@ -106,24 +166,28 @@ const Caterings = () => {
               required
               aria-label="Number of People"
               className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
+              value={form.numPeople}
+              onChange={handleChange}
             />
             <select
               name="deliveryType"
-              value={deliveryType}
-              onChange={(e) => setDeliveryType(e.target.value)}
+              value={form.deliveryType}
+              onChange={handleChange}
               aria-label="Delivery Type"
               className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
             >
               <option value="Pickup">Pickup</option>
               <option value="Delivery">Delivery</option>
             </select>
-            {deliveryType === "Delivery" && (
+            {form.deliveryType === "Delivery" && (
               <input
                 type="text"
                 name="address"
                 placeholder="Delivery Address"
                 aria-label="Delivery Address"
                 className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800 md:col-span-2"
+                value={form.address}
+                onChange={handleChange}
               />
             )}
           </div>
@@ -134,6 +198,8 @@ const Caterings = () => {
             aria-label="Your Order"
             className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
             rows={2}
+            value={form.order}
+            onChange={handleChange}
           ></textarea>
           <textarea
             name="dietary"
@@ -141,6 +207,8 @@ const Caterings = () => {
             aria-label="Dietary restrictions or allergies"
             className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
             rows={2}
+            value={form.dietary}
+            onChange={handleChange}
           ></textarea>
           <textarea
             name="details"
@@ -148,6 +216,8 @@ const Caterings = () => {
             aria-label="Additional details or special instructions"
             className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
             rows={2}
+            value={form.details}
+            onChange={handleChange}
           ></textarea>
           <button
             type="submit"
@@ -155,6 +225,9 @@ const Caterings = () => {
           >
             Send Catering Request
           </button>
+          {status && (
+            <p className="mt-4 text-green-600 dark:text-green-400 font-semibold">{status}</p>
+          )}
         </form>
       </div>
     </section>

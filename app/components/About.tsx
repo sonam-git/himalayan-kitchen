@@ -78,7 +78,7 @@ const About = () => {
                     : "translate-y-10 opacity-0"
                 }`}
               >
-                <span className="inline-block px-6 py-2 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-4">
+                <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-4">
                   Our Story
                 </span>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
@@ -203,7 +203,7 @@ const About = () => {
                       time-honored techniques passed down through generations.
                     </p>
                     <p className="text-yellow-200 dark:text-yellow-400 font-bold mt-3 text-lg">
-                      &quot;Simply Fresh and Made With Love&quot;
+                      &quot;Simply Fresh & Made With Love&quot;
                     </p>
                   </div>
 

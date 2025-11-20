@@ -164,7 +164,7 @@ const Footer = () => {
                     <span className="font-mono flex items-center gap-2">
                       {/* Restaurant Icon for Open Days */}
                       <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
-                      Open : Monday - Sunday 
+                      Open | 7 Days a Week |
                        <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
                     </span>
                   </li>

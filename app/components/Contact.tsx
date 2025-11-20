@@ -5,16 +5,30 @@ import SocialMedia from "./SocialMedia";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Here you would wire up to an API or email service
+    setStatus("Sending...");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("Thank you for contacting us! We'll get back to you soon.");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("Failed to send. Please try again.");
+      }
+    } catch {
+      setStatus("Failed to send. Please try again.");
+    }
   };
 
   return (
@@ -34,7 +48,7 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
-              <span className="inline-block px-6 py-2 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-4">
+              <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-4">
                 Get In Touch
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-200 dark:text-white mb-6">
@@ -91,8 +105,8 @@ const Contact = () => {
                   >
                     Send Message
                   </button>
-                  {submitted && (
-                    <p className="mt-4 text-green-600 dark:text-green-400 font-semibold">Thank you for contacting us! We&apos;ll get back to you soon.</p>
+                  {status && (
+                    <p className="mt-4 text-green-600 dark:text-green-400 font-semibold">{status}</p>
                   )}
                 </form>
               </div>
