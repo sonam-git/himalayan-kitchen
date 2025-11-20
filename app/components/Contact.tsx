@@ -28,7 +28,7 @@ const Contact = () => {
         {/* Image as Section Background with Blur Overlay */}
         <div className="absolute inset-0 w-full h-full z-0">
           <Image src="/images/other/backdrop4.png" alt="Contact Background" fill priority className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-80" />
-          <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/90 dark:via-gray-900/80 dark:to-black/90 rounded-2xl sm:rounded-3xl z-0"></div>
+           <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
         </div>
         <div className="relative ">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

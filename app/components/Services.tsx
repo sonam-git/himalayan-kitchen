@@ -46,7 +46,7 @@ const Services = () => {
                priority
                className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-100"
              />
-        <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/90 dark:via-gray-900/80 dark:to-black/90 rounded-2xl sm:rounded-3xl"></div>
+         <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
       </div>
       <div className="relative max-w-6xl mx-auto px-2 sm:px-8 lg:px-12 flex flex-col gap-12 items-center z-10">
         {/* Enhanced Section Header */}
@@ -85,11 +85,11 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-20 w-full max-w-6xl mx-auto ">
           {/* Dine-In Experience */}
           <div
-            className={`group h-full flex flex-col justify-stretch transition-all duration-1000 delay-200 ${
+            className={`group h-full flex flex-col justify-stretch transition-all duration-1000 delay-200 rounded-3xl ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
-            }`}
+            } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
           >
             <div className="relative h-full flex flex-col justify-between bg-linear-to-br from-red-50 via-orange-50 to-red-50/50 dark:bg-[rgba(220,38,38,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-red-100/50 dark:border-red-800/30 overflow-hidden backdrop-blur-sm">
               {/* Background Pattern */}
@@ -157,11 +157,11 @@ const Services = () => {
 
           {/* Takeout */}
           <div
-            className={`group h-full flex flex-col justify-stretch transition-all duration-1000 delay-400 ${
+            className={`group h-full flex flex-col justify-stretch transition-all duration-1000 delay-400 rounded-3xl ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
-            }`}
+            } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
           >
             <div className="relative h-full flex flex-col justify-between bg-linear-to-br from-blue-50 via-indigo-50 to-blue-50/50 dark:bg-[rgba(37,99,235,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-blue-100/50 dark:border-blue-800/30 overflow-hidden backdrop-blur-sm">
               {/* Background Pattern */}
@@ -231,11 +231,11 @@ const Services = () => {
 
           {/* Catering */}
           <div
-            className={`group h-full flex flex-col justify-stretch transition-all duration-1000 delay-600 ${
+            className={`group h-full flex flex-col justify-stretch transition-all duration-1000 delay-600 rounded-3xl ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
-            }`}
+            } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
           >
             <div className="relative h-full flex flex-col justify-between bg-linear-to-br from-green-50 via-emerald-50 to-green-50/50 dark:bg-[rgba(16,185,129,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-green-100/50 dark:border-green-800/30 overflow-hidden backdrop-blur-sm md:col-span-2 lg:col-span-1">
               {/* Background Pattern */}
