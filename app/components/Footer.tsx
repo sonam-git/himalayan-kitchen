@@ -117,16 +117,19 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 text-orange-400 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                   { <span className="text-white">227 3rd St, San Rafael, CA 94901</span>}
+                    {/* Address Icon */}
+                    <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+                    <a href="https://maps.google.com/?q=227+3rd+St,+San+Rafael,+CA+94901" target="_blank" rel="noopener noreferrer" className="text-white font-sans hover:text-green-400 transition-colors no-underline">227 3rd St, San Rafael, CA 94901</a>
                   </li>
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 text-orange-400 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    {<span className="text-white">(415) 526-3161</span>}
+                    {/* Phone Icon */}
+                    <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.13.37 2.25.72 3.32a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.58 6.58l1.27-1.27a2 2 0 0 1 2.11-.45c1.07.35 2.19.59 3.32.72A2 2 0 0 1 22 16.92z"/></svg>
+                    <a href="tel:(415) 526-3161" className="text-white font-mono hover:text-blue-400 transition-colors no-underline">(415) 526-3161</a>
                   </li>
                   <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 text-orange-400 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    {<span className="text-white">himalayankitchenmarin@gmail.com</span>}
+                    {/* Email Icon */}
+                    <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                    <a href="mailto:himalayankitchenmarin@gmail.com" className="text-white font-sans hover:text-yellow-400 transition-colors no-underline">himalayankitchenmarin@gmail.com</a>
                   </li>
                 </ul>
               </div>
@@ -158,10 +161,11 @@ const Footer = () => {
                     </div>
                   </li>
                   <li className="flex justify-between items-center text-gray-100 dark:text-gray-200">
-                    <span className="font-semibold flex items-center gap-2">
+                    <span className="font-mono flex items-center gap-2">
                       {/* Restaurant Icon for Open Days */}
                       <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
-                      | Open : Monday - Sunday |
+                      Open : Monday - Sunday 
+                       <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
                     </span>
                   </li>
                 </ul>
@@ -170,8 +174,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8 text-center ">
-          <p className="text-gray-400 dark:text-gray-500 text-sm">
+        <div className="border-t border-gray-400 dark:border-gray-500 mt-8 pt-8 text-center bg- ">
+          <p className="text-gray-400 font-mono dark:text-gray-500 text-sm">
             | &copy; {new Date().getFullYear()} Himalayan Kitchen, San Rafael, CA | All rights reserved |
           </p>
         </div>

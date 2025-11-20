@@ -116,7 +116,7 @@ const Services = () => {
                 <div className="absolute top-1 right-1 w-2 h-2 bg-yellow-400 rounded-full opacity-80 animate-ping transition-opacity duration-300"></div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black  text-white mb-6 group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors duration-300">
+              <h3 className="text-2xl md:text-3xl font-black  text-white mb-6 group-hover:text-red-300 dark:group-hover:text-red-400 transition-colors duration-300">
                 Dine-In
               </h3>
 
@@ -188,7 +188,7 @@ const Services = () => {
                 <div className="absolute top-1 right-1 w-2 h-2 bg-cyan-400 rounded-full opacity-80 animate-ping transition-opacity duration-300"></div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black  text-white mb-6 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors duration-300">
+              <h3 className="text-2xl md:text-3xl font-black  text-white mb-6 group-hover:text-blue-300 dark:group-hover:text-blue-400 transition-colors duration-300">
                 Take-out
               </h3>
 
@@ -262,7 +262,7 @@ const Services = () => {
                 <div className="absolute top-1 right-1 w-2 h-2 bg-lime-400 rounded-full opacity-80 animate-ping transition-opacity duration-300"></div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black text-white mb-6 group-hover:text-green-700 dark:group-hover:text-green-400 transition-colors duration-300">
+              <h3 className="text-2xl md:text-3xl font-black text-white mb-6 group-hover:text-green-300 dark:group-hover:text-green-400 transition-colors duration-300">
                 Catering
               </h3>
 
