@@ -143,35 +143,25 @@ const Footer = () => {
                   Opening Hours
                 </h3>
                 <ul className="space-y-4">
-                  <li className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-gray-700 dark:text-gray-200">
-                    <span className="font-semibold flex items-center gap-2 mb-2 sm:mb-0">
+                  <li className="flex text-gray-700 dark:text-gray-200">
+                    <div className="font-semibold flex items-center gap-2 mb-0 bg-gray-900/80 dark:bg-gray-800/80 text-green-400 font-mono text-xs sm:text-sm tracking-widest px-2 py-1 sm:px-4 sm:py-2 rounded-md sm:rounded-lg shadow-inner border-2 border-green-500 whitespace-nowrap max-w-full w-64 sm:w-80">
                       {/* Plate & Spoon Icon for Lunch */}
-                      <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-4 10a4 4 0 118 0 4 4 0 01-8 0zm10.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/><rect x="17" y="7" width="2" height="10" rx="1"/><rect x="5" y="7" width="2" height="10" rx="1"/></svg>
-                      Lunch:
-                    </span>
-                    <span className="bg-gray-900/80 dark:bg-gray-800/80 text-green-400 font-mono text-base sm:text-lg tracking-widest px-2 py-1 sm:px-4 sm:py-2 rounded-md sm:rounded-lg shadow-inner border-2 border-green-500 flex gap-2 items-center whitespace-nowrap max-w-full">
-                      <span className="inline-block">11</span><span className="inline-block">:</span><span className="inline-block">30</span><span className="inline-block">AM</span>
-                      <span className="mx-2 text-gray-400">-</span>
-                      <span className="inline-block">02</span><span className="inline-block">:</span><span className="inline-block">30</span><span className="inline-block">PM</span>
-                    </span>
+                      <svg className="w-5 h-5 text-yellow-500 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-4 10a4 4 0 118 0 4 4 0 01-8 0zm10.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/><rect x="17" y="7" width="2" height="10" rx="1"/><rect x="5" y="7" width="2" height="10" rx="1"/></svg>
+                      Lunch: <span className="ml-2">11:30AM</span> <span className="mx-1 text-gray-400">-</span> <span>02:30PM</span>
+                    </div>
                   </li>
-                  <li className="grid grid-cols-1 sm:grid-cols-2 justify-between items-center text-gray-700 dark:text-gray-200">
-                    <span className="font-semibold flex items-center gap-2 mb-2 sm:mb-0">
+                  <li className="flex text-gray-700 dark:text-gray-200">
+                    <div className="font-semibold flex items-center gap-2 mb-0 bg-gray-900/80 dark:bg-gray-800/80 text-orange-400 font-mono text-xs sm:text-sm tracking-widest px-2 py-1 sm:px-4 sm:py-2 rounded-md sm:rounded-lg shadow-inner border-2 border-orange-500 whitespace-nowrap max-w-full w-64 sm:w-80">
                       {/* Knife & Fork Icon for Dinner */}
-                      <svg className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v20M17 2v20M12 2v20"/><rect x="6" y="7" width="2" height="10" rx="1"/><rect x="16" y="7" width="2" height="10" rx="1"/></svg>
-                      Dinner:
-                    </span>
-                    <span className="bg-gray-900/80 dark:bg-gray-800/80 text-orange-400 font-mono text-base sm:text-lg tracking-widest px-2 py-1 sm:px-4 sm:py-2 rounded-md sm:rounded-lg shadow-inner border-2 border-orange-500 flex gap-2 items-center whitespace-nowrap max-w-full">
-                      <span className="inline-block">04</span><span className="inline-block">:</span><span className="inline-block">30</span><span className="inline-block">PM</span>
-                      <span className="mx-2 text-gray-400">-</span>
-                      <span className="inline-block">09</span><span className="inline-block">:</span><span className="inline-block">00</span><span className="inline-block">PM</span>
-                    </span>
+                      <svg className="w-5 h-5 text-orange-500 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v20M17 2v20M12 2v20"/><rect x="6" y="7" width="2" height="10" rx="1"/><rect x="16" y="7" width="2" height="10" rx="1"/></svg>
+                      Dinner: <span className="ml-2">04:30PM</span> <span className="mx-1 text-gray-400">-</span> <span>09:00PM</span>
+                    </div>
                   </li>
                   <li className="flex justify-between items-center text-gray-700 dark:text-gray-200">
                     <span className="font-semibold flex items-center gap-2">
                       {/* Restaurant Icon for Open Days */}
                       <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
-                      Open Monday - Sunday | 7 Days a week |
+                      | Open Monday - Sunday |
                     </span>
                   </li>
                 </ul>
