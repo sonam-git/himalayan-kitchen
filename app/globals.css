@@ -435,3 +435,63 @@ h1, h2, h3, h4, h5, h6, .headline, .logo {
 .animate-hero-text-zoom {
   animation: hero-text-zoom 5s cubic-bezier(0.4,0,0.2,1) forwards;
 }
+
+/* Accessibility: High Contrast Mode */
+.accessibility-contrast {
+  background: #000 !important;
+  color: #fff !important;
+}
+.accessibility-contrast a,
+.accessibility-contrast button,
+.accessibility-contrast [role="button"] {
+  color: #fff !important;
+  background: #000 !important;
+  border: 2px solid #fff !important;
+  text-decoration: underline;
+}
+.accessibility-contrast input,
+.accessibility-contrast textarea,
+.accessibility-contrast select {
+  background: #222 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+.accessibility-contrast .bg-white,
+.accessibility-contrast .bg-gray-50,
+.accessibility-contrast .bg-gray-100 {
+  background: #000 !important;
+  color: #fff !important;
+}
+.accessibility-contrast .text-gray-900,
+.accessibility-contrast .text-gray-700,
+.accessibility-contrast .text-gray-600 {
+  color: #fff !important;
+}
+
+/* Accessibility: Large Font Mode */
+.accessibility-large-font,
+.accessibility-large-font body {
+  font-size: 1.25rem !important;
+  line-height: 1.8 !important;
+}
+.accessibility-large-font h1 { font-size: 2.5rem !important; }
+.accessibility-large-font h2 { font-size: 2.1rem !important; }
+.accessibility-large-font h3 { font-size: 1.7rem !important; }
+.accessibility-large-font h4 { font-size: 1.4rem !important; }
+.accessibility-large-font h5 { font-size: 1.2rem !important; }
+.accessibility-large-font h6 { font-size: 1.1rem !important; }
+
+/* Accessibility: Dyslexia Font Mode */
+.dyslexia-font, .dyslexia-font body {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Comic Sans', Arial, sans-serif !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Optional: Add OpenDyslexic font if available */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: local('OpenDyslexic'), url('https://cdn.jsdelivr.net/gh/antijingoist/open-dyslexic/web/OpenDyslexic-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

@@ -41,7 +41,7 @@ const LocationInfo = () => {
             </div>
             <h3  className={`text-lg text-gray-50 font-semibold mb-2 `}>Easy Parking</h3>
             <p className="text-gray-100 dark:text-gray-300">
-              Convenient street parking and nearby parking structures available
+              Convenient parking and nearby parking structures available
             </p>
           </div>
 
@@ -54,7 +54,7 @@ const LocationInfo = () => {
             </div>
             <h3  className={`text-lg text-gray-50 font-semibold mb-2 `}>Fresh Daily</h3>
             <p className="text-gray-100 dark:text-gray-300">
-              All ingredients sourced fresh daily and prepared from scratch with love
+              All ingredients sourced fresh daily from local shop and prepared from scratch with love
             </p>
           </div>
 
