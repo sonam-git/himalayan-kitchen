@@ -56,18 +56,20 @@ const Header = () => {
               <div className="flex items-center shrink-0">
                 <div className="flex items-center space-x-3 md:space-x-4 lg:space-x-6 group cursor-pointer">
                   <div className="relative w-14 h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 rounded-full overflow-hidden ring-4 ring-red-500/60 dark:ring-red-600/40 shadow-2xl group-hover:shadow-red-500/50 dark:group-hover:shadow-red-400/50 transition-all duration-700 group-hover:ring-red-400/90 dark:group-hover:ring-red-600/70 group-hover:ring-8">
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-100/40 to-orange-100/40 dark:from-red-900/40 dark:to-orange-900/40"></div>
-                    <div className="absolute -inset-2 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-700 animate-spin blur-md"></div>
+                    <div className="absolute inset-0 bg-linear-to-br from-red-100/40 to-orange-100/40 dark:from-red-900/40 dark:to-orange-900/40"></div>
+                    <div className="absolute -inset-2 bg-linear-to-r from-red-400 via-orange-400 to-yellow-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-700 animate-spin blur-md"></div>
                     <div className="relative w-full h-full group-hover:scale-110 transition-all duration-700 group-hover:rotate-360 transform-gpu perspective-1000">
                       <Image src="/images/hk-logo.jpg" alt="Himalayan Kitchen Logo" width={72} height={72} className="object-cover w-full h-full relative z-10 rounded-full shadow-inner" priority />
                     </div>
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500/30 via-orange-500/30 to-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
+                    <div className="absolute inset-0 rounded-full bg-linear-to-r from-red-500/30 via-orange-500/30 to-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
                   </div>
                   <div className="flex flex-col justify-center space-y-0.5">
-                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-gradient-to-r from-red-500 via-orange-500 to-red-600 dark:from-red-300 dark:via-orange-300 dark:to-red-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">HIMALAYAN</h1>
+                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-linear-to-r from-red-500 via-orange-500 to-red-600 dark:from-red-300 dark:via-orange-300 dark:to-red-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">
+                      HIMALAYAN
+                    </h1>
                     <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-wide font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
                     <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-300 -mt-1 tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
-                    <div className="w-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500 group-hover:w-full transition-[width] duration-700 rounded-full"></div>
+                    <div className="w-0 h-0.5 bg-linear-to-r from-red-500 to-orange-500 group-hover:w-full transition-[width] duration-700 rounded-full"></div>
                   </div>
                 </div>
               </div>
@@ -114,10 +116,10 @@ const Header = () => {
                 {/* Call Us Button */}
                 <a 
                   href="tel:(415) 526-3161" 
-                  className="hidden md:flex items-center gap-2 lg:gap-3 px-4 lg:px-5 py-2.5 lg:py-3 bg-white text-green-800 border-2 border-green-700 border-b-2 dark:border-green-800 font-bold rounded-xl shadow-lg hover:bg-green-50 hover:text-green-900 dark:bg-white dark:text-green-900 dark:hover:bg-green-100 dark:hover:text-green-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400/60 hover:scale-105 active:scale-95 pop-up-call-btn w-12 h-12 lg:w-14 lg:h-14 justify-center"
+                  className="flex items-center justify-center w-12 h-12 rounded-xl bg-white text-green-800 border-2 border-green-700 dark:bg-white dark:text-green-900 dark:border-green-900 shadow-lg hover:bg-green-50 hover:text-green-900 dark:hover:bg-gray-200 dark:hover:text-green-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400/60 hover:scale-105 active:scale-95"
                   style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)' }}
                 >
-                  <svg className="w-7 h-7 lg:w-7 lg:h-7 transition-colors duration-300 text-green-700 dark:text-green-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 transition-colors duration-300 text-green-700 dark:text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </a>
@@ -174,7 +176,7 @@ const Header = () => {
         {/* Prayer Flag Colors Bottom Border */}
         <PrayerFlagBorder />
         {/* Skip to main content link for accessibility */}
-        <a href="#main-content" className="sr-only focus:not-sr-only absolute top-2 left-2 z-[100] bg-white dark:bg-gray-900 text-red-700 dark:text-yellow-300 font-bold px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-200">Skip to main content</a>
+        <a href="#main-content" className="sr-only focus:not-sr-only absolute top-2 left-2 z-100 bg-white dark:bg-gray-900 text-red-700 dark:text-yellow-300 font-bold px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-200">Skip to main content</a>
 
         {/* Mobile Dropdown Menu */}
         {isMenuOpen && (
@@ -184,12 +186,12 @@ const Header = () => {
             role="dialog"
             aria-modal="true"
             tabIndex={-1}
-            className="xl:hidden absolute left-0 right-0 top-full z-[60] bg-white dark:bg-gray-900 shadow-2xl border-b-2 border-red-500/20 dark:border-red-400/20 animate-slide-down overflow-hidden"
-            style={{ minHeight: 'calc(100vh - 5rem)', backgroundImage: 'url(/images/other/stone.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+            className="xl:hidden absolute left-0 right-0 top-full z-60 bg-white dark:bg-gray-900 shadow-2xl border-b-2 border-red-500/20 dark:border-red-400/20 animate-slide-down overflow-visible"
+            style={{ backgroundImage: 'url(/images/logo/logo-transparentbg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
           >
             {/* Overlay for readability */}
             <div className="absolute inset-0 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md backdrop-saturate-150 pointer-events-none z-0" />
-            <div className="relative flex flex-col py-6 px-6 gap-2 z-10">
+            <div className="relative flex flex-col py-3 px-6 gap-1 z-10">
               {[
                 { id: 'home', label: 'Home', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
@@ -214,58 +216,59 @@ const Header = () => {
                   key={id}
                   href={`#${id}`}
                   onClick={() => { handleNavClick(id); setIsMenuOpen(false); }}
-                  className={`flex items-center w-full text-left px-4 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 focus:outline-none focus:ring-2 focus:ring-red-400/60 ${activeSection === id ? 'bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300' : 'text-gray-800 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300'}`}
+                  className={`flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 focus:outline-none focus:ring-2 focus:ring-red-400/60 ${activeSection === id ? 'bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300' : 'text-gray-800 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300'}`}
                   tabIndex={0}
                 >
                   {icon}
                   <span className="ml-1">{label}</span>
                 </a>
               ))}
-              {/* Call Us Button */}
-              <a
-                href="tel:(415) 526-3161"
-                className="flex items-center w-full text-left gap-3 px-4 py-3 rounded-lg font-bold text-lg bg-white text-green-800 border-2 border-green-700 dark:border-green-800 border-b-2 border-gray-300 dark:border-b-2 dark:border-white/30 shadow-lg hover:bg-green-50 hover:text-green-900 dark:bg-white dark:text-green-900 dark:hover:bg-green-100 dark:hover:text-green-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400/60 hover:scale-105 active:scale-95 pop-up-call-btn justify-start"
-                style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)' }}
-              >
-                <svg className="w-6 h-6 transition-colors duration-300 text-green-700 dark:text-green-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <span>Call Us</span>
-              </a>
-              {/* Theme Toggle in dropdown, under Call Us */}
-              <button
-                onClick={toggleTheme}
-                aria-label="Toggle dark mode"
-                aria-pressed={isDarkMode}
-                className="mt-2 flex items-center gap-3 px-4 py-3 rounded-lg font-semibold text-lg bg-gray-800 dark:bg-yellow-900 text-white dark:text-yellow-200 border-2 border-white dark:border-white shadow-lg hover:bg-gray-700 dark:hover:bg-yellow-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400/50 dark:focus:ring-yellow-400/50"
-              >
-                {isDarkMode ? (
-                  <svg className="w-6 h-6 transition-all duration-500 animate-pulse text-yellow-200" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              {/* Action buttons row: Call Us, Theme Toggle, Accessibility */}
+              <div className="flex flex-row mt-3 mb-1 w-full justify-between"> {/* space-between, reduced mt/mb */}
+                {/* Call Us Icon Button */}
+                <a
+                  href="tel:(415) 526-3161"
+                  aria-label="Call Us"
+                  className="flex items-center justify-center w-12 h-12 rounded-xl bg-white text-green-800 border-2 border-green-700 dark:bg-white dark:text-green-900 dark:border-green-900 shadow-lg hover:bg-green-50 hover:text-green-900 dark:hover:bg-gray-200 dark:hover:text-green-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400/60 hover:scale-105 active:scale-95"
+                  style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)' }}
+                >
+                  <svg className="w-6 h-6 transition-colors duration-300 text-green-700 dark:text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                ) : (
-                  <svg className="w-6 h-6 text-white transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </a>
+                {/* Theme Toggle Icon Button */}
+                <button
+                  onClick={toggleTheme}
+                  aria-label="Toggle dark mode"
+                  aria-pressed={isDarkMode}
+                  className="flex items-center justify-center w-12 h-12 rounded-xl bg-gray-800 dark:bg-yellow-900 text-white dark:text-yellow-200 border-2 border-white dark:border-white shadow-lg hover:bg-gray-700 dark:hover:bg-yellow-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400/50 dark:focus:ring-yellow-400/50 hover:scale-105 active:scale-95"
+                >
+                  {isDarkMode ? (
+                    <svg className="w-6 h-6 transition-all duration-500 animate-pulse text-yellow-200" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-6 h-6 text-white transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                  )}
+                </button>
+                {/* Accessibility Icon Button */}
+                <button
+                  aria-label="Accessibility Options"
+                  className="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 border-2 border-white dark:border-white shadow-lg hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                  onClick={() => { setIsAccessibilityModalOpen(true); setIsMenuOpen(false); }}
+                  type="button"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="7" r="2.5" />
+                    <path d="M12 21v-6m0 0c-2.5 0-5-1-7-2m7 2c2.5 0 5-1 7-2M12 15V9m-5 2l-2-2m14 2l2-2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                )}
-                <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
-              </button>
-              {/* Accessibility button in dropdown */}
-              <button
-                aria-label="Accessibility Options"
-                className="mt-2 flex items-center gap-3 px-4 py-3 rounded-lg font-semibold text-lg bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 border-2 border-white dark:border-white shadow-lg hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
-                onClick={() => { setIsAccessibilityModalOpen(true); setIsMenuOpen(false); }}
-                type="button"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                  <circle cx="12" cy="7" r="2.5" />
-                  <path d="M12 21v-6m0 0c-2.5 0-5-1-7-2m7 2c2.5 0 5-1 7-2M12 15V9m-5 2l-2-2m14 2l2-2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Accessibility</span>
-              </button>
+                </button>
+              </div>
             </div>
-            {/* Prayer Flag Border at bottom of dropdown */}
-            <div className="mt-4">
+            {/* Prayer Flag Border at bottom of dropdown, always visible and not cut off */}
+            <div className="relative w-full z-20">
               <PrayerFlagBorder />
             </div>
           </nav>

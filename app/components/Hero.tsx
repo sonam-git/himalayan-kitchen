@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
+import PrayerFlagBorder from './PrayerFlagBorder';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -68,27 +69,18 @@ const Hero = () => {
       {showLogoText && (
         <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
           <div className="relative flex flex-col items-center justify-center w-full h-full">
-            {/* Background Logo */}
-            <Image
-              src="/images/logo/logo-transparentbg.png"
-              alt="Himalayan Kitchen Logo Background"
-              fill
-              className="object-contain opacity-20 animate-hero-logo-fade pointer-events-none select-none"
-              style={{ zIndex: 1 }}
-              aria-hidden="true"
-              priority
-            />
             {/* Animated Heading */}
             <span
               className="relative z-10 flex flex-col items-center justify-center animate-hero-text-zoom"
               style={{
                 transition: 'opacity 1.5s, transform 1.5s',
-                fontFamily: 'var(--font-tibetan)',
-                WebkitTextStroke: '2px #fff',
+                fontFamily: 'monospace',
               }}
             >
-              <span className="block text-center text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight stylish-hero-text fancy-hero-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">
-                TASTES FROM<br/>THE<br/>HIMALAYAS
+              <span className="block text-center text-2xl xs:text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+                <span style={{ color: '#22d3ee', textShadow: '0 4px 24px #22d3ee99, 0 2px 8px #0ea5e9cc, 0 1px 2px #fff' }}>TASTES FROM</span><br />
+                <span style={{ color: '#38bdf8', textShadow: '0 4px 24px #38bdf899, 0 2px 8px #0ea5e9cc, 0 1px 2px #fff' }}>THE</span><br />
+                <span style={{ color: '#22c55e', textShadow: '0 4px 24px #22c55e99, 0 2px 8px #16a34acc, 0 1px 2px #fff' }}>HIMALAYAS</span>
               </span>
             </span>
           </div>
@@ -128,6 +120,11 @@ const Hero = () => {
             </span>
           </div>
         )}
+      </div>
+
+      {/* Prayer Flag Border */}
+      <div className="absolute top-0 left-0 w-full z-20 flex flex-col items-center">
+        <PrayerFlagBorder />
       </div>
 
       {/* Action Buttons - Positioned at bottom where scroll indicator was */}

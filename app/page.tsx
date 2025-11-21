@@ -17,6 +17,7 @@ import Contact from "./components/Contact";
 import Caterings from "./components/Caterings";
 import Image from "next/image";
 
+
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -50,7 +51,6 @@ export default function Home() {
         {/* Main content wrapper */}
         <main className="w-full">
           <Header />
-
           {/* Hero - Full width, edge to edge */}
           <Hero />
 
