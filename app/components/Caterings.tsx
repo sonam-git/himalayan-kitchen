@@ -9,7 +9,6 @@ const Caterings = () => {
     email: "",
     phone: "",
     datetime: "",
-    time: "",
     numPeople: "",
     deliveryType: "Pickup",
     address: "",
@@ -40,7 +39,6 @@ const Caterings = () => {
           email: "",
           phone: "",
           datetime: "",
-          time: "",
           numPeople: "",
           deliveryType: "Pickup",
           address: "",
@@ -99,135 +97,169 @@ const Caterings = () => {
           </div>
         </div>
         {/* Form - Second Row, Full Width */}
-        <form className="w-full bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 flex flex-col gap-6 border border-orange-100 dark:border-orange-900/30" onSubmit={handleSubmit}>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-orange-700 dark:text-orange-300 mb-2 text-center">
-            Catering Request
-          </h2>
-          <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-4 text-center">
-            Please complete the form to send us a catering request. Your order
-            will be confirmed once we accept it by calling you or email you.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Full Name"
-              required
-              aria-label="Full Name"
-              className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-              value={form.fullName}
-              onChange={handleChange}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              aria-label="Email"
-              className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-              value={form.email}
-              onChange={handleChange}
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              required
-              aria-label="Phone Number"
-              className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-              value={form.phone}
-              onChange={handleChange}
-            />
-            <input
-              type="datetime-local"
-              name="datetime"
-              placeholder="Date "
-              required
-              aria-label="Date "
-              className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-              value={form.datetime}
-              onChange={handleChange}
-            />
-            <input
-              type="time"
-              name="time"
-              required
-              aria-label="Time"
-              placeholder="Time"
-              className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-              value={form.time}
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              name="numPeople"
-              min="1"
-              placeholder="Number of People"
-              required
-              aria-label="Number of People"
-              className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-              value={form.numPeople}
-              onChange={handleChange}
-            />
-            <select
-              name="deliveryType"
-              value={form.deliveryType}
-              onChange={handleChange}
-              aria-label="Delivery Type"
-              className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-            >
-              <option value="Pickup">Pickup</option>
-              <option value="Delivery">Delivery</option>
-            </select>
-            {form.deliveryType === "Delivery" && (
+        <form className="w-full bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700" onSubmit={handleSubmit} role="form" aria-describedby="catering-form-desc">
+          <h2 className="text-xl font-bold sm:text-xl mb-6 text-gray-900 dark:text-white text-center">Catering Request</h2>
+          <div id="catering-form-desc" className="sr-only">Catering request form for Himalayan Kitchen. All fields are required unless marked optional.</div>
+          <div className="space-y-6">
+            <div>
+              <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
               <input
+                id="fullName"
                 type="text"
-                name="address"
-                placeholder="Delivery Address"
-                aria-label="Delivery Address"
-                className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800 md:col-span-2"
-                value={form.address}
+                name="fullName"
+                required
+                aria-label="Full Name"
+                placeholder="first and last name"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                value={form.fullName}
                 onChange={handleChange}
               />
+            </div>
+            {/* Email and Phone in one row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  aria-label="Email"
+                  placeholder="example@email.com"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  value={form.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Phone</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  required
+                  aria-label="Phone Number"
+                  placeholder="000-000-0000"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  value={form.phone}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            {/* Date and Number of Guests in one row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="datetime" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Date & Time</label>
+                <input
+                  id="datetime"
+                  type="datetime-local"
+                  name="datetime"
+                  required
+                  aria-label="Date and Time"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  value={form.datetime}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="numPeople" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Number of Guests</label>
+                <input
+                  id="numPeople"
+                  type="number"
+                  name="numPeople"
+                  min="1"
+                  required
+                  aria-label="Number of People"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  value={form.numPeople}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            {/* Delivery Type and Address */}
+            <div>
+              <label htmlFor="deliveryType" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Delivery Type</label>
+              <select
+                id="deliveryType"
+                name="deliveryType"
+                value={form.deliveryType}
+                onChange={handleChange}
+                aria-label="Delivery Type"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >
+                <option value="Pickup">Pickup</option>
+                <option value="Delivery">Delivery</option>
+              </select>
+            </div>
+            {form.deliveryType === "Delivery" && (
+              <div>
+                <label htmlFor="address" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Delivery Address</label>
+                <input
+                  id="address"
+                  type="text"
+                  name="address"
+                  aria-label="Delivery Address"
+                  placeholder="123 Main St, City, State, ZIP"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  value={form.address}
+                  onChange={handleChange}
+                />
+              </div>
             )}
+            {/* Order, Dietary, Details, Button, Status */}
+            <div>
+              <label htmlFor="order" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Your Order</label>
+              <textarea
+                id="order"
+                name="order"
+                required
+                aria-label="Your Order"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                rows={2}
+                value={form.order}
+                onChange={handleChange}
+                placeholder="List menu items, quantities, or any requests..."
+              ></textarea>
+            </div>
+            <div>
+              <label htmlFor="dietary" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Dietary Restrictions</label>
+              <textarea
+                id="dietary"
+                name="dietary"
+                aria-label="Dietary restrictions or allergies"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                rows={2}
+                value={form.dietary}
+                onChange={handleChange}
+                placeholder="Allergies, preferences, etc. (optional)"
+              ></textarea>
+            </div>
+            <div>
+              <label htmlFor="details" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Additional Details</label>
+              <textarea
+                id="details"
+                name="details"
+                aria-label="Additional details or special instructions"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+                rows={2}
+                value={form.details}
+                onChange={handleChange}
+                placeholder="Anything else we should know? (optional)"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full py-3 px-6 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition-all duration-300 shadow-lg"
+            >
+              Send Catering Request
+            </button>
+            <div aria-live="polite">
+              {status && (
+                <p className={`mt-4 text-green-600 dark:text-green-400 font-semibold`}>{status}</p>
+              )}
+            </div>
           </div>
-          <textarea
-            name="order"
-            placeholder="Your Order"
-            required
-            aria-label="Your Order"
-            className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-            rows={2}
-            value={form.order}
-            onChange={handleChange}
-          ></textarea>
-          <textarea
-            name="dietary"
-            placeholder="Dietary restrictions or allergies"
-            aria-label="Dietary restrictions or allergies"
-            className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-            rows={2}
-            value={form.dietary}
-            onChange={handleChange}
-          ></textarea>
-          <textarea
-            name="details"
-            placeholder="Additional details or special instructions"
-            aria-label="Additional details or special instructions"
-            className="rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-lg focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-gray-800"
-            rows={2}
-            value={form.details}
-            onChange={handleChange}
-          ></textarea>
-          <button
-            type="submit"
-            className="w-full bg-linear-to-r from-orange-500 via-red-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 rounded-lg shadow-lg transition-all duration-300 text-lg focus:outline-none focus:ring-4 focus:ring-orange-400/50 mt-2 cursor-pointer"
-          >
-            Send Catering Request
-          </button>
-          {status && (
-            <p className="mt-4 text-green-600 dark:text-green-400 font-semibold">{status}</p>
-          )}
         </form>
       </div>
     </section>

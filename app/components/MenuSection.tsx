@@ -101,6 +101,7 @@ const MenuSection = () => {
     <section 
       ref={sectionRef}
       id="menu" 
+      aria-labelledby="menu-heading"
       className="relative py-20 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
     >
       {/* Background Decorative Elements */}
@@ -124,7 +125,7 @@ const MenuSection = () => {
         {/* Featured Dishes Section */}
         <div className="mt-8 mb-8">
           <div className="flex items-center justify-between mb-6 px-2">
-            <h2 className="text-xl md:text-2xl font-serif font-bold text-orange-700 bg-amber-200 p-2 md:p-3 border-2 border-gray-100 rounded-md text-sm md:text-2xl flex items-center justify-center h-10 md:h-auto">Featured Dishes</h2>
+            <h2 className="text-xl md:text-2xl font-serif font-bold text-orange-700 bg-amber-200 p-2 md:p-3 border-2 border-gray-100 rounded-md text-sm md:text-2xl flex items-center justify-center h-10 md:h-auto" id="menu-heading">Featured Dishes</h2>
             <button
               onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
               className="bg-green-700 hover:bg-orange-800 text-white font-bold py-2 px-3 md:py-3 md:px-5 rounded-md drop-shadow-2xl-gray-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-400 border-2 hover:border-white cursor-pointer text-sm md:text-base h-10 md:h-auto flex items-center"
@@ -233,7 +234,7 @@ const MenuSection = () => {
       </div>
       {/* Modal for zoomed food item */}
       {modalOpen && selectedIndex !== null && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-dish-title">
           <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-hidden shadow-2xl">
             {/* Zoomed image */}
             <Image
@@ -245,8 +246,8 @@ const MenuSection = () => {
               priority
             />
             {/* Title & description overlay at bottom, styled like Gallery */}
-            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent px-6 pt-6 pb-20">
-              <h2 className="text-2xl md:text-3xl font-serif font-bold text-white mb-2 drop-shadow-lg">
+            <div className="absolute bottom-0 left-0 w-full bg-linear-to-t from-black/80 via-black/40 to-transparent px-6 pt-6 pb-20">
+              <h2 id="modal-dish-title" className="text-2xl md:text-3xl font-serif font-bold text-white mb-2 drop-shadow-lg">
                 {featuredDishes[selectedIndex].name}
               </h2>
               <p className="text-md md:text-lg text-gray-100 mb-0">
@@ -258,7 +259,7 @@ const MenuSection = () => {
               <button
                 aria-label="Previous"
                 onClick={prevItem}
-                className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -267,7 +268,7 @@ const MenuSection = () => {
               <button
                 aria-label="Close"
                 onClick={closeModal}
-                className="bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -276,7 +277,7 @@ const MenuSection = () => {
               <button
                 aria-label="Next"
                 onClick={nextItem}
-                className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

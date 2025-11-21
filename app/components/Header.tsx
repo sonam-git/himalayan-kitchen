@@ -70,7 +70,7 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center justify-center flex-1 px-4 xl:px-8">
+            <nav className="hidden xl:flex items-center justify-center flex-1 px-4 xl:px-8" aria-label="Primary Navigation" role="navigation">
               <div className="flex items-center gap-6 xl:gap-8 2xl:gap-10">
                 {[
                   { id: 'home', label: 'Home', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /> },
@@ -84,7 +84,8 @@ const Header = () => {
                   <a 
                     key={id} 
                     href={`#${id}`}
-                    onClick={() => handleNavClick(id)}
+                    onClick={() => handleNavClick(id)
+                    }
                     className={`group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 ${
                       activeSection === id 
                         ? 'text-red-500 dark:text-red-400' 
@@ -109,10 +110,11 @@ const Header = () => {
             <div className="flex items-center gap-3 md:gap-4 lg:gap-5 xl:gap-6 shrink-0">
               {/* Call Us Button */}
               <a 
-                href="(415) 526-3161" 
-                className="hidden md:flex items-center gap-2 lg:gap-3 px-4 lg:px-5 py-2.5 lg:py-3 bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-400/60 hover:scale-105 active:scale-95"
+                href="tel:(415) 526-3161" 
+                className="hidden md:flex items-center gap-2 lg:gap-3 px-4 lg:px-5 py-2.5 lg:py-3 bg-red-600 hover:bg-white dark:bg-red-500 dark:hover:bg-white text-white hover:text-black dark:hover:text-black font-bold rounded-xl shadow-lg hover:shadow-2xl border-4 border-white hover:border-black dark:border-white dark:hover:border-black transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-400/60 hover:scale-105 active:scale-95 pop-up-call-btn"
+                style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)' }}
               >
-                <svg className="w-5 h-5 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 lg:w-5 lg:h-5 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <span className="text-sm lg:text-base font-extrabold tracking-wide">Call Us</span>
@@ -143,9 +145,10 @@ const Header = () => {
               {/* Mobile Menu Toggle */}
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                aria-label="Toggle navigation menu" 
+                aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"} 
                 aria-expanded={isMenuOpen} 
-                className="lg:hidden relative inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-600 border-2 border-gray-300 dark:border-white shadow-lg transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-400/50"
+                aria-controls="mobile-menu" 
+                className="xl:hidden relative inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-600 border-2 border-gray-300 dark:border-white shadow-lg transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-400/50"
               >
                 <div className="flex flex-col w-7 space-y-2">
                   <span className={`h-1 rounded-full bg-gray-800 dark:bg-white transition-all duration-300 origin-center ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
@@ -158,7 +161,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className={`lg:hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'} md:rounded-bl-2xl md:rounded-br-2xl lg:rounded-bl-3xl lg:rounded-br-3xl`}>
+          <div id="mobile-menu" className={`xl:hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'} md:rounded-bl-2xl md:rounded-br-2xl lg:rounded-bl-3xl lg:rounded-br-3xl`}>
             <div className="relative px-4 pt-6 pb-8 space-y-3 bg-gray-50 dark:bg-gray-700 backdrop-blur-md border-t border-gray-200 dark:border-gray-700/30 shadow-2xl">
               {/* Background image for mobile menu */}
               <div className="absolute inset-0 w-full h-full z-0">
@@ -213,6 +216,9 @@ const Header = () => {
         
         {/* Prayer Flag Colors Bottom Border */}
         <PrayerFlagBorder />
+
+        {/* Skip to main content link for accessibility */}
+        <a href="#main-content" className="sr-only focus:not-sr-only absolute top-2 left-2 z-[100] bg-white dark:bg-gray-900 text-red-700 dark:text-yellow-300 font-bold px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-200">Skip to main content</a>
       </header>
     );
   };

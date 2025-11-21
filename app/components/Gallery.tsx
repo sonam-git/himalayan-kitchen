@@ -6,10 +6,17 @@ import Image from 'next/image';
 const Gallery = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalImg, setModalImg] = useState("");
-  const [modalTitle, setModalTitle] = useState("");
-  const [modalDesc, setModalDesc] = useState("");
+
+  // Accessibility: focus trap for modal, keyboard navigation, aria-live for dynamic content
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [mainModalOpen, setMainModalOpen] = useState(false);
+  const [mainModalIndex, setMainModalIndex] = useState(0);
+
+  useEffect(() => {
+    if (mainModalOpen && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [mainModalOpen]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,14 +73,16 @@ const Gallery = () => {
     }
   ];
 
-  const openModal = (img: string, title: string, desc: string) => {
-    setModalImg(img);
-    setModalTitle(title);
-    setModalDesc(desc);
-    setModalOpen(true);
+  // Main Gallery Modal State
+  const openMainModal = (index: number) => {
+    setMainModalIndex(index);
+    setMainModalOpen(true);
   };
-  const closeModal = () => setModalOpen(false);
+  const closeMainModal = () => setMainModalOpen(false);
+  const nextMainModal = () => setMainModalIndex((i) => (i + 1) % galleryItems.length);
+  const prevMainModal = () => setMainModalIndex((i) => (i - 1 + galleryItems.length) % galleryItems.length);
 
+  // Food Gallery Items
   const foodGalleryItems = [
     {
       image: "/images/food/momo.jpg",
@@ -107,34 +116,24 @@ const Gallery = () => {
     }
   ];
 
+  // Food Modal State
   const [foodModalOpen, setFoodModalOpen] = useState(false);
   const [foodModalIndex, setFoodModalIndex] = useState(0);
-
-
   const closeFoodModal = () => setFoodModalOpen(false);
   const nextFoodModal = () => setFoodModalIndex((i) => (i + 1) % foodGalleryItems.length);
   const prevFoodModal = () => setFoodModalIndex((i) => (i - 1 + foodGalleryItems.length) % foodGalleryItems.length);
-
-  // Main Gallery Modal State
-  const [mainModalOpen, setMainModalOpen] = useState(false);
-  const [mainModalIndex, setMainModalIndex] = useState(0);
-  const openMainModal = (index: number) => {
-    setMainModalIndex(index);
-    setMainModalOpen(true);
-  };
-  const closeMainModal = () => setMainModalOpen(false);
-  const nextMainModal = () => setMainModalIndex((i) => (i + 1) % galleryItems.length);
-  const prevMainModal = () => setMainModalIndex((i) => (i - 1 + galleryItems.length) % galleryItems.length);
 
   // Show more/less state for modals
   const [showFullMainDesc, setShowFullMainDesc] = useState(false);
   const [showFullFoodDesc, setShowFullFoodDesc] = useState(false);
 
   return (
-    <section 
+    <section
+      aria-labelledby="gallery-heading"
       ref={sectionRef}
-      id="gallery" 
-      className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      id="gallery"
+      className="relative py-20 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      tabIndex={-1}
     >
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
@@ -153,7 +152,11 @@ const Gallery = () => {
             Visual Journey
           </span>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-100 dark:text-white mb-6">
+          <h2
+            id="gallery-heading"
+            className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-100 dark:text-white mb-6"
+            tabIndex={0}
+          >
             Our <span className="bg-linear-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Gallery</span>
           </h2>
           

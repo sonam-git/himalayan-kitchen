@@ -30,15 +30,17 @@ const Services = () => {
   return (
     <section
       id="services"
+      aria-labelledby="services-heading"
       className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-900 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm transition-colors duration-300"
+      tabIndex={-1}
     >
       {/* Background Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl" aria-hidden="true">
         <div className="absolute top-1/4 -right-48 w-96 h-96 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
       {/* Image as Section Background with Blur Overlay */}
-      <div className="absolute inset-0 w-full h-full z-0">
+      <div className="absolute inset-0 w-full h-full z-0" aria-hidden="true">
         <Image
                src="/images/other/backdrop.png"
                alt="Menu Background"
@@ -61,28 +63,25 @@ const Services = () => {
             <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-6">
               What We Offer
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
+            <h2 id="services-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6" tabIndex={0}>
               Our{" "}
               <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">
                 Services
               </span>
             </h2>
-
             <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed">
               Including our dine-in experience, we offer comprehensive catering
               and event services to bring authentic Himalayan flavors to your
               special occasions.
             </p>
-
             {/* Decorative Line */}
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-8" aria-hidden="true">
               <div className="w-24 h-1 bg-linear-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full"></div>
             </div>
           </div>
         </div>
-
         {/* Enhanced Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-20 w-full max-w-6xl mx-auto ">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" role="list" aria-label="Our services">
           {/* Dine-In Experience */}
           <div
             className={`group h-full flex flex-col justify-stretch transition-all duration-1000 delay-200 rounded-3xl ${
@@ -90,6 +89,7 @@ const Services = () => {
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
             } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
+            role="listitem"
           >
             <div className="relative h-full flex flex-col justify-between  dark:bg-[rgba(220,38,38,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-red-100/50 dark:border-red-800/30 overflow-hidden backdrop-blur-sm">
               {/* Background Pattern */}
@@ -162,6 +162,7 @@ const Services = () => {
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
             } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
+            role="listitem"
           >
             <div className="relative h-full flex flex-col justify-between dark:bg-[rgba(37,99,235,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-blue-100/50 dark:border-blue-800/30 overflow-hidden backdrop-blur-sm">
               {/* Background Pattern */}
@@ -236,13 +237,14 @@ const Services = () => {
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
             } shadow-[0_4px_24px_0_rgba(255,255,255,0.25)] border-2 border-white`}
+            role="listitem"
           >
             <div className="relative h-full flex flex-col justify-between dark:bg-[rgba(16,185,129,0.18)] rounded-3xl p-8 text-center shadow-xl dark:shadow-[0_4px_32px_0_rgba(255,255,255,0.12)] hover:shadow-2xl transition-all duration-500 group-hover:scale-105 border border-green-100/50 dark:border-green-800/30 overflow-hidden backdrop-blur-sm md:col-span-2 lg:col-span-1">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-bl from-green-200/20 to-transparent dark:from-green-700/20 rounded-full transform translate-x-8 -translate-y-8 group-hover:scale-125 transition-transform duration-500"></div>
 
               {/* Enhanced Icon */}
-              <div className="relative w-20 h-20 bg-linear-to-br from-green-600 to-emerald-700 dark:from-green-500 dark:to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 overflow-hidden">
+              <div className="relative w-20 h-20 bg-linear-to-br from-green-600 to-emerald-700 dark:from-green-500 dark:to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 group_hover:rotate-3 transition-all duration-500 overflow-hidden">
                 <svg
                   className="w-10 h-10 text-white relative z-10 group-hover:scale-110 transition-transform duration-300"
                   fill="none"

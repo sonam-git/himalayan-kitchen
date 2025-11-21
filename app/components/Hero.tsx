@@ -1,10 +1,22 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [showHeading, setShowHeading] = useState(true);
+  const [showHeading, setShowHeading] = useState(false);
+  const [showLogoText, setShowLogoText] = useState(false);
+
+  useEffect(() => {
+    // Show video immediately, then after 2s show logo+text, then hide after 5s
+    const showTextTimer = setTimeout(() => setShowLogoText(true), 2000); // show after 2s
+    const hideTextTimer = setTimeout(() => setShowLogoText(false), 7000); // hide after 7s (5s visible)
+    return () => {
+      clearTimeout(showTextTimer);
+      clearTimeout(hideTextTimer);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowHeading(false), 5000); // 5 seconds
@@ -18,50 +30,104 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 w-full">
-      {/* Hero Background Video with enhanced UI */}
-      <div className="absolute inset-0 z-0 w-full rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden border-4 border-linear-to-r from-orange-400 via-yellow-400 to-red-400 animate-border-glow">
-        <video
-          ref={videoRef}
-          src="/videos/herovideo.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="object-cover w-full h-full rounded-lg sm:rounded-xl md:rounded-2xl"
-          style={{ filter: 'none' }} // keep video clear
-        />
-        {/* Soft vignette effect for video edges */}
-        <div className="absolute inset-0 pointer-events-none rounded-lg sm:rounded-xl md:rounded-2xl bg-linear-to-b from-black/10 via-transparent to-black/15"></div>
-        {/* Gradient overlays for better text readability with soft blur */}
-        <div className="absolute inset-0 bg-linear-to-br from-black/20 via-black/10 to-black/20 rounded-lg sm:rounded-xl md:rounded-2xl backdrop-blur-xs"></div>
-        <div className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-black/10 rounded-lg sm:rounded-xl md:rounded-2xl"></div>
-        {/* Gentle scroll indicator at right corner */}
-        <div className="absolute bottom-8 right-8 flex flex-col items-center z-20">
-          <div className="w-8 h-8 rounded-full bg-white/30 flex items-center justify-center animate-bounce shadow-lg">
-            <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
+    <section
+      id="home"
+      aria-labelledby="hero-heading"
+      className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 w-full"
+    >
+      {/* Visually hidden heading for screen readers */}
+      <h1 id="hero-heading" className="sr-only">Welcome to Himalayan Kitchen Marin</h1>
+      {/* Skip to menu anchor for accessibility */}
+      <a href="#menu" className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-yellow-200 text-black px-4 py-2 rounded shadow-lg">Skip to Menu</a>
+      {/* Hero Background Video styled as a TV screen */}
+      <div className="absolute inset-0 z-0 w-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center">
+          {/* TV frame */}
+          <div className="absolute inset-0 rounded-4xl md:rounded-[3.5rem] border-18 md:border-32 border-gray-900 bg-linear-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl tv-frame" aria-hidden="true"></div>
+          {/* Video with TV glass effect */}
+          <video
+            ref={videoRef}
+            src="/videos/herovideo.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="object-cover w-full h-full rounded-4xl md:rounded-[3rem] shadow-xl tv-glass"
+            style={{ filter: 'contrast(1.15) brightness(0.98) saturate(1.1)' }}
+            aria-hidden="true"
+            tabIndex={-1}
+          />
+          {/* Scanline/overlay effect */}
+          <div className="pointer-events-none absolute inset-0 rounded-4xl md:rounded-[3rem] mix-blend-soft-light opacity-60 tv-scanlines" aria-hidden="true"></div>
+          {/* Subtle inner shadow for glass */}
+          <div className="pointer-events-none absolute inset-0 rounded-4xl md:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
         </div>
       </div>
 
+      {/* Content: Logo BG + Heading overlay, fade/zoom in/out */}
+      {showLogoText && (
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+          <div className="relative flex flex-col items-center justify-center w-full h-full">
+            {/* Background Logo */}
+            <Image
+              src="/images/logo/logo-transparentbg.png"
+              alt="Himalayan Kitchen Logo Background"
+              fill
+              className="object-contain opacity-20 animate-hero-logo-fade pointer-events-none select-none"
+              style={{ zIndex: 1 }}
+              aria-hidden="true"
+              priority
+            />
+            {/* Animated Heading */}
+            <span
+              className="relative z-10 flex flex-col items-center justify-center animate-hero-text-zoom"
+              style={{
+                transition: 'opacity 1.5s, transform 1.5s',
+                fontFamily: 'var(--font-tibetan)',
+                WebkitTextStroke: '2px #fff',
+              }}
+            >
+              <span className="block text-center text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight stylish-hero-text fancy-hero-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">
+                TASTES FROM<br/>THE<br/>HIMALAYAS
+              </span>
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        {/* Main Heading */}
-        <div className="mb-8">
-          <h1
-            className={`text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-4 leading-tight hero-title transition-opacity duration-1000 ${showHeading ? 'opacity-100' : 'opacity-0'}`}
-            style={{ transition: 'opacity 1s ease' }}
-          >
-            <span className="block bg-linear-to-r from-orange-300 via-yellow-300 to-red-300 bg-clip-text text-transparent drop-shadow-2xl">
-              TASTES FROM THE
+        {/* Main Heading visually hidden, replaced by sr-only above for aria-labelledby */}
+        {!showLogoText && (
+          <div className="mb-8 flex justify-center items-center" aria-hidden="true">
+            <span
+              className={`inline-flex items-center gap-4 flex-col sm:flex-row group-hero-animate ${showHeading ? 'hero-zoom-in opacity-100' : 'hero-zoom-out opacity-0'}`}
+              style={{ transition: 'opacity 1.5s, transform 1.5s' }}
+            >
+              {/* Food Icon (e.g. steaming bowl) */}
+              <span className="inline-block group-hero-animate-child" aria-hidden="true">
+                <svg className="w-12 h-12 md:w-16 md:h-16 text-orange-400 drop-shadow-xl" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 21c-4.97 0-9-2.24-9-5v-1h18v1c0 2.76-4.03 5-9 5zm7-7H5c-.55 0-1-.45-1-1s.45-1 1-1h14c.55 0 1 .45 1 1s-.45 1-1 1zm-2.5-7c0-1.1-.9-2-2-2s-2 .9-2 2c0 .88.58 1.63 1.38 1.89.13.04.22.16.22.3v.31c0 .18-.14.32-.32.32-.09 0-.17-.03-.23-.09C11.34 9.13 11 8.6 11 8c0-1.66 1.34-3 3-3s3 1.34 3 3c0 .6-.34 1.13-.83 1.43-.06.06-.14.09-.23.09-.18 0-.32-.14-.32-.32v-.31c0-.14.09-.26.22-.3C16.92 8.63 17.5 7.88 17.5 7z"/>
+                </svg>
+              </span>
+              <h2
+                className="relative text-center text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight hero-title stylish-hero-text fancy-hero-text"
+                style={{ fontFamily: 'var(--font-tibetan)' , WebkitTextStroke: '2px #fff' }}
+              >
+                <span className="block animate-hero-text group-hero-animate-child fancy-gradient-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">TASTES FROM</span>
+                <span className="block animate-hero-text group-hero-animate-child fancy-gradient-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">THE</span>
+                <span className="block animate-hero-text group-hero-animate-child fancy-gradient-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">HIMALAYAS</span>
+              </h2>
+              {/* Mountain Icon */}
+              <span className="inline-block group-hero-animate-child" aria-hidden="true">
+                <svg className="w-12 h-12 md:w-16 md:h-16 text-gray-200 dark:text-gray-100 drop-shadow-xl" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 48 48">
+                  <path d="M4 40L24 8l8 12 12 20H4z" fill="currentColor" stroke="currentColor"/>
+                  <path d="M24 8l8 12 4 8" stroke="#fff" strokeWidth="2"/>
+                </svg>
+              </span>
             </span>
-            <span className="block text-white drop-shadow-2xl">
-              HIMALAYAS
-            </span>
-          </h1>
-        </div>
+          </div>
+        )}
       </div>
 
       {/* Action Buttons - Positioned at bottom where scroll indicator was */}
@@ -70,7 +136,7 @@ const Hero = () => {
           {/* Primary CTA - Explore Menu */}
           <button
             onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group relative overflow-hidden bg-linear-to-r from-orange-500 via-red-500 to-red-600 hover:bg-sky-400 text-white font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] cursor-pointer"
+            className="group relative overflow-hidden bg-linear-to-r from-orange-500 via-red-500 to-red-600 text-white font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] cursor-pointer border-2 border-white shadow-xl hover:bg-gray-900 hover:border-gray-900"
             aria-label="Explore our restaurant menu"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -78,18 +144,17 @@ const Hero = () => {
             </svg>
             <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Explore Menu</span>
           </button>
-          
           {/* Secondary CTA - Order Now */}
           <button
             onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
-            className="group relative overflow-hidden bg-white hover:bg-sky-400 hover:text-white backdrop-blur-sm text-gray-900 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] border-2 border-white/30 hover:border-white cursor-pointer"
+            className="group relative overflow-hidden bg-black text-white border-2 border-white font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] shadow-xl hover:bg-white hover:text-black hover:border-gray-900 cursor-pointer"
             aria-label="Order food online for delivery or pickup"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
             <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Order Online</span>
-            <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
+            <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50" aria-hidden="true"></div>
           </button>
         </div>
       </div>
@@ -100,20 +165,71 @@ const Hero = () => {
 export default Hero;
 
 /* Add this to your CSS (e.g. globals.css or in a style tag):
-@keyframes fade-in-out {
-  0% { opacity: 0; transform: translateY(-20px); }
-  10% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-20px); }
+@keyframes hero-zoom-in {
+  0% { opacity: 0; transform: scale(0.8) translateY(40px); }
+  20% { opacity: 1; transform: scale(1.05) translateY(0); }
+  80% { opacity: 1; transform: scale(1.1) translateY(0); }
+  100% { opacity: 0; transform: scale(1.2) translateY(-20px); }
 }
-.animate-fade-in-out {
-  animation: fade-in-out 2.5s ease-in-out;
+.hero-zoom-in {
+  animation: hero-zoom-in 6.5s cubic-bezier(0.4,0,0.2,1) forwards;
 }
-@keyframes border-glow {
-  0%, 100% { box-shadow: 0 0 20px 4px #f59e42, 0 0 40px 8px #fbbf24, 0 0 60px 12px #ef4444; }
-  50% { box-shadow: 0 0 40px 8px #fbbf24, 0 0 60px 12px #ef4444, 0 0 80px 16px #f59e42; }
+.hero-zoom-out {
+  opacity: 0;
+  transform: scale(1.2) translateY(-20px);
+  transition: opacity 1.5s, transform 1.5s;
 }
-.animate-border-glow {
-  animation: border-glow 3s infinite alternate;
+@keyframes hero-text {
+  0% { letter-spacing: 0.1em; filter: blur(8px); opacity: 0; }
+  20% { letter-spacing: 0.2em; filter: blur(0); opacity: 1; }
+  80% { letter-spacing: 0.25em; filter: blur(0); opacity: 1; }
+  100% { letter-spacing: 0.1em; filter: blur(8px); opacity: 0; }
+}
+.animate-hero-text {
+  animation: hero-text 6.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.group-hero-animate {
+  will-change: opacity, transform;
+}
+.group-hero-animate-child {
+  will-change: opacity, transform;
+  animation: hero-zoom-in 6.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.stylish-hero-text {
+  text-shadow: 0 4px 32px #fbbf24, 0 2px 8px #ef4444, 0 1px 1px #fff;
+  letter-spacing: 0.15em;
+}
+.fancy-gradient-text {
+  background: linear-gradient(90deg, #fff 0%, #fbbf24 30%, #ef4444 70%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  filter: drop-shadow(0 2px 16px #fff8) drop-shadow(0 1px 8px #fbbf24cc);
+}
+.fancy-hero-text {
+  text-shadow: 0 0 32px #fff8, 0 2px 8px #fbbf24cc, 0 1px 1px #fff;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .group-hero-animate {
+    flex-direction: column !important;
+  }
+}
+.tv-frame {
+  box-shadow: 0 8px 48px 0 #000a, 0 1.5px 0 0 #fff4 inset;
+}
+.tv-glass {
+  box-shadow: 0 2px 32px #fff4, 0 1.5px 0 0 #fff4 inset;
+}
+.tv-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.04) 0px,
+    rgba(255,255,255,0.04) 1.5px,
+    transparent 1.5px,
+    transparent 4px
+  );
 }
 */

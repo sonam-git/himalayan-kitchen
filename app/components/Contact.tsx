@@ -58,11 +58,12 @@ const Contact = () => {
                 We&apos;d love to hear from you! Send us a message or reach out using the info below.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Contact Form */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
                 <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Contact Us</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-describedby="contact-form-desc">
+                  <div id="contact-form-desc" className="sr-only">Contact form to send a message to Himalayan Kitchen. All fields are required.</div>
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Name</label>
                     <input
@@ -105,9 +106,11 @@ const Contact = () => {
                   >
                     Send Message
                   </button>
-                  {status && (
-                    <p className="mt-4 text-green-600 dark:text-green-400 font-semibold">{status}</p>
-                  )}
+                  <div aria-live="polite">
+                    {status && (
+                      <p className="mt-4 text-green-600 dark:text-green-400 font-semibold">{status}</p>
+                    )}
+                  </div>
                 </form>
               </div>
               {/* Contact Info */}

@@ -2,27 +2,30 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-[#1d0303] dark:bg-[#2a0a0a] text-white overflow-hidden w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4 transition-colors duration-300">
+    <footer id="contact" aria-labelledby="footer-heading" className="bg-[#1d0303] dark:bg-[#2a0a0a] text-white overflow-hidden w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4 transition-colors duration-300" tabIndex={-1}>
+      <h2 id="footer-heading" className="sr-only">Contact and Social Links</h2>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full">
           {/* Restaurant Info & Social */}
           <div className="flex flex-col items-start justify-between h-full">
             {/* Logo above heading using Next.js Image */}
             <Image src="/images/hk-logo.jpg" alt="Himalayan Kitchen Logo" width={96} height={96} className="mb-4" />
-            <h3 className="text-2xl font-bold mb-2 text-white">HIMALAYAN KITCHEN MARIN</h3>
-            <h3 className="text-2xl font-semibold mb-2 text-white">हिमालयन किचन  |  ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</h3>
+            <h3 className="text-2xl font-bold mb-2 text-white" tabIndex={0}>HIMALAYAN KITCHEN MARIN</h3>
+            <h3 className="text-2xl font-semibold mb-2 text-white" tabIndex={0}>
+              हिमालयन किचन  |  ཧི་མ་ལ་ཡན་ཀི་ཇན།
+            </h3>
             <p className="text-gray-300 dark:text-gray-400 mb-6 leading-relaxed">
               Serving and sharing the Himalayan cuisines & cultures. Born and raised in the mountains, 
               we bring authentic flavors from the roof of the world to your table.
             </p>
             <div className="mb-4 w-full ">
-              <span className="text-2xl font-extrabold font-serif text-transparent bg-linear-to-r from-orange-400 via-yellow-400 to-pink-400 bg-clip-text mb-2 drop-shadow-lg flex items-center gap-2">
-                <svg className="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+              <span className="text-2xl font-extrabold font-serif text-transparent bg-linear-to-r from-orange-400 via-yellow-400 to-pink-400 bg-clip-text mb-2 drop-shadow-lg flex items-center gap-2" aria-hidden="true">
+                {/* ...svg... */}
                 Stay connected with us
               </span>
-              <div className="flex justify-between items-center w-full px-3 py-3 rounded-xl bg-white dark:bg-yellow-100 backdrop-blur-md shadow-inner border border-gray-200 dark:border-gray-700">
+              <div className="flex justify-between items-center w-full px-3 py-3 rounded-xl bg-white dark:bg-yellow-100 backdrop-blur-md shadow-inner border border-gray-200 dark:border-gray-700" role="list" aria-label="Social links">
                 {/* Facebook Icon */}
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-1" role="listitem">
                   <a
                     href="https://www.facebook.com/himalayankitchenmarin"
                     target="_blank"
@@ -37,7 +40,7 @@ const Footer = () => {
                   <span className="text-xs text-gray-500 dark:text-gray-700 font-medium">Facebook</span>
                 </div>
                 {/* Instagram Icon */}
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-1" role="listitem">
                   <a
                     href="https://www.instagram.com/himalayankitchenmarin"
                     target="_blank"
@@ -52,7 +55,7 @@ const Footer = () => {
                   <span className="text-xs text-gray-500 dark:text-gray-700 font-medium">Instagram</span>
                 </div>
                 {/* Yelp Icon */}
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-1" role="listitem">
                   <a
                     href="https://www.yelp.com/biz/himalayan-kitchen-san-rafael"
                     target="_blank"
@@ -67,7 +70,7 @@ const Footer = () => {
                   <span className="text-xs text-gray-500 dark:text-gray-700 font-medium">Yelp</span>
                 </div>
                 {/* Google Icon */}
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-1" role="listitem">
                   <a
                     href="https://g.page/r/CQkQwQwQwQwQwQwQwQ"
                     target="_blank"
@@ -87,7 +90,7 @@ const Footer = () => {
                   <span className="text-xs text-gray-500 dark:text-gray-700 font-medium">Google</span>
                 </div>
                 {/* Mail Icon */}
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-1" role="listitem">
                   <a
                     href="mailto:himalayankitchenmarin@gmail.com"
                     className="rounded-md p-2 shadow hover:shadow-lg transition-all border-2 border-yellow-600 hover:border-gray-500"

@@ -156,9 +156,9 @@ const Reviews = () => {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8" role="list" aria-label="Customer reviews">
           {reviews.map((review, index) => (
-            <div
+            <article
               key={review.id}
               className={`group relative flex flex-col justify-between
                 h-[500px] sm:h-[500px] w-full max-w-full
@@ -174,125 +174,58 @@ const Reviews = () => {
                 sm:max-w-full max-w-full
                 `}
               style={{ transitionDelay: `${index * 150}ms` }}
+              aria-label={`Review by ${review.author} from ${review.location}`}
             >
               {/* Date, stars, and source icon row */}
               <div className="flex items-center gap-2 mb-6">
-                {/* Date on the left */}
-                <span className="text-xs text-gray-500 dark:text-gray-400 font-medium font-body mr-2 min-w-[60px] text-left">
-                  {review.date || "Date"}
-                </span>
-                {/* Stars */}
-                <div className="flex dark:text-yellow-400 text-yellow-600 gap-1">
+                <time dateTime={review.date} className="text-xs text-gray-400 dark:text-gray-500 font-semibold">
+                  {review.date}
+                </time>
+                <span className="sr-only" id={`review-rating-${review.id}`}>{review.rating} out of 5 stars</span>
+                <div className="flex text-yellow-400 text-lg" aria-hidden="true" title={`${review.rating} star rating`}>
                   {[...Array(review.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-6 h-6 fill-current drop-shadow-md"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                       <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                     </svg>
                   ))}
                 </div>
-                {/* Source Icon: use custom logo from /images/logo for review source */}
-                {review.source === "yelp" ? (
-                  <span className="inline-flex items-center px-2 py-1 bg-red-600 text-white text-xs font-bold rounded-full ml-2">
-                    <Image
-                      src="/images/logo/yelp.svg"
-                      alt="Yelp Logo"
-                      width={18}
-                      height={18}
-                      className="mr-1"
-                      style={{ minWidth: 18, minHeight: 18 }}
-                    />
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center px-2 py-1 bg-gray-100 text-white text-xs font-bold rounded-full ml-2">
-                    <Image
-                      src="/images/logo/google.svg"
-                      alt="Google Logo"
-                      width={18}
-                      height={18}
-                      className="mr-1"
-                      style={{ minWidth: 18, minHeight: 18 }}
-                    />
-                  </span>
-                )}
-              </div>
-              {/* Review Title above review text with animation, color, and quote icons */}
-              {review.title && (
-                <div className="relative flex items-center justify-center mb-2 w-full">
-                  <div className="flex items-center whitespace-nowrap text-base sm:text-lg font-medium font-serif text-red-600 dark:text-yellow-200 tracking-tight px-4 border border-yellow-200 dark:border-yellow-400 rounded-md py-1 min-w-[300px] max-w-full relative overflow-hidden" style={{borderWidth: '1px', borderStyle: 'solid'}}>
-                    {/* Left quote icon */}
-                    {/* <svg className="shrink-0 w-6 h-6 text-yellow-200 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
-                    </svg> */}
-                    <span className="block w-full overflow-hidden relative" style={{height: '1.5em'}}>
-                      <span className="absolute right-0 animate-marquee" style={{whiteSpace: 'nowrap'}}>{review.title}</span>
-                    </span>
-                    {/* Right quote icon */}
-                    {/* <svg className="shrink-0 w-6 h-6 text-yellow-200 ml-2" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
-                    </svg> */}
-                  </div>
-                  <style jsx>{`
-                    .animate-marquee {
-                      animation: marquee 8s linear infinite;
-                    }
-                    @keyframes marquee {
-                      0% { transform: translateX(100%); }
-                      100% { transform: translateX(-100%); }
-                    }
-                  `}</style>
-                </div>
-              )}
-              {/* Review Text (scrollable for long content) */}
-              <div
-                className={`leading-relaxed group-hover:text-gray-900 dark:group-hover:text-white transition-colors font-serif italic overflow-y-auto h-32 pr-2 sm:text-base text-sm sm:h-auto sm:mb-6 mb-6`}
-                style={{ wordBreak: 'break-word' }}
-              >
-                <blockquote className="text-gray-900 dark:text-white font-serif italic">
-                  &quot;{review.text}&quot;
-                </blockquote>
-              </div>
-              {/* Author Info: name and address as two columns on large screens, two rows on small screens, no date */}
-              <div className="pt-4 border-t dark:border-gray-700/50 border-gray-300 group-hover:border-yellow-500/30 transition-colors w-full">
-                <div className="flex flex-col sm:flex-row sm:items-center w-full">
-                  <div className="flex items-center mb-2 sm:mb-0 sm:mr-4">
-                    <div className="w-12 h-12 border-1 dark:from-red-600 dark:to-orange-600 bg-linear-to-br from-gray-200 to-gray-100 dark:bg-gray-100 rounded-full flex items-center justify-center dark:text-white text-red-700 font-bold text-lg mr-4 shadow-lg group-hover:scale-110 transition-transform">
-                      {review.author.charAt(0)}
-                    </div>
-                    <p className="font-semibold dark:text-white text-gray-900 text-lg font-body break-word">
-                      {review.author}
-                    </p>
-                  </div>
-                  <div className="flex items-center">
-                    <svg
-                      className="w-3 h-3 mr-1"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span className="dark:text-gray-400 text-gray-500 text-sm font-body break-word">
-                      {review.location}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              {/* Verified Badge */}
-              <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="inline-flex items-center px-3 py-1 dark:bg-green-500/20 bg-green-100 border dark:border-green-500/50 border-green-400 rounded-full dark:text-green-400 text-green-700 text-xs font-semibold">
-                  <svg
-                    className="w-3 h-3 mr-1"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                  </svg>
-                  Verified
+                {/* Source icon with aria-label */}
+                <span className="ml-auto flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500 font-semibold" aria-label={`Source: ${review.source}`} title={`Source: ${review.source}`}>
+                  {review.source === 'yelp' && (
+                    <Image src="/images/logo/yelp.svg" alt="Yelp logo" width={20} height={20} className="inline-block w-5 h-5" />
+                  )}
+                  {review.source === 'google' && (
+                    <Image src="/images/logo/google.svg" alt="Google logo" width={20} height={20} className="inline-block w-5 h-5" />
+                  )}
+                  {review.source.charAt(0).toUpperCase() + review.source.slice(1)}
                 </span>
               </div>
-            </div>
+              {/* Review content with scroll for long text on desktop */}
+              <blockquote className="mb-4 flex-1">
+                <div
+                  className="font-bold text-lg md:text-xl mb-2 text-gray-900 dark:text-white transition-all duration-700 ease-in-out group-hover:text-orange-500 animate-fade-in"
+                  style={{ transitionDelay: `${index * 100 + 200}ms` }}
+                  id={`review-title-${review.id}`}
+                >
+                  {review.title}
+                </div>
+                <div className="relative">
+                  <div className="h-52 sm:h-42 md:h-40 lg:h-44 xl:h-52 2xl:h-60 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed">
+                    {review.text}
+                  </div>
+                  {/* Gradient fade for overflow */}
+                  <div className="pointer-events-none absolute bottom-0 left-0 w-full h-8 bg-linear-to-t from-white/90 dark:from-gray-900/90 to-transparent rounded-b-2xl" />
+                </div>
+              </blockquote>
+              <footer className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3">
+                {/* Author initial circle */}
+                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 text-white font-bold text-lg shadow-md">
+                  {review.author.trim().charAt(0)}
+                </span>
+                <span className="font-semibold text-gray-900 dark:text-white">{review.author}</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">{review.location}</span>
+              </footer>
+            </article>
           ))}
         </div>
 

@@ -37,7 +37,7 @@ export default function Home() {
       {/* Full-page blurred background image */}
       <div className="fixed inset-0 min-h-screen h-screen w-screen z-0">
         <Image
-          src="/images/other/brick.png"
+          src="/images/other/stone.webp"
           alt="Page Backdrop"
           fill
           className="object-cover w-full h-full scale-105"
