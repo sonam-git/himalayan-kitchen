@@ -1,23 +1,11 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import Image from 'next/image';
 import PrayerFlagBorder from './PrayerFlagBorder';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showHeading, setShowHeading] = useState(false);
-  const [showLogoText, setShowLogoText] = useState(false);
-
-  useEffect(() => {
-    // Show video immediately, then after 2s show logo+text, then hide after 5s
-    const showTextTimer = setTimeout(() => setShowLogoText(true), 2000); // show after 2s
-    const hideTextTimer = setTimeout(() => setShowLogoText(false), 7000); // hide after 7s (5s visible)
-    return () => {
-      clearTimeout(showTextTimer);
-      clearTimeout(hideTextTimer);
-    };
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowHeading(false), 5000); // 5 seconds
@@ -26,7 +14,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5;
+      videoRef.current.playbackRate = 0.85; // Play a bit faster and smoother
     }
   }, []);
 
@@ -48,7 +36,7 @@ const Hero = () => {
           {/* Video with TV glass effect */}
           <video
             ref={videoRef}
-            src="/videos/herovideo.mp4"
+            src="/videos/HeroMovie.mp4"
             autoPlay
             loop
             muted
@@ -66,60 +54,37 @@ const Hero = () => {
       </div>
 
       {/* Content: Logo BG + Heading overlay, fade/zoom in/out */}
-      {showLogoText && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-          <div className="relative flex flex-col items-center justify-center w-full h-full">
-            {/* Animated Heading */}
-            <span
-              className="relative z-10 flex flex-col items-center justify-center animate-hero-text-zoom"
-              style={{
-                transition: 'opacity 1.5s, transform 1.5s',
-                fontFamily: 'monospace',
-              }}
-            >
-              <span className="block text-center text-2xl xs:text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight">
-                <span style={{ color: '#22d3ee', textShadow: '0 4px 24px #22d3ee99, 0 2px 8px #0ea5e9cc, 0 1px 2px #fff' }}>TASTES FROM</span><br />
-                <span style={{ color: '#38bdf8', textShadow: '0 4px 24px #38bdf899, 0 2px 8px #0ea5e9cc, 0 1px 2px #fff' }}>THE</span><br />
-                <span style={{ color: '#22c55e', textShadow: '0 4px 24px #22c55e99, 0 2px 8px #16a34acc, 0 1px 2px #fff' }}>HIMALAYAS</span>
-              </span>
-            </span>
-          </div>
-        </div>
-      )}
+      {/* Removed showLogoText and animated heading overlay */}
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         {/* Main Heading visually hidden, replaced by sr-only above for aria-labelledby */}
-        {!showLogoText && (
-          <div className="mb-8 flex justify-center items-center" aria-hidden="true">
-            <span
-              className={`inline-flex items-center gap-4 flex-col sm:flex-row group-hero-animate ${showHeading ? 'hero-zoom-in opacity-100' : 'hero-zoom-out opacity-0'}`}
-              style={{ transition: 'opacity 1.5s, transform 1.5s' }}
-            >
-              {/* Food Icon (e.g. steaming bowl) */}
-              <span className="inline-block group-hero-animate-child" aria-hidden="true">
-                <svg className="w-12 h-12 md:w-16 md:h-16 text-orange-400 drop-shadow-xl" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 21c-4.97 0-9-2.24-9-5v-1h18v1c0 2.76-4.03 5-9 5zm7-7H5c-.55 0-1-.45-1-1s.45-1 1-1h14c.55 0 1 .45 1 1s-.45 1-1 1zm-2.5-7c0-1.1-.9-2-2-2s-2 .9-2 2c0 .88.58 1.63 1.38 1.89.13.04.22.16.22.3v.31c0 .18-.14.32-.32.32-.09 0-.17-.03-.23-.09C11.34 9.13 11 8.6 11 8c0-1.66 1.34-3 3-3s3 1.34 3 3c0 .6-.34 1.13-.83 1.43-.06.06-.14.09-.23.09-.18 0-.32-.14-.32-.32v-.31c0-.14.09-.26.22-.3C16.92 8.63 17.5 7.88 17.5 7z"/>
-                </svg>
-              </span>
-              <h2
-                className="relative text-center text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight hero-title stylish-hero-text fancy-hero-text"
-                style={{ fontFamily: 'var(--font-tibetan)' , WebkitTextStroke: '2px #fff' }}
-              >
-                <span className="block animate-hero-text group-hero-animate-child fancy-gradient-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">TASTES FROM</span>
-                <span className="block animate-hero-text group-hero-animate-child fancy-gradient-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">THE</span>
-                <span className="block animate-hero-text group-hero-animate-child fancy-gradient-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">HIMALAYAS</span>
-              </h2>
-              {/* Mountain Icon */}
-              <span className="inline-block group-hero-animate-child" aria-hidden="true">
-                <svg className="w-12 h-12 md:w-16 md:h-16 text-gray-200 dark:text-gray-100 drop-shadow-xl" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 48 48">
-                  <path d="M4 40L24 8l8 12 12 20H4z" fill="currentColor" stroke="currentColor"/>
-                  <path d="M24 8l8 12 4 8" stroke="#fff" strokeWidth="2"/>
-                </svg>
-              </span>
+        <div className="mb-8 flex justify-center items-center" aria-hidden="true">
+          <span
+            className={`inline-flex items-center gap-4 flex-col sm:flex-row group-hero-animate ${showHeading ? 'hero-zoom-in opacity-100' : 'hero-zoom-out opacity-0'}`}
+            style={{ transition: 'opacity 1.5s, transform 1.5s' }}
+          >
+            {/* Food Icon (e.g. steaming bowl) */}
+            <span className="inline-block group-hero-animate-child" aria-hidden="true">
+              <svg className="w-12 h-12 md:w-16 md:h-16 text-orange-400 drop-shadow-xl" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21c-4.97 0-9-2.24-9-5v-1h18v1c0 2.76-4.03 5-9 5zm7-7H5c-.55 0-1-.45-1-1s.45-1 1-1h14c.55 0 1 .45 1 1s-.45 1-1 1zm-2.5-7c0-1.1-.9-2-2-2s-2 .9-2 2c0 .88.58 1.63 1.38 1.89.13.04.22.16.22.3v.31c0 .18-.14.32-.32.32-.09 0-.17-.03-.23-.09C11.34 9.13 11 8.6 11 8c0-1.66 1.34-3 3-3s3 1.34 3 3c0 .6-.34 1.13-.83 1.43-.06.06-.14.09-.23.09-.18 0-.32-.14-.32-.32v-.31c0-.14.09-.26.22-.3C16.92 8.63 17.5 7.88 17.5 7z"/>
+              </svg>
             </span>
-          </div>
-        )}
+            <h2
+              className="relative text-center text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight hero-title stylish-hero-text fancy-hero-text"
+              style={{ fontFamily: 'var(--font-tibetan)' , WebkitTextStroke: '2px #fff' }}
+            >
+              <span className="block animate-hero-text group-hero-animate-child fancy-gradient-text drop-shadow-[0_4px_32px_#fbbf24,0_2px_8px_#ef4444,0_1px_1px_#fff]">HIMALAYAN KITCHEN</span>
+            </h2>
+            {/* Mountain Icon */}
+            <span className="inline-block group-hero-animate-child" aria-hidden="true">
+              <svg className="w-12 h-12 md:w-16 md:h-16 text-gray-200 dark:text-gray-100 drop-shadow-xl" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 48 48">
+                <path d="M4 40L24 8l8 12 12 20H4z" fill="currentColor" stroke="currentColor"/>
+                <path d="M24 8l8 12 4 8" stroke="#fff" strokeWidth="2"/>
+              </svg>
+            </span>
+          </span>
+        </div>
       </div>
 
       {/* Prayer Flag Border */}
