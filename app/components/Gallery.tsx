@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, RefObject } from 'react';
 import Image from 'next/image';
 
 const Gallery = () => {
@@ -127,12 +127,24 @@ const Gallery = () => {
   const [showFullMainDesc, setShowFullMainDesc] = useState(false);
   const [showFullFoodDesc, setShowFullFoodDesc] = useState(false);
 
+  // Add refs for scroll containers
+  const mainGalleryRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
+  const foodGalleryRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
+
+  // Helper to scroll gallery
+  const scrollGallery = (ref: RefObject<HTMLDivElement>, dir: 'left' | 'right') => {
+    if (ref.current) {
+      const scrollAmount = ref.current.offsetWidth * 0.8;
+      ref.current.scrollBy({ left: dir === 'right' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       aria-labelledby="gallery-heading"
       ref={sectionRef}
       id="gallery"
-      className="relative py-20 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      className="relative  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
       tabIndex={-1}
     >
       {/* Background Decorative Elements */}
@@ -141,73 +153,93 @@ const Gallery = () => {
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
       {/* Image as Section Background with Blur Overlay */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <Image src="/images/other/backdrop2.png" alt="Gallery Background" fill priority className="object-cover w-full h-full rounded-2xl sm:rounded-3xl  opacity-80" />
-         <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
-      </div>
+      {/* <div className="absolute inset-0 w-full h-full z-0"> */}
+        {/* <Image src="/images/other/aboutSketch.png" alt="Gallery Background" fill priority className="object-cover w-full h-full rounded-2xl sm:rounded-3xl  opacity-80" /> */}
+         {/* <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div> */}
+      {/* </div> */}
       <div className="relative z-10">
         {/* Header */}
-        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-6">
+        <div className={`text-center mb-6 sm:mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
             Visual Journey
           </span>
           
           <h2
             id="gallery-heading"
-            className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-100 dark:text-white mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-100 dark:text-white mb-3"
             tabIndex={0}
           >
             Our <span className="bg-linear-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Gallery</span>
           </h2>
           
-          <p className="text-lg md:text-xl text-gray-200 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed">
+          {/* <p className="text-lg md:text-xl text-gray-200 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed">
            Discover our signature dishes, cozy ambiance, and heartwarming visits from popular personalities, friends, family, and customers of Himalayan Kitchen worldwide.
-          </p>
+          </p> */}
         </div>
-     <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-4"><span className='text-yellow-300'>Moments at </span> Our Table</h2>
+     <div className="text-center mb-6">
+            <h2 className="text-3xl md:text-4xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-2"><span className='text-yellow-300'>Moments at </span> Our Table</h2>
             <p className="text-lg md:text-xl text-gray-100 dark:text-gray-100 max-w-2xl mx-auto">
              A visual journey of flavor, culture, and connection. Explore our restaurant through beautiful moments, special events, and the wonderful people who have visited us.
             </p>
           </div>
-        {/* Gallery Grid */}
-        <div className={`grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {galleryItems.map((item, index) => (
-            <div 
-              key={index}
-              className="group relative bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 dark:border-gray-700 hover:border-orange-400 dark:hover:border-orange-500 hover:-translate-y-2"
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              {/* Image Container */}
-              <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex flex-col justify-end">
-                <button
-                  className="w-full h-full focus:outline-none"
-                  onClick={() => openMainModal(index)}
-                  aria-label={`View full ${item.title}`}
-                  style={{ position: 'absolute', inset: 0, zIndex: 2 }}
-                ></button>
-                <Image 
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={index < 3}
-                />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                {/* Number Badge */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-orange-600 dark:text-orange-400 font-bold text-sm">{index + 1}</span>
-                </div>
-                {/* Title/Caption and Description at bottom of image */}
-                <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
-                  <h3 className="text-lg font-bold mb-1">{item.title}</h3>
-                  <p className="text-xs sm:text-sm text-left leading-snug">{item.description}</p>
+        {/* Main Gallery - horizontal scroll on all screens, grid fallback if needed */}
+        <div className="relative">
+          <div ref={mainGalleryRef} className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0">
+            {galleryItems.map((item, index) => (
+              <div 
+                key={index}
+                className="group relative bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border-2 border-gray-100 dark:border-gray-700 hover:border-orange-400 dark:hover:border-orange-500 hover:-translate-y-2 min-w-[80vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl"
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {/* Image Container */}
+                <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex flex-col justify-end">
+                  <button
+                    className="w-full h-full focus:outline-none"
+                    onClick={() => openMainModal(index)}
+                    aria-label={`View full ${item.title}`}
+                    style={{ position: 'absolute', inset: 0, zIndex: 2 }}
+                  ></button>
+                  <Image 
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index < 3}
+                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                  {/* Number Badge */}
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-orange-600 dark:text-orange-400 font-bold text-sm">{index + 1}</span>
+                  </div>
+                  {/* Title/Caption and Description at bottom of image */}
+                  <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
+                    <h3 className="text-lg font-bold mb-1">{item.title}</h3>
+                    <p className="text-xs sm:text-sm text-left leading-snug">{item.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Gallery horizontal scroll controls for all screens - now always visible */}
+          <div className="flex justify-between items-center mt-1 px-2">
+            <button
+              className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+              onClick={() => scrollGallery(mainGalleryRef, 'left')}
+              aria-label="Scroll left"
+            >
+              <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <span className="text-sm text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
+            <button
+              className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+              onClick={() => scrollGallery(mainGalleryRef, 'right')}
+              aria-label="Scroll right"
+            >
+              <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+            </button>
+          </div>
         </div>
         {/* Main Gallery Modal */}
         {mainModalOpen && (
@@ -231,7 +263,7 @@ const Gallery = () => {
                   )}
                 </p>
               </div>
-              <div className="flex justify-between items-center w-full mt-6 px-8 gap-4">
+              <div className="flex justify-between items-center w-full mt-2 px-8 gap-4">
                 <button onClick={prevMainModal} aria-label="Previous image" className="text-white text-2xl bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 shadow-lg rounded-full px-4 py-2 hover:scale-110 hover:shadow-2xl focus:outline-none flex items-center gap-2">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
                   <span className="hidden sm:inline font-bold">Prev</span>
@@ -252,16 +284,16 @@ const Gallery = () => {
           </div>
         )}
         {/* Food Gallery Section */}
-        <div className="mt-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-4"><span className='text-yellow-300'>A Feast</span> for Your Eyes</h2>
-            <p className="text-lg md:text-xl text-gray-100 dark:text-gray-100 max-w-2xl mx-auto">
-              Explore the beauty of our authentic and mouth-watering Himalayan dishes. Let the gallery inspire your next dining experience!
-            </p>
+        <div className="mt-24 relative">
+          {/* Heading and description for Food Gallery */}
+          <div className="mb-4 text-center max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-2"><span className='text-yellow-300'>A Feast For </span> Your Eyes</h2>
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300">
+              A showcase of our most popular, authentic and mouth-watering Himalayan dishes. Let the gallery inspire your next dining experience!</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div ref={foodGalleryRef} className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0">
             {foodGalleryItems.map((item, idx) => (
-              <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-500">
+              <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-500 min-w-[80vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl">
                 <button
                   className="w-full h-full focus:outline-none"
                   onClick={() => { setFoodModalIndex(idx); setFoodModalOpen(true); }}
@@ -281,6 +313,24 @@ const Gallery = () => {
                 </div>
               </div>
             ))}
+          </div>
+          {/* Food gallery scroll controls below gallery - always visible */}
+          <div className="flex justify-between items-center mt-1 px-2">
+            <button
+              className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+              onClick={() => scrollGallery(foodGalleryRef, 'left')}
+              aria-label="Scroll left"
+            >
+              <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <span className="text-sm text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
+            <button
+              className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+              onClick={() => scrollGallery(foodGalleryRef, 'right')}
+              aria-label="Scroll right"
+            >
+              <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+            </button>
           </div>
         </div>
         {/* Food Modal */}
@@ -305,7 +355,7 @@ const Gallery = () => {
                   )}
                 </p>
               </div>
-              <div className="flex justify-between items-center w-full mt-6 px-8 gap-4">
+              <div className="flex justify-between items-center w-full mt-2 px-8 gap-4">
                 <button onClick={prevFoodModal} aria-label="Previous image" className="text-white text-2xl bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 shadow-lg rounded-full px-4 py-2 hover:scale-110 hover:shadow-2xl focus:outline-none flex items-center gap-2">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
                   <span className="hidden sm:inline font-bold">Prev</span>

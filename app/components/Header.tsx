@@ -1,49 +1,23 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import PrayerFlagBorder from './PrayerFlagBorder';
 import { useTheme } from '../context/ThemeContext';
 import Accessibility from './Accessibility';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const { isDarkMode, toggleTheme } = useTheme();
   const [isAccessibilityModalOpen, setIsAccessibilityModalOpen] = useState(false);
+  const pathname = usePathname();
 
-  // Track active section on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'menu', 'gallery', 'services', 'contact'];
-      const scrollPosition = window.scrollY + 200; // Increased offset for better detection
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-          
-          // Only change active section if we're clearly in the new section
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            if (activeSection !== section) {
-              setActiveSection(section);
-            }
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Run on mount
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
-
-  // Handle click to immediately update active section
-  const handleNavClick = (sectionId: string) => {
-    setActiveSection(sectionId);
-    setIsMenuOpen(false);
+  // Helper to check if a nav item is active
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
   };
 
   return (
@@ -78,52 +52,39 @@ const Header = () => {
               <nav className="hidden xl:flex items-center justify-center flex-1 px-4 xl:px-8" aria-label="Primary Navigation" role="navigation">
                 <div className="flex items-center gap-6 xl:gap-8 2xl:gap-10">
                   {[
-                    { id: 'home', label: 'Home', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /> },
-                    { id: 'about', label: 'About', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> },
-                    { id: 'menu', label: 'Menu', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /> },
-                    { id: 'gallery', label: 'Gallery', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /> },
-                    // { id: 'services', label: 'Services', icon: <><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.89 3.31.876 2.42 2.42a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.89 1.543-.876 3.31-2.42 2.42a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.89-3.31-.876-2.42-2.42A1.724 1.724 0 004.61 13.725c-1.756-.426-1.756-2.924 0-3.35A1.724 1.724 0 005.676 7.8c-.89-1.543.876-3.31 2.42-2.42.996.575 2.254.24 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></> },
-                    { id: 'catering', label: 'Caterings', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M8 17l4-4 4 4m0 0V7a4 4 0 00-8 0v10z" /> },
-                    { id: 'contact', label: 'Contact', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /> }
-                  ].map(({ id, label, icon }) => (
-                    <a 
-                      key={id} 
-                      href={`#${id}`}
-                      onClick={() => handleNavClick(id)
-                      }
-                      className={`group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 ${
-                        activeSection === id 
-                          ? 'text-red-500 dark:text-red-400' 
-                          : 'text-gray-600 dark:text-white hover:text-red-500 dark:hover:text-red-400'
-                      }`}
-                    >
-                      <svg className={`w-7 h-7 mb-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 ${activeSection === id ? 'scale-110' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        {icon}
-                      </svg>
-                      <span className="relative text-sm xl:text-base font-medium tracking-wide">
-                        {label}
-                        <span className={`block mt-1 h-0.5 bg-linear-to-r from-red-500 to-orange-500 rounded-full transition-all duration-300 ${
-                          activeSection === id ? 'w-full' : 'w-0 group-hover:w-full'
-                        }`}></span>
+                    { id: 'home', label: 'Home', href: '/', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /> },
+                    { id: 'about', label: 'About', href: '/about', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> },
+                    { id: 'menu', label: 'Menu', href: '/menu', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /> },
+                    { id: 'gallery', label: 'Gallery', href: '/gallery', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /> },
+                    { id: 'catering', label: 'Caterings', href: '/catering', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M8 17l4-4 4 4m0 0V7a4 4 0 00-8 0v10z" /> },
+                    { id: 'contact', label: 'Contact', href: '/contact', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /> }
+                  ].map(({ id, label, href, icon }) => (
+                    <Link key={id} href={href}>
+                      <span
+                        className={`group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 ${
+                          isActive(href)
+                            ? 'font-bold text-red-600 dark:text-yellow-300 scale-110'
+                            : 'text-gray-600 dark:text-white hover:text-red-500 dark:hover:text-red-400'
+                        }`}
+                        aria-current={isActive(href) ? 'page' : undefined}
+                        tabIndex={0}
+                        role="link"
+                      >
+                        <svg className={`w-7 h-7 mb-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 ${isActive(href) ? 'text-red-600 dark:text-yellow-300' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          {icon}
+                        </svg>
+                        <span className="relative text-sm xl:text-base font-medium tracking-wide">
+                          {label}
+                          <span className={`block mt-1 h-0.5 rounded-full transition-all duration-300 ${isActive(href) ? 'w-full bg-linear-to-r from-red-500 to-orange-500' : 'w-0 group-hover:w-full bg-linear-to-r from-red-500 to-orange-500'}`}></span>
+                        </span>
                       </span>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </nav>
 
               {/* Right Side Actions */}
               <div className="flex items-center gap-3 md:gap-4 lg:gap-5 xl:gap-6 shrink-0">
-                {/* Call Us Button */}
-                <a 
-                  href="tel:(415) 526-3161" 
-                  className="flex items-center justify-center w-12 h-12 rounded-xl bg-white text-green-800 border-2 border-green-700 dark:bg-white dark:text-green-900 dark:border-green-900 shadow-lg hover:bg-green-50 hover:text-green-900 dark:hover:bg-gray-200 dark:hover:text-green-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400/60 hover:scale-105 active:scale-95"
-                  style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)' }}
-                >
-                  <svg className="w-6 h-6 transition-colors duration-300 text-green-700 dark:text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </a>
-
                 {/* Theme Toggle - always visible on xl+ */}
                 <button 
                   onClick={toggleTheme} 
@@ -195,47 +156,38 @@ const Header = () => {
               {[
                 { id: 'home', label: 'Home', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                ) },
+                ), href: '/' },
                 { id: 'about', label: 'About', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                ) },
+                ), href: '/about' },
                 { id: 'menu', label: 'Menu', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                ) },
+                ), href: '/menu' },
                 { id: 'gallery', label: 'Gallery', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                ) },
+                ), href: '/gallery' },
                 { id: 'catering', label: 'Caterings', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M8 17l4-4 4 4m0 0V7a4 4 0 00-8 0v10z" /></svg>
-                ) },
+                ), href: '/catering' },
                 { id: 'contact', label: 'Contact', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                ) },
-              ].map(({ id, label, icon }) => (
-                <a
-                  key={id}
-                  href={`#${id}`}
-                  onClick={() => { handleNavClick(id); setIsMenuOpen(false); }}
-                  className={`flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 focus:outline-none focus:ring-2 focus:ring-red-400/60 ${activeSection === id ? 'bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300' : 'text-gray-800 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300'}`}
-                  tabIndex={0}
-                >
-                  {icon}
-                  <span className="ml-1">{label}</span>
-                </a>
+                ), href: '/contact' }
+              ].map(({ id, label, icon, href }) => (
+                <Link key={id} href={href}>
+                  <span
+                    className={`flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 focus:outline-none focus:ring-2 focus:ring-red-400/60 ${isActive(href) ? 'text-red-600 dark:text-yellow-300 bg-red-50 dark:bg-red-800' : 'text-gray-800 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300'}`}
+                    tabIndex={0}
+                    aria-current={isActive(href) ? 'page' : undefined}
+                    role="link"
+                    {...(href === '/' ? { onClick: () => setIsMenuOpen(false) } : {})}
+                  >
+                    {icon}
+                    <span className="ml-1">{label}</span>
+                  </span>
+                </Link>
               ))}
-              {/* Action buttons row: Call Us, Theme Toggle, Accessibility */}
+              {/* Action buttons row: Theme Toggle, Accessibility */}
               <div className="flex flex-row mt-3 mb-1 w-full justify-between"> {/* space-between, reduced mt/mb */}
-                {/* Call Us Icon Button */}
-                <a
-                  href="tel:(415) 526-3161"
-                  aria-label="Call Us"
-                  className="flex items-center justify-center w-12 h-12 rounded-xl bg-white text-green-800 border-2 border-green-700 dark:bg-white dark:text-green-900 dark:border-green-900 shadow-lg hover:bg-green-50 hover:text-green-900 dark:hover:bg-gray-200 dark:hover:text-green-900 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400/60 hover:scale-105 active:scale-95"
-                  style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)' }}
-                >
-                  <svg className="w-6 h-6 transition-colors duration-300 text-green-700 dark:text-green-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </a>
                 {/* Theme Toggle Icon Button */}
                 <button
                   onClick={toggleTheme}

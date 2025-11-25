@@ -1,7 +1,9 @@
-
 import "./globals.css";
 import { Inter, Playfair_Display, Dancing_Script } from "next/font/google";
 import { ThemeProvider } from "./context/ThemeContext";
+import Header from './components/Header';
+import Footer from './components/Footer';
+import MobileBottomBar from './components/MobileBottomBar';
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -36,9 +38,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <body className={`${inter.variable} ${playfairDisplay.variable} ${dancingScript.variable} font-sans antialiased overflow-x-hidden `}>
         <ThemeProvider>
-          {children}
+          <Header />
+          <main className="py-20 sm:py-24 lg:py-28">{children}</main>
+          <Footer />
+          <div className="md:hidden">
+            <MobileBottomBar />
+          </div>
         </ThemeProvider>
       </body>
     </html>
   );
-} 
+}

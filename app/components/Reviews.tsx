@@ -6,6 +6,8 @@ import Image from "next/image";
 const Reviews = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  // Add ref for horizontal scroll
+  const reviewsScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,6 +30,14 @@ const Reviews = () => {
       }
     };
   }, []);
+
+  // Helper to scroll reviews
+  const scrollReviews = (dir: 'left' | 'right') => {
+    if (reviewsScrollRef.current) {
+      const scrollAmount = reviewsScrollRef.current.offsetWidth * 0.8;
+      reviewsScrollRef.current.scrollBy({ left: dir === 'right' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   const reviews = [
     {
@@ -95,45 +105,43 @@ const Reviews = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 sm:py-24 lg:py-28  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      className="relative  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
         <div className="absolute top-0 -left-48 w-96 h-96 bg-orange-500/5 dark:bg-orange-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 -right-48 w-96 h-96 bg-red-500/5 dark:bg-red-500/10 rounded-full blur-3xl"></div>
       </div>
-      <div className="absolute inset-0 w-full h-full z-0">
-        <Image
-          src="/images/other/backdrop2.png"
+      {/* <div className="absolute inset-0 w-full h-full z-0"> */}
+        {/* <Image
+          src="/images/other/stone.webp"
           alt="Menu Background"
           fill
           priority
           className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-100 bg-fixed"
-        />
-          <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
-      </div>
+        /> */}
+          {/* <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div> */}
+      {/* </div> */}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`text-center mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-6">
+          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
             Customer Reviews
           </span>
-    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
+    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-3">
       What Our <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">Guests Say</span>
     </h2>
 
           {/* Rating Display */}
-          <div className="flex justify-center items-center gap-8 mb-6 flex-wrap">
-            <div className="text-7xl md:text-8xl font-bold text-red-600 dark:bg-linear-to-br dark:from-yellow-300 dark:to-yellow-500 dark:bg-clip-text dark:text-transparent drop-shadow-lg">
+          <div className="flex justify-center items-center gap-8 mb-3 flex-wrap">
+            <div className="text-7xl md:text-8xl font-bold text-yellow-600 dark:bg-linear-to-br dark:from-yellow-300 dark:to-yellow-500 dark:bg-clip-text dark:text-transparent drop-shadow-lg">
               4.8
             </div>
             <div className="flex flex-col items-start">
-              <div className="flex text-yellow-400 text-3xl mb-2">
+              <div className="flex text-yellow-400 text-3xl mb-1">
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
@@ -146,7 +154,7 @@ const Reviews = () => {
                 ))}
               </div>
               <p className="text-gray-100 dark:text-gray-300 text-base font-medium">
-                Based on 200+ Google & Yelp reviews
+                Based on 200+ Google & Yelp Reviews
               </p>
               <p className="text-gray-100 dark:text-gray-400 text-sm">
                 ⭐ Rated Excellent
@@ -155,13 +163,19 @@ const Reviews = () => {
           </div>
         </div>
 
-        {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8" role="list" aria-label="Customer reviews">
+        {/* Reviews: horizontal scroll on all screens, show 3 at a time on large screens */}
+        <div
+          ref={reviewsScrollRef}
+          className="flex gap-8 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0"
+          role="list"
+          aria-label="Customer reviews"
+          style={{ scrollSnapType: 'x mandatory' }}
+        >
           {reviews.map((review, index) => (
             <article
               key={review.id}
               className={`group relative flex flex-col justify-between
-                h-[500px] sm:h-[500px] w-full max-w-full
+                h-[500px] sm:h-[500px] w-full
                 dark:bg-linear-to-br dark:from-gray-800/80 dark:to-gray-900/80 dark:border-gray-200/50 dark:hover:border-yellow-500/50 dark:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 dark:text-gray-200 dark:hover:text-white dark:border dark:backdrop-blur-sm
                 bg-white border-gray-300 hover:border-yellow-600 shadow-lg hover:shadow-2xl hover:shadow-yellow-500/10 text-gray-900 
                 p-8 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2
@@ -171,7 +185,7 @@ const Reviews = () => {
                 sm:text-base text-sm
                 sm:rounded-2xl rounded-xl
                 sm:mb-0 mb-4
-                sm:max-w-full max-w-full
+                min-w-[85vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl
                 `}
               style={{ transitionDelay: `${index * 150}ms` }}
               aria-label={`Review by ${review.author} from ${review.location}`}
@@ -217,9 +231,9 @@ const Reviews = () => {
                   <div className="pointer-events-none absolute bottom-0 left-0 w-full h-8 bg-linear-to-t from-white/90 dark:from-gray-900/90 to-transparent rounded-b-2xl" />
                 </div>
               </blockquote>
-              <footer className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3">
+              <footer className="mt-auto pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3">
                 {/* Author initial circle */}
-                <span className="flex items-center justify-center w-9 h-9 rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 text-white font-bold text-lg shadow-md">
+                <span className="flex items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 dark:bg-linear-to-br dark:from-orange-400 dark:via-red-400 dark:to-yellow-400 text-white font-bold text-lg shadow-md">
                   {review.author.trim().charAt(0)}
                 </span>
                 <span className="font-semibold text-gray-900 dark:text-white">{review.author}</span>
@@ -228,10 +242,28 @@ const Reviews = () => {
             </article>
           ))}
         </div>
+        {/* Slide controls below reviews for all screens */}
+        <div className="flex justify-between items-center mt-1 px-2">
+          <button
+            className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+            onClick={() => scrollReviews('left')}
+            aria-label="Scroll left"
+          >
+            <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <span className="text-xs text-gray-500 dark:text-gray-300 font-semibold tracking-wide">Slide for more</span>
+          <button
+            className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+            onClick={() => scrollReviews('right')}
+            aria-label="Scroll right"
+          >
+            <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
 
         {/* Call to Action Section */}
         <div
-          className={`text-center mt-16 transition-all duration-1000 delay-500 ${
+          className={`text-center mt-6 transition-all duration-1000 delay-500 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         ></div>

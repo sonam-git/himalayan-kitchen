@@ -10,12 +10,12 @@ const PrayerFlagBorder = () => {
   
   return (
     <div className="flex w-full h-2">
-      {/* Mobile: 2 repetitions (10 flags), Desktop: 20 repetitions (100 flags) */}
-      {Array.from({ length: 20 }).map((_, setIndex) => (
+      {/* Mobile: 2 repetitions (10 flags), Desktop: 4 repetitions (20 flags, 5 colors only) */}
+      {Array.from({ length: 4 }).map((_, setIndex) => (
         flags.map((colorClass, colorIndex) => (
           <div 
             key={`${setIndex}-${colorIndex}`} 
-            className={`w-24 ${colorClass} ${setIndex >= 2 ? 'hidden md:block' : ''}`}
+            className={`w-24 ${colorClass}`}
           />
         ))
       ))}
