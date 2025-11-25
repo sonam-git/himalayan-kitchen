@@ -87,7 +87,7 @@ const MenuSection = () => {
       ref={sectionRef}
       id="menu" 
       aria-labelledby="menu-heading"
-      className="relative py-20 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      className="relative transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
     >
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
@@ -125,20 +125,21 @@ const MenuSection = () => {
               </div>
             ))}
           </div>
-          <div className="flex flex-row items-center justify-center mt-2 mb-1 gap-2 w-full">
+          <div className="flex flex-row items-center justify-center mt-2 mb-6 gap-2 w-full">
             <button
-              className="rounded-full p-1.5 md:p-2 bg-transparent shadow-none hover:bg-white hover:border-orange-400 border border-transparent transition w-8 h-8 md:w-10 md:h-10 flex items-center justify-center"
+              className="rounded-full p-1.5 md:p-2 bg-transparent shadow-none hover:bg-white hover:border-orange-400 border border-transparent transition w-8 h-8 md:w-10 md:h-10 flex items-center justify-center group"
               onClick={() => {
                 if (featuredDishesScrollRef.current) {
                   featuredDishesScrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
                 }
               }}
               aria-label="Scroll left"
+              type="button"
             >
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
             </button>
             <button
-              className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white text-sm md:text-lg font-extrabold shadow-xl border-2 border-white hover:bg-white hover:text-gray-900 hover:border-orange-400 hover:bg-gradient-to-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-[160px] md:min-w-[200px]"
+              className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white text-sm md:text-lg font-extrabold shadow-xl border-2 border-white hover:bg-gray-100 hover:text-gray-900 hover:border-orange-400 hover:[&>svg]:text-orange-500 hover:[&>svg]:stroke-orange-500 hover:bg-gradient-to-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline"
               onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
               tabIndex={0}
               aria-label="Go to full menu ordering page"
@@ -147,18 +148,19 @@ const MenuSection = () => {
               <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-orange-500 transition-colors duration-300 drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-              <span className="drop-shadow font-extrabold tracking-wide group-hover:underline group-hover:decoration-orange-400 group-hover:decoration-2 group-hover:animate-[flip_0.6s_ease-in-out] transition-all duration-200">Browse Full Selection</span>
+              <span className="drop-shadow font-extrabold tracking-wide group-hover:no-underline group-hover:decoration-orange-400 group-hover:decoration-2 group-hover:animate-[flip_0.6s_ease-in-out] transition-all duration-200 no-underline">Browse Full Selection</span>
             </button>
             <button
-              className="rounded-full p-1.5 md:p-2 bg-transparent shadow-none hover:bg-white hover:border-orange-400 border border-transparent transition w-8 h-8 md:w-10 md:h-10 flex items-center justify-center"
+              className="rounded-full p-1.5 md:p-2 bg-transparent shadow-none hover:bg-white hover:border-orange-400 border border-transparent transition w-8 h-8 md:w-10 md:h-10 flex items-center justify-center group"
               onClick={() => {
                 if (featuredDishesScrollRef.current) {
                   featuredDishesScrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
                 }
               }}
               aria-label="Scroll right"
+              type="button"
             >
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
         </div>

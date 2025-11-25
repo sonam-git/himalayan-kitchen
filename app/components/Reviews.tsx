@@ -128,39 +128,43 @@ const Reviews = () => {
         <div
           className={`text-center mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
+              <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
           <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
-            Customer Reviews
+           Customer Reviews
           </span>
+          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+        </div>
     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-3">
       What Our <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">Guests Say</span>
     </h2>
 
           {/* Rating Display */}
-          <div className="flex justify-center items-center gap-8 mb-3 flex-wrap">
-            <div className="text-7xl md:text-8xl font-bold text-yellow-600 dark:bg-linear-to-br dark:from-yellow-300 dark:to-yellow-500 dark:bg-clip-text dark:text-transparent drop-shadow-lg">
-              4.8
-            </div>
-            <div className="flex flex-col items-start">
-              <div className="flex text-yellow-400 text-3xl mb-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-7 h-7 fill-current drop-shadow-lg animate-pulse"
-                    style={{ animationDelay: `${i * 100}ms` }}
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-gray-100 dark:text-gray-300 text-base font-medium">
-                Based on 200+ Google & Yelp Reviews
-              </p>
-              <p className="text-gray-100 dark:text-gray-400 text-sm">
-                ⭐ Rated Excellent
-              </p>
-            </div>
+          <div className="flex justify-center items-center gap-4 sm:gap-8 mb-3 flex-nowrap sm:flex-wrap">
+          <div className="text-5xl sm:text-7xl md:text-8xl font-bold text-yellow-600 dark:bg-linear-to-br dark:from-yellow-300 dark:to-yellow-500 dark:bg-clip-text dark:text-transparent drop-shadow-lg">
+            4.8
           </div>
+          <div className="flex flex-col items-start min-w-[140px] sm:min-w-0">
+            <div className="flex text-yellow-400 text-2xl sm:text-3xl mb-1">
+              {[...Array(5)].map((_, i) => (
+                <svg
+                  key={i}
+                  className="w-5 h-5 sm:w-7 sm:h-7 fill-current drop-shadow-lg animate-pulse"
+                  style={{ animationDelay: `${i * 100}ms` }}
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+              ))}
+            </div>
+            <p className="text-gray-100 dark:text-gray-300 text-xs sm:text-base font-medium">
+              Based on 200+ Google & Yelp Reviews
+            </p>
+            <p className="text-gray-100 dark:text-gray-400 text-xs sm:text-sm">
+              ⭐ Rated Excellent
+            </p>
+          </div>
+        </div>
         </div>
 
         {/* Reviews: horizontal scroll on all screens, show 3 at a time on large screens */}
@@ -251,7 +255,7 @@ const Reviews = () => {
           >
             <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
           </button>
-          <span className="text-xs text-gray-500 dark:text-gray-300 font-semibold tracking-wide">Slide for more</span>
+          <span className="text-xs text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
           <button
             className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
             onClick={() => scrollReviews('right')}
@@ -260,6 +264,9 @@ const Reviews = () => {
             <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
+             <div className="w-full flex justify-center items-center">
+              <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
+            </div>
 
         {/* Call to Action Section */}
         <div

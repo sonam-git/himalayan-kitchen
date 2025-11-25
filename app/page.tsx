@@ -47,13 +47,7 @@ export default function Home() {
           {/* Content sections with side spacing and gaps between sections */}
           <div className="space-y-8 sm:space-y-12 lg:space-y-16 mx-4 sm:mx-6 lg:mx-8 xl:mx-12 2xl:mx-16 ">
             <MenuSection />
-            <div className="w-full flex justify-center items-center">
-              <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
-            </div>
             <Reviews />
-            <div className="w-full flex justify-center items-center">
-              <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
-            </div>
             <Gallery />
           </div>
         </main>

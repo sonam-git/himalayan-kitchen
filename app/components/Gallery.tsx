@@ -43,8 +43,8 @@ const Gallery = () => {
   const galleryItems = [
     {
       image: "/images/gallery/everestman.jpg",
-      title: "Everest Man Kami Rita Sherpa",
-      description: "The only person to have summited mount everest 31 times holding guinness world record visiting our restaurant."
+      title: "Everest Man Kami Rita Sherpa (Right)",
+      description: "The only person to have summited Mount Everest 31 times holding Guinness World Record visiting our restaurant."
     },
     {
       image: "/images/gallery/hkitchen.jpg",
@@ -160,9 +160,13 @@ const Gallery = () => {
       <div className="relative z-10">
         {/* Header */}
         <div className={`text-center mb-6 sm:mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
           <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
             Visual Journey
           </span>
+          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+        </div>
           
           <h2
             id="gallery-heading"
@@ -283,12 +287,15 @@ const Gallery = () => {
             </div>
           </div>
         )}
+             <div className="w-full flex justify-center items-center">
+              <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
+            </div>
         {/* Food Gallery Section */}
         <div className="mt-24 relative">
           {/* Heading and description for Food Gallery */}
           <div className="mb-4 text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-2"><span className='text-yellow-300'>A Feast For </span> Your Eyes</h2>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300">
+            <p className="text-base sm:text-lg text-gray-100 dark:text-gray-300">
               A showcase of our most popular, authentic and mouth-watering Himalayan dishes. Let the gallery inspire your next dining experience!</p>
           </div>
           <div ref={foodGalleryRef} className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0">
@@ -333,6 +340,9 @@ const Gallery = () => {
             </button>
           </div>
         </div>
+             <div className="w-full flex justify-center items-center">
+              <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
+            </div>
         {/* Food Modal */}
         {foodModalOpen && (
           <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black bg-opacity-80" onClick={closeFoodModal}>

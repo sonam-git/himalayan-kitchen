@@ -49,20 +49,18 @@ const Hero = () => {
       </div>
       {/* Content: Logo BG + Heading overlay, fade/zoom in/out */}
       {/* Main Hero Overlay Content - center of screen, two lines, responsive */}
-      <div className="absolute left-0 right-0 top-1/2 -translate-y-[60%] z-20 flex flex-col items-center justify-center px-4 sm:px-8 lg:px-0 pointer-events-none">
+      <div className="relative z-20 flex flex-col items-center justify-center px-4 sm:px-8 lg:px-0 pointer-events-none mt-0 mb-0">
         <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 pointer-events-auto leading-tight">
           <span className="block w-full">Taste From The</span>
           <span className="block w-full tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
             HIMALAYAS
           </span>
         </h2>
-        <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-0 font-serif drop-shadow-lg pointer-events-auto ">
+        <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 font-serif drop-shadow-lg pointer-events-auto ">
           Experience authentic Himalayan flavors, crafted with passion and tradition.
         </p>
-      </div>
-      {/* Action Buttons - move further below text */}
-      <div className="absolute left-1/2 top-[75%] -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-stretch sm:items-center hero-buttons">
+        {/* Action Buttons - always below subtext, never overlapping */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl mx-auto pointer-events-auto">
           {/* Primary CTA - Explore Menu */}
           <button
             onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
