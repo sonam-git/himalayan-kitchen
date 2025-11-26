@@ -16,6 +16,7 @@ export default {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
         serif: ['var(--font-playfair)', 'Playfair Display', 'serif'],
         script: ['var(--font-dancing)', 'Dancing Script', 'cursive'],
+        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         'container': '1400px',

@@ -3,6 +3,44 @@
 import React, { useEffect, useRef, useState, RefObject } from 'react';
 import Image from 'next/image';
 
+type FoodModalContentProps = {
+  foodGalleryItems: Array<{ image: string; title: string; description: string }>;
+  foodModalIndex: number;
+  showFullFoodDesc: boolean;
+  setShowFullFoodDesc: React.Dispatch<React.SetStateAction<boolean>>;
+  showFoodModalText: boolean;
+};
+
+function FoodModalContent({ foodGalleryItems, foodModalIndex, showFullFoodDesc, setShowFullFoodDesc, showFoodModalText }: FoodModalContentProps) {
+  return (
+    <div className="relative w-full max-w-2xl sm:max-w-3xl flex flex-col items-center">
+      {/* Decorative Frame fits image */}
+      <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
+      {/* Image */}
+      <Image src={foodGalleryItems[foodModalIndex].image} alt={foodGalleryItems[foodModalIndex].title} width={900} height={650} className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto max-h-[70vh] object-contain z-10" />
+      {/* Title and Description overlay on image with blurred background, delayed display and auto-hide */}
+      {showFoodModalText && (
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30" style={{marginTop: '0'}}>
+          <h3 className="text-lg sm:text-2xl font-bold mb-2 font-headline">{foodGalleryItems[foodModalIndex].title}</h3>
+          <p className="text-sm italic sm:text-base leading-snug font-body">
+            {showFullFoodDesc || foodGalleryItems[foodModalIndex].description.length <= 180
+              ? foodGalleryItems[foodModalIndex].description
+              : `${foodGalleryItems[foodModalIndex].description.slice(0, 180)}...`}
+            {foodGalleryItems[foodModalIndex].description.length > 180 && (
+              <button
+                className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
+                onClick={() => setShowFullFoodDesc(v => !v)}
+              >
+                {showFullFoodDesc ? 'Less' : 'More'}
+              </button>
+            )}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const Gallery = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -77,7 +115,26 @@ const Gallery = () => {
   const openMainModal = (index: number) => {
     setMainModalIndex(index);
     setMainModalOpen(true);
+    setShowMainModalText(false); // Hide text initially
   };
+
+  // Delay showing modal text by 2s, hide after 5s
+  const [showMainModalText, setShowMainModalText] = useState(false);
+  useEffect(() => {
+    let showTimer: NodeJS.Timeout;
+    let hideTimer: NodeJS.Timeout;
+    if (mainModalOpen) {
+      showTimer = setTimeout(() => setShowMainModalText(true), 2000);
+      hideTimer = setTimeout(() => setShowMainModalText(false), 7000); // 2s show + 5s visible
+    } else {
+      setShowMainModalText(false);
+    }
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, [mainModalOpen, mainModalIndex]);
+
   const closeMainModal = () => setMainModalOpen(false);
   const nextMainModal = () => setMainModalIndex((i) => (i + 1) % galleryItems.length);
   const prevMainModal = () => setMainModalIndex((i) => (i - 1 + galleryItems.length) % galleryItems.length);
@@ -126,6 +183,21 @@ const Gallery = () => {
   // Show more/less state for modals
   const [showFullMainDesc, setShowFullMainDesc] = useState(false);
   const [showFullFoodDesc, setShowFullFoodDesc] = useState(false);
+
+  // Food modal text overlay state (delayed show, auto-hide)
+  const [showFoodModalText, setShowFoodModalText] = useState(false);
+  useEffect(() => {
+    let showTimer: NodeJS.Timeout;
+    let hideTimer: NodeJS.Timeout;
+    if (foodModalOpen) {
+      showTimer = setTimeout(() => setShowFoodModalText(true), 2000);
+      hideTimer = setTimeout(() => setShowFoodModalText(false), 7000);
+    }
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, [foodModalOpen, foodModalIndex]);
 
   // Add refs for scroll containers
   const mainGalleryRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
@@ -220,7 +292,7 @@ const Gallery = () => {
                   {/* Title/Caption and Description at bottom of image */}
                   <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
                     <h3 className="text-lg font-bold mb-1">{item.title}</h3>
-                    <p className="text-xs sm:text-sm text-left leading-snug">{item.description}</p>
+                    <p className="text-xs italic sm:text-sm text-left leading-snug">{item.description}</p>
                   </div>
                 </div>
               </div>
@@ -248,26 +320,34 @@ const Gallery = () => {
         {/* Main Gallery Modal */}
         {mainModalOpen && (
           <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black bg-opacity-80" onClick={closeMainModal}>
-            <div className="relative max-w-3xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
-              <Image src={galleryItems[mainModalIndex].image} alt={galleryItems[mainModalIndex].title} width={900} height={650} className="rounded-xl shadow-2xl w-full h-auto max-h-[80vh] object-contain" />
-              {/* Title and Description overlay on image with blurred background */}
-              <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 w-[90%] max-w-2xl px-6 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-md rounded-xl text-white text-center drop-shadow-lg flex flex-col items-center">
-                <h3 className="text-2xl font-bold mb-2">{galleryItems[mainModalIndex].title}</h3>
-                <p className="text-base sm:text-lg leading-snug">
-                  {showFullMainDesc || galleryItems[mainModalIndex].description.length <= 180
-                    ? galleryItems[mainModalIndex].description
-                    : `${galleryItems[mainModalIndex].description.slice(0, 180)}...`}
-                  {galleryItems[mainModalIndex].description.length > 180 && (
-                    <button
-                      className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
-                      onClick={() => setShowFullMainDesc(v => !v)}
-                    >
-                      {showFullMainDesc ? 'Less' : 'More'}
-                    </button>
-                  )}
-                </p>
+            <div className="relative max-w-full w-full flex flex-col items-center mt-12 sm:mt-20 px-2 sm:px-0" onClick={e => e.stopPropagation()}>
+              {/* Frame and image container */}
+              <div className="relative w-full max-w-2xl sm:max-w-3xl flex flex-col items-center">
+                {/* Decorative Frame fits image */}
+                <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
+                {/* Image */}
+                <Image src={galleryItems[mainModalIndex].image} alt={galleryItems[mainModalIndex].title} width={900} height={650} className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto max-h-[70vh] object-contain z-10" />
+                {/* Title and Description overlay on image with blurred background, delayed display and auto-hide */}
+                {showMainModalText && (
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30" style={{marginTop: '0'}}>
+                    <h3 className="text-lg sm:text-2xl font-bold mb-2 font-headline">{galleryItems[mainModalIndex].title}</h3>
+                    <p className="text-sm sm:text-base italic leading-snug font-body">
+                      {showFullMainDesc || galleryItems[mainModalIndex].description.length <= 180
+                        ? galleryItems[mainModalIndex].description
+                        : `${galleryItems[mainModalIndex].description.slice(0, 180)}...`}
+                      {galleryItems[mainModalIndex].description.length > 180 && (
+                        <button
+                          className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
+                          onClick={() => setShowFullMainDesc(v => !v)}
+                        >
+                          {showFullMainDesc ? 'Less' : 'More'}
+                        </button>
+                      )}
+                    </p>
+                  </div>
+                )}
               </div>
-              <div className="flex justify-between items-center w-full mt-2 px-8 gap-4">
+              <div className="flex justify-between items-center w-full max-w-2xl sm:max-w-3xl mt-2 px-2 sm:px-8 gap-4 z-40">
                 <button onClick={prevMainModal} aria-label="Previous image" className="text-white text-2xl bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 shadow-lg rounded-full px-4 py-2 hover:scale-110 hover:shadow-2xl focus:outline-none flex items-center gap-2">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
                   <span className="hidden sm:inline font-bold">Prev</span>
@@ -346,26 +426,16 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black bg-opacity-80" onClick={closeFoodModal}>
-            <div className="relative max-w-2xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
-              <Image src={foodGalleryItems[foodModalIndex].image} alt={foodGalleryItems[foodModalIndex].title} width={900} height={650} className="rounded-xl shadow-2xl w-full h-auto max-h-[80vh] object-contain" />
-              {/* Title and Description overlay on image with blurred background */}
-              <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 w-[90%] max-w-2xl px-6 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-md rounded-xl text-white text-center drop-shadow-lg flex flex-col items-center">
-                <h3 className="text-2xl font-bold mb-2">{foodGalleryItems[foodModalIndex].title}</h3>
-                <p className="text-base sm:text-lg leading-snug">
-                  {showFullFoodDesc || foodGalleryItems[foodModalIndex].description.length <= 180
-                    ? foodGalleryItems[foodModalIndex].description
-                    : `${foodGalleryItems[foodModalIndex].description.slice(0, 180)}...`}
-                  {foodGalleryItems[foodModalIndex].description.length > 180 && (
-                    <button
-                      className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
-                      onClick={() => setShowFullFoodDesc(v => !v)}
-                    >
-                      {showFullFoodDesc ? 'Less' : 'More'}
-                    </button>
-                  )}
-                </p>
-              </div>
-              <div className="flex justify-between items-center w-full mt-2 px-8 gap-4">
+            <div className="relative max-w-full w-full flex flex-col items-center mt-12 sm:mt-20 px-2 sm:px-0" onClick={e => e.stopPropagation()}>
+              {/* Frame and image container for food modal */}
+              <FoodModalContent
+                foodGalleryItems={foodGalleryItems}
+                foodModalIndex={foodModalIndex}
+                showFullFoodDesc={showFullFoodDesc}
+                setShowFullFoodDesc={setShowFullFoodDesc}
+                showFoodModalText={showFoodModalText}
+              />
+              <div className="flex justify-between items-center w-full max-w-2xl sm:max-w-3xl mt-2 px-2 sm:px-8 gap-4 z-40">
                 <button onClick={prevFoodModal} aria-label="Previous image" className="text-white text-2xl bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 shadow-lg rounded-full px-4 py-2 hover:scale-110 hover:shadow-2xl focus:outline-none flex items-center gap-2">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
                   <span className="hidden sm:inline font-bold">Prev</span>

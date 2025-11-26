@@ -1,20 +1,7 @@
-import Image from 'next/image';
 
 const SocialMedia = () => {
   return (
-    <section aria-labelledby="social-heading" className="relative py-20 sm:py-24 lg:py-28 bg-gray-50 dark:bg-gray-400 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm border-2 border-gray-200 dark:border-gray-700 p-6 sm:p-8" tabIndex={-1}>
-      {/* Image as Section Background with Blur Overlay */}
-      <div className="absolute inset-0 w-full h-full z-0" aria-hidden="true">
-        <Image 
-          src="/images/other/stone.webp" 
-          alt="Social Media Background" 
-          fill
-          sizes="100vw"
-          className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-80"
-          priority
-        />
-        <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/90 dark:via-gray-900/80 dark:to-black/90 rounded-2xl sm:rounded-3xl z-0"></div>
-      </div>
+    <section aria-labelledby="social-heading" className="relative py-20 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm  p-6 sm:p-8" tabIndex={-1}>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center mb-4" aria-hidden="true">

@@ -185,7 +185,7 @@ const About = () => {
               <div className="prose prose-lg text-gray-700 dark:text-white space-y-6">
                 <p className="text-md leading-relaxed text-white">
                   Welcome to{" "}
-                  <span className="font-bold text-red-300 dark:text-red-400">
+                  <span className="font-bold text-yellow-300 dark:text-yellow-400">
                     Himalayan Kitchen
                   </span>
                   , a family-owned restaurant operated by a Sherpa family from
@@ -334,7 +334,7 @@ const About = () => {
                             2024
                           </span>
                           , renowned climber{" "}
-                          <span className="font-bold text-red-400">
+                          <span className="font-bold text-yellow-400">
                             Pema Chhiring Sherpa
                           </span>
                           , a close relative of the HK family, proudly

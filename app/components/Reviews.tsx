@@ -105,7 +105,7 @@ const Reviews = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      className="relative  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm font-body"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
@@ -123,29 +123,29 @@ const Reviews = () => {
           {/* <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div> */}
       {/* </div> */}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-headline">
         {/* Header Section */}
         <div
           className={`text-center mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
               <div className="flex items-center justify-center gap-4 mb-6">
           <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
-          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
+          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6 font-headline">
            Customer Reviews
           </span>
           <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-3">
-      What Our <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">Guests Say</span>
+    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-3 font-headline">
+      What Our <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent font-headline">Guests Say</span>
     </h2>
 
           {/* Rating Display */}
-          <div className="flex justify-center items-center gap-4 sm:gap-8 mb-3 flex-nowrap sm:flex-wrap">
+          <div className="flex justify-center items-center gap-4 sm:gap-8 mb-3 flex-nowrap sm:flex-wrap font-headline">
           <div className="text-5xl sm:text-7xl md:text-8xl font-bold text-yellow-600 dark:bg-linear-to-br dark:from-yellow-300 dark:to-yellow-500 dark:bg-clip-text dark:text-transparent drop-shadow-lg">
             4.8
           </div>
           <div className="flex flex-col items-start min-w-[140px] sm:min-w-0">
-            <div className="flex text-yellow-400 text-2xl sm:text-3xl mb-1">
+            <div className="flex text-yellow-400 text-2xl sm:text-3xl mb-1 font-headline">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
@@ -157,10 +157,10 @@ const Reviews = () => {
                 </svg>
               ))}
             </div>
-            <p className="text-gray-100 dark:text-gray-300 text-xs sm:text-base font-medium">
+            <p className="text-gray-100 dark:text-gray-300 text-xs sm:text-base font-medium font-body">
               Based on 200+ Google & Yelp Reviews
             </p>
-            <p className="text-gray-100 dark:text-gray-400 text-xs sm:text-sm">
+            <p className="text-gray-100 dark:text-gray-400 text-xs sm:text-sm font-body">
               ⭐ Rated Excellent
             </p>
           </div>
@@ -170,7 +170,7 @@ const Reviews = () => {
         {/* Reviews: horizontal scroll on all screens, show 3 at a time on large screens */}
         <div
           ref={reviewsScrollRef}
-          className="flex gap-8 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0"
+          className="flex gap-8 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 font-body"
           role="list"
           aria-label="Customer reviews"
           style={{ scrollSnapType: 'x mandatory' }}
@@ -196,11 +196,11 @@ const Reviews = () => {
             >
               {/* Date, stars, and source icon row */}
               <div className="flex items-center gap-2 mb-6">
-                <time dateTime={review.date} className="text-xs text-gray-400 dark:text-gray-500 font-semibold">
+                <time dateTime={review.date} className="text-xs text-gray-400 dark:text-gray-500 font-semibold font-body">
                   {review.date}
                 </time>
                 <span className="sr-only" id={`review-rating-${review.id}`}>{review.rating} out of 5 stars</span>
-                <div className="flex text-yellow-400 text-lg" aria-hidden="true" title={`${review.rating} star rating`}>
+                <div className="flex text-yellow-400 text-lg font-headline" aria-hidden="true" title={`${review.rating} star rating`}>
                   {[...Array(review.rating)].map((_, i) => (
                     <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                       <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -208,7 +208,7 @@ const Reviews = () => {
                   ))}
                 </div>
                 {/* Source icon with aria-label */}
-                <span className="ml-auto flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500 font-semibold" aria-label={`Source: ${review.source}`} title={`Source: ${review.source}`}>
+                <span className="ml-auto flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500 font-semibold font-body" aria-label={`Source: ${review.source}`} title={`Source: ${review.source}`}>
                   {review.source === 'yelp' && (
                     <Image src="/images/logo/yelp.svg" alt="Yelp logo" width={20} height={20} className="inline-block w-5 h-5" />
                   )}
@@ -219,29 +219,29 @@ const Reviews = () => {
                 </span>
               </div>
               {/* Review content with scroll for long text on desktop */}
-              <blockquote className="mb-4 flex-1">
+              <blockquote className="mb-4 flex-1 font-body">
                 <div
-                  className="font-bold text-lg md:text-xl mb-2 text-gray-900 dark:text-white transition-all duration-700 ease-in-out group-hover:text-orange-500 animate-fade-in"
+                  className="font-bold text-md md:text-md mb-2 text-gray-900 dark:text-white transition-all duration-700 ease-in-out group-hover:text-orange-500 animate-fade-in font-headline"
                   style={{ transitionDelay: `${index * 100 + 200}ms` }}
                   id={`review-title-${review.id}`}
                 >
                   {review.title}
                 </div>
                 <div className="relative">
-                  <div className="h-52 sm:h-42 md:h-40 lg:h-44 xl:h-52 2xl:h-60 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed">
+                  <div className="h-52 sm:h-42 md:h-40 lg:h-44 xl:h-52 2xl:h-60 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed italic font-poppins">
                     {review.text}
                   </div>
                   {/* Gradient fade for overflow */}
                   <div className="pointer-events-none absolute bottom-0 left-0 w-full h-8 bg-linear-to-t from-white/90 dark:from-gray-900/90 to-transparent rounded-b-2xl" />
                 </div>
               </blockquote>
-              <footer className="mt-auto pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3">
+              <footer className="mt-auto pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3 font-body">
                 {/* Author initial circle */}
                 <span className="flex items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 dark:bg-linear-to-br dark:from-orange-400 dark:via-red-400 dark:to-yellow-400 text-white font-bold text-lg shadow-md">
                   {review.author.trim().charAt(0)}
                 </span>
-                <span className="font-semibold text-gray-900 dark:text-white">{review.author}</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">{review.location}</span>
+                <span className="font-semibold text-gray-900 dark:text-white font-headline">{review.author}</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 font-body">{review.location}</span>
               </footer>
             </article>
           ))}

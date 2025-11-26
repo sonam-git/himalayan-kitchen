@@ -12,6 +12,21 @@ const MenuSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
+  // Food modal text overlay state (delayed show, auto-hide)
+  const [showModalText, setShowModalText] = useState(false);
+  useEffect(() => {
+    let showTimer: NodeJS.Timeout;
+    let hideTimer: NodeJS.Timeout;
+    if (modalOpen && selectedIndex !== null) {
+      showTimer = setTimeout(() => setShowModalText(true), 2000);
+      hideTimer = setTimeout(() => setShowModalText(false), 7000);
+    }
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, [modalOpen, selectedIndex]);
+
   const featuredDishes = [
     {
       name: 'Chicken 65',
@@ -215,56 +230,60 @@ const MenuSection = () => {
       </div>
       {/* Modal for zoomed food item */}
       {modalOpen && selectedIndex !== null && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-dish-title">
-          <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-hidden shadow-2xl">
+        <div className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-dish-title">
+          <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center">
+            {/* Decorative Frame fits image */}
+            <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
             {/* Zoomed image */}
             <Image
               src={featuredDishes[selectedIndex].image}
               alt={featuredDishes[selectedIndex].name}
               width={600}
               height={400}
-              className="object-cover w-full h-[400px] sm:h-[500px]"
+              className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
               priority
             />
-            {/* Title & description overlay at bottom, styled like Gallery */}
-            <div className="absolute bottom-0 left-0 w-full bg-linear-to-t from-black/80 via-black/40 to-transparent px-6 pt-6 pb-20">
-              <h2 id="modal-dish-title" className="text-2xl md:text-3xl font-serif font-bold text-white mb-1 drop-shadow-lg">
-                {featuredDishes[selectedIndex].name}
-              </h2>
-              <p className="text-md md:text-lg text-gray-100 mb-0">
-                {featuredDishes[selectedIndex].description}
-              </p>
-            </div>
-            {/* Modal controls at bottom center */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-20 z-30">
-              <button
-                aria-label="Previous"
-                onClick={prevItem}
-                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
-              >
-                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                aria-label="Close"
-                onClick={closeModal}
-                className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
-              >
-                <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <button
-                aria-label="Next"
-                onClick={nextItem}
-                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-2 md:p-3 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
-              >
-                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+            {/* Title & description overlay at bottom, styled like Gallery, delayed show and auto-hide */}
+            {showModalText && (
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30">
+                <h2 id="modal-dish-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
+                  {featuredDishes[selectedIndex].name}
+                </h2>
+                <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body">
+                  {featuredDishes[selectedIndex].description}
+                </p>
+              </div>
+            )}
+          </div>
+          {/* Modal controls always visible below the modal, outside the border/frame */}
+          <div className="flex justify-center items-center gap-8 mt-8 z-50">
+            <button
+              aria-label="Previous"
+              onClick={prevItem}
+              className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+            >
+              <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              aria-label="Close"
+              onClick={closeModal}
+              className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+            >
+              <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <button
+              aria-label="Next"
+              onClick={nextItem}
+              className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+            >
+              <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       )}

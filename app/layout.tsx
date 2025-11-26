@@ -58,7 +58,7 @@ export default function RootLayout({
          {/* Full-page blurred background image */}
       <div className="fixed inset-0 min-h-screen h-screen w-screen -z-10 mt-8">
         <Image
-          src="/images/other/backdrop2.png"
+          src="/images/other/TashiTagye.jpg"
           alt="Page Backdrop"
           fill
           className="cover w-full h-full scale-105"

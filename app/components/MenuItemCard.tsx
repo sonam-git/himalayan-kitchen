@@ -107,7 +107,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           </div>
         </div>
         {/* Description */}
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 grow mb-4">
+        <p className="text-sm italic sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 grow mb-4">
           {description}
         </p>
         {/* Decorative bottom accent */}
