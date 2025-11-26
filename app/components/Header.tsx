@@ -8,6 +8,7 @@ import Accessibility from './Accessibility';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
@@ -179,7 +180,7 @@ const Header = () => {
                     tabIndex={0}
                     aria-current={isActive(href) ? 'page' : undefined}
                     role="link"
-                    {...(href === '/' ? { onClick: () => setIsMenuOpen(false) } : {})}
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {icon}
                     <span className="ml-1">{label}</span>

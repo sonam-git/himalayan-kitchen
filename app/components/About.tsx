@@ -48,7 +48,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative py-20 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
+      className="relative transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
       aria-labelledby="about-heading"
       tabIndex={-1}
     >
@@ -58,16 +58,16 @@ const About = () => {
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
       {/* Image as Section Background with Blur Overlay */}
-      <div className="absolute inset-0 w-full h-full sm:h-full aspect-video sm:aspect-auto z-0">
+      {/* <div className="absolute inset-0 w-full h-full sm:h-full aspect-video sm:aspect-auto z-0">
         <Image
           src="/images/other/backdrop2.png"
           alt="About Background"
           fill
           priority
-          className="object-content object-center w-full h-full rounded-2xl sm:rounded-3xl opacity-80"
+          className="object-content image-overlay object-center w-full h-full rounded-2xl sm:rounded-3xl opacity-80"
         />
         <div className="absolute inset-0 bg-black/70 dark:bg-black/80 rounded-2xl sm:rounded-3xl"></div>
-      </div>
+      </div> */}
       <div className="relative ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
@@ -79,12 +79,16 @@ const About = () => {
                   : "translate-y-10 opacity-0"
               }`}
             >
-              <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-red-500/10 to-orange-500/10 dark:from-red-400/20 dark:to-orange-400/20 border border-red-200/50 dark:border-red-700/50 rounded-full text-red-600 dark:text-red-400 font-semibold text-sm uppercase tracking-wider mb-4">
-                Our Story
-              </span>
+             <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
+           Our Story
+          </span>
+          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+        </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
                 Taste From{" "}
-                <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">
                   The Himalayas
                 </span>
               </h2>
@@ -222,7 +226,7 @@ const About = () => {
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
                 <a
                   href="tel:(415) 526-3161"
-                  className="group relative inline-flex items-center justify-center bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 dark:from-red-500 dark:to-red-600 dark:hover:from-red-600 dark:hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl overflow-hidden"
+                  className="group relative inline-flex items-center justify-center bg-linear-to-r from-yellow-600 to-yellow-700 hover:from-gray-700 hover:to-red-800 dark:from-red-500 dark:to-red-600 dark:hover:from-red-600 dark:hover:to-red-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl overflow-hidden"
                 >
                   {/* Button Glow Effect */}
                   <div className="absolute inset-0 bg-linear-to-r from-red-300/20 to-orange-300/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-md scale-110"></div>
@@ -294,7 +298,8 @@ const About = () => {
                     src="/images/gallery/everest.JPG"
                     alt="Mt. Everest - World's Highest Peak"
                     fill
-                    className="object-contain bg-white dark:bg-gray-900 rounded-3xl shadow-[0_8px_32px_0_rgba(255,255,255,0.25)]"
+                    className="object-contain bg-white dark:bg-gray-900 shadow-[0_8px_32px_0_rgba(255,255,255,0.25)] "
+
                     priority
                   />
                 </div>

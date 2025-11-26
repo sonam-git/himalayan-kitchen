@@ -7,6 +7,7 @@ import MenuSection from "./components/MenuSection";
 import Gallery from "./components/Gallery";
 import Reviews from "./components/Reviews";
 import Image from "next/image";
+import Buttons from "./components/Buttons";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -25,18 +26,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen transition-colors duration-300">
-      {/* Full-page blurred background image */}
-      <div className="fixed inset-0 min-h-screen h-screen w-screen -z-10 mt-8">
-        <Image
-          src="/images/other/aboutSketch.png"
-          alt="Page Backdrop"
-          fill
-          className="cover w-full h-full scale-105"
-          priority
-        />
-        {/* Strong dark overlay for focus, adjusts for dark/light mode */}
-        <div className="absolute inset-0 opacity-90 bg-gray-800  dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
-      </div>
+
       <div className="relative">
         {/* Main content wrapper */}
         <main className="w-full">
@@ -49,6 +39,7 @@ export default function Home() {
             <MenuSection />
             <Reviews />
             <Gallery />
+            <Buttons />
           </div>
         </main>
         {/* Scroll-to-top icon, not visible at top or in hero/home */}

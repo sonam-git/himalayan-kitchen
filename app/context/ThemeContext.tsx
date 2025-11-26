@@ -18,9 +18,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const html = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
-    // Default to dark if no theme is saved
-    const shouldBeDark = savedTheme ? savedTheme === 'dark' : true;
-    // Apply theme to DOM immediately
+    let shouldBeDark;
+    if (savedTheme) {
+      shouldBeDark = savedTheme === 'dark';
+    } else {
+      // Use system preference if no theme is set
+      shouldBeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
     if (shouldBeDark) {
       html.classList.add('dark');
     } else {

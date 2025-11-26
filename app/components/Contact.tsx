@@ -38,10 +38,10 @@ const Contact = () => {
           <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
         </div>
         {/* Image as Section Background with Blur Overlay */}
-        <div className="absolute inset-0 w-full h-full z-0">
+        {/* <div className="absolute inset-0 w-full h-full z-0">
           <Image src="/images/other/backdrop4.png" alt="Contact Background" fill priority className="object-content w-full h-full rounded-2xl sm:rounded-3xl opacity-80" />
           <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
-        </div>
+        </div> */}
         <div className="relative ">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
@@ -54,7 +54,7 @@ const Contact = () => {
           <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-200 dark:text-white mb-6">
-                Contact <span className="bg-linear-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Himalayan Kitchen</span>
+                Contact <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">Us</span>
               </h2>
               <p className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 We&apos;d love to hear from you! Send us a message or reach out using the info below.
@@ -63,7 +63,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Contact Form */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Contact Us</h2>
+                {/* <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Contact Us</h2> */}
                 <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-describedby="contact-form-desc">
                   <div id="contact-form-desc" className="sr-only">Contact form to send a message to Himalayan Kitchen. All fields are required.</div>
                   <div>
@@ -104,7 +104,7 @@ const Contact = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-3 px-6 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition-all duration-300 shadow-lg"
+                    className="w-full py-3 px-6 bg-yellow-600 hover:bg-white hover:text-yellow-800 text-white border-2 border-white font-bold rounded-lg transition-all duration-300 shadow-lg"
                   >
                     Send Message
                   </button>
@@ -119,7 +119,7 @@ const Contact = () => {
               <div className="relative flex flex-col items-center justify-center w-full">
                 {/* Background Image - increased height, shadow added */}
                 <div className="relative w-full h-full min-h-[540px] sm:min-h-[600px] md:min-h-[680px] rounded-2xl overflow-hidden shadow-2xl shadow-orange-900/30">
-                  <Image src="/images/gallery/hkitchen.jpg" alt="Himalayan Kitchen" fill priority className="object-cover w-full h-full" />
+                  <Image src="/images/gallery/hkitchen.jpg" alt="Himalayan Kitchen" fill priority className="object-cover w-full h-full " />
                   {/* Overlay for signboard effect - transparent, blurred, 3 rows */}
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[92%] sm:w-3/4 md:w-2/3 bg-white/30 dark:bg-yellow-100/20 backdrop-blur-lg rounded-xl shadow-2xl border-4 border-yellow-300 dark:border-yellow-400 p-4 sm:p-6 flex flex-col items-center gap-3">
                     <h3 className="text-base sm:text-lg font-bold text-white drop-shadow mb-1 flex items-center gap-2">

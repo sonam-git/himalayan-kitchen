@@ -1,9 +1,11 @@
-import "./globals.css";
+import "../globals.css";
 import { Inter, Playfair_Display, Dancing_Script } from "next/font/google";
 import { ThemeProvider } from "./context/ThemeContext";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import MobileBottomBar from './components/MobileBottomBar';
+import Image from "next/image";
+import ScrollToTop from './components/ScrollToTop';
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -36,9 +38,38 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'dark' || (!theme && true)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e){}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} ${playfairDisplay.variable} ${dancingScript.variable} font-sans antialiased overflow-x-hidden `}>
+         {/* Full-page blurred background image */}
+      <div className="fixed inset-0 min-h-screen h-screen w-screen -z-10 mt-8">
+        <Image
+          src="/images/other/backdrop2.png"
+          alt="Page Backdrop"
+          fill
+          className="cover w-full h-full scale-105"
+          priority
+        />
+        {/* Strong dark overlay for focus, adjusts for dark/light mode */}
+        <div className="absolute image-overlay inset-0 opacity-90 bg-gray-800  dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
+      </div>
         <ThemeProvider>
           <Header />
+          <ScrollToTop />
           <main className="py-20 sm:py-24 lg:py-28">{children}</main>
           <Footer />
           <div className="md:hidden">

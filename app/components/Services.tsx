@@ -31,7 +31,7 @@ const Services = () => {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-900 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm transition-colors duration-300"
+      className="relative py-20 sm:py-24 lg:py-28 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm transition-colors duration-300"
       tabIndex={-1}
     >
       {/* Background Decorative Elements */}
@@ -40,7 +40,7 @@ const Services = () => {
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
       {/* Image as Section Background with Blur Overlay */}
-      <div className="absolute inset-0 w-full h-full z-0" aria-hidden="true">
+      {/* <div className="absolute inset-0 w-full h-full z-0" aria-hidden="true">
         <Image
                src="/images/other/backdrop.png"
                alt="Menu Background"
@@ -49,7 +49,7 @@ const Services = () => {
                className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-100"
              />
          <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
-      </div>
+      </div> */}
       <div className="relative max-w-6xl mx-auto px-2 sm:px-8 lg:px-12 flex flex-col gap-12 items-center z-10">
         {/* Enhanced Section Header */}
         <div className="text-center mb-20">
@@ -60,12 +60,16 @@ const Services = () => {
                 : "translate-y-10 opacity-0"
             }`}
           >
-            <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-6">
-              What We Offer
-            </span>
+                 <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
+            What We Offer
+          </span>
+          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+        </div>
             <h2 id="services-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6" tabIndex={0}>
               Our{" "}
-              <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">
                 Services
               </span>
             </h2>

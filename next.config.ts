@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  experimental: {
+    turbo: false, // Use Webpack instead of Turbopack for better Tailwind compatibility
+  },
 };
 
 export default nextConfig;

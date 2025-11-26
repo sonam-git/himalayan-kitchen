@@ -173,7 +173,7 @@ const Gallery = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-100 dark:text-white mb-3"
             tabIndex={0}
           >
-            Our <span className="bg-linear-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Gallery</span>
+            Our <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">Gallery</span>
           </h2>
           
           {/* <p className="text-lg md:text-xl text-gray-200 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed">

@@ -136,7 +136,7 @@ const Reviews = () => {
           <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-3">
-      What Our <span className="bg-linear-to-r from-red-600 via-orange-600 to-red-600 dark:from-red-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent">Guests Say</span>
+      What Our <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">Guests Say</span>
     </h2>
 
           {/* Rating Display */}

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer id="contact" aria-labelledby="footer-heading" className="bg-[#1d0303] dark:bg-[#2a0a0a] text-white overflow-hidden w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl my-2 sm:my-3 md:my-4 transition-colors duration-300" tabIndex={-1}>
+    <footer id="contact" aria-labelledby="footer-heading" className="bg-[#1d0303] dark:bg-[#2a0a0a] border-t-2 text-white overflow-hidden w-full max-w-full  transition-colors duration-300" tabIndex={-1}>
       <h2 id="footer-heading" className="sr-only">Contact and Social Links</h2>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full">
@@ -11,7 +11,7 @@ const Footer = () => {
             {/* Logo above heading using Next.js Image */}
             <Image src="/images/hk-logo.jpg" alt="Himalayan Kitchen Logo" width={96} height={96} className="mb-4" />
             <h3 className="text-2xl font-bold mb-2 text-white" tabIndex={0}>HIMALAYAN KITCHEN MARIN</h3>
-            <h3 className="text-2xl font-semibold mb-2 text-white" tabIndex={0}>
+            <h3 className="text-2xl font-semibold mb-2 dark:text-white" tabIndex={0}>
               हिमालयन किचन  |  ཧི་མ་ལ་ཡན་ཀི་ཇན།
             </h3>
             <p className="text-gray-300 dark:text-gray-400 mb-6 leading-relaxed">
