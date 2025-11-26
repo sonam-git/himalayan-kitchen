@@ -5,9 +5,82 @@ const Footer = () => {
     <footer id="contact" aria-labelledby="footer-heading" className="bg-[#1d0303] dark:bg-[#2a0a0a] border-t-2 text-white overflow-hidden w-full max-w-full  transition-colors duration-300" tabIndex={-1}>
       <h2 id="footer-heading" className="sr-only">Contact and Social Links</h2>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full">
-          {/* Restaurant Info & Social */}
-          <div className="flex flex-col items-start justify-between h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto_auto] lg:grid-rows-2 gap-10 w-full">
+          {/* Contact Info - order 1 on mobile, col 2 row 1 on large */}
+          <div className="order-1 lg:order-0 lg:col-start-2 lg:row-start-1">
+            <div className="rounded-2xl relative overflow-hidden bg-linear-to-br from-gray-200 via-gray-500 to-red-50 dark:from-gray-500 dark:via-gray-950 dark:to-gray-900 shadow-lg border border-orange-200/40 dark:border-red-500/30 p-8">
+              {/* Background image with blur */}
+              <div className="absolute inset-0 w-full h-full z-0">
+                <Image src="/images/other/stone.webp" alt="Stone background" fill priority className="w-full h-full object-cover blur-sm opacity-60" />
+                <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
+              </div>
+              <div className="relative ">
+               <h3 className="text-xl font-bold mb-6 text-yellow-100 dark:text-yellow-300 flex items-center gap-2">
+                  <svg className="w-6 h-6 text-gray-100 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                  Contact Info
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
+                    {/* Address Icon */}
+                    <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+                    <a href="https://maps.google.com/?q=227+3rd+St,+San+Rafael,+CA+94901" target="_blank" rel="noopener noreferrer" className="text-white font-sans hover:text-green-400 transition-colors no-underline">227 3rd St, San Rafael, CA 94901</a>
+                  </li>
+                  <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
+                    {/* Phone Icon */}
+                    <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.13.37 2.25.72 3.32a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.58 6.58l1.27-1.27a2 2 0 0 1 2.11-.45c1.07.35 2.19.59 3.32.72A2 2 0 0 1 22 16.92z"/></svg>
+                    <a href="tel:(415) 526-3161" className="text-white font-mono hover:text-blue-400 transition-colors no-underline">(415) 526-3161</a>
+                  </li>
+                  <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
+                    {/* Email Icon */}
+                    <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                    <a href="mailto:himalayankitchenmarin@gmail.com" className="text-white font-sans hover:text-yellow-400 transition-colors no-underline">himalayankitchenmarin@gmail.com</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          {/* Opening Hours - order 2 on mobile, col 2 row 2 on large */}
+          <div className="order-2 lg:order-0 lg:col-start-2 lg:row-start-2">
+            <div className="rounded-2xl relative overflow-hidden bg-linear-to-br from-yellow-500 via-white to-red-500 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 shadow-lg border border-yellow-200/40 dark:border-orange-500/30 p-8">
+              {/* Background image with blur */}
+              <div className="absolute inset-0 w-full h-full z-0">
+                <Image src="/images/other/stone.webp" alt="Stone background" fill priority className="w-full h-full object-cover blur-sm opacity-60" />
+                <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
+              </div>
+              <div className="relative ">
+                <h3 className="text-xl font-bold mb-6 text-yellow-100 dark:text-yellow-300 flex items-center gap-2">
+                  <svg className="w-6 h-6  text-gray-100 dark:text-yellow-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                  Opening Hours
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex text-gray-700 dark:text-gray-200">
+                    <div className="font-semibold flex items-center gap-2 mb-0 bg-gray-900/80 dark:bg-gray-800/80 text-green-400 font-mono text-xs sm:text-sm tracking-widest px-2 py-1 sm:px-4 sm:py-2 rounded-md sm:rounded-lg shadow-inner border-2 border-green-500 whitespace-nowrap max-w-full w-64 sm:w-80">
+                      {/* Plate & Spoon Icon for Lunch */}
+                      <svg className="w-5 h-5 text-yellow-500 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-4 10a4 4 0 118 0 4 4 0 01-8 0zm10.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/><rect x="17" y="7" width="2" height="10" rx="1"/><rect x="5" y="7" width="2" height="10" rx="1"/></svg>
+                      Lunch: <span className="ml-2">11:30AM</span> <span className="mx-1 text-gray-400">-</span> <span>02:30PM</span>
+                    </div>
+                  </li>
+                  <li className="flex text-gray-700 dark:text-gray-200">
+                    <div className="font-semibold flex items-center gap-2 mb-0 bg-gray-900/80 dark:bg-gray-800/80 text-orange-400 font-mono text-xs sm:text-sm tracking-widest px-2 py-1 sm:px-4 sm:py-2 rounded-md sm:rounded-lg shadow-inner border-2 border-orange-500 whitespace-nowrap max-w-full w-64 sm:w-80">
+                      {/* Knife & Fork Icon for Dinner */}
+                      <svg className="w-5 h-5 text-orange-500 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v20M17 2v20M12 2v20"/><rect x="6" y="7" width="2" height="10" rx="1"/><rect x="16" y="7" width="2" height="10" rx="1"/></svg>
+                      Dinner: <span className="ml-2">04:30PM</span> <span className="mx-1 text-gray-400">-</span> <span>09:00PM</span>
+                    </div>
+                  </li>
+                  <li className="flex justify-between items-center text-gray-100 dark:text-gray-200">
+                    <span className="font-mono flex items-center gap-2">
+                      {/* Restaurant Icon for Open Days */}
+                      <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
+                      Open | 7 Days a Week |
+                       <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          {/* Restaurant Info & Social - order 3 on mobile, col 1 row 1-2 on large */}
+          <div className="flex flex-col items-start justify-between h-full order-3 lg:order-none lg:col-start-1 lg:row-span-2">
             {/* Logo above heading using Next.js Image */}
             <Image src="/images/hk-logo.jpg" alt="Himalayan Kitchen Logo" width={96} height={96} className="mb-4" />
             <h3 className="text-2xl font-bold mb-2 text-white" tabIndex={0}>HIMALAYAN KITCHEN MARIN</h3>
@@ -19,7 +92,7 @@ const Footer = () => {
               we bring authentic flavors from the roof of the world to your table.
             </p>
             <div className="mb-4 w-full ">
-              <span className="text-2xl font-extrabold font-serif text-transparent bg-linear-to-r from-orange-400 via-yellow-400 to-pink-400 bg-clip-text mb-2 drop-shadow-lg flex items-center gap-2" aria-hidden="true">
+              <span className="text-2xl font-mono  text-transparent bg-linear-to-r from-yellow-200 via-yellow-300 to-yellow-100 bg-clip-text mb-2 drop-shadow-lg flex items-center gap-2" aria-hidden="true">
                 {/* ...svg... */}
                 Stay connected with us
               </span>
@@ -105,78 +178,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          {/* Contact Info & Opening Hours Modern Card */}
-          <div className="flex flex-col gap-8 ">
-            <div className="rounded-2xl relative overflow-hidden bg-linear-to-br from-gray-200 via-gray-500 to-red-50 dark:from-gray-500 dark:via-gray-950 dark:to-gray-900 shadow-lg border border-orange-200/40 dark:border-red-500/30 p-8">
-              {/* Background image with blur */}
-              <div className="absolute inset-0 w-full h-full z-0">
-                <Image src="/images/other/stone.webp" alt="Stone background" fill priority className="w-full h-full object-cover blur-sm opacity-60" />
-                <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
-              </div>
-              <div className="relative ">
-               <h3 className="text-xl font-bold mb-6 text-yellow-100 dark:text-yellow-300 flex items-center gap-2">
-                  <svg className="w-6 h-6 text-gray-100 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                  Contact Info
-                </h3>
-                <ul className="space-y-4">
-                  <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
-                    {/* Address Icon */}
-                    <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
-                    <a href="https://maps.google.com/?q=227+3rd+St,+San+Rafael,+CA+94901" target="_blank" rel="noopener noreferrer" className="text-white font-sans hover:text-green-400 transition-colors no-underline">227 3rd St, San Rafael, CA 94901</a>
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
-                    {/* Phone Icon */}
-                    <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.13.37 2.25.72 3.32a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.58 6.58l1.27-1.27a2 2 0 0 1 2.11-.45c1.07.35 2.19.59 3.32.72A2 2 0 0 1 22 16.92z"/></svg>
-                    <a href="tel:(415) 526-3161" className="text-white font-mono hover:text-blue-400 transition-colors no-underline">(415) 526-3161</a>
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-700 dark:text-gray-200">
-                    {/* Email Icon */}
-                    <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8l8 5 8-5v10z"/></svg>
-                    <a href="mailto:himalayankitchenmarin@gmail.com" className="text-white font-sans hover:text-yellow-400 transition-colors no-underline">himalayankitchenmarin@gmail.com</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="rounded-2xl relative overflow-hidden bg-linear-to-br from-yellow-500 via-white to-red-500 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 shadow-lg border border-yellow-200/40 dark:border-orange-500/30 p-8">
-              {/* Background image with blur */}
-              <div className="absolute inset-0 w-full h-full z-0">
-                <Image src="/images/other/stone.webp" alt="Stone background" fill priority className="w-full h-full object-cover blur-sm opacity-60" />
-                <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
-              </div>
-              <div className="relative ">
-                <h3 className="text-xl font-bold mb-6 text-yellow-100 dark:text-yellow-300 flex items-center gap-2">
-                  <svg className="w-6 h-6  text-gray-100 dark:text-yellow-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                  Opening Hours
-                </h3>
-                <ul className="space-y-4">
-                  <li className="flex text-gray-700 dark:text-gray-200">
-                    <div className="font-semibold flex items-center gap-2 mb-0 bg-gray-900/80 dark:bg-gray-800/80 text-green-400 font-mono text-xs sm:text-sm tracking-widest px-2 py-1 sm:px-4 sm:py-2 rounded-md sm:rounded-lg shadow-inner border-2 border-green-500 whitespace-nowrap max-w-full w-64 sm:w-80">
-                      {/* Plate & Spoon Icon for Lunch */}
-                      <svg className="w-5 h-5 text-yellow-500 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-4 10a4 4 0 118 0 4 4 0 01-8 0zm10.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/><rect x="17" y="7" width="2" height="10" rx="1"/><rect x="5" y="7" width="2" height="10" rx="1"/></svg>
-                      Lunch: <span className="ml-2">11:30AM</span> <span className="mx-1 text-gray-400">-</span> <span>02:30PM</span>
-                    </div>
-                  </li>
-                  <li className="flex text-gray-700 dark:text-gray-200">
-                    <div className="font-semibold flex items-center gap-2 mb-0 bg-gray-900/80 dark:bg-gray-800/80 text-orange-400 font-mono text-xs sm:text-sm tracking-widest px-2 py-1 sm:px-4 sm:py-2 rounded-md sm:rounded-lg shadow-inner border-2 border-orange-500 whitespace-nowrap max-w-full w-64 sm:w-80">
-                      {/* Knife & Fork Icon for Dinner */}
-                      <svg className="w-5 h-5 text-orange-500 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2v20M17 2v20M12 2v20"/><rect x="6" y="7" width="2" height="10" rx="1"/><rect x="16" y="7" width="2" height="10" rx="1"/></svg>
-                      Dinner: <span className="ml-2">04:30PM</span> <span className="mx-1 text-gray-400">-</span> <span>09:00PM</span>
-                    </div>
-                  </li>
-                  <li className="flex justify-between items-center text-gray-100 dark:text-gray-200">
-                    <span className="font-mono flex items-center gap-2">
-                      {/* Restaurant Icon for Open Days */}
-                      <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
-                      Open | 7 Days a Week |
-                       <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><rect x="3" y="7" width="18" height="7" rx="2"/><path d="M7 7V3h10v4"/></svg>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
-
         <div className="border-t border-gray-400 dark:border-gray-500 mt-8 pt-8 text-center bg- ">
           <p className="text-gray-400 font-mono dark:text-gray-500 text-sm">
             | &copy; {new Date().getFullYear()} Himalayan Kitchen, San Rafael, CA | All rights reserved |

@@ -6,8 +6,8 @@ import Hero from "./components/Hero";
 import MenuSection from "./components/MenuSection";
 import Gallery from "./components/Gallery";
 import Reviews from "./components/Reviews";
-import Image from "next/image";
 import Buttons from "./components/Buttons";
+import GiftCard from "./components/GiftCard";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -26,7 +26,6 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen transition-colors duration-300">
-
       <div className="relative">
         {/* Main content wrapper */}
         <main className="w-full">
@@ -39,7 +38,9 @@ export default function Home() {
             <MenuSection />
             <Reviews />
             <Gallery />
-            <Buttons />
+            {/* Gift Card Promo Section */}
+            <GiftCard />
+            {/* <Buttons /> */}
           </div>
         </main>
         {/* Scroll-to-top icon, not visible at top or in hero/home */}

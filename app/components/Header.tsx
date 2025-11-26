@@ -39,7 +39,7 @@ const Header = () => {
                     <div className="absolute inset-0 rounded-full bg-linear-to-r from-red-500/30 via-orange-500/30 to-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
                   </div>
                   <div className="flex flex-col justify-center space-y-0.5">
-                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-linear-to-r from-yellow-500 via-red-600 to-yellow-600 dark:from-yellow-300 dark:via-gray-50 dark:to-yellow-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">
+                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-linear-to-r from-[#D4AF37] to-[#D4AF37] dark:from-yellow-300 dark:via-gray-50 dark:to-yellow-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">
                       HIMALAYAN
                     </h1>
                     <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-wide font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
@@ -103,8 +103,7 @@ const Header = () => {
                     </svg>
                   )}
                 </button>
-
-                {/* Only show hamburger on mobile, accessibility in dropdown */}
+                {/* Hamburger menu button - visible only below xl */}
                 <button 
                   onClick={() => setIsMenuOpen(!isMenuOpen)} 
                   aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"} 
@@ -118,7 +117,6 @@ const Header = () => {
                     <span className={`h-1 rounded-full bg-gray-800 dark:bg-white transition-all duration-300 origin-center ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
                   </div>
                 </button>
-
                 {/* Accessibility button only on desktop */}
                 <button
                   aria-label="Accessibility Options"
@@ -187,7 +185,7 @@ const Header = () => {
                   </span>
                 </Link>
               ))}
-              {/* Action buttons row: Theme Toggle, Accessibility */}
+              {/* Action buttons row: Theme Toggle, Gift Card, Accessibility */}
               <div className="flex flex-row mt-3 mb-1 w-full justify-between"> {/* space-between, reduced mt/mb */}
                 {/* Theme Toggle Icon Button */}
                 <button
@@ -206,6 +204,20 @@ const Header = () => {
                     </svg>
                   )}
                 </button>
+                {/* Gift Card Button - mobile menu only */}
+                <a
+                  href="https://order.toasttab.com/egiftcards/himalayan-kitchen-227-3rd-st"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex xl:hidden items-center justify-center gap-2 w-auto h-12 px-4 rounded-xl bg-linear-to-r from-green-800 via-yellow-800 to-green-900 text-white font-bold shadow-lg border-2 border-white dark:border-white hover:from-yellow-500 hover:to-red-500 hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400/50"
+                  aria-label="Buy Gift Card (opens in new tab)"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <rect x="2" y="7" width="20" height="10" rx="2" fill="currentColor" className="text-yellow-300/80" />
+                    <path d="M2 9h20M12 7v10M7 12h.01M17 12h.01" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="font-bold text-base tracking-wide">Gift Card</span>
+                </a>
                 {/* Accessibility Icon Button */}
                 <button
                   aria-label="Accessibility Options"

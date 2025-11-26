@@ -52,7 +52,7 @@ const Hero = () => {
       <div className="relative flex flex-col items-center justify-center px-4 sm:px-8 lg:px-0 pointer-events-none mt-0 mb-0">
         <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 pointer-events-auto leading-tight">
           <span className="block w-full">Taste From The</span>
-          <span className="block w-full tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
+          <span className="block w-full text-[#D4AF37] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
             HIMALAYAS
           </span>
         </h2>

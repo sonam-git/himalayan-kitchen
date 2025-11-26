@@ -19,7 +19,7 @@ const MenuSection = () => {
     let hideTimer: NodeJS.Timeout;
     if (modalOpen && selectedIndex !== null) {
       showTimer = setTimeout(() => setShowModalText(true), 2000);
-      hideTimer = setTimeout(() => setShowModalText(false), 7000);
+      hideTimer = setTimeout(() => setShowModalText(false), 25000); // 2s show + 25s visible
     }
     return () => {
       clearTimeout(showTimer);
