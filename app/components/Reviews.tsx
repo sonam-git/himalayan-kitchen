@@ -136,12 +136,15 @@ const Reviews = () => {
           <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-3 font-headline">
-      What Our <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent font-headline">Guests Say</span>
+      Dining <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent font-headline">Stories</span>
     </h2>
+     <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-white mb-4">
+     Real experiences from guests who’ve shared a meal—and a moment—with us.
+    </p>
 
           {/* Rating Display */}
           <div className="flex justify-center items-center gap-4 sm:gap-8 mb-3 flex-nowrap sm:flex-wrap font-headline">
-          <div className="text-5xl sm:text-7xl md:text-8xl font-bold text-yellow-600 dark:bg-linear-to-br dark:from-yellow-300 dark:to-yellow-500 dark:bg-clip-text dark:text-transparent drop-shadow-lg">
+          <div className="text-5xl sm:text-7xl md:text-8xl font-bold text-white dark:bg-linear-to-br dark:from-yellow-300 dark:to-yellow-500 dark:bg-clip-text dark:text-transparent drop-shadow-lg">
             4.8
           </div>
           <div className="flex flex-col items-start min-w-[140px] sm:min-w-0">
@@ -157,7 +160,7 @@ const Reviews = () => {
                 </svg>
               ))}
             </div>
-            <p className="text-gray-100 dark:text-gray-300 text-xs sm:text-base font-medium font-body">
+            <p className="text-gray-100 dark:text-gray-300 text-xs sm:text-base font-medium italic font-body">
               Based on 200+ Google & Yelp Reviews
             </p>
             <p className="text-gray-100 dark:text-gray-400 text-xs sm:text-sm font-body">
@@ -167,106 +170,112 @@ const Reviews = () => {
         </div>
         </div>
 
-        {/* Reviews: horizontal scroll on all screens, show 3 at a time on large screens */}
-        <div
-          ref={reviewsScrollRef}
-          className="flex gap-8 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 font-body"
-          role="list"
-          aria-label="Customer reviews"
-          style={{ scrollSnapType: 'x mandatory' }}
-        >
-          {reviews.map((review, index) => (
-            <article
-              key={review.id}
-              className={`group relative flex flex-col justify-between
-                h-[500px] sm:h-[500px] w-full
-                dark:bg-linear-to-br dark:from-gray-800/80 dark:to-gray-900/80 dark:border-gray-200/50 dark:hover:border-yellow-500/50 dark:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 dark:text-gray-200 dark:hover:text-white dark:border dark:backdrop-blur-sm
-                bg-white border-gray-300 hover:border-yellow-600 shadow-lg hover:shadow-2xl hover:shadow-yellow-500/10 text-gray-900 
-                p-8 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-                font-body
-                sm:p-8 p-4
-                sm:text-base text-sm
-                sm:rounded-2xl rounded-xl
-                sm:mb-0 mb-4
-                min-w-[85vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl
-                `}
-              style={{ transitionDelay: `${index * 150}ms` }}
-              aria-label={`Review by ${review.author} from ${review.location}`}
+        {/* Decorated container for review grid */}
+        <div className="relative z-20 w-full my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-1 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
+          <div className="relative z-10">
+            {/* Reviews: horizontal scroll on all screens, show 3 at a time on large screens */}
+            <div
+              ref={reviewsScrollRef}
+              className="flex gap-4 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 font-body"
+              role="list"
+              aria-label="Customer reviews"
+              style={{ scrollSnapType: 'x mandatory' }}
             >
-              {/* Date, stars, and source icon row */}
-              <div className="flex items-center gap-2 mb-6">
-                <time dateTime={review.date} className="text-xs text-gray-400 dark:text-gray-500 font-semibold font-body">
-                  {review.date}
-                </time>
-                <span className="sr-only" id={`review-rating-${review.id}`}>{review.rating} out of 5 stars</span>
-                <div className="flex text-yellow-400 text-lg font-headline" aria-hidden="true" title={`${review.rating} star rating`}>
-                  {[...Array(review.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                  ))}
-                </div>
-                {/* Source icon with aria-label */}
-                <span className="ml-auto flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500 font-semibold font-body" aria-label={`Source: ${review.source}`} title={`Source: ${review.source}`}>
-                  {review.source === 'yelp' && (
-                    <Image src="/images/logo/yelp.svg" alt="Yelp logo" width={20} height={20} className="inline-block w-5 h-5" />
-                  )}
-                  {review.source === 'google' && (
-                    <Image src="/images/logo/google.svg" alt="Google logo" width={20} height={20} className="inline-block w-5 h-5" />
-                  )}
-                  {review.source.charAt(0).toUpperCase() + review.source.slice(1)}
-                </span>
-              </div>
-              {/* Review content with scroll for long text on desktop */}
-              <blockquote className="mb-4 flex-1 font-body">
-                <div
-                  className="font-bold text-md md:text-md mb-2 text-gray-900 dark:text-white transition-all duration-700 ease-in-out group-hover:text-orange-500 animate-fade-in font-headline"
-                  style={{ transitionDelay: `${index * 100 + 200}ms` }}
-                  id={`review-title-${review.id}`}
+              {reviews.map((review, index) => (
+                <article
+                  key={review.id}
+                  className={`group relative flex flex-col justify-between
+                    h-[500px] sm:h-[500px] w-full
+                    dark:bg-linear-to-br dark:from-gray-800/80 dark:to-gray-900/80 dark:border-gray-200/50 dark:hover:border-yellow-500/50 dark:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 dark:text-gray-200 dark:hover:text-white dark:border dark:backdrop-blur-sm
+                    bg-white border-gray-300 hover:border-yellow-600 shadow-lg hover:shadow-2xl hover:shadow-yellow-500/10 text-gray-900 
+                    p-8 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2
+                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+                    font-body
+                    sm:p-8 p-4
+                    sm:text-base text-sm
+                    sm:rounded-2xl rounded-xl
+                    sm:mb-0 mb-4
+                    min-w-[85vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl
+                    `}
+                  style={{ transitionDelay: `${index * 150}ms` }}
+                  aria-label={`Review by ${review.author} from ${review.location}`}
                 >
-                  {review.title}
-                </div>
-                <div className="relative">
-                  <div className="h-52 sm:h-42 md:h-40 lg:h-44 xl:h-52 2xl:h-60 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed italic font-poppins">
-                    {review.text}
+                  {/* Date, stars, and source icon row */}
+                  <div className="flex items-center gap-2 mb-6">
+                    <time dateTime={review.date} className="text-xs text-gray-400 dark:text-gray-500 font-semibold font-body">
+                      {review.date}
+                    </time>
+                    <span className="sr-only" id={`review-rating-${review.id}`}>{review.rating} out of 5 stars</span>
+                    <div className="flex text-yellow-400 text-lg font-headline" aria-hidden="true" title={`${review.rating} star rating`}>
+                      {[...Array(review.rating)].map((_, i) => (
+                        <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                        </svg>
+                      ))}
+                    </div>
+                    {/* Source icon with aria-label */}
+                    <span className="ml-auto flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500 font-semibold font-body" aria-label={`Source: ${review.source}`} title={`Source: ${review.source}`}>
+                      {review.source === 'yelp' && (
+                        <Image src="/images/logo/yelp.svg" alt="Yelp logo" width={20} height={20} className="inline-block w-5 h-5" />
+                      )}
+                      {review.source === 'google' && (
+                        <Image src="/images/logo/google.svg" alt="Google logo" width={20} height={20} className="inline-block w-5 h-5" />
+                      )}
+                      {review.source.charAt(0).toUpperCase() + review.source.slice(1)}
+                    </span>
                   </div>
-                  {/* Gradient fade for overflow */}
-                  <div className="pointer-events-none absolute bottom-0 left-0 w-full h-8 bg-linear-to-t from-white/90 dark:from-gray-900/90 to-transparent rounded-b-2xl" />
-                </div>
-              </blockquote>
-              <footer className="mt-auto pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3 font-body">
-                {/* Author initial circle */}
-                <span className="flex items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 dark:bg-linear-to-br dark:from-orange-400 dark:via-red-400 dark:to-yellow-400 text-white font-bold text-lg shadow-md">
-                  {review.author.trim().charAt(0)}
-                </span>
-                <span className="font-semibold text-gray-900 dark:text-white font-headline">{review.author}</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400 font-body">{review.location}</span>
-              </footer>
-            </article>
-          ))}
-        </div>
-        {/* Slide controls below reviews for all screens */}
-        <div className="flex justify-between items-center mt-1 px-2">
-          <button
-            className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
-            onClick={() => scrollReviews('left')}
-            aria-label="Scroll left"
-          >
-            <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
-          </button>
-          <span className="text-xs text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
-          <button
-            className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
-            onClick={() => scrollReviews('right')}
-            aria-label="Scroll right"
-          >
-            <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
-          </button>
-        </div>
-             <div className="w-full flex justify-center items-center">
+                  {/* Review content with scroll for long text on desktop */}
+                  <blockquote className="mb-4 flex-1 font-body">
+                    <div
+                      className="font-bold text-md md:text-md mb-2 text-gray-900 dark:text-white transition-all duration-700 ease-in-out group-hover:text-orange-500 animate-fade-in font-headline"
+                      style={{ transitionDelay: `${index * 100 + 200}ms` }}
+                      id={`review-title-${review.id}`}
+                    >
+                      {review.title}
+                    </div>
+                    <div className="relative">
+                      <div className="h-52 sm:h-42 md:h-40 lg:h-44 xl:h-52 2xl:h-60 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed italic font-poppins">
+                        {review.text}
+                      </div>
+                      {/* Gradient fade for overflow */}
+                      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-8 bg-linear-to-t from-white/90 dark:from-gray-900/90 to-transparent rounded-b-2xl" />
+                    </div>
+                  </blockquote>
+                  <footer className="mt-auto pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3 font-body">
+                    {/* Author initial circle */}
+                    <span className="flex items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 dark:bg-linear-to-br dark:from-orange-400 dark:via-red-400 dark:to-yellow-400 text-white font-bold text-lg shadow-md">
+                      {review.author.trim().charAt(0)}
+                    </span>
+                    <span className="font-semibold text-gray-900 dark:text-white font-headline">{review.author}</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 font-body">{review.location}</span>
+                  </footer>
+                </article>
+              ))}
+            </div>
+            {/* Slide controls below reviews for all screens */}
+            <div className="flex justify-between items-center mt-1 px-2">
+              <button
+                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+                onClick={() => scrollReviews('left')}
+                aria-label="Scroll left"
+              >
+                <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+              </button>
+              <span className="text-xs text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
+              <button
+                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+                onClick={() => scrollReviews('right')}
+                aria-label="Scroll right"
+              >
+                <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+            {/* Decorative bottom bar */}
+            <div className="w-full flex justify-center items-center">
               <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
             </div>
+          </div>
+        </div>
 
         {/* Call to Action Section */}
         <div

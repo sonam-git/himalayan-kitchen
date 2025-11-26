@@ -92,7 +92,7 @@ const Gallery = () => {
     {
       image: "/images/gallery/everestsummiter.jpg",
       title: "Everest Summiter",
-      description: "Some of the renowned mountaineers who have conquered the world's highest peak visiting our restaurant."
+      description: "Dawa Yangzum Sherpa ( 3rd from right) | First woman to become an international mountain guide from Nepal, and First Nepalese woman to summit all 14 peaks above 8 thousands meters with some other renowned mountaineers who have conquered the world's highest peak visiting our restaurant."
     },
        {
       image: "/images/gallery/everest.JPG",
@@ -125,7 +125,7 @@ const Gallery = () => {
     let hideTimer: NodeJS.Timeout;
     if (mainModalOpen) {
       showTimer = setTimeout(() => setShowMainModalText(true), 2000);
-      hideTimer = setTimeout(() => setShowMainModalText(false), 7000); // 2s show + 5s visible
+      hideTimer = setTimeout(() => setShowMainModalText(false), 10000); // 2s show + 8s visible
     } else {
       setShowMainModalText(false);
     }
@@ -253,7 +253,7 @@ const Gallery = () => {
           </p> */}
         </div>
      <div className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-2"><span className='text-yellow-300'>Moments at </span> Our Table</h2>
+            <h2 className="text-2xl md:text-3xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-2"><span className='text-yellow-300'>Moments at </span> Our Table</h2>
             <p className="text-lg md:text-xl text-gray-100 dark:text-gray-100 max-w-2xl mx-auto">
              A visual journey of flavor, culture, and connection. Explore our restaurant through beautiful moments, special events, and the wonderful people who have visited us.
             </p>
@@ -374,7 +374,7 @@ const Gallery = () => {
         <div className="mt-24 relative">
           {/* Heading and description for Food Gallery */}
           <div className="mb-4 text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-2"><span className='text-yellow-300'>A Feast For </span> Your Eyes</h2>
+            <h2 className="text-2xl md:text-3xl font-black bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent mb-2"><span className='text-yellow-300'>A Feast For </span> Your Eyes</h2>
             <p className="text-base sm:text-lg text-gray-100 dark:text-gray-300">
               A showcase of our most popular, authentic and mouth-watering Himalayan dishes. Let the gallery inspire your next dining experience!</p>
           </div>
@@ -426,7 +426,7 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black bg-opacity-80" onClick={closeFoodModal}>
-            <div className="relative max-w-full w-full flex flex-col items-center mt-12 sm:mt-20 px-2 sm:px-0" onClick={e => e.stopPropagation()}>
+            <div className="relative max-w-full w-full flex flex-col items-center mt-2 sm:mt-18 px-2 sm:px-0" onClick={e => e.stopPropagation()}>
               {/* Frame and image container for food modal */}
               <FoodModalContent
                 foodGalleryItems={foodGalleryItems}

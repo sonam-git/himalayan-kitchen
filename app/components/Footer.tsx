@@ -113,7 +113,7 @@ const Footer = () => {
                 <Image src="/images/other/stone.webp" alt="Stone background" fill priority className="w-full h-full object-cover blur-sm opacity-60" />
                 <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
               </div>
-              <div className="relative z-10">
+              <div className="relative ">
                <h3 className="text-xl font-bold mb-6 text-yellow-100 dark:text-yellow-300 flex items-center gap-2">
                   <svg className="w-6 h-6 text-gray-100 dark:text-orange-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                   Contact Info
@@ -143,7 +143,7 @@ const Footer = () => {
                 <Image src="/images/other/stone.webp" alt="Stone background" fill priority className="w-full h-full object-cover blur-sm opacity-60" />
                 <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
               </div>
-              <div className="relative z-10">
+              <div className="relative ">
                 <h3 className="text-xl font-bold mb-6 text-yellow-100 dark:text-yellow-300 flex items-center gap-2">
                   <svg className="w-6 h-6  text-gray-100 dark:text-yellow-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                   Opening Hours

@@ -39,7 +39,7 @@ const Header = () => {
                     <div className="absolute inset-0 rounded-full bg-linear-to-r from-red-500/30 via-orange-500/30 to-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
                   </div>
                   <div className="flex flex-col justify-center space-y-0.5">
-                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-linear-to-r from-yellow-500 via-white to-yellow-600 dark:from-yellow-300 dark:via-white dark:to-yellow-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">
+                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-linear-to-r from-yellow-500 via-red-600 to-yellow-600 dark:from-yellow-300 dark:via-gray-50 dark:to-yellow-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">
                       HIMALAYAN
                     </h1>
                     <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-wide font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
