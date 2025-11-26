@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import MobileBottomBar from './components/MobileBottomBar';
 import Image from "next/image";
 import ScrollToTop from './components/ScrollToTop';
+import AnnouncementModal from './components/AnnouncementModal';
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -55,6 +56,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${playfairDisplay.variable} ${dancingScript.variable} font-sans antialiased overflow-x-hidden `}>
+        <AnnouncementModal />
          {/* Full-page blurred background image */}
       <div className="fixed inset-0 min-h-screen h-screen w-screen -z-10 mt-8">
         <Image
