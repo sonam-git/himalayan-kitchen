@@ -167,7 +167,7 @@ const Accessibility: React.FC<AccessibilityProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
         <button
-          className="w-full mt-4 py-3 rounded-xl bg-gray-600 hover:bg-gray-300 text-gray-100 dark:text-gray-100 font-bold text-lg transition-all duration-200 focus:outline-none border border-gray-400"
+          className="w-full mt-4 py-3 rounded-xl bg-gray-600 hover:bg-gray-300 text-gray-100 dark:text-gray-1t600 font-bold text-lg transition-all duration-200 focus:outline-none border border-gray-400"
           onClick={resetAccessibility}
           style={{ fontSize: '1.1em' }}
         >

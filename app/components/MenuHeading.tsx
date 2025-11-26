@@ -11,7 +11,7 @@ const MenuHeading: React.FC = () => (
           </span>
           <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-    <h2 id="menu-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-gray-800 mb-6">
+    <h2 id="menu-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
       Explore Our <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">Menu</span>
     </h2>
     <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-white ">
