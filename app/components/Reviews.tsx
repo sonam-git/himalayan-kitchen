@@ -123,7 +123,7 @@ const Reviews = () => {
           {/* <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div> */}
       {/* </div> */}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-headline">
+      <div className="relative z-10 max-w-7xl mx-auto sm:px-6 lg:px-8 font-headline">
         {/* Header Section */}
         <div
           className={`text-center mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -171,7 +171,7 @@ const Reviews = () => {
         </div>
 
         {/* Decorated container for review grid */}
-        <div className="relative z-20 w-full my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-1 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
+        <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-linear-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
           <div className="relative z-10">
             {/* Reviews: horizontal scroll on all screens, show 3 at a time on large screens */}
             <div
@@ -181,27 +181,29 @@ const Reviews = () => {
               aria-label="Customer reviews"
               style={{ scrollSnapType: 'x mandatory' }}
             >
-              {reviews.map((review, index) => (
-                <article
-                  key={review.id}
-                  className={`group relative flex flex-col justify-between
-                    h-[500px] sm:h-[500px] w-full
-                    dark:bg-linear-to-br dark:from-gray-800/80 dark:to-gray-900/80 dark:border-gray-200/50 dark:hover:border-yellow-500/50 dark:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 dark:text-gray-200 dark:hover:text-white dark:border dark:backdrop-blur-sm
-                    bg-white border-gray-300 hover:border-yellow-600 shadow-lg hover:shadow-2xl hover:shadow-yellow-500/10 text-gray-900 
-                    p-8 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2
-                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-                    font-body
-                    sm:p-8 p-4
-                    sm:text-base text-sm
-                    sm:rounded-2xl rounded-xl
-                    sm:mb-0 mb-4
-                    min-w-[85vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl
-                    `}
-                  style={{ transitionDelay: `${index * 150}ms` }}
-                  aria-label={`Review by ${review.author} from ${review.location}`}
-                >
-                  {/* Date, stars, and source icon row */}
-                  <div className="flex items-center gap-2 mb-6">
+              {reviews.map((review, index) => {
+                // Remove unused expanded/see more logic
+                return (
+                  <article
+                    key={review.id}
+                    className={`group relative flex flex-col justify-between
+                      h-[370px] sm:h-[400px] w-full
+                      dark:bg-linear-to-br dark:from-gray-800/80 dark:to-gray-900/80 dark:border-gray-200/50 dark:hover:border-yellow-500/50 dark:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 dark:text-gray-200 dark:hover:text-white dark:border dark:backdrop-blur-sm
+                      bg-white border-gray-300 hover:border-yellow-600 shadow-lg hover:shadow-2xl hover:shadow-yellow-500/10 text-gray-900 
+                      rounded-2xl border transition-all duration-500 transform hover:-translate-y-2
+                      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+                      font-body
+                      sm:p-8 p-4
+                      sm:text-base text-sm
+                      sm:rounded-2xl rounded-xl
+                      sm:mb-0 mb-4
+                      min-w-[85vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl
+                      `}
+                    style={{ transitionDelay: `${index * 150}ms` }}
+                    aria-label={`Review by ${review.author} from ${review.location}`}
+                  >
+                    {/* Date, stars, and source icon row */}
+                    <div className="flex items-center gap-2 mb-6">
                     <time dateTime={review.date} className="text-xs text-gray-400 dark:text-gray-500 font-semibold font-body">
                       {review.date}
                     </time>
@@ -225,7 +227,7 @@ const Reviews = () => {
                     </span>
                   </div>
                   {/* Review content with scroll for long text on desktop */}
-                  <blockquote className="mb-4 flex-1 font-body">
+                  <blockquote className="flex-1 font-body">
                     <div
                       className="font-bold text-md md:text-md mb-2 text-gray-900 dark:text-white transition-all duration-700 ease-in-out group-hover:text-orange-500 animate-fade-in font-headline"
                       style={{ transitionDelay: `${index * 100 + 200}ms` }}
@@ -233,41 +235,48 @@ const Reviews = () => {
                     >
                       {review.title}
                     </div>
-                    <div className="relative">
-                      <div className="h-52 sm:h-42 md:h-40 lg:h-44 xl:h-52 2xl:h-60 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed italic font-poppins">
-                        {review.text}
+                    <div className="relative flex-1 flex flex-col min-h-0">
+                      <div className="flex-1 min-h-[100px] max-h-32 sm:max-h-36 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed italic font-poppins">
+                          {review.text}
+                        </div>
                       </div>
-                      {/* Gradient fade for overflow */}
-                      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-8 bg-linear-to-t from-white/90 dark:from-gray-900/90 to-transparent rounded-b-2xl" />
-                    </div>
-                  </blockquote>
-                  <footer className="mt-auto pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3 font-body">
+                    </blockquote>
+                    <footer className="mt-auto pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3 font-body">
                     {/* Author initial circle */}
-                    <span className="flex items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 dark:bg-linear-to-br dark:from-orange-400 dark:via-red-400 dark:to-yellow-400 text-white font-bold text-lg shadow-md">
+                    <span className="flex items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 dark:bg-linear-to-br dark:from-orange-400 dark:via-red-400 dark:to-yellow-400 text-white font-bold text-md shadow-md">
                       {review.author.trim().charAt(0)}
                     </span>
                     <span className="font-semibold text-gray-900 dark:text-white font-headline">{review.author}</span>
                     <span className="text-xs text-gray-500 dark:text-gray-400 font-body">{review.location}</span>
                   </footer>
                 </article>
-              ))}
+                );
+              })}
             </div>
             {/* Slide controls below reviews for all screens */}
             <div className="flex justify-between items-center mt-1 px-2">
               <button
-                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
                 onClick={() => scrollReviews('left')}
                 aria-label="Scroll left"
               >
-                <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+                {/* Modern left arrow icon */}
+                <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2.5" fill="none" />
+                  <path d="M14.5 8l-4 4 4 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                </svg>
               </button>
               <span className="text-xs text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
               <button
-                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
+                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
                 onClick={() => scrollReviews('right')}
                 aria-label="Scroll right"
               >
-                <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+                {/* Modern right arrow icon */}
+                <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2.5" fill="none" />
+                  <path d="M9.5 8l4 4-4 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                </svg>
               </button>
             </div>
             {/* Decorative bottom bar */}

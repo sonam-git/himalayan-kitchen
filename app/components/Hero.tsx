@@ -52,7 +52,7 @@ const Hero = () => {
       <div className="relative flex flex-col items-center justify-center px-4 sm:px-8 lg:px-0 pointer-events-none mt-0 mb-0">
         <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 pointer-events-auto leading-tight">
           <span className="block w-full">Taste From The</span>
-          <span className="block w-full text-[#D4AF37] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
+          <span className="block w-full text-[#f3d573] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
             HIMALAYAS
           </span>
         </h2>
@@ -61,16 +61,19 @@ const Hero = () => {
         </p>
         {/* Action Buttons - always below subtext, never overlapping */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl mx-auto pointer-events-auto">
-          {/* Primary CTA - Explore Menu */}
+          {/* Primary CTA - Gift Card */}
           <button
-            onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => window.open('https://www.toasttab.com/himalayan-kitchen-227-3rd-st/giftcards', '_blank', 'noopener,noreferrer')}
             className="group relative overflow-hidden bg-yellow-600 hover:bg-white text-white hover:text-black border-2 border-white hover:border-yellow-500 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] cursor-pointer shadow-xl"
-            aria-label="Explore our restaurant menu"
+            aria-label="Purchase a gift card online"
           >
             <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              <rect x="3" y="7" width="18" height="10" rx="3" stroke="currentColor" strokeWidth="2.5" fill="none" />
+              <path d="M3 10h18" stroke="currentColor" strokeWidth={2.5} />
+              <circle cx="7.5" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="16.5" cy="12" r="1.5" fill="currentColor" />
             </svg>
-            <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Explore Menu</span>
+            <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Gift Card</span>
           </button>
           {/* Secondary CTA - Order Now */}
           <button

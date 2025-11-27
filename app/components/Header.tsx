@@ -147,10 +147,10 @@ const Header = () => {
             aria-modal="true"
             tabIndex={-1}
             className="xl:hidden absolute left-0 right-0 top-full z-60 bg-white dark:bg-gray-900 shadow-2xl border-b-2 border-red-500/20 dark:border-red-400/20 animate-slide-down overflow-visible"
-            style={{ backgroundImage: 'url(/images/logo/logo-transparentbg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+            style={{ backgroundImage: 'url(/images/other/aboutSketch.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'rgba(255,255,255,0.7)' }}
           >
             {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md backdrop-saturate-150 pointer-events-none z-0" />
+            <div className="absolute inset-0 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md backdrop-saturate-150 pointer-events-none z-0" />
             <div className="relative flex flex-col py-3 px-6 gap-1 z-10">
               {[
                 { id: 'home', label: 'Home', icon: (

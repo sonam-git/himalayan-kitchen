@@ -124,109 +124,73 @@ const MenuSection = () => {
         <MenuHeading/>
         {/* Featured Dishes Section */}
         <div className="mt-4 mb-4">
-          <div ref={featuredDishesScrollRef} className="flex gap-6 overflow-x-auto pb-2 px-2 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent featured-dishes-scroll">
-            {featuredDishes.map((dish, idx) => (
-              <div key={dish.name} className="min-w-[320px] max-w-sm w-full shrink-0">
-                <div onClick={() => openModal(idx)} className="cursor-zoom-in h-full">
-                  <MenuItemCard
-                    name={dish.name}
-                    description={dish.description}
-                    image={dish.image}
-                    spicy={dish.spicy}
-                    vegetarian={dish.vegetarian}
-                    index={idx}
-                  />
-                </div>
+          <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-linear-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
+            <div className="relative z-10">
+              <div ref={featuredDishesScrollRef} className="flex gap-6 overflow-x-auto pb-2 px-2 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent featured-dishes-scroll">
+                {featuredDishes.map((dish, idx) => (
+                  <div key={dish.name} className="min-w-[320px] max-w-sm w-full shrink-0">
+                    <div onClick={() => openModal(idx)} className="cursor-zoom-in h-full">
+                      <MenuItemCard
+                        name={dish.name}
+                        description={dish.description}
+                        image={dish.image}
+                        spicy={dish.spicy}
+                        vegetarian={dish.vegetarian}
+                        index={idx}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="flex flex-row items-center justify-center mt-2 mb-6 gap-2 w-full">
-            <button
-              className="rounded-full p-1.5 md:p-2 bg-transparent shadow-none hover:bg-white hover:border-orange-400 border border-transparent transition w-8 h-8 md:w-10 md:h-10 flex items-center justify-center group"
-              onClick={() => {
-                if (featuredDishesScrollRef.current) {
-                  featuredDishesScrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
-                }
-              }}
-              aria-label="Scroll left"
-              type="button"
-            >
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
-            </button>
-            <button
-              className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white text-sm md:text-lg font-extrabold shadow-xl border-2 border-white hover:bg-gray-100 hover:text-gray-900 hover:border-orange-400 hover:[&>svg]:text-orange-500 hover:[&>svg]:stroke-orange-500 hover:bg-gradient-to-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline"
-              onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
-              tabIndex={0}
-              aria-label="Go to full menu ordering page"
-              type="button"
-            >
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-orange-500 transition-colors duration-300 drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
-              <span className="drop-shadow font-extrabold tracking-wide group-hover:no-underline group-hover:decoration-orange-400 group-hover:decoration-2 group-hover:animate-[flip_0.6s_ease-in-out] transition-all duration-200 no-underline">Browse Full Selection</span>
-            </button>
-            <button
-              className="rounded-full p-1.5 md:p-2 bg-transparent shadow-none hover:bg-white hover:border-orange-400 border border-transparent transition w-8 h-8 md:w-10 md:h-10 flex items-center justify-center group"
-              onClick={() => {
-                if (featuredDishesScrollRef.current) {
-                  featuredDishesScrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
-                }
-              }}
-              aria-label="Scroll right"
-              type="button"
-            >
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
-            </button>
+              <div className="flex flex-row items-center justify-center mt-2 mb-6 gap-2 w-full">
+                <button
+                  className="rounded-full p-2 md:p-3 bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-yellow-100 dark:hover:bg-yellow-900 border-2 border-orange-300 dark:border-orange-700 transition w-10 h-10 md:w-12 md:h-12 flex items-center justify-center group"
+                  onClick={() => {
+                    if (featuredDishesScrollRef.current) {
+                      featuredDishesScrollRef.current.scrollBy({ left: -featuredDishesScrollRef.current.offsetWidth, behavior: 'smooth' });
+                    }
+                  }}
+                  aria-label="Show previous dish"
+                  type="button"
+                >
+                  {/* Double line left arrow */}
+                  <svg className="w-7 h-7 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 19l-7-7 7-7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white text-sm md:text-lg font-extrabold shadow-xl border-2 border-white hover:bg-gray-100 hover:text-gray-900 hover:border-orange-400 hover:[&>svg]:text-orange-500 hover:[&>svg]:stroke-orange-500 hover:bg-gradient-to-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline"
+                  onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
+                  tabIndex={0}
+                  aria-label="Go to full menu ordering page"
+                  type="button"
+                >
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-orange-500 transition-colors duration-300 drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  <span className="drop-shadow font-extrabold tracking-wide group-hover:no-underline group-hover:decoration-orange-400 group-hover:decoration-2 group-hover:animate-[flip_0.6s_ease-in-out] transition-all duration-200 no-underline">Browse Full Selection</span>
+                </button>
+                <button
+                  className="rounded-full p-2 md:p-3 bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-yellow-100 dark:hover:bg-yellow-900 border-2 border-orange-300 dark:border-orange-700 transition w-10 h-10 md:w-12 md:h-12 flex items-center justify-center group"
+                  onClick={() => {
+                    if (featuredDishesScrollRef.current) {
+                      featuredDishesScrollRef.current.scrollBy({ left: featuredDishesScrollRef.current.offsetWidth, behavior: 'smooth' });
+                    }
+                  }}
+                  aria-label="Show next dish"
+                  type="button"
+                >
+                  {/* Double line right arrow */}
+                  <svg className="w-7 h-7 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 5l7 7-7 7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M11 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-           {/* <div className="relative w-full bg-linear-to-r from-orange-100 via-yellow-50 to-red-100 dark:bg-linear-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:shadow-orange-900/30 backdrop-blur-md border-0 rounded-3xl py-12 px-4 md:px-16 my-10 shadow-2xl flex flex-col items-center mx-auto max-w-7xl">
-              <div className="absolute inset-0 w-full h-full z-0 rounded-3xl overflow-hidden">
-                <Image
-                  src="/images/other/stone.webp"
-                  alt="Menu CTA Background"
-                  fill
-                  sizes="100vw"
-                  className="object-cover w-full h-full rounded-3xl blur-xs opacity-50"
-                  priority
-                />
-                <div className="absolute inset-0 bg-linear-to-b from-gray-900/70 via-gray-900/40 to-gray-900/70 dark:from-black/80 dark:via-gray-900/60 dark:to-black/80 rounded-3xl"></div>
-              </div>
-              <div className="relative z-10 w-full flex flex-col items-center">
-                <h3 className="text-3xl md:text-4xl font-serif font-extrabold mb-3 text-orange-100 dark:text-yellow-500 text-center drop-shadow-lg dark:drop-shadow-xl">
-                  Experience the Authentic Taste of the Himalayas
-                </h3>
-                <p className="text-md md:text-xl text-gray-50 dark:text-gray-200 mb-4 max-w-3xl text-center">
-                 You can order your favorite dishes by calling us or using our convenient online ordering system.<br className="hidden md:inline" /> Enjoy the flavors of the Himalayas from the comfort of your home!
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full">
-                  <a
-                    href="tel:(415) 526-3161"
-                    className="group relative inline-flex items-center justify-center bg-yellow-600 hover:bg-white text-white hover:text-black border-2 border-white hover:border-yellow-500 font-bold py-5 px-10 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl min-w-[220px] text-lg md:text-xl cursor-pointer w-full sm:w-auto text-center"
-                  >
-                    <span className="relative z-10 flex items-center group-hover:animate-[flip_0.6s_ease-in-out]">
-                      <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      Call Us
-                    </span>
-                  </a>
-                  <a
-                    href="https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center justify-center bg-yellow-600 hover:bg-white text-white hover:text-black border-2 border-white hover:border-yellow-500 font-bold py-5 px-10 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl min-w-[220px] text-lg md:text-xl cursor-pointer w-full sm:w-auto text-center"
-                  >
-                    <span className="flex items-center group-hover:animate-[flip_0.6s_ease-in-out]">
-                      <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                      </svg>
-                      Order Online
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div> */}
       </div>
       {/* Modal for zoomed food item */}
       {modalOpen && selectedIndex !== null && (
