@@ -15,15 +15,16 @@ const Hero = () => {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24 w-full"
+      className="relative h-screen w-full flex flex-col md:block items-stretch justify-center overflow-hidden"
     >
       {/* Visually hidden heading for screen readers */}
       <h1 id="hero-heading" className="sr-only">Welcome to Himalayan Kitchen Marin</h1>
       {/* Skip to menu anchor for accessibility */}
       <a href="#menu" className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-yellow-200 text-black px-4 py-2 rounded shadow-lg">Skip to Menu</a>
-      {/* Hero Background Video styled as a TV screen */}
-      <div className="absolute inset-0 z-0 w-full flex items-center justify-center">
-        <div className="relative w-full h-full flex items-center justify-center">
+      {/* Mobile: stacked, Desktop: overlay */}
+      <div className="flex flex-col md:block w-full h-full flex-1">
+        {/* Video Section */}
+        <div className="relative w-full h-[50vh] md:h-full flex items-center justify-center shrink-0">
           {/* TV frame */}
           <div className="absolute inset-0 rounded-4xl md:rounded-[3.5rem] border-18 md:border-32 border-gray-900 bg-linear-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl tv-frame" aria-hidden="true"></div>
           {/* Video with TV glass effect */}
@@ -46,47 +47,34 @@ const Hero = () => {
           {/* Subtle inner shadow for glass */}
           <div className="pointer-events-none absolute inset-0 rounded-4xl md:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
         </div>
-      </div>
-      {/* Content: Logo BG + Heading overlay, fade/zoom in/out */}
-      {/* Main Hero Overlay Content - center of screen, two lines, responsive */}
-      <div className="relative flex flex-col items-center justify-center px-4 sm:px-8 lg:px-0 pointer-events-none mt-0 mb-0">
-        <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 pointer-events-auto leading-tight">
-          <span className="block w-full">Taste From The</span>
-          <span className="block w-full text-[#f3d573] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
-            HIMALAYAS
-          </span>
-        </h2>
-        <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 font-serif drop-shadow-lg pointer-events-auto ">
-          Experience authentic Himalayan flavors, crafted with passion and tradition.
-        </p>
-        {/* Action Buttons - always below subtext, never overlapping */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl mx-auto pointer-events-auto">
-          {/* Primary CTA - Gift Card */}
-          <button
-            onClick={() => window.open('https://www.toasttab.com/himalayan-kitchen-227-3rd-st/giftcards', '_blank', 'noopener,noreferrer')}
-            className="group relative overflow-hidden bg-yellow-600 hover:bg-white text-white hover:text-black border-2 border-white hover:border-yellow-500 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] cursor-pointer shadow-xl"
-            aria-label="Purchase a gift card online"
-          >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-              <rect x="3" y="7" width="18" height="10" rx="3" stroke="currentColor" strokeWidth="2.5" fill="none" />
-              <path d="M3 10h18" stroke="currentColor" strokeWidth={2.5} />
-              <circle cx="7.5" cy="12" r="1.5" fill="currentColor" />
-              <circle cx="16.5" cy="12" r="1.5" fill="currentColor" />
-            </svg>
-            <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Gift Card</span>
-          </button>
-          {/* Secondary CTA - Order Now */}
-          <button
-            onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
-            className="group relative overflow-hidden bg-yellow-600 hover:bg-white text-white hover:text-black border-2 border-white hover:border-yellow-500 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] shadow-xl cursor-pointer"
-            aria-label="Order food online for delivery or pickup"
-          >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-            <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Order Online</span>
-            <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50 ml-2" aria-hidden="true"></div>
-          </button>
+        {/* Content Section: below video on mobile, overlay on desktop */}
+        <div className="relative w-full h-[50vh] md:h-auto md:absolute md:inset-0 md:flex md:items-center md:justify-center z-20">
+          <div className="flex flex-col items-center justify-center px-4 sm:px-8 lg:px-0 w-full h-full bg-black/80 md:bg-transparent">
+            <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 leading-tight">
+              <span className="block w-full">Taste From The</span>
+              <span className="block w-full text-[#f3d573] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
+                HIMALAYAS
+              </span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 font-serif drop-shadow-lg ">
+              Experience authentic Himalayan flavors, crafted with passion and tradition.
+            </p>
+            {/* Action Buttons - always below subtext, never overlapping */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl mx-auto">
+              {/* Only CTA - Order Now */}
+              <button
+                onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
+                className="group relative overflow-hidden bg-yellow-600 hover:bg-white text-white hover:text-black border-2 border-white hover:border-yellow-500 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto min-w-40 sm:min-w-[180px] lg:min-w-[200px] shadow-xl cursor-pointer"
+                aria-label="Order food online for delivery or pickup"
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <span className="text-base sm:text-lg lg:text-xl font-extrabold tracking-wide group-hover:animate-[flip_0.6s_ease-in-out]">Order Online</span>
+                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50 ml-2" aria-hidden="true"></div>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
