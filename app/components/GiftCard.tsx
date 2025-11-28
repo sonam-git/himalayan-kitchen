@@ -2,9 +2,8 @@ import React from "react";
 
 export default function GiftCard() {
   return (
-    <section className="relative w-full max-w-md mx-auto  px-1 sm:px-2">
-      <div className="relative rounded-2xl bg-transparent border-2 border-yellow-300/70 dark:border-orange-400/60 shadow-xl p-4 sm:p-5 flex flex-col items-center text-center overflow-hidden">
-   
+    <section className="relative w-full flex items-center justify-center px-1 sm:px-2 py-12 overflow-hidden">
+      <div className="relative rounded-2xl bg-transparent border-r-2 border-l-2 border-b-2 border-yellow-300/70 dark:border-orange-400/60 shadow-xl p-2 sm:p-2 flex flex-col items-center text-center animate-zoom-in overflow-hidden">
         <h2 className="text-lg sm:text-xl font-bold font-serif text-yellow-500 dark:text-yellow-300 mb-2 drop-shadow-lg">Gift the Taste of the Himalayas</h2>
         <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100 mb-4 font-medium w-full max-w-none mx-0">
           Delight your loved ones with a gift that’s always in good taste—make their day memorable with the authentic flavors of Himalayan cuisine.
@@ -29,3 +28,14 @@ export default function GiftCard() {
     </section>
   );
 }
+
+/* Add this to your global CSS (e.g. globals.css):
+@keyframes zoom-in {
+  0% { opacity: 0; transform: scale(0.8); }
+  60% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-zoom-in {
+  animation: zoom-in 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+*/

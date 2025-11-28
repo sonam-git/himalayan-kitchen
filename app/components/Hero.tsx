@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -48,12 +49,22 @@ const Hero = () => {
           <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
         </div>
         {/* Content Section: below video on mobile, overlay on desktop */}
-        <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-8 p-0 xl:pt-32">
+        <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-10 p-0 xl:pt-32">
           <div className="flex flex-col items-center justify-start px-4 sm:px-8 xl:px-0 w-full bg-black/80 xl:bg-transparent m-0 xl:mt-16 pb-4 drop-shadow-2xl shadow-amber-500">
-            <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 leading-tight">
-              <span className="block w-full">Taste From The</span>
-              <span className="block w-full text-[#f3d573] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
-                HIMALAYAS
+            <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 leading-tight flex items-center justify-center gap-2">
+              {/* Spoon Image (vertical, before text) */}
+              <span className="inline-flex items-center h-[2em] sm:h-[2.5em] md:h-[3em] lg:h-[4em]">
+                <Image src="/images/logo/spoon.png" alt="Spoon" height={128} width={128} className="h-full w-auto object-contain filter invert brightness-200" />
+              </span>
+              <span className="block w-full">
+                Taste From The
+                <span className="block w-full text-[#f3d573] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
+                  HIMALAYAS
+                </span>
+              </span>
+              {/* Fork Image (vertical, after text) */}
+              <span className="inline-flex items-center h-[2em] sm:h-[2.5em] md:h-[3em] lg:h-[4em]">
+                <Image src="/images/logo/fork.png" alt="Fork" height={128} width={128} className="h-full w-auto object-contain filter invert brightness-200" />
               </span>
             </h2>
             <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 font-serif drop-shadow-lg ">
