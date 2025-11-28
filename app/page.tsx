@@ -6,7 +6,6 @@ import Hero from "./components/Hero";
 import MenuSection from "./components/MenuSection";
 import Gallery from "./components/Gallery";
 import Reviews from "./components/Reviews";
-import Buttons from "./components/Buttons";
 import GiftCard from "./components/GiftCard";
 
 export default function Home() {
@@ -34,7 +33,7 @@ export default function Home() {
           <Hero />
 
           {/* Content sections with side spacing and gaps between sections */}
-          <div className="space-y-8 sm:space-y-12 lg:space-y-16 mx-4 sm:mx-6 lg:mx-8 xl:mx-12 2xl:mx-16 ">
+          <div className="space-y-2 sm:space-y-10 lg:space-y-1 mx-4 sm:mx-4 lg:mx-8 xl:mx-12 2xl:mx-16 ">
             <MenuSection />
             <Reviews />
             <Gallery />

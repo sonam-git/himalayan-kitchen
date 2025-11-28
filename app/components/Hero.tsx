@@ -15,18 +15,18 @@ const Hero = () => {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative h-screen w-full flex flex-col md:block items-stretch justify-center overflow-hidden"
+      className="relative min-h-[92vh] w-full flex flex-col items-stretch justify-center overflow-hidden"
     >
       {/* Visually hidden heading for screen readers */}
       <h1 id="hero-heading" className="sr-only">Welcome to Himalayan Kitchen Marin</h1>
       {/* Skip to menu anchor for accessibility */}
       <a href="#menu" className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-yellow-200 text-black px-4 py-2 rounded shadow-lg">Skip to Menu</a>
       {/* Mobile: stacked, Desktop: overlay */}
-      <div className="flex flex-col md:block w-full h-full flex-1">
+      <div className="flex flex-col w-full gap-0">
         {/* Video Section */}
-        <div className="relative w-full h-[50vh] md:h-full flex items-end justify-center shrink-0">
+        <div className="relative w-full h-[50vh] xl:h-screen flex items-end justify-center shrink-0">
           {/* TV frame */}
-          <div className="absolute inset-0 rounded-4xl md:rounded-[3.5rem] border-18 md:border-32 border-gray-900 bg-linear-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl tv-frame" aria-hidden="true"></div>
+          <div className="absolute inset-0 rounded-none xl:rounded-[3.5rem] border-18 xl:border-32 border-gray-900 bg-linear-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl tv-frame" aria-hidden="true"></div>
           {/* Video with TV glass effect */}
           <video
             ref={videoRef}
@@ -35,21 +35,21 @@ const Hero = () => {
             loop
             muted
             playsInline
-            className="object-cover w-full h-full rounded-4xl md:rounded-[3rem] shadow-xl tv-glass"
+            className="object-cover w-full h-full rounded-none xl:rounded-[3rem] shadow-xl tv-glass"
             style={{ filter: 'contrast(1.15) brightness(0.98) saturate(1.1)' }}
             aria-hidden="true"
             tabIndex={-1}
           />
           {/* Dark overlay for video */}
-          <div className="absolute inset-0 rounded-4xl md:rounded-[3rem] bg-linear-to-b from-black/70 via-black/40 to-black/70 pointer-events-none z-10" aria-hidden="true"></div>
+          <div className="absolute inset-0 rounded-none xl:rounded-[3rem] bg-linear-to-b from-black/70 via-black/40 to-black/70 pointer-events-none z-10" aria-hidden="true"></div>
           {/* Scanline/overlay effect */}
-          <div className="pointer-events-none absolute inset-0 rounded-4xl md:rounded-[3rem] mix-blend-soft-light opacity-60 tv-scanlines" aria-hidden="true"></div>
+          <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] mix-blend-soft-light opacity-60 tv-scanlines" aria-hidden="true"></div>
           {/* Subtle inner shadow for glass */}
-          <div className="pointer-events-none absolute inset-0 rounded-4xl md:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
+          <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
         </div>
         {/* Content Section: below video on mobile, overlay on desktop */}
-        <div className="relative w-full h-auto md:h-auto md:absolute md:inset-0 md:flex md:items-start md:justify-center z-20 p-0 md:pt-32">
-          <div className="flex flex-col items-center justify-start px-4 sm:px-8 lg:px-0 w-full bg-black/80 md:bg-transparent m-0 md:mt-16 pb-2">
+        <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-8 p-0 xl:pt-32">
+          <div className="flex flex-col items-center justify-start px-4 sm:px-8 xl:px-0 w-full bg-black/80 xl:bg-transparent m-0 xl:mt-16 pb-4 drop-shadow-2xl shadow-amber-500">
             <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 leading-tight">
               <span className="block w-full">Taste From The</span>
               <span className="block w-full text-[#f3d573] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
@@ -60,7 +60,7 @@ const Hero = () => {
               Experience authentic Himalayan flavors, crafted with passion and tradition.
             </p>
             {/* Action Buttons - always below subtext, never overlapping */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl mx-auto mb-0">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 xl:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl mx-auto mb-0 mt-2">
               {/* Only CTA - Order Now */}
               <button
                 onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
