@@ -305,7 +305,7 @@ const About = () => {
                 </div>
 
                 {/* Content Below Image */}
-                <div className="bg-white dark:bg-gray-900 p-6 md:p-8">
+                <div className="bg-gray-50 dark:bg-gray-900 p-6 md:p-8">
                   <div className="text-gray-900 dark:text-white">
                     {/* Summit Badge */}
                     <div className="flex items-center justify-center mb-4">
@@ -327,7 +327,7 @@ const About = () => {
                       <h4 className="text-xl md:text-2xl font-black mb-3 text-transparent bg-linear-to-r from-yellow-400 via-red-400 to-orange-400 bg-clip-text">
                         A Historic Achievement
                       </h4>
-                      <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+                      <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
                         <p className="text-base md:text-md leading-relaxed mb-3 text-gray-900 dark:text-white">
                           In{" "}
                           <span className="font-black dark:text-yellow-400">

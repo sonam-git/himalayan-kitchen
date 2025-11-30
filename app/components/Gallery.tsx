@@ -343,7 +343,7 @@ const Gallery = () => {
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out rounded-3xl"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority={index < 3}
                     />
@@ -436,29 +436,29 @@ const Gallery = () => {
         {/* Main Gallery Modal */}
         {mainModalOpen && (
           <div
-            className="fixed inset-0 z-9999 flex items-center justify-center bg-black bg-opacity-80"
+            className="fixed inset-0 z-99999 flex items-center justify-center bg-black bg-opacity-80"
             onClick={closeMainModal}
           >
             <div
-              className="relative max-w-full w-full flex flex-col items-center mt-12 sm:mt-20 px-2 sm:px-0"
+              className="relative max-w-full w-full flex flex-col items-center mt-12 sm:mt-20 px-2 sm:px-0 z-99999"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Frame and image container */}
-              <div className="relative w-full max-w-2xl sm:max-w-3xl flex flex-col items-center">
+              <div className="relative w-full max-w-2xl sm:max-w-3xl flex flex-col items-center z-99999">
                 {/* Decorative Frame fits image */}
-                <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
+                <div className="absolute inset-0 z-100000 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
                 {/* Image */}
                 <Image
                   src={galleryItems[mainModalIndex].image}
                   alt={galleryItems[mainModalIndex].title}
                   width={900}
                   height={650}
-                  className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto max-h-[70vh] object-contain z-10"
+                  className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto max-h-[70vh] object-contain z-99999"
                 />
                 {/* Title and Description overlay on image with blurred background, delayed display and auto-hide */}
                 {showMainModalText && (
                   <div
-                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30"
+                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-[100001]"
                     style={{ marginTop: "0" }}
                   >
                     <h3 className="text-lg sm:text-2xl font-bold mb-2 font-headline">
@@ -485,7 +485,7 @@ const Gallery = () => {
                   </div>
                 )}
               </div>
-              <div className="flex justify-between items-center w-full max-w-2xl sm:max-w-3xl mt-2 px-2 sm:px-8 gap-4 z-40">
+              <div className="flex justify-between items-center w-full max-w-2xl sm:max-w-3xl mt-2 px-2 sm:px-8 gap-4 z-[100002]">
                 <button
                   onClick={prevMainModal}
                   aria-label="Previous image"
@@ -537,9 +537,6 @@ const Gallery = () => {
             </div>
           </div>
         )}
-        <div className="w-full flex justify-center items-center">
-          <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
-        </div>
         {/* Food Gallery Section */}
         <div className="mt-8 relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-linear-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
           <div className="relative z-10">
@@ -577,7 +574,7 @@ const Gallery = () => {
                     alt={item.title}
                     width={500}
                     height={350}
-                    className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
                     priority={idx < 3}
                   />
                   <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
@@ -638,11 +635,11 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div
-            className="fixed inset-0 z-9999 flex items-center justify-center bg-black bg-opacity-80"
+            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black bg-opacity-80"
             onClick={closeFoodModal}
           >
             <div
-              className="relative max-w-full w-full flex flex-col items-center mt-2 sm:mt-18 px-2 sm:px-0"
+              className="relative max-w-full w-full flex flex-col items-center mt-2 sm:mt-18 px-2 sm:px-0 z-[99999]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Frame and image container for food modal */}
@@ -653,7 +650,7 @@ const Gallery = () => {
                 setShowFullFoodDesc={setShowFullFoodDesc}
                 showFoodModalText={showFoodModalText}
               />
-              <div className="flex justify-between items-center w-full max-w-2xl sm:max-w-3xl mt-2 px-2 sm:px-8 gap-4 z-40">
+              <div className="flex justify-between items-center w-full max-w-2xl sm:max-w-3xl mt-2 px-2 sm:px-8 gap-4 z-[100002]">
                 <button
                   onClick={prevFoodModal}
                   aria-label="Previous image"

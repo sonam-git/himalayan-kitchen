@@ -22,8 +22,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (savedTheme) {
       shouldBeDark = savedTheme === 'dark';
     } else {
-      // Use system preference if no theme is set
-      shouldBeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // Default to dark mode if no theme is set
+      shouldBeDark = true;
     }
     if (shouldBeDark) {
       html.classList.add('dark');
@@ -41,6 +41,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (!mounted) return;
 
     const html = document.documentElement;
+    console.log('[ThemeProvider] isDarkMode:', isDarkMode, '| mounted:', mounted);
 
     if (isDarkMode) {
       html.classList.add('dark');
@@ -49,10 +50,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       html.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
+    console.log('[ThemeProvider] html.classList:', html.classList.value);
   }, [isDarkMode, mounted]);
 
   const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
+    setIsDarkMode((prev) => {
+      const next = !prev;
+      console.log('[ThemeProvider] toggleTheme called. Next isDarkMode:', next);
+      return next;
+    });
   };
 
   return (

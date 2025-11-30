@@ -67,7 +67,7 @@ export default function RootLayout({
           priority
         />
         {/* Strong dark overlay for focus, adjusts for dark/light mode */}
-        <div className="absolute image-overlay inset-0 opacity-90 bg-gray-800  dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
+        <div className="absolute image-overlay inset-0 opacity-90 bg-gray-800  dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl "></div>
       </div>
         <ThemeProvider>
           <Header />

@@ -22,18 +22,22 @@ export default function AnnouncementModal() {
           &times;
         </button>
         <div className="flex flex-col items-center gap-2">
-          <span className="text-4xl sm:text-5xl mb-2">🦃</span>
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
           <h2 className="text-2xl sm:text-3xl font-extrabold mb-2 text-orange-600 dark:text-yellow-300 font-headline text-center drop-shadow-lg">
-            Happy Thanksgiving!
+           Hurry Up..!
           </h2>
           <p className="mb-4 text-gray-700 dark:text-gray-200 text-center text-base sm:text-lg font-body max-w-xs sm:max-w-sm">
-            We’re grateful for your support. Enjoy a special offer this week only!
+         Order your favorite dishes in seconds!
           </p>
           <button
             className="px-6 py-2 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white font-bold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 text-base sm:text-lg focus:outline-none"
-            onClick={() => setOpen(false)}
+            onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
+      aria-label="Order food online"
+      type="button"
           >
-            Claim Offer
+            order now
           </button>
         </div>
       </div>
