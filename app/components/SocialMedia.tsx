@@ -1,7 +1,7 @@
 
 const SocialMedia = () => {
   return (
-    <section aria-labelledby="social-heading" className="relative py-20 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm  p-6 sm:p-8" tabIndex={-1}>
+    <section aria-labelledby="social-heading" className="relative py-1 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm  p-2 " tabIndex={-1}>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center mb-4" aria-hidden="true">
@@ -29,7 +29,7 @@ const SocialMedia = () => {
                 src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhimalayankitchenmarin&tabs=timeline&width=600&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
                 width="600"
                 height="500"
-                style={{ border: 'none', overflow: 'hidden' }}
+                style={{ border: 'none', overflow: 'auto' }}
                 scrolling="no"
                 frameBorder="0"
                 allowFullScreen={true}
@@ -44,10 +44,10 @@ const SocialMedia = () => {
             {/* Desktop: normal display */}
             <div className="w-full h-[500px] rounded-xl overflow-hidden sm:block hidden">
               <iframe 
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhimalayankitchenmarin&tabs=timeline&width=600&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhimalayankitchenmarin&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
                 width="100%"
                 height="500"
-                style={{ border: 'none', overflow: 'hidden' }}
+            style={{ border: 'none', overflow: 'auto' }}
                 scrolling="no"
                 frameBorder="0"
                 allowFullScreen={true}

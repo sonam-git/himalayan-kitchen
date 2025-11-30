@@ -8,6 +8,11 @@
 * {
   box-sizing: border-box;
 }
+.stardos-stencil-bold {
+  font-family: "Stardos Stencil", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
 
 html {
   overflow-x: hidden;
