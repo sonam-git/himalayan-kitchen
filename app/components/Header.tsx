@@ -147,10 +147,10 @@ const Header = () => {
             aria-modal="true"
             tabIndex={-1}
             className="xl:hidden absolute left-0 right-0 top-full z-60 bg-white dark:bg-gray-900 shadow-2xl border-b-2 border-red-500/20 dark:border-red-400/20 animate-slide-down overflow-visible"
-            style={{ backgroundImage: 'url(/images/other/aboutSketch.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'rgba(255,255,255,0.7)' }}
+            // style={{ backgroundImage: 'url(/images/other/aboutSketch)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'rgba(255,255,255,0.7)' }}
           >
             {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md backdrop-saturate-150 pointer-events-none z-0" />
+            <div className="absolute inset-0 bg-white dark:bg-gray-900/40 backdrop-blur-md backdrop-saturate-150 pointer-events-none z-0" />
             <div className="relative flex flex-col py-3 px-6 gap-1 z-10">
               {[
                 { id: 'home', label: 'Home', icon: (
@@ -174,7 +174,7 @@ const Header = () => {
               ].map(({ id, label, icon, href }) => (
                 <Link key={id} href={href}>
                   <span
-                    className={`flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 focus:outline-none focus:ring-2 focus:ring-red-400/60 ${isActive(href) ? 'text-red-600 dark:text-yellow-300 bg-red-50 dark:bg-red-800' : 'text-gray-800 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300'}`}
+                    className={`flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 focus:outline-none focus:ring-2 focus:ring-red-400/60 ${isActive(href) ? 'text-red-600 dark:text-yellow-300 bg-red-50 dark:bg-red-800' : 'dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300'}`}
                     tabIndex={0}
                     aria-current={isActive(href) ? 'page' : undefined}
                     role="link"

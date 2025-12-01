@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer id="contact" aria-labelledby="footer-heading" className="bg-[#1d0303] dark:bg-[#2a0a0a] border-t-2 text-white overflow-hidden w-full max-w-full  transition-colors duration-300" tabIndex={-1}>
       <h2 id="footer-heading" className="sr-only">Contact and Social Links</h2>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto_auto] lg:grid-rows-2 gap-10 w-full">
           {/* Contact Info - order 1 on mobile, col 2 row 1 on large */}
           <div className="order-1 lg:order-0 lg:col-start-2 lg:row-start-1">

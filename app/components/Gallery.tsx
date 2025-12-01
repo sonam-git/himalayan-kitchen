@@ -32,7 +32,7 @@ function FoodModalContent({
         alt={foodGalleryItems[foodModalIndex].title}
         width={900}
         height={650}
-        className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto max-h-[70vh] object-contain z-10"
+        className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
       />
       {/* Title and Description overlay on image with blurred background, delayed display and auto-hide */}
       {showFoodModalText && (
@@ -436,104 +436,79 @@ const Gallery = () => {
         {/* Main Gallery Modal */}
         {mainModalOpen && (
           <div
-            className="fixed inset-0 z-99999 flex items-center justify-center bg-black bg-opacity-80"
+            className="fixed inset-0 z-100000 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="main-modal-title"
             onClick={closeMainModal}
           >
             <div
-              className="relative max-w-full w-full flex flex-col items-center mt-12 sm:mt-20 px-2 sm:px-0 z-99999"
+              className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Frame and image container */}
-              <div className="relative w-full max-w-2xl sm:max-w-3xl flex flex-col items-center z-99999">
-                {/* Decorative Frame fits image */}
-                <div className="absolute inset-0 z-100000 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
-                {/* Image */}
-                <Image
-                  src={galleryItems[mainModalIndex].image}
-                  alt={galleryItems[mainModalIndex].title}
-                  width={900}
-                  height={650}
-                  className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto max-h-[70vh] object-contain z-99999"
-                />
-                {/* Title and Description overlay on image with blurred background, delayed display and auto-hide */}
-                {showMainModalText && (
-                  <div
-                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-[100001]"
-                    style={{ marginTop: "0" }}
-                  >
-                    <h3 className="text-lg sm:text-2xl font-bold mb-2 font-headline">
-                      {galleryItems[mainModalIndex].title}
-                    </h3>
-                    <p className="text-sm sm:text-base italic leading-snug font-body">
-                      {showFullMainDesc ||
-                      galleryItems[mainModalIndex].description.length <= 180
-                        ? galleryItems[mainModalIndex].description
-                        : `${galleryItems[mainModalIndex].description.slice(
-                            0,
-                            180
-                          )}...`}
-                      {galleryItems[mainModalIndex].description.length >
-                        180 && (
-                        <button
-                          className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
-                          onClick={() => setShowFullMainDesc((v) => !v)}
-                        >
-                          {showFullMainDesc ? "Less" : "More"}
-                        </button>
-                      )}
-                    </p>
-                  </div>
-                )}
-              </div>
-              <div className="flex justify-between items-center w-full max-w-2xl sm:max-w-3xl mt-2 px-2 sm:px-8 gap-4 z-[100002]">
-                <button
-                  onClick={prevMainModal}
-                  aria-label="Previous image"
-                  className="text-white text-2xl bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 shadow-lg rounded-full px-4 py-2 hover:scale-110 hover:shadow-2xl focus:outline-none flex items-center gap-2"
-                >
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline font-bold">Prev</span>
-                </button>
-                <button
-                  className="text-white text-3xl font-bold bg-black bg-opacity-40 rounded-full px-4 py-2 hover:bg-opacity-70 focus:outline-none flex items-center justify-center"
-                  onClick={closeMainModal}
-                  aria-label="Close full image view"
-                >
-                  &times;
-                </button>
-                <button
-                  onClick={nextMainModal}
-                  aria-label="Next image"
-                  className="text-white text-2xl bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 shadow-lg rounded-full px-4 py-2 hover:scale-110 hover:shadow-2xl focus:outline-none flex items-center gap-2"
-                >
-                  <span className="hidden sm:inline font-bold">Next</span>
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
+              {/* Decorative Frame fits image */}
+              <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
+              {/* Zoomed image */}
+              <Image
+                src={galleryItems[mainModalIndex].image}
+                alt={galleryItems[mainModalIndex].title}
+                width={900}
+                height={650}
+                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
+                priority
+              />
+              {/* Title and Description overlay at bottom, styled like Gallery, delayed show and auto-hide */}
+              {showMainModalText && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30">
+                  <h2 id="main-modal-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
+                    {galleryItems[mainModalIndex].title}
+                  </h2>
+                  <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body">
+                    {showFullMainDesc ||
+                    galleryItems[mainModalIndex].description.length <= 180
+                      ? galleryItems[mainModalIndex].description
+                      : `${galleryItems[mainModalIndex].description.slice(0, 180)}...`}
+                    {galleryItems[mainModalIndex].description.length > 180 && (
+                      <button
+                        className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
+                        onClick={() => setShowFullMainDesc((v) => !v)}
+                      >
+                        {showFullMainDesc ? "Less" : "More"}
+                      </button>
+                    )}
+                  </p>
+                </div>
+              )}
+            </div>
+            {/* Modal controls always visible below the modal, outside the border/frame */}
+            <div className="flex justify-center items-center gap-8 mt-8 z-50" onClick={e => e.stopPropagation()}>
+              <button
+                aria-label="Previous"
+                onClick={e => { e.stopPropagation(); prevMainModal(); }}
+                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              >
+                <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                aria-label="Close"
+                onClick={e => { e.stopPropagation(); closeMainModal(); }}
+                className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              >
+                <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <button
+                aria-label="Next"
+                onClick={e => { e.stopPropagation(); nextMainModal(); }}
+                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              >
+                <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         )}
@@ -599,7 +574,7 @@ const Gallery = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2.5}
+                    strokeWidth="2.5"
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
@@ -621,7 +596,7 @@ const Gallery = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2.5}
+                    strokeWidth="2.5"
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
@@ -635,70 +610,79 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div
-            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black bg-opacity-80"
+            className="fixed inset-0 z-100000 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="food-modal-title"
             onClick={closeFoodModal}
           >
             <div
-              className="relative max-w-full w-full flex flex-col items-center mt-2 sm:mt-18 px-2 sm:px-0 z-[99999]"
+              className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Frame and image container for food modal */}
-              <FoodModalContent
-                foodGalleryItems={foodGalleryItems}
-                foodModalIndex={foodModalIndex}
-                showFullFoodDesc={showFullFoodDesc}
-                setShowFullFoodDesc={setShowFullFoodDesc}
-                showFoodModalText={showFoodModalText}
+              {/* Decorative Frame fits image */}
+              <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
+              {/* Zoomed image */}
+              <Image
+                src={foodGalleryItems[foodModalIndex].image}
+                alt={foodGalleryItems[foodModalIndex].title}
+                width={900}
+                height={650}
+                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
+                priority
               />
-              <div className="flex justify-between items-center w-full max-w-2xl sm:max-w-3xl mt-2 px-2 sm:px-8 gap-4 z-[100002]">
-                <button
-                  onClick={prevFoodModal}
-                  aria-label="Previous image"
-                  className="text-white text-2xl bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 shadow-lg rounded-full px-4 py-2 hover:scale-110 hover:shadow-2xl focus:outline-none flex items-center gap-2"
-                >
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline font-bold">Prev</span>
-                </button>
-                <button
-                  className="text-white text-3xl font-bold bg-black bg-opacity-40 rounded-full px-4 py-2 hover:bg-opacity-70 focus:outline-none flex items-center justify-center"
-                  onClick={closeFoodModal}
-                  aria-label="Close full image view"
-                >
-                  &times;
-                </button>
-                <button
-                  onClick={nextFoodModal}
-                  aria-label="Next image"
-                  className="text-white text-2xl bg-linear-to-r from-orange-500 via-red-500 to-yellow-500 shadow-lg rounded-full px-4 py-2 hover:scale-110 hover:shadow-2xl focus:outline-none flex items-center gap-2"
-                >
-                  <span className="hidden sm:inline font-bold">Next</span>
-                  <svg
-                    className="w-7 h-7"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
+              {/* Title and Description overlay at bottom, styled like Gallery, delayed show and auto-hide */}
+              {showFoodModalText && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30">
+                  <h2 id="food-modal-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
+                    {foodGalleryItems[foodModalIndex].title}
+                  </h2>
+                  <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body">
+                    {showFullFoodDesc ||
+                    foodGalleryItems[foodModalIndex].description.length <= 180
+                      ? foodGalleryItems[foodModalIndex].description
+                      : `${foodGalleryItems[foodModalIndex].description.slice(0, 180)}...`}
+                    {foodGalleryItems[foodModalIndex].description.length > 180 && (
+                      <button
+                        className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
+                        onClick={() => setShowFullFoodDesc((v) => !v)}
+                      >
+                        {showFullFoodDesc ? "Less" : "More"}
+                      </button>
+                    )}
+                  </p>
+                </div>
+              )}
+            </div>
+            {/* Modal controls always visible below the modal, outside the border/frame */}
+            <div className="flex justify-center items-center gap-8 mt-8 z-50" onClick={e => e.stopPropagation()}>
+              <button
+                aria-label="Previous"
+                onClick={e => { e.stopPropagation(); prevFoodModal(); }}
+                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              >
+                <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                aria-label="Close"
+                onClick={closeFoodModal}
+                className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              >
+                <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <button
+                aria-label="Next"
+                onClick={e => { e.stopPropagation(); nextFoodModal(); }}
+                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              >
+                <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         )}
