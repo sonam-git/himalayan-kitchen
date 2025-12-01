@@ -140,6 +140,43 @@ const Gallery = () => {
       description:
         "Renowned climber trio Ngima N Sherpa (Left) : Youngest to climb Mt Everest for 24 times and counting, Lhakpa R Sherpa (Middle) : 17th times Everest Summitted. And first Nepali to climb “Seven Summits” the highest peaks on seven continents, and Tamting Sherpa (Right): completed all the 14 peaks above 8000m high around the world.",
     },
+    {
+      image: "/images/gallery/family-gathering.jpeg",
+      title: "Family Gathering",
+      description:
+        "A joyful family gathering at Himalayan Kitchen, sharing delicious food and laughter.",
+    },
+    {
+      image:"/images/gallery/family.jpeg",
+      title: "Auspicious Family Visit",
+      description:
+        "A renowned Buddhist Master and teacher Tulku rinpoche Ngawang Lobsang Sherpa visiting our restaurant. He is also recognized as the eighth reincarnation of the Nyentse Lama. He is known for his teachings on Tantrayana, Tibetan Medicine, and Astrology.",
+    },
+    {
+      image: "/images/gallery/Dining.jpeg",
+      title: "Dining Experience",
+      description:
+        "One corner of our restaurant beautifully decorated for a cozy dining experience.",
+    },
+    {
+      image: "/images/gallery/dining1.jpeg",
+      title: "Dining Ambiance",
+      description:
+        "Another beautifully decorated corner of our restaurant, perfect for intimate dining experiences.",
+    },
+    {
+      image: "/images/gallery/hsfc.jpeg",
+      title: "Himalayan Sonoma FC",
+      description:
+        "Himalayan Kitchen proudly supporting local team sponsoring Himalayan Sonoma FC at their match.",
+    },
+    {
+      image: "/images/gallery/guest.jpeg",
+      title: "Satisfied Guest",
+      description:
+        "A satisfied guest enjoying their meal at Himalayan Kitchen, showcasing our delicious Himalayan cuisine.",
+    }
+    
   ];
 
   // Main Gallery Modal State
@@ -212,6 +249,24 @@ const Gallery = () => {
       description:
         "Spicy and crispy fried chicken pieces, marinated in a blend of South Indian spices.",
     },
+    {
+      image:"/images/food/samosa.jpeg",
+      title: "Samosa",
+      description:
+        "Crispy pastry filled with spiced potatoes and peas, served with tamarind chutney.",
+    },
+    {
+      image: "/images/food/garlic-naan.jpeg",
+      title: "Garlic Naan",
+      description:
+        "Soft and fluffy Indian bread infused with garlic and herbs, perfect for scooping up curries.",
+    },
+    {
+      image: "/images/food/kukhura-bhanta.jpeg",
+      title: "Kukhura Bhanta | chicken eggplant curry",
+      description:
+        "Aromatic chicken curry cooked with roasted eggplant and spices, served with rice.",
+    }
   ];
 
   // Food Modal State
@@ -236,7 +291,7 @@ const Gallery = () => {
     let hideTimer: NodeJS.Timeout;
     if (foodModalOpen) {
       showTimer = setTimeout(() => setShowFoodModalText(true), 2000);
-      hideTimer = setTimeout(() => setShowFoodModalText(false), 7000);
+      hideTimer = setTimeout(() => setShowFoodModalText(false), 25000);
     }
     return () => {
       clearTimeout(showTimer);

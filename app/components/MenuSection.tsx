@@ -31,7 +31,7 @@ const MenuSection = () => {
     {
       name: 'Chicken 65',
       description: 'Boneless chicken marinated in special spices, ginger, garlic, egg, yogurt, lemon juice & soy sauce. Sautéed with curry leaves & mustard seeds.',
-      image: '/images/food/tika masala.jpg',
+      image: '/images/food/chicken65.jpg',
       spicy: true,
     },
     {
@@ -55,6 +55,22 @@ const MenuSection = () => {
       description: 'A traditional Nepali meal set with rice, daal, vegetables, and choice of protein.',
       image: '/images/food/thaliset.jpg',
     },
+    {
+      name:'Lamb Kabab',
+      description: 'Tender pieces of lamb marinated in a blend of spices and grilled to perfection.',
+      image: '/images/food/lamb-kabab.jpeg',
+    },
+    {
+      name: 'Sag Paneer',
+      description: 'Fresh spinach cooked with homemade cheese cube in creamy tomato and onion based sauce.(we can make it vegan)',
+      image: '/images/food/saag-panir.jpeg',
+      vegetarian: true,
+    },
+    {
+      name:'Briyani',
+      description: 'Aromatic basmati rice  caramelized with onion, house spices, herbs, and choice of meat or vegetables.Served with Raita(yougurt sauce).',
+      image: '/images/food/briyani.jpeg',
+    }
   ];
 
   const openModal = (idx: number) => {

@@ -13,6 +13,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
   const [isAccessibilityModalOpen, setIsAccessibilityModalOpen] = useState(false);
+  const [isMenuDropdownOpen, setIsMenuDropdownOpen] = useState(false);
   const pathname = usePathname();
 
   // Helper to check if a nav item is active
@@ -59,28 +60,77 @@ const Header = () => {
                     { id: 'gallery', label: 'Gallery', href: '/gallery', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /> },
                     { id: 'catering', label: 'Caterings', href: '/catering', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M8 17l4-4 4 4m0 0V7a4 4 0 00-8 0v10z" /> },
                     { id: 'contact', label: 'Contact', href: '/contact', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /> }
-                  ].map(({ id, label, href, icon }) => (
-                    <Link key={id} href={href}>
-                      <span
-                        className={`group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 ${
-                          isActive(href)
-                            ? 'font-bold text-red-600 dark:text-yellow-300 scale-110'
-                            : 'text-gray-600 dark:text-white hover:text-red-500 dark:hover:text-red-400'
-                        }`}
-                        aria-current={isActive(href) ? 'page' : undefined}
-                        tabIndex={0}
-                        role="link"
-                      >
-                        <svg className={`w-7 h-7 mb-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 ${isActive(href) ? 'text-red-600 dark:text-yellow-300' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          {icon}
-                        </svg>
-                        <span className="relative text-sm xl:text-base font-medium tracking-wide">
-                          {label}
-                          <span className={`block mt-1 h-0.5 rounded-full transition-all duration-300 ${isActive(href) ? 'w-full bg-linear-to-r from-red-500 to-orange-500' : 'w-0 group-hover:w-full bg-linear-to-r from-red-500 to-orange-500'}`}></span>
+                  ].map(({ id, label, href, icon }) => {
+                    if (id === 'menu') {
+                      return (
+                        <div key={id} className="relative">
+                          <button
+                            onClick={e => { e.preventDefault(); setIsMenuDropdownOpen(open => !open); }}
+                            onBlur={() => setTimeout(() => setIsMenuDropdownOpen(false), 150)}
+                            aria-haspopup="true"
+                            aria-expanded={isMenuDropdownOpen}
+                            className="group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 text-gray-600 dark:text-white hover:text-red-500 dark:hover:text-red-400 focus:outline-none"
+                            tabIndex={0}
+                            role="button"
+                            aria-label="Menu and Order options"
+                            type="button"
+                          >
+                            <svg className="w-7 h-7 mb-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">{icon}</svg>
+                            <span className="relative text-sm xl:text-base font-medium tracking-wide">
+                              {label}
+                              <span className="block mt-1 h-0.5 rounded-full transition-all duration-300 w-0 group-hover:w-full bg-linear-to-r from-red-500 to-orange-500"></span>
+                            </span>
+                          </button>
+                          {isMenuDropdownOpen && (
+                            <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 flex flex-col animate-fade-in">
+                              <a
+                                href="https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 rounded-t-xl focus:outline-none focus:bg-red-100 dark:focus:bg-red-700 transition-colors duration-200"
+                                tabIndex={0}
+                                aria-label="Order Online (opens in new tab)"
+                                onMouseDown={e => e.preventDefault()}
+                                onClick={() => setIsMenuDropdownOpen(false)}
+                              >Order Online</a>
+                              <a
+                                href="https://order.toasttab.com/egiftcards/himalayan-kitchen-227-3rd-st"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-green-50 dark:hover:bg-green-900 rounded-b-xl focus:outline-none focus:bg-green-100 dark:focus:bg-green-800 transition-colors duration-200"
+                                tabIndex={0}
+                                aria-label="Buy Gift Card (opens in new tab)"
+                                onMouseDown={e => e.preventDefault()}
+                                onClick={() => setIsMenuDropdownOpen(false)}
+                              >Gift Card</a>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    }
+                    return (
+                      <Link key={id} href={href}>
+                        <span
+                          className={`group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 ${
+                            isActive(href)
+                              ? 'font-bold text-red-600 dark:text-yellow-300 scale-110'
+                              : 'text-gray-600 dark:text-white hover:text-red-500 dark:hover:text-red-400'
+                          }`}
+                          aria-current={isActive(href) ? 'page' : undefined}
+                          tabIndex={0}
+                          role="link"
+                        >
+                          <svg className={`w-7 h-7 mb-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 ${isActive(href) ? 'text-red-600 dark:text-yellow-300' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            {icon}
+                          </svg>
+                          <span className="relative text-sm xl:text-base font-medium tracking-wide">
+                            {label}
+                            <span className={`block mt-1 h-0.5 rounded-full transition-all duration-300 ${isActive(href) ? 'w-full bg-linear-to-r from-red-500 to-orange-500' : 'w-0 group-hover:w-full bg-linear-to-r from-red-500 to-orange-500'}`}></span>
+                          </span>
                         </span>
-                      </span>
-                    </Link>
-                  ))}
+                      </Link>
+                    );
+                  })}
                 </div>
               </nav>
 
@@ -171,20 +221,66 @@ const Header = () => {
                 { id: 'contact', label: 'Contact', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 ), href: '/contact' }
-              ].map(({ id, label, icon, href }) => (
-                <Link key={id} href={href}>
-                  <span
-                    className={`flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 focus:outline-none focus:ring-2 focus:ring-red-400/60 ${isActive(href) ? 'text-red-600 dark:text-yellow-300 bg-red-50 dark:bg-red-800' : 'dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300'}`}
-                    tabIndex={0}
-                    aria-current={isActive(href) ? 'page' : undefined}
-                    role="link"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {icon}
-                    <span className="ml-1">{label}</span>
-                  </span>
-                </Link>
-              ))}
+              ].map(({ id, label, icon, href }) => {
+                if (id === 'menu') {
+                  return (
+                    <div key={id} className="relative">
+                      <button
+                        onClick={e => { e.preventDefault(); setIsMenuDropdownOpen(open => !open); }}
+                        onBlur={() => setTimeout(() => setIsMenuDropdownOpen(false), 150)}
+                        aria-haspopup="true"
+                        aria-expanded={isMenuDropdownOpen}
+                        className="flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300 focus:outline-none"
+                        tabIndex={0}
+                        aria-label="Menu and Order options"
+                        type="button"
+                      >
+                        {icon}
+                        <span className="ml-1">Menu | Order</span>
+                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" /></svg>
+                      </button>
+                      {isMenuDropdownOpen && (
+                        <div className="absolute left-4 right-4 mt-1 w-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 flex flex-col animate-fade-in">
+                          <a
+                            href="https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 rounded-t-xl focus:outline-none focus:bg-red-100 dark:focus:bg-red-700 transition-colors duration-200"
+                            tabIndex={0}
+                            aria-label="Order Online (opens in new tab)"
+                            onMouseDown={e => e.preventDefault()}
+                            onClick={() => setIsMenuDropdownOpen(false)}
+                          >Order Online</a>
+                          <a
+                            href="https://order.toasttab.com/egiftcards/himalayan-kitchen-227-3rd-st"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-green-50 dark:hover:bg-green-900 rounded-b-xl focus:outline-none focus:bg-green-100 dark:focus:bg-green-800 transition-colors duration-200"
+                            tabIndex={0}
+                            aria-label="Buy Gift Card (opens in new tab)"
+                            onMouseDown={e => e.preventDefault()}
+                            onClick={() => setIsMenuDropdownOpen(false)}
+                          >Gift Card</a>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+                return (
+                  <Link key={id} href={href}>
+                    <span
+                      className={`flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 ${isActive(href) ? 'text-red-600 dark:text-yellow-300 bg-red-50 dark:bg-red-800' : 'dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300'}`}
+                      tabIndex={0}
+                      aria-current={isActive(href) ? 'page' : undefined}
+                      role="link"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {icon}
+                      <span className="ml-1">{label}</span>
+                    </span>
+                  </Link>
+                );
+              })}
               {/* Action buttons row: Theme Toggle, Gift Card, Accessibility */}
               <div className="flex flex-row mt-3 mb-1 w-full justify-between"> {/* space-between, reduced mt/mb */}
                 {/* Theme Toggle Icon Button */}
