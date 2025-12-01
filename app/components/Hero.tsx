@@ -71,7 +71,7 @@ const Hero = () => {
               Experience authentic Himalayan flavors, crafted with passion and tradition.
             </p>
             {/* Action Buttons - always below subtext, never overlapping */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 xl:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl mx-auto mb-0 mt-2">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 xl:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl px-4 mx-auto mb-0 mt-2">
               {/* Only CTA - Order Now */}
               <button
                 onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
