@@ -71,17 +71,15 @@ const Accessibility: React.FC<AccessibilityProps> = ({ isOpen, onClose }) => {
       role="dialog"
       aria-modal="true"
       aria-labelledby="accessibility-modal-title"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-lg focus:outline-none"
       tabIndex={-1}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 backdrop-blur-sm"
-      onClick={e => {
-        if (e.target === e.currentTarget) onClose();
-      }}
     >
+      <h2 id="accessibility-modal-title" className="sr-only">Accessibility Options</h2>
       <div
         className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700 rounded-2xl shadow-2xl p-8 w-full max-w-md relative outline-none flex flex-col gap-4"
         tabIndex={0}
       >
-        <h2 id="accessibility-modal-title" className="text-2xl font-bold mb-4 text-blue-700 dark:text-blue-200 flex items-center gap-2 flex-wrap">
+        <h2 className="text-2xl font-bold mb-4 text-blue-700 dark:text-blue-200 flex items-center gap-2 flex-wrap">
           <svg className="w-7 h-7 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
             <circle cx="12" cy="7" r="2.5" />
             <path d="M12 21v-6m0 0c-2.5 0-5-1-7-2m7 2c2.5 0 5-1 7-2M12 15V9m-5 2l-2-2m14 2l2-2" strokeLinecap="round" strokeLinejoin="round" />
@@ -106,6 +104,7 @@ const Accessibility: React.FC<AccessibilityProps> = ({ isOpen, onClose }) => {
               aria-pressed={highContrast}
               onClick={() => setHighContrast(v => !v)}
               style={{ fontSize: '1.1em' }}
+              aria-label="Toggle high contrast mode"
             >
               <span className={`h-6 w-6 rounded-full bg-white shadow-md transform duration-300 ${highContrast ? 'translate-x-6' : ''}`}></span>
             </button>
@@ -117,6 +116,7 @@ const Accessibility: React.FC<AccessibilityProps> = ({ isOpen, onClose }) => {
               aria-pressed={largeFont}
               onClick={() => setLargeFont(v => !v)}
               style={{ fontSize: '1.1em' }}
+              aria-label="Toggle large font mode"
             >
               <span className={`h-6 w-6 rounded-full bg-white shadow-md transform duration-300 ${largeFont ? 'translate-x-6' : ''}`}></span>
             </button>
@@ -128,6 +128,7 @@ const Accessibility: React.FC<AccessibilityProps> = ({ isOpen, onClose }) => {
               aria-pressed={dyslexiaFont}
               onClick={() => setDyslexiaFont(v => !v)}
               style={{ fontSize: '1.1em' }}
+              aria-label="Toggle dyslexia font mode"
             >
               <span className={`h-6 w-6 rounded-full bg-white shadow-md transform duration-300 ${dyslexiaFont ? 'translate-x-6' : ''}`}></span>
             </button>
@@ -139,6 +140,7 @@ const Accessibility: React.FC<AccessibilityProps> = ({ isOpen, onClose }) => {
               aria-pressed={screenReaderOnly}
               onClick={() => setScreenReaderOnly(v => !v)}
               style={{ fontSize: '1.1em' }}
+              aria-label="Toggle screen reader only mode"
             >
               <span className={`h-6 w-6 rounded-full bg-white shadow-md transform duration-300 ${screenReaderOnly ? 'translate-x-6' : ''}`}></span>
             </button>
@@ -150,6 +152,7 @@ const Accessibility: React.FC<AccessibilityProps> = ({ isOpen, onClose }) => {
               aria-pressed={underlineLinks}
               onClick={() => setUnderlineLinks(v => !v)}
               style={{ fontSize: '1.1em' }}
+              aria-label="Toggle underline links mode"
             >
               <span className={`h-6 w-6 rounded-full bg-white shadow-md transform duration-300 ${underlineLinks ? 'translate-x-6' : ''}`}></span>
             </button>
@@ -170,6 +173,7 @@ const Accessibility: React.FC<AccessibilityProps> = ({ isOpen, onClose }) => {
           className="w-full mt-4 py-3 rounded-xl bg-gray-600 hover:bg-gray-300 text-gray-100 dark:text-gray-1t600 font-bold text-lg transition-all duration-200 focus:outline-none border border-gray-400"
           onClick={resetAccessibility}
           style={{ fontSize: '1.1em' }}
+          aria-label="Reset accessibility settings"
         >
           Reset Accessibility
         </button>

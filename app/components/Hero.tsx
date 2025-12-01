@@ -54,7 +54,7 @@ const Hero = () => {
             <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 leading-tight flex items-center justify-center gap-2">
               {/* Spoon Image (vertical, before text) */}
               <span className="inline-flex items-center h-[2em] sm:h-[2.5em] md:h-[3em] lg:h-[4em]">
-                <Image src="/images/logo/spoon.png" alt="Spoon" height={128} width={128} className="h-full w-auto object-contain filter invert brightness-200" />
+                <Image src="/images/logo/spoon.png" alt="Decorative spoon icon" height={128} width={128} className="h-full w-auto object-contain filter invert brightness-200" aria-hidden="true" />
               </span>
               <span className="block w-full ">
                 Taste From The

@@ -3,68 +3,6 @@
 import React, { useEffect, useRef, useState, RefObject } from "react";
 import Image from "next/image";
 
-type FoodModalContentProps = {
-  foodGalleryItems: Array<{
-    image: string;
-    title: string;
-    description: string;
-  }>;
-  foodModalIndex: number;
-  showFullFoodDesc: boolean;
-  setShowFullFoodDesc: React.Dispatch<React.SetStateAction<boolean>>;
-  showFoodModalText: boolean;
-};
-
-function FoodModalContent({
-  foodGalleryItems,
-  foodModalIndex,
-  showFullFoodDesc,
-  setShowFullFoodDesc,
-  showFoodModalText,
-}: FoodModalContentProps) {
-  return (
-    <div className="relative w-full max-w-2xl sm:max-w-3xl flex flex-col items-center">
-      {/* Decorative Frame fits image */}
-      <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
-      {/* Image */}
-      <Image
-        src={foodGalleryItems[foodModalIndex].image}
-        alt={foodGalleryItems[foodModalIndex].title}
-        width={900}
-        height={650}
-        className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
-      />
-      {/* Title and Description overlay on image with blurred background, delayed display and auto-hide */}
-      {showFoodModalText && (
-        <div
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30"
-          style={{ marginTop: "0" }}
-        >
-          <h3 className="text-lg sm:text-2xl font-bold mb-2 font-headline">
-            {foodGalleryItems[foodModalIndex].title}
-          </h3>
-          <p className="text-sm italic sm:text-base leading-snug font-body">
-            {showFullFoodDesc ||
-            foodGalleryItems[foodModalIndex].description.length <= 180
-              ? foodGalleryItems[foodModalIndex].description
-              : `${foodGalleryItems[foodModalIndex].description.slice(
-                  0,
-                  180
-                )}...`}
-            {foodGalleryItems[foodModalIndex].description.length > 180 && (
-              <button
-                className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
-                onClick={() => setShowFullFoodDesc((v) => !v)}
-              >
-                {showFullFoodDesc ? "Less" : "More"}
-              </button>
-            )}
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
 
 const Gallery = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -321,6 +259,49 @@ const Gallery = () => {
     }
   };
 
+  // --- Modal Keyboard Accessibility ---
+  function handleModalKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (!mainModalOpen) return;
+    const focusable = Array.from(
+      (modalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ) ?? []) as HTMLElement[]
+    ).filter(el => !el.hasAttribute('disabled'));
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    switch (e.key) {
+      case 'Escape':
+        e.preventDefault();
+        closeMainModal();
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        prevMainModal();
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        nextMainModal();
+        break;
+      case 'Tab':
+        if (focusable.length === 0) return;
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
     <section
       aria-labelledby="gallery-heading"
@@ -491,14 +472,15 @@ const Gallery = () => {
         {/* Main Gallery Modal */}
         {mainModalOpen && (
           <div
-            className="fixed inset-0 z-100000 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
+            ref={modalRef}
+            tabIndex={-1}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="main-modal-title"
-            onClick={closeMainModal}
+            aria-labelledby="gallery-modal-title"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
+            onKeyDown={handleModalKeyDown}
           >
-            <div
-              className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
+            <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Decorative Frame fits image */}
@@ -535,8 +517,11 @@ const Gallery = () => {
                 </div>
               )}
             </div>
-            {/* Modal controls always visible below the modal, outside the border/frame */}
-            <div className="flex justify-center items-center gap-8 mt-8 z-50" onClick={e => e.stopPropagation()}>
+            {/* Controls always below the modal box, outside the border */}
+            <div className="flex justify-center items-center gap-8 mt-8 z-50 relative"
+              style={{ marginTop: '2.5rem' }} // extra space for clarity
+              aria-label="Gallery modal controls"
+            >
               <button
                 aria-label="Previous"
                 onClick={e => { e.stopPropagation(); prevMainModal(); }}
@@ -709,7 +694,7 @@ const Gallery = () => {
                 </div>
               )}
             </div>
-            {/* Modal controls always visible below the modal, outside the border/frame */}
+            {/* Controls always below the modal image */}
             <div className="flex justify-center items-center gap-8 mt-8 z-50" onClick={e => e.stopPropagation()}>
               <button
                 aria-label="Previous"

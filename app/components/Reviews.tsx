@@ -177,8 +177,9 @@ const Reviews = () => {
             <div
               ref={reviewsScrollRef}
               className="flex gap-4 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 font-body"
-              role="list"
-              aria-label="Customer reviews"
+              role="region"
+              aria-live="polite"
+              aria-label="Customer reviews carousel"
               style={{ scrollSnapType: 'x mandatory' }}
             >
               {reviews.map((review, index) => {
@@ -256,9 +257,10 @@ const Reviews = () => {
             {/* Slide controls below reviews for all screens */}
             <div className="flex justify-between items-center mt-1 px-2">
               <button
-                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
+                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
                 onClick={() => scrollReviews('left')}
-                aria-label="Scroll left"
+                aria-label="Scroll reviews left"
+                type="button"
               >
                 {/* Modern left arrow icon */}
                 <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -268,9 +270,10 @@ const Reviews = () => {
               </button>
               <span className="text-xs text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
               <button
-                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
+                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
                 onClick={() => scrollReviews('right')}
-                aria-label="Scroll right"
+                aria-label="Scroll reviews right"
+                type="button"
               >
                 {/* Modern right arrow icon */}
                 <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">

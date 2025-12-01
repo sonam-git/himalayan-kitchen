@@ -58,7 +58,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
       <div className="relative h-48 sm:h-56 md:h-52 lg:h-56 bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 overflow-hidden shrink-0 rounded-2xl">
         <Image 
           src={image} 
-          alt={name}
+          alt={`Photo of ${name}`} 
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

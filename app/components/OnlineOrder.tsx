@@ -15,7 +15,7 @@ const OnlineOrder = () => (
     </div>
     <div className="flex flex-col sm:flex-row gap-4 w-full justify-center items-center mt-2">
       <button
-        className={BUTTON_STYLE}
+        className={BUTTON_STYLE + " focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"}
         onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
         aria-label="Order food online"
         type="button"
@@ -23,7 +23,7 @@ const OnlineOrder = () => (
         <FaShoppingCart className="text-xl" />
         Order Now
       </button>
-      <Link href="/" className={HOME_BUTTON_STYLE} aria-label="Go to Home">
+      <Link href="/" className={HOME_BUTTON_STYLE + " focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"} aria-label="Go to Home" role="link">
         <FaHome className="text-lg" />
         Home
       </Link>

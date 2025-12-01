@@ -114,7 +114,7 @@ const About = () => {
                 <div className="absolute inset-0 w-full h-full z-0 rounded-2xl shadow-[0_4px_32px_0_rgba(255,255,255,0.5)]">
                   <Image
                     src="/images/other/aboutSketch.png"
-                    alt="About Sketch"
+                    alt="Decorative sketch representing the Himalayas"
                     fill
                     className="object-cover w-full h-full rounded-2xl"
                   />

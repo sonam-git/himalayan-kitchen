@@ -67,7 +67,7 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-describedby="contact-form-desc">
                   <div id="contact-form-desc" className="sr-only">Contact form to send a message to Himalayan Kitchen. All fields are required.</div>
                   <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                    <label htmlFor="name" className="sr-only">Name</label>
                     <input
                       type="text"
                       id="name"
@@ -75,11 +75,12 @@ const Contact = () => {
                       value={form.name}
                       onChange={handleChange}
                       required
+                      aria-label="Name"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                    <label htmlFor="email" className="sr-only">Email</label>
                     <input
                       type="email"
                       id="email"
@@ -87,11 +88,12 @@ const Contact = () => {
                       value={form.email}
                       onChange={handleChange}
                       required
+                      aria-label="Email"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                    <label htmlFor="message" className="sr-only">Message</label>
                     <textarea
                       id="message"
                       name="message"
@@ -99,16 +101,18 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={5}
+                      aria-label="Message"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-3 px-6 bg-yellow-600 hover:bg-white hover:text-yellow-800 text-white border-2 border-white font-bold rounded-lg transition-all duration-300 shadow-lg"
+                    aria-label="Send message"
+                    className="w-full py-3 px-6 bg-yellow-600 hover:bg-white hover:text-yellow-800 text-white border-2 border-white font-bold rounded-lg transition-all duration-300 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
                   >
                     Send Message
                   </button>
-                  <div aria-live="polite">
+                  <div aria-live="polite" className="text-sm mt-2">
                     {status && (
                       <p className="mt-4 text-green-600 dark:text-green-400 font-semibold">{status}</p>
                     )}

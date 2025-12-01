@@ -199,8 +199,17 @@ const MenuSection = () => {
       </div>
       {/* Modal for zoomed food item */}
       {modalOpen && selectedIndex !== null && (
-        <div className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-dish-title">
-          <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="menu-modal-title"
+          tabIndex={-1}
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
+        >
+          <h2 id="menu-modal-title" className="sr-only">Featured Dish Details</h2>
+          <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
+            onClick={e => e.stopPropagation()}
+          >
             {/* Decorative Frame fits image */}
             <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
             {/* Zoomed image */}
@@ -225,10 +234,13 @@ const MenuSection = () => {
             )}
           </div>
           {/* Modal controls always visible below the modal, outside the border/frame */}
-          <div className="flex justify-center items-center gap-8 mt-8 z-50">
+          <div className="flex justify-center items-center gap-8 mt-10 z-50 relative"
+            style={{ marginTop: '2.5rem' }}
+            aria-label="Menu modal controls"
+          >
             <button
               aria-label="Previous"
-              onClick={prevItem}
+              onClick={e => { e.stopPropagation(); prevItem(); }}
               className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
               <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -237,7 +249,7 @@ const MenuSection = () => {
             </button>
             <button
               aria-label="Close"
-              onClick={closeModal}
+              onClick={e => { e.stopPropagation(); closeModal(); }}
               className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
               <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,7 +258,7 @@ const MenuSection = () => {
             </button>
             <button
               aria-label="Next"
-              onClick={nextItem}
+              onClick={e => { e.stopPropagation(); nextItem(); }}
               className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
               <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">

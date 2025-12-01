@@ -53,7 +53,7 @@ const AwardsMedia = () => {
          </div>
       <div className="relative  max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <span className="inline-block px-6 py-2 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-4">
             Recognitions & Press
           </span>
@@ -64,7 +64,7 @@ const AwardsMedia = () => {
             Honored by the community and featured in renowned publications for our culinary excellence and service.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full items-center justify-center" role="list" aria-label="Awards and media features">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full items-center justify-center" role="list" aria-label="Awards and media features">
           {images.map((img) => (
             <div key={img.src} className="flex flex-col items-center" role="listitem">
               <button

@@ -35,7 +35,7 @@ const MenuNavBar: React.FC<MenuNavBarProps> = ({
     : 'relative transition-all duration-300 mb-10 sm:mb-12';
 
   return (
-    <div ref={navRef} className={stickyNavClass}>
+    <div ref={navRef} className={stickyNavClass} aria-label="Menu categories navigation" role="tablist">
       <div className="py-4">
         {/* Scroll instruction text */}
         <div className="text-center mb-3 px-4">
@@ -59,13 +59,22 @@ const MenuNavBar: React.FC<MenuNavBarProps> = ({
             <div className={`flex gap-2 sm:gap-3 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {menuCategories.map((category, index) => (
                 <button
-                  key={index}
+                  key={category.name}
+                  role="tab"
+                  aria-selected={activeCategory === index}
+                  tabIndex={activeCategory === index ? 0 : -1}
                   onClick={() => onCategoryClick(index)}
-                  className={`shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base whitespace-nowrap ${
+                  onKeyDown={e => {
+                    if (e.key === 'ArrowRight') onCategoryClick((index + 1) % menuCategories.length);
+                    if (e.key === 'ArrowLeft') onCategoryClick((index - 1 + menuCategories.length) % menuCategories.length);
+                    if (e.key === 'Enter' || e.key === ' ') onCategoryClick(index);
+                  }}
+                  className={`shrink-0 flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-md font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 ${
                     activeCategory === index
-                      ? 'bg-linear-to-r from-red-600 to-orange-600 text-white shadow-lg shadow-red-500/30 scale-105'
+                      ? 'bg-linear-to-r from-red-600 to-orange-600 text-white shadow-lg shadow-red-500/30 scale-105 font-bold underline'
                       : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:border-red-500 dark:hover:border-red-500 hover:shadow-md'
                   }`}
+                  aria-label={`Show ${category.name} menu`}
                 >
                   <span className="text-base sm:text-lg">{category.icon}</span>
                   <span>{category.name}</span>
