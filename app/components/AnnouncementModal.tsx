@@ -5,7 +5,7 @@ export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setOpen(true), 2200); // Show after 2.2s
+    const timer = setTimeout(() => setOpen(true), 1000); // Show after 1s
     return () => clearTimeout(timer);
   }, []);
 
@@ -71,7 +71,7 @@ export default function AnnouncementModal() {
         </button>
         <div className="flex flex-col items-center gap-2">
           <svg
-            className="w-5 h-5 sm:w-6 sm:h-6 text-white transition-transform duration-300"
+            className="w-8 h-8 sm:w-10 sm:h-10 text-yellow-300 drop-shadow-lg mb-2"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -80,28 +80,22 @@ export default function AnnouncementModal() {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M6.343 6.343l-1.414-1.414m12.728 0l-1.414 1.414M6.343 17.657l-1.414 1.414"
             />
           </svg>
-          <h2 className="text-2xl sm:text-3xl font-extrabold mb-2 text-orange-600 dark:text-yellow-300 font-headline text-center drop-shadow-lg">
-            Hurry Up..!
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-2 text-yellow-400 dark:text-yellow-300 font-headline text-center drop-shadow-lg">
+            Welcome to Himalayan Kitchen Marin!
           </h2>
-          <p className="mb-4 text-gray-700 dark:text-gray-200 text-center text-base sm:text-lg font-body max-w-xs sm:max-w-sm">
-            Order your favorite dishes in seconds!
+          <p className="mb-4 text-gray-100 dark:text-gray-200 text-center text-lg sm:text-xl font-body max-w-xs sm:max-w-sm">
+            We’re delighted to have you here. Enjoy authentic Himalayan flavors, heartfelt hospitality, and traditions passed down through generations. <br></br>Thank you for visiting us—your culinary adventure begins now!
           </p>
           <button
             className="px-6 py-2 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white font-bold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 text-base sm:text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
-            onClick={() =>
-              window.open(
-                "https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st",
-                "_blank",
-                "noopener,noreferrer"
-              )
-            }
-            aria-label="Order food online"
+            onClick={() => setOpen(false)}
+            aria-label="Close welcome message"
             type="button"
           >
-            order now
+            Start Exploring
           </button>
         </div>
       </div>

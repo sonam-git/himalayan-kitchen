@@ -49,12 +49,12 @@ const Hero = () => {
           <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
         </div>
         {/* Content Section: below video on mobile, overlay on desktop */}
-        <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-10 p-0 xl:pt-25">
-          <div className="flex flex-col items-center justify-start px-4 sm:px-8 xl:px-0 w-full bg-black/80 xl:bg-transparent m-0 xl:mt-16 pb-4 drop-shadow-2xl shadow-amber-500">
-            <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl mb-2 leading-tight flex items-center justify-center gap-2">
-              {/* Spoon Image (vertical, before text) */}
-              <span className="inline-flex items-center h-[2em] sm:h-[2.5em] md:h-[3em] lg:h-[4em]">
-                <Image src="/images/logo/spoon.png" alt="Decorative spoon icon" height={128} width={128} className="h-full w-auto object-contain filter invert brightness-200" aria-hidden="true" />
+        <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-10 p-0 ">
+          <div className="flex flex-col items-center justify-start  sm:px-8 xl:px-0 w-full bg-black/80 xl:bg-transparent m-0 xl:mt-16 pb-4 drop-shadow-2xl shadow-amber-500">
+            <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl lg:mb-0 leading-tight flex items-center justify-center gap-2">
+              {/* Left bnw-tt image (inline, always visible, much wider, all screens) */}
+              <span className="inline-flex items-center h-[2.8em] xs:h-[3em] sm:h-[3.5em] md:h-[4em] lg:h-[5em] w-[25em] ">
+                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon" height={180} width={400} className="h-full w-full max-w-full filter invert brightness-200" aria-hidden="true" />
               </span>
               <span className="block w-full ">
                 Taste From The
@@ -62,12 +62,12 @@ const Hero = () => {
                   HIMALAYAS
                 </span>
               </span>
-              {/* Fork Image (vertical, after text) */}
-              <span className="inline-flex items-center h-[2em] sm:h-[2.5em] md:h-[3em] lg:h-[4em]">
-                <Image src="/images/logo/fork.png" alt="Fork" height={128} width={128} className="h-full w-auto object-contain filter invert brightness-200" />
+              {/* Right bnw-tt image (inline, always visible, much wider, all screens) */}
+              <span className="inline-flex items-center h-[2.8em] xs:h-[3em] sm:h-[3.5em] md:h-[4em] lg:h-[5em] w-[25em] xs:w-[6em] sm:w-[8em] md:w-[10em] lg:w-[12em]">
+                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon" height={180} width={400} className="h-full w-full max-w-full filter invert brightness-200" aria-hidden="true" />
               </span>
             </h2>
-            <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 font-serif drop-shadow-lg ">
+            <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 px-2 font-serif drop-shadow-lg ">
               Experience authentic Himalayan flavors, crafted with passion and tradition.
             </p>
             {/* Action Buttons - always below subtext, never overlapping */}
