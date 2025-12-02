@@ -45,13 +45,11 @@ export default function Intro() {
             ${textVisible ? 'opacity-100 scale-100 translate-x-0' : 'opacity-0 scale-90 translate-x-10'}
           `}
         >
-          <h2 className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 text-yellow-300 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center transition-all duration-700 ease-out ${textVisible ? 'opacity-100 scale-100 translate-x-0 delay-100' : 'opacity-0 scale-90 translate-x-10'}`}>
-            Discover Himalayan Hospitality in Marin
+          <h2 className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 text-yellow-300 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center transition-all duration-700 ease-out ${textVisible ? 'opacity-100 scale-100 translate-y-0 delay-100' : 'opacity-0 scale-90 translate-y-8'}`}>
+            Welcome to Himalayan Kitchen
           </h2>
-          <p className={`text-base xs:text-lg sm:text-xl md:text-2xl font-medium text-white dark:text-yellow-100 mb-8  mx-auto font-[Georgia,'Times_New_Roman',Times,serif] text-center transition-all duration-700 ease-out ${textVisible ? 'opacity-100 scale-100 translate-x-0 delay-300' : 'opacity-0 scale-90 translate-x-10'}`}>
-            Savor authentic flavors, vibrant spices, and the warmth of our family-run kitchen. Every meal is a story—rooted in tradition, served with heart, and shared with you.
-            <br />
-            <span className="text-yellow-100 dark:text-yellow-100 font-semibold ">Arrive as a guest, leave as family.</span>
+          <p className={`text-base xs:text-lg sm:text-xl md:text-2xl font-medium text-white dark:text-yellow-100 mb-6 mx-auto font-[Georgia,'Times_New_Roman',Times,serif] text-center transition-all duration-700 ease-out ${textVisible ? 'opacity-100 scale-100 translate-y-0 delay-300' : 'opacity-0 scale-90 translate-y-8'}`}>
+            Authentic Himalayan flavors, warm hospitality, and a place to feel at home.
           </p>
           <Link
             href="/about"

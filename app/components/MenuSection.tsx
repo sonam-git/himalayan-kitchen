@@ -48,7 +48,7 @@ const MenuSection = () => {
     {
       name: 'Chicken Momo',
       description: 'Dumplings filled with ground chicken breast, cabbage, onions, herbs & chef\'s spices.',
-      image: '/images/food/momo.jpg',
+      image: '/images/food/momo.jpeg',
     },
     {
       name: 'Thali Set',
