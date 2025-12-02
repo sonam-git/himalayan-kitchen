@@ -67,7 +67,7 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-describedby="contact-form-desc">
                   <div id="contact-form-desc" className="sr-only">Contact form to send a message to Himalayan Kitchen. All fields are required.</div>
                   <div>
-                    <label htmlFor="name" className="sr-only">Name</label>
+                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Name</label>
                     <input
                       type="text"
                       id="name"
@@ -80,7 +80,7 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="sr-only">Email</label>
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Email</label>
                     <input
                       type="email"
                       id="email"
@@ -93,7 +93,7 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="sr-only">Message</label>
+                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Message</label>
                     <textarea
                       id="message"
                       name="message"
@@ -120,9 +120,9 @@ const Contact = () => {
                 </form>
               </div>
               {/* Contact Info */}
-              <div className="relative flex flex-col items-center justify-center w-full">
+              <div className="relative flex flex-col items-center justify-center w-full pb-2 ">
                 {/* Background Image - increased height, shadow added */}
-                <div className="relative w-full h-full min-h-[540px] sm:min-h-[600px] md:min-h-[680px] rounded-2xl overflow-hidden shadow-2xl shadow-orange-900/30">
+                <div className="relative w-full h-full min-h-[540px] sm:min-h-[600px] md:min-h-[680px] rounded-2xl overflow-hidden shadow-2xl shadow-white drop-shadow-[0_0_32px_rgba(255,255,150,0.25)]  dark:border-yellow-200/30 backdrop-blur-md backdrop-saturate-150">
                   <Image src="/images/gallery/hkitchen.jpg" alt="Himalayan Kitchen" fill priority className="object-cover w-full h-full " />
                   {/* Overlay for signboard effect - transparent, blurred, 3 rows */}
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[92%] sm:w-3/4 md:w-2/3 bg-white/30 dark:bg-yellow-100/20 backdrop-blur-lg rounded-xl shadow-2xl border-4 border-yellow-300 dark:border-yellow-400 p-4 sm:p-6 flex flex-col items-center gap-3">

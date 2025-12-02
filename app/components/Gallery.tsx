@@ -119,6 +119,12 @@ const Gallery = () => {
       title: "Satisfied Guest",
       description:
         "A satisfied guest enjoying their meal at Himalayan Kitchen, showcasing our delicious Himalayan cuisine.",
+    },
+    {
+      image: "/images/gallery/catering.jpeg",
+      title: "Catering Service",
+      description:
+        "Our catering service brings the authentic flavors of the Himalayas to your events and gatherings.",
     }
     
   ];

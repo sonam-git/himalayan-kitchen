@@ -22,7 +22,7 @@ export default function Intro() {
 
   return (
     <section
-      className="relative flex flex-col items-center justify-center min-h-[420px] w-full max-w-5xl mx-auto my-4 px-0 py-0 overflow-hidden bg-white/10 dark:bg-black/30 rounded-2xl shadow-[0_8px_32px_0_rgba(255,255,200,0.25),0_0_0_8px_rgba(255,255,150,0.10)] drop-shadow-[0_0_32px_rgba(255,255,150,0.25)] border border-yellow-300/40 dark:border-yellow-200/30 backdrop-blur-md backdrop-saturate-150"
+      className="relative flex flex-col items-center justify-center min-h-40 w-full max-w-5xl mx-auto my-4 px-0 py-0 overflow-hidden bg-white/10 dark:bg-black/30 rounded-2xl shadow-[0_8px_32px_0_rgba(255,255,200,0.25),0_0_0_8px_rgba(255,255,150,0.10)] drop-shadow-[0_0_32px_rgba(255,255,150,0.25)] border border-yellow-300/40 dark:border-yellow-200/30 backdrop-blur-md backdrop-saturate-150"
       style={{ background: 'none' }}
     >
       {/* Full background image with dark overlay */}
@@ -53,7 +53,7 @@ export default function Intro() {
           </p>
           <Link
             href="/about"
-            className="inline-block px-5 py-2.5 rounded-2xl bg-white border-2 border-yellow-400 text-yellow-800 font-extrabold shadow-2xl hover:scale-105 hover:shadow-yellow-400/40 hover:bg-yellow-50 transition-all duration-200 text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
+            className="inline-block px-4 py-2 rounded-xl bg-white border-2 border-yellow-400 text-yellow-800 font-extrabold shadow-2xl hover:scale-105 hover:shadow-yellow-400/40 hover:bg-yellow-50 transition-all duration-200 text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
             aria-label="Know more about Himalayan Kitchen Marin"
           >
             Our Story

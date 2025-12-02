@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
+import PrayerFlagBorder from './PrayerFlagBorder';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -27,7 +28,7 @@ const Hero = () => {
         {/* Video Section */}
         <div className="relative w-full h-[50vh] xl:h-screen flex items-end justify-center shrink-0">
           {/* TV frame */}
-          <div className="absolute inset-0 rounded-none xl:rounded-[3.5rem] border-18 xl:border-32 border-gray-900 bg-linear-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl tv-frame" aria-hidden="true"></div>
+          <div className="absolute inset-0 rounded-none xl:rounded-[3.5rem] border-18 xl:border-32 border-gray-100 bg-linear-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl tv-frame" aria-hidden="true"></div>
           {/* Video with TV glass effect */}
           <video
             ref={videoRef}
@@ -36,7 +37,7 @@ const Hero = () => {
             loop
             muted
             playsInline
-            className="object-cover w-full h-full rounded-none xl:rounded-[3rem] shadow-xl tv-glass"
+            className="object-cover  w-full h-full rounded-none xl:rounded-[3rem] shadow-xl tv-glass"
             style={{ filter: 'contrast(1.15) brightness(0.98) saturate(1.1)' }}
             aria-hidden="true"
             tabIndex={-1}
@@ -49,24 +50,24 @@ const Hero = () => {
           <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
         </div>
         {/* Content Section: below video on mobile, overlay on desktop */}
-        <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-10 p-0 ">
-          <div className="flex flex-col items-center justify-start  sm:px-8 xl:px-0 w-full bg-gray-900 xl:bg-transparent m-0 xl:mt-26 pb-4 drop-shadow-2xl shadow-amber-500">
+        <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-10 p-0 bg-transparent xl:bg-transparent  xl:border-none py-2  shadow-[0_8px_32px_0_rgba(255,255,200,0.25),0_0_0_8px_rgba(255,255,150,0.10)] drop-shadow-[0_0_32px_rgba(255,255,150,0.25)] dark:border-yellow-200/30 backdrop-blur-md backdrop-saturate-150">
+          <div className="flex flex-col items-center justify-start  sm:px-8 xl:px-0 w-full xl:bg-transparent m-0 xl:mt-26 pb-4 drop-shadow-2xl shadow-amber-500">
             <div className="flex flex-row items-stretch justify-center w-full max-w-5xl mx-auto gap-2">
               {/* Left vertical image */}
               <div className="flex flex-col items-center justify-center w-auto self-stretch">
-                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon left" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-contain filter invert brightness-200" aria-hidden="true" />
+                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon right" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-cover filter invert brightness-200" aria-hidden="true" />
               </div>
               <div className="flex-1 flex flex-col items-center justify-center">
-                <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl lg:mb-0 leading-tight">
+                <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl lg:mb-0 leading-tight ">
                   Taste From The
-                  <span className="block w-full text-[#efc335] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] uppercase" style={{letterSpacing: '0.01em'}}>
+                  <span className="block w-full text-[#efc335] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] uppercase " style={{letterSpacing: '0.01em'}}>
                     HIMALAYAS
                   </span>
                 </h2>
               </div>
               {/* Right vertical image */}
               <div className="flex flex-col items-center justify-center w-auto self-stretch">
-                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon right" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-contain filter invert brightness-200" aria-hidden="true" />
+                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon right" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-cover filter invert brightness-200" aria-hidden="true" />
               </div>
             </div>
             <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 px-2 font-serif drop-shadow-lg ">
@@ -89,6 +90,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+          {/* <PrayerFlagBorder/> */}
         {/* Remove extra margin below content on small screens */}
       </div>
     </section>
