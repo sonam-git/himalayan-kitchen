@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 const Caterings = () => {
   const [form, setForm] = useState({
@@ -91,7 +90,7 @@ const Caterings = () => {
               Service
             </span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-100 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-100 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
             Let us bring authentic Himalayan flavors to your next event. Fill
             out the form below and our team will contact you to confirm your
             catering request.
@@ -254,7 +253,7 @@ const Caterings = () => {
             </div>
             <button
               type="submit"
-              className="w-full py-3 px-6 bg-yellow-600 border-2 border-white hover:bg-white hover:text-yellow-800 text-white font-bold rounded-lg transition-all duration-300 shadow-lg"
+              className="w-full py-3 px-6 bg-yellow-600 border-2 border-white hover:bg-white hover:text-yellow-800 text-white font-bold rounded-lg transition-all duration-300 shadow-lg font-[Georgia,'Times_New_Roman',Times,serif]"
             >
               Send Catering Request
             </button>

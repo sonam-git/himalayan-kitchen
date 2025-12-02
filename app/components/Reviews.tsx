@@ -138,7 +138,7 @@ const Reviews = () => {
     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-3 font-headline">
       Dining Stories
     </h2>
-     <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-white mb-4">
+     <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-white mb-4 font-[Georgia,'Times_New_Roman',Times,serif]">
      Real experiences from guests who’ve shared a meal—and a moment—with us.
     </p>
 
@@ -160,10 +160,10 @@ const Reviews = () => {
                 </svg>
               ))}
             </div>
-            <p className="text-gray-100 dark:text-gray-300 text-xs sm:text-base font-medium italic font-body">
+            <p className="text-gray-100 dark:text-gray-300 text-xs sm:text-base font-medium italic font-body font-[Georgia,'Times_New_Roman',Times,serif]">
               Based on 200+ Google & Yelp Reviews
             </p>
-            <p className="text-gray-100 dark:text-gray-400 text-xs sm:text-sm font-body">
+            <p className="text-gray-100 dark:text-gray-400 text-xs sm:text-sm font-body font-[Georgia,'Times_New_Roman',Times,serif]">
               ⭐ Rated Excellent
             </p>
           </div>
@@ -257,7 +257,7 @@ const Reviews = () => {
             {/* Slide controls below reviews for all screens */}
             <div className="flex justify-between items-center mt-1 px-2">
               <button
-                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
+                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"
                 onClick={() => scrollReviews('left')}
                 aria-label="Scroll reviews left"
                 type="button"
@@ -270,7 +270,7 @@ const Reviews = () => {
               </button>
               <span className="text-xs text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
               <button
-                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
+                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"
                 onClick={() => scrollReviews('right')}
                 aria-label="Scroll reviews right"
                 type="button"

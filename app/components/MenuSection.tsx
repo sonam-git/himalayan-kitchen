@@ -165,7 +165,7 @@ const MenuSection = () => {
                   </svg>
                 </button>
                 <button
-                  className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white text-sm md:text-lg font-extrabold shadow-xl border-2 border-white hover:bg-gray-100 hover:text-gray-900 hover:border-orange-400 hover:[&>svg]:text-orange-500 hover:[&>svg]:stroke-orange-500 hover:bg-gradient-to-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline"
+                  className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white text-sm md:text-lg font-extrabold shadow-xl border-2 border-white hover:bg-gray-100 hover:text-gray-900 hover:border-orange-400 hover:[&>svg]:text-orange-500 hover:[&>svg]:stroke-orange-500 hover:bg-gradient-to-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline font-[Georgia,'Times_New_Roman',Times,serif]"
                   onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
                   tabIndex={0}
                   aria-label="Go to full menu ordering page"
@@ -174,7 +174,7 @@ const MenuSection = () => {
                   <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-orange-500 transition-colors duration-300 drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
-                  <span className="drop-shadow font-extrabold tracking-wide group-hover:no-underline group-hover:decoration-orange-400 group-hover:decoration-2 group-hover:animate-[flip_0.6s_ease-in-out] transition-all duration-200 no-underline">Browse Full Selection</span>
+                  <span className="drop-shadow font-extrabold tracking-wide group-hover:no-underline group-hover:decoration-orange-400 group-hover:decoration-2 group-hover:animate-[flip_0.6s_ease-in-out] transition-all duration-200 no-underline font-[Georgia,'Times_New_Roman',Times,serif]">Browse Full Selection</span>
                 </button>
                 <button
                   className="rounded-full p-2 md:p-3 bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-yellow-100 dark:hover:bg-yellow-900 border-2 border-orange-300 dark:border-orange-700 transition w-10 h-10 md:w-12 md:h-12 flex items-center justify-center group"
@@ -227,7 +227,7 @@ const MenuSection = () => {
                 <h2 id="modal-dish-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
                   {featuredDishes[selectedIndex].name}
                 </h2>
-                <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body">
+                <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body font-[Georgia,'Times_New_Roman',Times,serif]">
                   {featuredDishes[selectedIndex].description}
                 </p>
               </div>

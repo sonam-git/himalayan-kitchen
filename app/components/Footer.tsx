@@ -87,7 +87,7 @@ const Footer = () => {
             <h3 className="text-2xl font-semibold mb-2 dark:text-white" tabIndex={0}>
               हिमालयन किचन  |  ཧི་མ་ལ་ཡན་ཀི་ཇན།
             </h3>
-            <p className="text-gray-300 dark:text-gray-400 mb-6 leading-relaxed">
+            <p className="text-gray-300 dark:text-gray-400 mb-6 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
               Serving and sharing the Himalayan cuisines & cultures. Born and raised in the mountains, 
               we bring authentic flavors from the roof of the world to your table.
             </p>
@@ -180,7 +180,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-gray-400 dark:border-gray-500 mt-8 pt-8 text-center bg- ">
-          <p className="text-gray-400 font-mono dark:text-gray-500 text-sm">
+          <p className="text-gray-400 dark:text-gray-500 text-sm font-[Georgia,'Times_New_Roman',Times,serif]">
             | &copy; {new Date().getFullYear()} Himalayan Kitchen, San Rafael, CA | All rights reserved |
           </p>
         </div>

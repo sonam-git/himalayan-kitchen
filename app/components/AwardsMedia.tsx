@@ -60,7 +60,7 @@ const AwardsMedia = () => {
           <h2 id="awards-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-200 dark:text-gray-50 mb-6" tabIndex={0}>
             Awards & <span className="bg-linear-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Media</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
             Honored by the community and featured in renowned publications for our culinary excellence and service.
           </p>
         </div>
@@ -75,7 +75,7 @@ const AwardsMedia = () => {
               >
                 <Image src={img.src} alt={img.alt} width={400} height={288} className="rounded-xl shadow-lg w-full h-72 object-cover mb-4 transition-transform duration-200 hover:scale-105 cursor-pointer" />
               </button>
-              <p className="text-gray-700 dark:text-gray-200 font-semibold text-center">{img.caption}</p>
+              <p className="text-gray-700 dark:text-gray-200 font-semibold text-center font-[Georgia,'Times_New_Roman',Times,serif]">{img.caption}</p>
             </div>
           ))}
         </div>
@@ -92,7 +92,7 @@ const AwardsMedia = () => {
               &times;
             </button>
             <Image src={modalImg} alt={modalAlt} width={900} height={650} className="rounded-xl shadow-2xl w-full h-auto max-h-[80vh] object-contain" />
-            <p id="awards-modal-title" className="mt-6 text-lg text-white font-semibold text-center drop-shadow-lg">
+            <p id="awards-modal-title" className="mt-6 text-lg text-white font-semibold text-center drop-shadow-lg font-[Georgia,'Times_New_Roman',Times,serif]">
               {images.find(img => img.src === modalImg)?.caption}
             </p>
           </div>

@@ -7,6 +7,7 @@ import MenuSection from "./components/MenuSection";
 import Gallery from "./components/Gallery";
 import Reviews from "./components/Reviews";
 import GiftCard from "./components/GiftCard";
+import Intro from "./components/Intro";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -34,12 +35,10 @@ export default function Home() {
 
           {/* Content sections with side spacing and gaps between sections */}
           <div className="space-y-2 sm:space-y-10 lg:space-y-1 mx-4 sm:mx-4 lg:mx-8 xl:mx-12 2xl:mx-16 ">
+            <Intro />
             <MenuSection />
             <Reviews />
             <Gallery />
-            {/* Gift Card Promo Section */}
-            <GiftCard />
-            {/* <Buttons /> */}
           </div>
         </main>
         {/* Scroll-to-top icon, not visible at top or in hero/home */}

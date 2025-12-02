@@ -1,4 +1,3 @@
-
 const SocialMedia = () => {
   return (
     <section aria-labelledby="social-heading" className="relative py-1 sm:py-24 lg:py-28 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm  p-2 " tabIndex={-1}>
@@ -14,7 +13,7 @@ const SocialMedia = () => {
             </svg>
           </div>
           <h2 id="social-heading" className="text-4xl md:text-5xl font-bold text-transparent bg-linear-to-r from-blue-600 via-pink-500 to-orange-500 bg-clip-text mb-4" tabIndex={0}>Follow Us On Social Media</h2>
-          <p className="text-lg text-gray-100 dark:text-gray-50 max-w-2xl mx-auto mb-8">Stay connected and see our latest updates, events, and delicious food photos from Facebook and Instagram.</p>
+          <p className="text-lg text-gray-100 dark:text-gray-50 max-w-2xl mx-auto mb-8 font-[Georgia,'Times_New_Roman',Times,serif]">Stay connected and see our latest updates, events, and delicious food photos from Facebook and Instagram.</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8" role="list" aria-label="Social media feeds">
           {/* Facebook Feed Embed */}

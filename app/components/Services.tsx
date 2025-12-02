@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 const Services = () => {
@@ -73,7 +72,7 @@ const Services = () => {
                 Services
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
               Including our dine-in experience, we offer comprehensive catering
               and event services to bring authentic Himalayan flavors to your
               special occasions.
@@ -124,7 +123,7 @@ const Services = () => {
                 Dine-In
               </h3>
 
-              <p className="text-md text-gray-200 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-md text-gray-200 dark:text-gray-300 mb-8 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
                 Immerse yourself in authentic Himalayan cuisine within our warm,
                 welcoming atmosphere designed to transport you to the heart of
                 Nepal.
@@ -150,7 +149,7 @@ const Services = () => {
               {/* CTA Button for Dine-In */}
               <a
                 href="tel:(415) 526-3161"
-                className="mt-8 group relative inline-flex items-center justify-center bg-linear-to-r from-red-500 to-orange-500 dark:from-orange-900 dark:to-red-700 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl hover:shadow-red-500/40 min-w-[180px] overflow-hidden text-base cursor-pointer border-2 border-transparent hover:border-white"
+                className="mt-8 group relative inline-flex items-center justify-center bg-linear-to-r from-red-500 to-orange-500 dark:from-orange-900 dark:to-red-700 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl hover:shadow-red-500/40 min-w-[180px] overflow-hidden text-base cursor-pointer border-2 border-transparent hover:border-white font-[Georgia,'Times_New_Roman',Times,serif]"
                 aria-label="Call Himalayan Kitchen"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
@@ -197,7 +196,7 @@ const Services = () => {
                 Take-out
               </h3>
 
-              <p className="text-md text-gray-200 mb-8 leading-relaxed">
+              <p className="text-md text-gray-200 mb-8 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
                 Order your favourite food from anywhere by calling or using our
                 online ordering system. You can also preorder your meal and get
                 it ready once you arrive.
@@ -225,7 +224,7 @@ const Services = () => {
                 href="https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 group relative inline-flex items-center justify-center border-2 border-yellow-500/70 hover:border-white bg-linear-to-r from-yellow-200 to-orange-200 dark:from-yellow-900 dark:to-orange-900 hover:from-yellow-400 hover:to-orange-400 text-orange-900 dark:text-yellow-200 hover:text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl hover:shadow-yellow-500/40 min-w-[180px] text-base cursor-pointer"
+                className="mt-8 group relative inline-flex items-center justify-center border-2 border-yellow-500/70 hover:border-white bg-linear-to-r from-yellow-200 to-orange-200 dark:from-yellow-900 dark:to-orange-900 hover:from-yellow-400 hover:to-orange-400 text-orange-900 dark:text-yellow-200 hover:text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl hover:shadow-yellow-500/40 min-w-[180px] text-base cursor-pointer font-[Georgia,'Times_New_Roman',Times,serif]"
                 aria-label="Order food online for delivery or pickup"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
@@ -272,7 +271,7 @@ const Services = () => {
                 Catering
               </h3>
 
-              <p className="text-md text-gray-200 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-md text-gray-200 dark:text-gray-300 mb-8 leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
                 Bring our exceptional Himalayan flavors to your location with
                 professional catering services and convenient takeout party
                 trays.
@@ -297,7 +296,7 @@ const Services = () => {
               </div>
               <Link
                 href="/#catering"
-                className="mt-8 group relative inline-flex items-center justify-center border-2 border-green-500/70 hover:border-white bg-linear-to-r from-green-200 to-emerald-200 dark:from-green-900 dark:to-emerald-900 hover:from-green-400 hover:to-emerald-400 text-green-900 dark:text-green-200 hover:text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl hover:shadow-green-500/40 min-w-[180px] text-base cursor-pointer"
+                className="mt-8 group relative inline-flex items-center justify-center border-2 border-green-500/70 hover:border-white bg-linear-to-r from-green-200 to-emerald-200 dark:from-green-900 dark:to-emerald-900 hover:from-green-400 hover:to-emerald-400 text-green-900 dark:text-green-200 hover:text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl hover:shadow-green-500/40 min-w-[180px] text-base cursor-pointer font-[Georgia,'Times_New_Roman',Times,serif]"
                 aria-label="Request catering services"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>

@@ -56,7 +56,7 @@ const Contact = () => {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-200 dark:text-white mb-6">
                 Contact <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">Us</span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
                 We&apos;d love to hear from you! Send us a message or reach out using the info below.
               </p>
             </div>
@@ -108,13 +108,13 @@ const Contact = () => {
                   <button
                     type="submit"
                     aria-label="Send message"
-                    className="w-full py-3 px-6 bg-yellow-600 hover:bg-white hover:text-yellow-800 text-white border-2 border-white font-bold rounded-lg transition-all duration-300 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
+                    className="w-full py-3 px-6 bg-yellow-600 hover:bg-white hover:text-yellow-800 text-white border-2 border-white font-bold rounded-lg transition-all duration-300 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"
                   >
                     Send Message
                   </button>
                   <div aria-live="polite" className="text-sm mt-2">
                     {status && (
-                      <p className="mt-4 text-green-600 dark:text-green-400 font-semibold">{status}</p>
+                      <p className="mt-4 text-green-600 dark:text-green-400 font-semibold font-[Georgia,'Times_New_Roman',Times,serif]">{status}</p>
                     )}
                   </div>
                 </form>

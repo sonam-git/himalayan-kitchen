@@ -48,6 +48,12 @@ const Gallery = () => {
       description:
         "The only person to have summited Mount Everest 31 times holding Guinness World Record visiting our restaurant.",
     },
+       {
+      image: "/images/gallery/appa.jpeg",
+      title: "Appa Sherpa (Middle) | Ang D Sherpa (Left) | Tamding Sherpa (2nd from left)",
+      description:
+        "Legendary mountaineer Appa Sherpa along with another two renowned mountaineers visiting our restaurant. Ang D Sherpa with most sibling to have summited Mt K2 and Mt Makalu respectively.",
+    },
     {
       image: "/images/gallery/hkitchen.jpg",
       title: "Himalayan Kitchen",
@@ -55,10 +61,10 @@ const Gallery = () => {
         "Himalayan Kitchen's cozy and inviting ambiance, perfect for enjoying authentic meals with family and friends.",
     },
     {
-      image: "/images/gallery/everestsummiter.jpg",
+      image: "/images/gallery/everestsummiter.jpeg",
       title: "Everest Summiter",
       description:
-        "Dawa Yangzum Sherpa ( 3rd from right) | First woman to become an international mountain guide from Nepal, and First Nepalese woman to summit all 14 peaks above 8 thousands meters with some other renowned mountaineers who have conquered the world's highest peak visiting our restaurant.",
+        "Dawa Yangzum Sherpa ( Middle) | First woman to become an international mountain guide from Nepal, and First Nepalese woman to summit all 14 peaks above 8 thousands meters along with her husband renowned Mountaineer Mingma T Sherpa (right), and another mountaineer Mingma Sherpa (left) visiting our restaurant.",
     },
     {
       image: "/images/gallery/everest.JPG",
@@ -152,7 +158,7 @@ const Gallery = () => {
   // Food Gallery Items
   const foodGalleryItems = [
     {
-      image: "/images/food/momo.jpg",
+      image: "/images/food/momo.jpeg",
       title: "Momo (Dumplings)",
       description:
         "Handmade Himalayan dumplings filled with seasoned meat or vegetables, served with spicy tomato chutney.",
@@ -352,14 +358,14 @@ const Gallery = () => {
               <h2 className="text-2xl md:text-3xl text-white font-black bg-clip-text pt-4 mb-2">
                 Moments at Our Table
               </h2>
-              <p className="text-base sm:text-lg text-gray-100 dark:text-gray-100">
-                A visual journey of flavor, culture, and connection. Explore our restaurant through beautiful moments, special events, and the wonderful people who have visited us.
+              <p className="text-sm sm:text-base font-medium text-gray-100 dark:text-gray-100 font-[Georgia,'Times_New_Roman',Times,serif]">
+              A visual journey through the cherished memories, beloved guests, and lively atmosphere that make our restaurant special. See how visitors from near and far enjoy their Himalayan dining experience.
               </p>
             </div>
             {/* Main Gallery - horizontal scroll on all screens, grid fallback if needed */}
             <div
               ref={mainGalleryRef}
-              className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0"
+              className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 border-t-2 border-yellow-200 dark:border-gray-700 pt-2"
             >
               {galleryItems.map((item, index) => (
                 <div
@@ -500,7 +506,7 @@ const Gallery = () => {
                   <h2 id="main-modal-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
                     {galleryItems[mainModalIndex].title}
                   </h2>
-                  <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body">
+                  <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body font-[Georgia,'Times_New_Roman',Times,serif]">
                     {showFullMainDesc ||
                     galleryItems[mainModalIndex].description.length <= 180
                       ? galleryItems[mainModalIndex].description
@@ -560,7 +566,7 @@ const Gallery = () => {
               <h2 className="text-2xl md:text-3xl text-white font-black bg-clip-text pt-4 mb-2">
                 A Feast For Your Eyes
               </h2>
-              <p className="text-base sm:text-lg text-gray-100 dark:text-gray-300">
+              <p className="text-sm sm:text-base text-gray-100 dark:text-gray-300 font-medium font-[Georgia,'Times_New_Roman',Times,serif]">
                 A showcase of our most popular, authentic & mouth-watering
                 Himalayan dishes. Let the gallery inspire your next dining
                 experience!
@@ -568,7 +574,7 @@ const Gallery = () => {
             </div>
             <div
               ref={foodGalleryRef}
-              className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0"
+              className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 border-t-2 border-yellow-200 dark:border-gray-700 pt-2"
             >
               {foodGalleryItems.map((item, idx) => (
                 <div
@@ -677,7 +683,7 @@ const Gallery = () => {
                   <h2 id="food-modal-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
                     {foodGalleryItems[foodModalIndex].title}
                   </h2>
-                  <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body">
+                  <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body font-[Georgia,'Times_New_Roman',Times,serif]">
                     {showFullFoodDesc ||
                     foodGalleryItems[foodModalIndex].description.length <= 180
                       ? foodGalleryItems[foodModalIndex].description

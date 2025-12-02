@@ -16,7 +16,7 @@ const Hero = () => {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative min-h-[92vh] w-full flex flex-col items-stretch justify-center overflow-hidden"
+      className="relative w-full flex flex-col items-stretch justify-center overflow-hidden"
     >
       {/* Visually hidden heading for screen readers */}
       <h1 id="hero-heading" className="sr-only">Welcome to Himalayan Kitchen Marin</h1>
@@ -50,23 +50,25 @@ const Hero = () => {
         </div>
         {/* Content Section: below video on mobile, overlay on desktop */}
         <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-10 p-0 ">
-          <div className="flex flex-col items-center justify-start  sm:px-8 xl:px-0 w-full bg-black/80 xl:bg-transparent m-0 xl:mt-16 pb-4 drop-shadow-2xl shadow-amber-500">
-            <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl lg:mb-0 leading-tight flex items-center justify-center gap-2">
-              {/* Left bnw-tt image (inline, always visible, much wider, all screens) */}
-              <span className="inline-flex items-center h-[2.8em] xs:h-[3em] sm:h-[3.5em] md:h-[4em] lg:h-[5em] w-[25em] ">
-                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon" height={180} width={400} className="h-full w-full max-w-full filter invert brightness-200" aria-hidden="true" />
-              </span>
-              <span className="block w-full ">
-                Taste From The
-                <span className="block w-full text-[#f3d573] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] lg:text-[1.38em] uppercase" style={{letterSpacing: '0.01em'}}>
-                  HIMALAYAS
-                </span>
-              </span>
-              {/* Right bnw-tt image (inline, always visible, much wider, all screens) */}
-              <span className="inline-flex items-center h-[2.8em] xs:h-[3em] sm:h-[3.5em] md:h-[4em] lg:h-[5em] w-[25em] xs:w-[6em] sm:w-[8em] md:w-[10em] lg:w-[12em]">
-                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon" height={180} width={400} className="h-full w-full max-w-full filter invert brightness-200" aria-hidden="true" />
-              </span>
-            </h2>
+          <div className="flex flex-col items-center justify-start  sm:px-8 xl:px-0 w-full bg-gray-900 xl:bg-transparent m-0 xl:mt-26 pb-4 drop-shadow-2xl shadow-amber-500">
+            <div className="flex flex-row items-stretch justify-center w-full max-w-5xl mx-auto gap-2">
+              {/* Left vertical image */}
+              <div className="flex flex-col items-center justify-center w-auto self-stretch">
+                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon left" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-contain filter invert brightness-200" aria-hidden="true" />
+              </div>
+              <div className="flex-1 flex flex-col items-center justify-center">
+                <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl lg:mb-0 leading-tight">
+                  Taste From The
+                  <span className="block w-full text-[#efc335] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] uppercase" style={{letterSpacing: '0.01em'}}>
+                    HIMALAYAS
+                  </span>
+                </h2>
+              </div>
+              {/* Right vertical image */}
+              <div className="flex flex-col items-center justify-center w-auto self-stretch">
+                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon right" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-contain filter invert brightness-200" aria-hidden="true" />
+              </div>
+            </div>
             <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 px-2 font-serif drop-shadow-lg ">
               Experience authentic Himalayan flavors, crafted with passion and tradition.
             </p>

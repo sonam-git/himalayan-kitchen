@@ -212,10 +212,6 @@ const Header = () => {
                 { id: 'menu', label: 'Menu | Order Online', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
                 ), href: 'https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st' },
-                {
-                  id:'gift-card', label: 'Gift Card', icon: (
-                  <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M17 9V7a4 4 0 00-8 0v2m-4 0h16v10a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /></svg>
-                ), href: 'https://order.toasttab.com/egiftcards/himalayan-kitchen-227-3rd-st' },
                 { id: 'gallery', label: 'Gallery', icon: (
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                 ), href: '/gallery' },
@@ -285,14 +281,14 @@ const Header = () => {
                   </Link>
                 );
               })}
-              {/* Action buttons row: Theme Toggle, Accessibility */}
-              <div className="grid grid-cols-2 gap-3 mt-3 mb-1 w-full">
-                {/* Theme Toggle Button with text */}
+              {/* Action buttons row: Theme Toggle, Gift Card, Accessibility */}
+              <div className="flex flex-row mt-3 mb-1 w-full justify-between"> {/* space-between, reduced mt/mb */}
+                {/* Theme Toggle Icon Button */}
                 <button
                   onClick={toggleTheme}
                   aria-label="Toggle dark mode"
                   aria-pressed={isDarkMode}
-                  className="flex flex-row items-center justify-center w-full h-12 rounded-xl bg-gray-800 dark:bg-yellow-900 text-white dark:text-yellow-200 border-2 border-white dark:border-white shadow-lg hover:bg-gray-700 dark:hover:bg-yellow-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400/50 dark:focus:ring-yellow-400/50 hover:scale-105 active:scale-95 gap-2"
+                  className="flex items-center justify-center w-12 h-12 rounded-xl bg-gray-800 dark:bg-yellow-900 text-white dark:text-yellow-200 border-2 border-white dark:border-white shadow-lg hover:bg-gray-700 dark:hover:bg-yellow-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400/50 dark:focus:ring-yellow-400/50 hover:scale-105 active:scale-95"
                 >
                   {isDarkMode ? (
                     <svg className="w-6 h-6 transition-all duration-500 animate-pulse text-yellow-200" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
@@ -303,12 +299,25 @@ const Header = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                     </svg>
                   )}
-                  <span className="ml-1 font-semibold text-base select-none">{isDarkMode ? 'Light' : 'Dark'}</span>
                 </button>
-                {/* Accessibility Button with text */}
+                {/* Gift Card Button - mobile menu only */}
+                <a
+                  href="https://order.toasttab.com/egiftcards/himalayan-kitchen-227-3rd-st"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex xl:hidden items-center justify-center gap-2 w-auto h-12 px-4 rounded-xl bg-linear-to-r from-green-800 via-yellow-800 to-green-900 text-white font-bold shadow-lg border-2 border-white dark:border-white hover:from-yellow-500 hover:to-red-500 hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400/50"
+                  aria-label="Buy Gift Card (opens in new tab)"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                    <rect x="2" y="7" width="20" height="10" rx="2" fill="currentColor" className="text-yellow-300/80" />
+                    <path d="M2 9h20M12 7v10M7 12h.01M17 12h.01" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="font-bold text-base tracking-wide">Gift Card</span>
+                </a>
+                {/* Accessibility Icon Button */}
                 <button
                   aria-label="Accessibility Options"
-                  className="flex flex-row items-center justify-center w-full h-12 rounded-xl bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 border-2 border-white dark:border-white shadow-lg hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 gap-2"
+                  className="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 border-2 border-white dark:border-white shadow-lg hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
                   onClick={() => { setIsAccessibilityModalOpen(true); setIsMenuOpen(false); }}
                   type="button"
                 >
@@ -316,7 +325,6 @@ const Header = () => {
                     <circle cx="12" cy="7" r="2.5" />
                     <path d="M12 21v-6m0 0c-2.5 0-5-1-7-2m7 2c2.5 0 5-1 7-2M12 15V9m-5 2l-2-2m14 2l2-2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                  <span className="ml-1 font-semibold text-base select-none">Accessibility</span>
                 </button>
               </div>
             </div>
