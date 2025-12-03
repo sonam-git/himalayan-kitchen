@@ -32,20 +32,20 @@ const Hero = () => {
           {/* Video with TV glass effect */}
           <video
             ref={videoRef}
-            src="/videos/intro.mp4"
+            src="/videos/introMov.mp4"
             autoPlay
             loop
             muted
             playsInline
-            className="object-cover  w-full h-full rounded-none xl:rounded-[3rem] shadow-xl tv-glass"
-            style={{ filter: 'contrast(1.15) brightness(0.98) saturate(1.1)' }}
+            className="object-cover w-full h-full rounded-none xl:rounded-[3rem] shadow-xl tv-glass"
+            style={{ filter: 'contrast(1.1) brightness(1.02) saturate(1.05)' }}
             aria-hidden="true"
             tabIndex={-1}
           />
           {/* Dark overlay for video */}
-          <div className="absolute inset-0 rounded-none xl:rounded-[3rem] bg-linear-to-b from-black/70 via-black/40 to-black/70 pointer-events-none z-10" aria-hidden="true"></div>
+          <div className="absolute inset-0 rounded-none xl:rounded-[3rem] bg-linear-to-b from-black/50 via-black/30 to-black/50 pointer-events-none z-10" aria-hidden="true"></div>
           {/* Scanline/overlay effect */}
-          <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] mix-blend-soft-light opacity-60 tv-scanlines" aria-hidden="true"></div>
+          <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] mix-blend-soft-light opacity-40 tv-scanlines" aria-hidden="true"></div>
           {/* Subtle inner shadow for glass */}
           <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
         </div>
