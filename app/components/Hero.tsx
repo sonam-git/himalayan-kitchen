@@ -9,7 +9,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.85; // Play a bit faster and smoother
+      videoRef.current.playbackRate = 0.75; // Play a bit faster and smoother
     }
   }, []);
 
@@ -32,7 +32,7 @@ const Hero = () => {
           {/* Video with TV glass effect */}
           <video
             ref={videoRef}
-            src="/videos/herovideo.mp4"
+            src="/videos/intro.mp4"
             autoPlay
             loop
             muted
