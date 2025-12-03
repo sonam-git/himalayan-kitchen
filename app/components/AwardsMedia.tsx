@@ -34,31 +34,25 @@ const AwardsMedia = () => {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <section id="awards" aria-labelledby="awards-heading" className="relative py-20 sm:py-24 lg:py-28 bg-white dark:bg-gray-800 transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm" tabIndex={-1}>
+    <section id="awards" aria-labelledby="awards-heading" className="relative  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm" tabIndex={-1}>
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl" aria-hidden="true">
         <div className="absolute top-1/4 -right-48 w-96 h-96 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
-         {/* Image as Section Background with Blur Overlay */}
-         <div className="absolute inset-0 w-full h-full z-0" aria-hidden="true">
-           <Image
-             src="/images/other/backdrop.png"
-             alt="Menu Background"
-             fill
-             priority
-             className="object-content w-full h-full rounded-2xl sm:rounded-3xl  opacity-100"
-           />
-            <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
-         </div>
+  
       <div className="relative  max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="inline-block px-6 py-2 bg-linear-to-r from-orange-500/10 to-red-500/10 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-200/50 dark:border-orange-700/50 rounded-full text-orange-600 dark:text-orange-400 font-semibold text-sm uppercase tracking-wider mb-4">
-            Recognitions & Press
+                  <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="flex-1 h-px bg-yellow-400/60 dark:bg-yellow-400/40" />
+          <span className="inline-block px-6 py-2 mt-4 bg-yellow-500/10 dark:bg-yellow-400/20 border border-yellow-200 dark:border-yellow-400 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
+          Recognition and Press
           </span>
+          <div className="flex-1 h-px bg-yellow-400/60 dark:bg-yellow-400/40" />
+        </div>
           <h2 id="awards-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-200 dark:text-gray-50 mb-6" tabIndex={0}>
-            Awards & <span className="bg-linear-to-r from-orange-600 via-red-600 to-orange-600 dark:from-orange-400 dark:via-red-400 dark:to-orange-400 bg-clip-text text-transparent">Media</span>
+            Awards & <span className="bg-linear-to-r from-yellow-200 via-white to-yellow-200 dark:from-orange-400 bg-clip-text text-transparent">Media</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
             Honored by the community and featured in renowned publications for our culinary excellence and service.
