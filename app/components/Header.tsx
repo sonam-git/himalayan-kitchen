@@ -230,50 +230,23 @@ const Header = () => {
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 ), href: '/contact' }
               ].map(({ id, label, icon, href }) => {
-                if (id === 'menu') {
+                // External links (menu, gift-card)
+                if (id === 'menu' || id === 'gift-card') {
                   return (
-                    <div key={id} className="relative">
-                      <button
-                        onClick={e => { e.preventDefault(); setIsMenuDropdownOpen(open => !open); }}
-                        onBlur={() => setTimeout(() => setIsMenuDropdownOpen(false), 150)}
-                        aria-haspopup="true"
-                        aria-expanded={isMenuDropdownOpen}
-                        className="flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 focus:outline-none"
+                    <a key={id} href={href} target="_blank" rel="noopener noreferrer">
+                      <span
+                        className="flex items-center w-full text-left px-4 py-2 rounded-lg font-semibold text-lg transition-colors duration-200 border-b-2 border-gray-300 dark:border-white/30 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 hover:text-red-600 dark:hover:text-red-300"
                         tabIndex={0}
-                        role="button"
-                        aria-label="Menu and Order options"
-                        type="button"
+                        role="link"
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         {icon}
                         <span className="ml-1">{label}</span>
-                      </button>
-                      {isMenuDropdownOpen && (
-                        <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 flex flex-col animate-fade-in">
-                          <a
-                            href="https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-red-50 dark:hover:bg-red-800 rounded-t-xl focus:outline-none focus:bg-red-100 dark:focus:bg-red-700 transition-colors duration-200"
-                            tabIndex={0}
-                            aria-label="Order Online (opens in new tab)"
-                            onMouseDown={e => e.preventDefault()}
-                            onClick={() => setIsMenuDropdownOpen(false)}
-                          >Order Online</a>
-                          <a
-                            href="https://order.toasttab.com/egiftcards/himalayan-kitchen-227-3rd-st"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-green-50 dark:hover:bg-green-900 rounded-b-xl focus:outline-none focus:bg-green-100 dark:focus:bg-green-800 transition-colors duration-200"
-                            tabIndex={0}
-                            aria-label="Buy Gift Card (opens in new tab)"
-                            onMouseDown={e => e.preventDefault()}
-                            onClick={() => setIsMenuDropdownOpen(false)}
-                          >Gift Card</a>
-                        </div>
-                      )}
-                    </div>
+                      </span>
+                    </a>
                   );
                 }
+                // Internal links
                 return (
                   <Link key={id} href={href}>
                     <span
