@@ -26,7 +26,7 @@ const Hero = () => {
       {/* Mobile: stacked, Desktop: overlay */}
       <div className="flex flex-col w-full gap-0">
         {/* Video Section */}
-        <div className="relative w-full h-[55vh] xl:h-screen flex items-end justify-center shrink-0">
+        <div className="relative w-full h-[52vh] xl:h-screen flex items-end justify-center shrink-0">
           {/* TV frame */}
           <div className="absolute inset-0 rounded-none xl:rounded-[3.5rem] border-18 xl:border-32 border-gray-100 bg-linear-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl tv-frame" aria-hidden="true"></div>
           {/* Video with TV glass effect */}
