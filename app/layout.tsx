@@ -56,7 +56,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${playfairDisplay.variable} ${dancingScript.variable} font-sans antialiased overflow-x-hidden `}>
-        <AnnouncementModal />
+        {/* <AnnouncementModal /> */}
          {/* Full-page blurred background image */}
       <div className="fixed inset-0 min-h-screen h-screen w-screen -z-10 mt-0">
         <Image

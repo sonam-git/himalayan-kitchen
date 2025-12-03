@@ -183,8 +183,12 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {/* Prayer Flag Colors Bottom Border */}
-        <PrayerFlagBorder />
+        <div className="w-full">
+          <div className="hidden xl:block w-full">
+            <PrayerFlagBorder />
+          </div>
+          <hr className="block xl:hidden border-t border-white w-full" />
+        </div>
         {/* Skip to main content link for accessibility */}
         <a href="#main-content" className="sr-only focus:not-sr-only absolute top-2 left-2 z-100 bg-white dark:bg-gray-900 text-red-700 dark:text-yellow-300 font-bold px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-200">Skip to main content</a>
 

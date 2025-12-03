@@ -49,18 +49,30 @@ const Hero = () => {
           {/* Subtle inner shadow for glass */}
           <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
         </div>
+        <div className="block xl:hidden w-full">
+        <PrayerFlagBorder />
+        </div>
         {/* Content Section: below video on mobile, overlay on desktop */}
         <div className="relative w-full h-auto xl:h-auto xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-10 p-0 bg-transparent xl:bg-transparent  xl:border-none py-2  shadow-[0_8px_32px_0_rgba(255,255,200,0.25),0_0_0_8px_rgba(255,255,150,0.10)] drop-shadow-[0_0_32px_rgba(255,255,150,0.25)] dark:border-yellow-200/30 backdrop-blur-md backdrop-saturate-150">
-          <div className="flex flex-col items-center justify-start  sm:px-8 xl:px-0 w-full xl:bg-transparent m-0 xl:mt-26 pb-4 drop-shadow-2xl shadow-amber-500">
+          <div className="flex flex-col items-center justify-start  sm:px-8 xl:px-0 w-full xl:bg-transparent m-0 xl:mt-26 pb-4 drop-shadow-2xl shadow-yellow-200">
+                <Image 
+                  src="/images/logo/mountain-sketch.png" 
+                  alt="Mountain Sketch" 
+                  width={280} 
+                  height={60} 
+                  className="mx-auto w-full mb-2 h-12 sm:h-16 md:h-20 object-contain opacity-90" 
+                  priority
+                />
             <div className="flex flex-row items-stretch justify-center w-full max-w-5xl mx-auto gap-2">
               {/* Left vertical image */}
               <div className="flex flex-col items-center justify-center w-auto self-stretch">
                 <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon right" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-cover filter invert brightness-200" aria-hidden="true" />
               </div>
               <div className="flex-1 flex flex-col items-center justify-center">
-                <h2 className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl lg:mb-0 leading-tight ">
+            
+                <h2 style={{ fontFamily: 'times', fontWeight: 400, fontStyle: 'normal' }} className="w-full max-w-3xl mx-auto text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white text-center drop-shadow-2xl lg:mb-0 leading-tight">
                   Taste From The
-                  <span className="block w-full text-[#efc335] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] uppercase " style={{letterSpacing: '0.01em'}}>
+                  <span style={{ fontFamily: 'open dyslexic', fontWeight: 700, fontStyle: 'normal', letterSpacing: '0.01em' }} className="block w-full text-[#efc335] stroke-2 stroke-white tracking-normal text-[1.25em] md:text-[1.28em] uppercase">
                     HIMALAYAS
                   </span>
                 </h2>

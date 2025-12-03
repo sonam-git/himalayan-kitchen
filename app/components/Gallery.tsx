@@ -489,7 +489,7 @@ const Gallery = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="gallery-modal-title"
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
+            className="fixed inset-0 z-[999999] flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
             onKeyDown={handleModalKeyDown}
           >
             <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
@@ -662,7 +662,7 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div
-            className="fixed inset-0 z-100000 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
+            className="fixed inset-0 z-[999999] flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-modal-title"
