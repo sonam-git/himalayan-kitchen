@@ -485,21 +485,7 @@ const Gallery = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="gallery-modal-title"
-            data-modal="gallery-main"
-            className="fixed inset-0 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
-            style={{ 
-              zIndex: 9999,
-              isolation: 'isolate',
-              transform: 'translateZ(0)',
-              WebkitTransform: 'translateZ(0)',
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden',
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0
-            }}
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
             onKeyDown={handleModalKeyDown}
           >
             <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
@@ -511,8 +497,8 @@ const Gallery = () => {
               <Image
                 src={galleryItems[mainModalIndex].image}
                 alt={galleryItems[mainModalIndex].title}
-                width={900}
-                height={650}
+                width={600}
+                height={400}
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
                 priority
               />
@@ -540,8 +526,8 @@ const Gallery = () => {
               )}
             </div>
             {/* Controls always below the modal box, outside the border */}
-            <div className="flex justify-center items-center gap-8 mt-8 z-50 relative"
-              style={{ marginTop: '2.5rem' }} // extra space for clarity
+            <div className="flex justify-center items-center gap-8 mt-10 z-50 relative"
+              style={{ marginTop: '2.5rem' }}
               aria-label="Gallery modal controls"
             >
               <button
@@ -672,25 +658,11 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div
-            className="fixed inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-modal-title"
-            data-modal="gallery-food"
             onClick={closeFoodModal}
-            style={{ 
-              zIndex: 9999,
-              isolation: 'isolate',
-              transform: 'translateZ(0)',
-              WebkitTransform: 'translateZ(0)',
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden',
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0
-            }}
           >
             <div
               className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
@@ -702,8 +674,8 @@ const Gallery = () => {
               <Image
                 src={foodGalleryItems[foodModalIndex].image}
                 alt={foodGalleryItems[foodModalIndex].title}
-                width={900}
-                height={650}
+                width={600}
+                height={400}
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
                 priority
               />
@@ -731,7 +703,11 @@ const Gallery = () => {
               )}
             </div>
             {/* Controls always below the modal image */}
-            <div className="flex justify-center items-center gap-8 mt-8 z-50" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-center items-center gap-8 mt-10 z-50 relative"
+              style={{ marginTop: '2.5rem' }}
+              aria-label="Food modal controls"
+              onClick={e => e.stopPropagation()}
+            >
               <button
                 aria-label="Previous"
                 onClick={e => { e.stopPropagation(); prevFoodModal(); }}
