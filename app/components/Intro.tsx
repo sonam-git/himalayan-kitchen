@@ -90,7 +90,7 @@ export default function Intro() {
                 <div className="w-1/2 flex flex-col items-center justify-center">
                   <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                     <Image
-                      src="/images/other/sherpaBoy.png"
+                      src="/images/other/SherpaBoy.png"
                       alt="Sherpa boy welcoming you to our restaurant"
                       fill
                       className="object-contain"
@@ -103,7 +103,7 @@ export default function Intro() {
                 <div className="w-1/2 flex flex-col items-center justify-center">
                   <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                     <Image
-                      src="/images/other/sherpaGirl.png"
+                      src="/images/other/SherpaGirl.png"
                       alt="Sherpa girl welcoming you to our restaurant"
                       fill
                       className="object-contain"
@@ -117,7 +117,7 @@ export default function Intro() {
               <div className="hidden lg:flex w-full lg:w-1/3 flex-col items-center justify-center order-1 lg:order-1">
                 <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                   <Image
-                    src="/images/other/sherpaBoy.png"
+                    src="/images/other/SherpaBoy.png"
                     alt="Sherpa boy welcoming you to our restaurant"
                     fill
                     className="object-contain"
@@ -190,7 +190,7 @@ export default function Intro() {
               <div className="hidden lg:flex w-full lg:w-1/3 flex-col items-center justify-center order-3 lg:order-3">
                 <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                   <Image
-                    src="/images/other/sherpaGirl.png"
+                    src="/images/other/SherpaGirl.png"
                     alt="Sherpa girl welcoming you to our restaurant"
                     fill
                     className="object-contain"
