@@ -88,7 +88,7 @@ export default function Intro() {
               <div className="w-full flex lg:hidden items-center justify-center gap-3 sm:gap-4 order-1">
                 {/* Left Image: Sherpa Boy */}
                 <div className="w-1/2 flex flex-col items-center justify-center">
-                  <div className="relative w-full aspect-[3/4] transition-all duration-300 hover:scale-105">
+                  <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                     <Image
                       src="/images/other/sherpaBoy.png"
                       alt="Sherpa boy welcoming you to our restaurant"
@@ -101,7 +101,7 @@ export default function Intro() {
                 
                 {/* Right Image: Sherpa Girl */}
                 <div className="w-1/2 flex flex-col items-center justify-center">
-                  <div className="relative w-full aspect-[3/4] transition-all duration-300 hover:scale-105">
+                  <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                     <Image
                       src="/images/other/sherpaGirl.png"
                       alt="Sherpa girl welcoming you to our restaurant"
@@ -115,7 +115,7 @@ export default function Intro() {
 
               {/* Desktop: Left Image - Sherpa Boy */}
               <div className="hidden lg:flex w-full lg:w-1/3 flex-col items-center justify-center order-1 lg:order-1">
-                <div className="relative w-full aspect-[3/4] transition-all duration-300 hover:scale-105">
+                <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                   <Image
                     src="/images/other/sherpaBoy.png"
                     alt="Sherpa boy welcoming you to our restaurant"
@@ -130,20 +130,20 @@ export default function Intro() {
               <div className="w-full lg:w-1/3 flex flex-col items-center justify-center space-y-2 sm:space-y-3 lg:space-y-4 order-2 lg:order-2 py-2">
                 {/* Decorative top flourish */}
                 <div className="flex items-center gap-1.5 sm:gap-2 w-full justify-center">
-                  <div className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent flex-1"></div>
+                  <div className="h-px bg-linear-to-r from-transparent via-yellow-400 to-transparent flex-1"></div>
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
-                  <div className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent flex-1"></div>
+                  <div className="h-px bg-linear-to-r from-transparent via-yellow-400 to-transparent flex-1"></div>
                 </div>
 
                 {/* Welcome text in a warm card */}
-                <div className="bg-gradient-to-br from-orange-50/90 to-yellow-50/90 dark:from-orange-900/40 dark:to-yellow-900/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 shadow-lg border border-yellow-300/50 sm:border-2 dark:border-yellow-500/30">
-                  <p className="text-xs sm:text-sm lg:text-base xl:text-lg font-medium text-gray-800 dark:text-yellow-50 font-[Georgia,'Times_New_Roman',Times,serif] text-center leading-relaxed">
-                    From the <span className="font-bold text-orange-600 dark:text-yellow-400">Himalayas</span> to <span className="font-bold text-orange-600 dark:text-yellow-400">Marin</span>, our flavors travel far. Authentic Himalayan cuisine, warm hospitality, and a place to feel at home.
+                <div className="bg-linear-to-br from-orange-50/90 to-yellow-50/90 dark:from-orange-900/40 dark:to-yellow-900/40 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 shadow-lg border border-yellow-300/50 sm:border-2 dark:border-yellow-500/30">
+                  <p className="text-xs sm:text-sm lg:text-base xl:text-lg font-medium text-white dark:text-yellow-50 font-[Georgia,'Times_New_Roman',Times,serif] text-center leading-relaxed">
+                    From the <span className="font-bold text-yellow-200 dark:text-yellow-400">Himalayas</span> to <span className="font-bold text-yellow-200 dark:text-yellow-400">Marin</span>, our flavors travel far. Authentic Himalayan cuisine, warm hospitality, and a place to feel at home.
                   </p>
-                  <p className="text-[10px] sm:text-xs lg:text-sm xl:text-base font-semibold text-orange-700 dark:text-yellow-300 font-[Georgia,'Times_New_Roman',Times,serif] text-center mt-1 sm:mt-2 italic">
-                    Come in as a guest, leave as family. 🏔️
+                  <p className="text-[10px] sm:text-xs lg:text-sm xl:text-base font-semibold text-yellow-300 dark:text-yellow-300 font-[Georgia,'Times_New_Roman',Times,serif] text-center mt-1 sm:mt-2 italic">
+                    🙏 Come in as a guest, leave as family 🙏
                   </p>
                 </div>
 
@@ -173,22 +173,22 @@ export default function Intro() {
                     </svg>
                   </span>
                   {/* Button glow effect */}
-                  <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-gradient-to-r from-yellow-400 to-orange-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-linear-to-r from-yellow-400 to-orange-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
                 </Link>
 
                 {/* Decorative bottom flourish */}
                 <div className="flex items-center gap-1.5 sm:gap-2 w-full justify-center">
-                  <div className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent flex-1"></div>
+                  <div className="h-px bg-linear-to-r from-transparent via-yellow-400 to-transparent flex-1"></div>
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                   </svg>
-                  <div className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent flex-1"></div>
+                  <div className="h-px bg-linear-to-r from-transparent via-yellow-400 to-transparent flex-1"></div>
                 </div>
               </div>
 
               {/* Desktop: Right Image - Sherpa Girl */}
               <div className="hidden lg:flex w-full lg:w-1/3 flex-col items-center justify-center order-3 lg:order-3">
-                <div className="relative w-full aspect-[3/4] transition-all duration-300 hover:scale-105">
+                <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                   <Image
                     src="/images/other/sherpaGirl.png"
                     alt="Sherpa girl welcoming you to our restaurant"
