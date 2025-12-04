@@ -6,7 +6,8 @@ import Footer from './components/Footer';
 import MobileBottomBar from './components/MobileBottomBar';
 import Image from "next/image";
 import ScrollToTop from './components/ScrollToTop';
-import AnnouncementModal from './components/AnnouncementModal';
+import Script from "next/script";
+
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -40,6 +41,51 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <head>
+        {/* UserWay Accessibility Widget Configuration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.interdeal = {
+                "sitekey": "meCuNxAYOV",
+                "Position": "Left",
+                "Menulang": "EN",
+                "domains": {
+                  "js": "https://cdn.userway.org/",
+                  "acc": "https://acc.userway.org/"
+                }
+              };
+            `,
+          }}
+        />
+        {/* UserWay Accessibility Widget */}
+        <Script
+          src="https://cdn.userway.org/widget.js"
+          data-account="meCuNxAYOV"
+          strategy="afterInteractive"
+        />
+        {/* Hide UserWay's default floating button - we'll use custom button in Header */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              /* Hide the default UserWay floating button completely */
+              #userway_p1,
+              .userway_buttons_wrapper {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+              }
+              
+              /* Keep the UserWay modal/widget functional */
+              #userway,
+              .userway_p2,
+              .userway_p3 {
+                display: block !important;
+                visibility: visible !important;
+              }
+            `,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

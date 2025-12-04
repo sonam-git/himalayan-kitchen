@@ -39,11 +39,11 @@ export default function Intro() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col items-center justify-center min-h-40 w-full max-w-5xl mx-auto my-4 px-0 py-0 overflow-hidden bg-white/10 dark:bg-black/30 rounded-2xl shadow-[0_8px_32px_0_rgba(255,255,200,0.25),0_0_0_8px_rgba(255,255,150,0.10)] drop-shadow-[0_0_32px_rgba(255,255,150,0.25)] border border-yellow-300/40 dark:border-yellow-200/30 backdrop-blur-md backdrop-saturate-150"
+      className="relative flex flex-col items-center justify-center min-h-40  max-w-7xl mx-auto my-4 px-0 py-0 overflow-hidden bg-white/10 dark:bg-black/30 rounded-2xl shadow-[0_8px_32px_0_rgba(255,255,200,0.25),0_0_0_8px_rgba(255,255,150,0.10)] drop-shadow-[0_0_32px_rgba(255,255,150,0.25)] border border-yellow-300/40 dark:border-yellow-200/30 backdrop-blur-md backdrop-saturate-150"
       style={{ background: 'none' }}
     >
       {/* Full background image with dark overlay */}
-      <div className="absolute inset-0 w-full h-full z-0 rounded-2xl">
+      <div className="absolute inset-0 w-full h-full z-0 max-w-7xl rounded-2xl">
         <Image
           src="/images/gallery/dining1.jpeg"
           alt="Himalayan Kitchen Restaurant Interior"
@@ -55,7 +55,7 @@ export default function Intro() {
         <div className="absolute inset-0 bg-black/70 dark:bg-black/80 mix-blend-multiply" aria-hidden="true"></div>
       </div>
       {/* Main content centered on top of bg */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-4 py-6">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 py-6">
         <div
           ref={textRef}
           className={`w-full flex flex-col items-center justify-center transition-all duration-700 ease-out

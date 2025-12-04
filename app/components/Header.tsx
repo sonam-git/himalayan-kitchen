@@ -4,15 +4,21 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import PrayerFlagBorder from './PrayerFlagBorder';
 import { useTheme } from '../context/ThemeContext';
-import Accessibility from './Accessibility';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+// Extend Window interface for UserWay
+declare global {
+  interface Window {
+    UserWay?: {
+      widgetOpen: () => void;
+    };
+  }
+}
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
-  const [isAccessibilityModalOpen, setIsAccessibilityModalOpen] = useState(false);
   const [isMenuDropdownOpen, setIsMenuDropdownOpen] = useState(false);
   const pathname = usePathname();
 
@@ -20,6 +26,13 @@ const Header = () => {
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
     return pathname.startsWith(href);
+  };
+
+  // Function to trigger UserWay accessibility widget
+  const openAccessibilityWidget = () => {
+    if (typeof window !== 'undefined' && window.UserWay) {
+      window.UserWay.widgetOpen();
+    }
   };
 
   return (
@@ -169,9 +182,9 @@ const Header = () => {
                 </button>
                 {/* Accessibility button only on desktop */}
                 <button
-                  aria-label="Accessibility Options"
+                  aria-label="Open Accessibility Widget"
                   className="hidden xl:flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-blue-100 dark:bg-blue-900 border-2 border-white dark:border-white shadow-lg hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
-                  onClick={() => setIsAccessibilityModalOpen(true)}
+                  onClick={openAccessibilityWidget}
                   type="button"
                 >
                   <svg className="w-7 h-7 text-blue-700 dark:text-blue-200" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
@@ -284,9 +297,9 @@ const Header = () => {
                 </button>
                 {/* Accessibility Button with text */}
                 <button
-                  aria-label="Accessibility Options"
+                  aria-label="Open Accessibility Widget"
                   className="flex flex-row items-center justify-center w-full h-12 rounded-xl bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 border-2 border-white dark:border-white shadow-lg hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 gap-2"
-                  onClick={() => { setIsAccessibilityModalOpen(true); setIsMenuOpen(false); }}
+                  onClick={() => { openAccessibilityWidget(); setIsMenuOpen(false); }}
                   type="button"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
@@ -304,7 +317,7 @@ const Header = () => {
           </nav>
         )}
       </header>
-      <Accessibility isOpen={isAccessibilityModalOpen} onClose={() => setIsAccessibilityModalOpen(false)} />
+     
     </>
   );
 };
