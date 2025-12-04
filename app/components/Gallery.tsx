@@ -323,7 +323,7 @@ const Gallery = () => {
         <div className="absolute top-1/4 -right-48 w-96 h-96 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
-      <div className="relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto sm:px-6 lg:px-8">
         {/* Header */}
         <div
           className={`text-center mb-6 sm:mb-8 transition-all duration-1000 ${
