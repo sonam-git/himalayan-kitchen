@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", website: "" });
   const [status, setStatus] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -20,13 +20,25 @@ const Contact = () => {
         body: JSON.stringify(form),
       });
       if (res.ok) {
-        setStatus("Thank you for contacting us! We'll get back to you soon.");
-        setForm({ name: "", email: "", message: "" });
+        setStatus("success");
+        setForm({ name: "", email: "", message: "", website: "" });
+        // Auto-dismiss after 3 seconds
+        setTimeout(() => {
+          setStatus("");
+        }, 3000);
       } else {
-        setStatus("Failed to send. Please try again.");
+        setStatus("error");
+        // Auto-dismiss error after 3 seconds
+        setTimeout(() => {
+          setStatus("");
+        }, 3000);
       }
     } catch {
-      setStatus("Failed to send. Please try again.");
+      setStatus("error");
+      // Auto-dismiss error after 3 seconds
+      setTimeout(() => {
+        setStatus("");
+      }, 3000);
     }
   };
 
@@ -37,11 +49,6 @@ const Contact = () => {
           <div className="absolute top-1/4 -right-48 w-96 h-96 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
         </div>
-        {/* Image as Section Background with Blur Overlay */}
-        {/* <div className="absolute inset-0 w-full h-full z-0">
-          <Image src="/images/other/backdrop4.png" alt="Contact Background" fill priority className="object-content w-full h-full rounded-2xl sm:rounded-3xl opacity-80" />
-          <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
-        </div> */}
         <div className="relative ">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
@@ -105,6 +112,21 @@ const Contact = () => {
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
                     />
                   </div>
+                  
+                  {/* Honeypot field - hidden from users, catches bots */}
+                  <div style={{ display: 'none' }} aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      value={form.website}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+                  
                   <button
                     type="submit"
                     aria-label="Send message"
@@ -112,9 +134,52 @@ const Contact = () => {
                   >
                     Send Message
                   </button>
-                  <div aria-live="polite" className="text-sm mt-2">
-                    {status && (
-                      <p className="mt-4 text-green-600 dark:text-green-400 font-semibold font-[Georgia,'Times_New_Roman',Times,serif]">{status}</p>
+                  
+                  {/* Enhanced Status Messages with Auto-Dismiss */}
+                  <div aria-live="polite" className="mt-4">
+                    {status === "Sending..." && (
+                      <div className="flex items-center justify-center gap-3 p-4 bg-blue-50 dark:bg-blue-900/30 border-2 border-blue-200 dark:border-blue-700 rounded-lg animate-pulse">
+                        <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 animate-spin" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <p className="text-blue-700 dark:text-blue-300 font-semibold font-[Georgia,'Times_New_Roman',Times,serif]">
+                          Sending your message...
+                        </p>
+                      </div>
+                    )}
+                    
+                    {status === "success" && (
+                      <div className="flex items-center justify-center gap-3 p-5 bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-900/40 dark:to-emerald-900/40 border-2 border-green-400 dark:border-green-500 rounded-xl shadow-xl animate-fade-in relative overflow-hidden">
+                        {/* Animated background shimmer */}
+                        <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                        <div className="relative z-10 flex items-center gap-3">
+                          <div className="shrink-0">
+                            <svg className="w-7 h-7 text-green-600 dark:text-green-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                          <div className="flex flex-col">
+                            <p className="text-green-800 dark:text-green-200 font-bold text-lg font-[Georgia,'Times_New_Roman',Times,serif]">
+                              Message Sent Successfully! ✨
+                            </p>
+                            <p className="text-green-700 dark:text-green-300 text-sm font-[Georgia,'Times_New_Roman',Times,serif]">
+                              Thank you for contacting us! We&apos;ll get back to you soon.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {status === "error" && (
+                      <div className="flex items-center justify-center gap-3 p-4 bg-red-50 dark:bg-red-900/30 border-2 border-red-300 dark:border-red-600 rounded-lg shadow-lg animate-fade-in">
+                        <svg className="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p className="text-red-700 dark:text-red-300 font-bold font-[Georgia,'Times_New_Roman',Times,serif]">
+                          Failed to send. Please try again.
+                        </p>
+                      </div>
                     )}
                   </div>
                 </form>
