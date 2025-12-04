@@ -151,7 +151,7 @@ const About = () => {
                     </div>
                     <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
                   </div>
-                  <div className="text-md text-center text-gray-800 dark:text-white italic">
+                  <div className="text-md text-center text-white dark:text-white italic">
                     &quot;From our Sherpa family to yours, we warmly welcome you.&quot;
                   </div>
                 </div>

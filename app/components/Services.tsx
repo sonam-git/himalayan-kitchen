@@ -38,17 +38,6 @@ const Services = () => {
         <div className="absolute top-1/4 -right-48 w-96 h-96 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
-      {/* Image as Section Background with Blur Overlay */}
-      {/* <div className="absolute inset-0 w-full h-full z-0" aria-hidden="true">
-        <Image
-               src="/images/other/backdrop.png"
-               alt="Menu Background"
-               fill
-               priority
-               className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-100"
-             />
-         <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div>
-      </div> */}
       <div className="relative max-w-6xl mx-auto px-2 sm:px-8 lg:px-12 flex flex-col gap-12 items-center z-10">
         {/* Enhanced Section Header */}
         <div className="text-center mb-20">
@@ -295,7 +284,7 @@ const Services = () => {
                 </div>
               </div>
               <Link
-                href="/#catering"
+                href="/catering"
                 className="mt-8 group relative inline-flex items-center justify-center border-2 border-green-500/70 hover:border-white bg-linear-to-r from-green-200 to-emerald-200 dark:from-green-900 dark:to-emerald-900 hover:from-green-400 hover:to-emerald-400 text-green-900 dark:text-green-200 hover:text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-xl hover:shadow-2xl hover:shadow-green-500/40 min-w-[180px] text-base cursor-pointer font-[Georgia,'Times_New_Roman',Times,serif]"
                 aria-label="Request catering services"
               >

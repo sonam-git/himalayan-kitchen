@@ -62,7 +62,7 @@ const MenuSection = () => {
       vegetarian: false,
       vegan: false,
       bothVegNonVeg: false,
-      specialTag: null,
+      specialTag: 'chef-choice' as const,
     },
     {
       name: 'Chowmein',
