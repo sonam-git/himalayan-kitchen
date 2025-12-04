@@ -29,47 +29,76 @@ const MenuSection = () => {
 
   const featuredDishes = [
     {
-      name: 'Chicken 65',
-      description: 'Boneless chicken marinated in special spices, ginger, garlic, egg, yogurt, lemon juice & soy sauce. Sautéed with curry leaves & mustard seeds.',
-      image: '/images/food/chicken65.jpg',
-      spicy: true,
-    },
-    {
-      name: 'Veg Chowmein',
-      description: 'Cabbage, carrot, green beans, onions, soy.',
-      image: '/images/food/chowmien.jpg',
-      vegetarian: true,
+      name: 'Mo:Mo',
+      description: 'Dumplings filled with ground chicken or vegetables, cabbage, onions, herbs & chef\'s spices. Available in both veg and non-veg.',
+      image: '/images/food/momo.jpeg',
+      vegetarian: false,
+      vegan: false,
+      bothVegNonVeg: true,
+      specialTag: 'favorite' as const,
     },
     {
       name: 'Tandoori Chicken',
       description: 'Juicy half chicken or whole chicken.',
       image: '/images/food/tandoori.jpg',
-    },
-    {
-      name: 'Chicken Momo',
-      description: 'Dumplings filled with ground chicken breast, cabbage, onions, herbs & chef\'s spices.',
-      image: '/images/food/momo.jpeg',
+      vegetarian: false,
+      vegan: false,
+      bothVegNonVeg: false,
+      specialTag: 'chef-choice' as const,
     },
     {
       name: 'Thali Set',
-      description: 'A traditional Nepali meal set with rice, daal, vegetables, and choice of protein.',
+      description: 'A traditional Nepali meal set with rice, daal, vegetables, and choice of protein. Available in both veg and non-veg.',
       image: '/images/food/thaliset.jpg',
+      vegetarian: false,
+      vegan: false,
+      bothVegNonVeg: true,
+      specialTag: 'popular' as const,
+    },
+    {
+      name: 'Chicken 65',
+      description: 'Boneless chicken marinated in special spices, ginger, garlic, egg, yogurt, lemon juice & soy sauce. Sautéed with curry leaves & mustard seeds.',
+      image: '/images/food/chicken65.jpg',
+      vegetarian: false,
+      vegan: false,
+      bothVegNonVeg: false,
+      specialTag: null,
+    },
+    {
+      name: 'Chowmein',
+      description: 'Stir-fried noodles with fresh vegetables and your choice of protein. Available in both veg and non-veg.',
+      image: '/images/food/chowmien.jpg',
+      vegetarian: false,
+      vegan: false,
+      bothVegNonVeg: true,
+      specialTag: 'popular' as const,
     },
     {
       name:'Lamb Kabab',
       description: 'Tender pieces of lamb marinated in a blend of spices and grilled to perfection.',
       image: '/images/food/lamb-kabab.jpeg',
+      vegetarian: false,
+      vegan: false,
+      bothVegNonVeg: false,
+      specialTag: 'chef-choice' as const,
     },
     {
       name: 'Sag Paneer',
       description: 'Fresh spinach cooked with homemade cheese cube in creamy tomato and onion based sauce.(we can make it vegan)',
       image: '/images/food/saag-panir.jpeg',
       vegetarian: true,
+      vegan: false,
+      bothVegNonVeg: false,
+      specialTag: 'favorite' as const,
     },
     {
       name:'Briyani',
-      description: 'Aromatic basmati rice  caramelized with onion, house spices, herbs, and choice of meat or vegetables.Served with Raita(yougurt sauce).',
+      description: 'Aromatic basmati rice caramelized with onion, house spices, herbs, and choice of meat or vegetables. Available in both veg and non-veg.',
       image: '/images/food/briyani.jpeg',
+      vegetarian: false,
+      vegan: false,
+      bothVegNonVeg: true,
+      specialTag: 'favorite' as const,
     }
   ];
 
@@ -139,8 +168,10 @@ const MenuSection = () => {
                         name={dish.name}
                         description={dish.description}
                         image={dish.image}
-                        spicy={dish.spicy}
                         vegetarian={dish.vegetarian}
+                        vegan={dish.vegan}
+                        specialTag={dish.specialTag}
+                        bothVegNonVeg={dish.bothVegNonVeg}
                         index={idx}
                       />
                     </div>

@@ -250,16 +250,12 @@ const Gallery = () => {
   }, [foodModalOpen, foodModalIndex]);
 
   // Add refs for scroll containers
-  const mainGalleryRef = useRef<HTMLDivElement>(
-    null
-  ) as React.MutableRefObject<HTMLDivElement>;
-  const foodGalleryRef = useRef<HTMLDivElement>(
-    null
-  ) as React.MutableRefObject<HTMLDivElement>;
+  const mainGalleryRef = useRef<HTMLDivElement>(null);
+  const foodGalleryRef = useRef<HTMLDivElement>(null);
 
   // Helper to scroll gallery
   const scrollGallery = (
-    ref: RefObject<HTMLDivElement>,
+    ref: RefObject<HTMLDivElement | null>,
     dir: "left" | "right"
   ) => {
     if (ref.current) {
@@ -489,7 +485,21 @@ const Gallery = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="gallery-modal-title"
-            className="fixed inset-0 z-[999999] flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
+            data-modal="gallery-main"
+            className="fixed inset-0 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
+            style={{ 
+              zIndex: 9999,
+              isolation: 'isolate',
+              transform: 'translateZ(0)',
+              WebkitTransform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0
+            }}
             onKeyDown={handleModalKeyDown}
           >
             <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
@@ -662,11 +672,25 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div
-            className="fixed inset-0 z-[999999] flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
+            className="fixed inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-modal-title"
+            data-modal="gallery-food"
             onClick={closeFoodModal}
+            style={{ 
+              zIndex: 9999,
+              isolation: 'isolate',
+              transform: 'translateZ(0)',
+              WebkitTransform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0
+            }}
           >
             <div
               className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"

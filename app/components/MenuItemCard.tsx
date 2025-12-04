@@ -7,22 +7,24 @@ interface MenuItemCardProps {
   name: string;
   description: string;
   image: string;
-  spicy?: boolean;
   vegetarian?: boolean;
   vegan?: boolean;
   index?: number;
   onClick?: () => void; // Optional click handler for accessibility
+  specialTag?: 'favorite' | 'chef-choice' | 'popular' | null; // Optional special tag
+  bothVegNonVeg?: boolean; // For items available in both veg and non-veg variants
 }
 
 const MenuItemCard: React.FC<MenuItemCardProps> = ({
   name,
   description,
   image,
-  spicy = false,
   vegetarian = false,
   vegan = false,
   index = 0,
   onClick,
+  specialTag = null,
+  bothVegNonVeg = false,
 }) => {
   // Keyboard handler for accessibility
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | HTMLButtonElement>) => {
@@ -68,20 +70,28 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
         <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         {/* Badges Container - Top Left */}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
-          {/* Spicy Indicator */}
-          {spicy && (
-            <div className="bg-white dark:bg-gray-800 text-red-500 px-2.5 py-1.5 rounded-full shadow-lg border border-red-200 dark:border-red-700" title="Spicy" aria-label="Spicy">
-              <span className="text-lg" role="img" aria-label="Spicy">🌶️</span>
+          {/* Both Veg & Non-Veg Indicator (for items available in both variants) */}
+          {bothVegNonVeg && (
+            <div className="bg-white dark:bg-gray-800 px-2.5 py-1.5 rounded-full shadow-lg border-2 border-orange-500 dark:border-orange-600 flex items-center gap-1" title="Available in Veg & Non-Veg" aria-label="Available in Vegetarian and Non-Vegetarian">
+              <span className="text-lg" role="img" aria-label="Vegetarian">🥬</span>
+              <span className="text-xs font-bold text-orange-600 dark:text-orange-400">/</span>
+              <span className="text-lg font-bold" role="img" aria-label="Non-Vegetarian">🍖</span>
             </div>
           )}
-          {/* Vegan Indicator */}
-          {vegan && (
+          {/* Non-Veg Indicator (if not vegetarian, vegan, or both) */}
+          {!vegetarian && !vegan && !bothVegNonVeg && (
+            <div className="bg-white dark:bg-gray-800 text-red-600 dark:text-red-400 px-2.5 py-1.5 rounded-full shadow-lg border-2 border-red-500 dark:border-red-600" title="Non-Vegetarian" aria-label="Non-Vegetarian">
+              <span className="text-lg font-bold" role="img" aria-label="Non-Vegetarian">🍖</span>
+            </div>
+          )}
+          {/* Vegan Indicator (only if not both) */}
+          {vegan && !bothVegNonVeg && (
             <div className="bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 px-2.5 py-1.5 rounded-full shadow-lg border border-green-200 dark:border-green-700" title="Vegan" aria-label="Vegan">
               <span className="text-lg" role="img" aria-label="Vegan">🌱</span>
             </div>
           )}
-          {/* Vegetarian Indicator (only if not vegan) */}
-          {vegetarian && !vegan && (
+          {/* Vegetarian Indicator (only if not vegan or both) */}
+          {vegetarian && !vegan && !bothVegNonVeg && (
             <div className="bg-white dark:bg-gray-800 text-green-600 dark:text-green-400 px-2.5 py-1.5 rounded-full shadow-lg border border-green-200 dark:border-green-700" title="Vegetarian" aria-label="Vegetarian">
               <span className="text-lg" role="img" aria-label="Vegetarian">🥬</span>
             </div>
@@ -110,12 +120,40 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
         <p className="text-sm italic sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 grow mb-4">
           {description}
         </p>
-        {/* Decorative bottom accent */}
+        {/* Decorative bottom accent with Special Tags */}
         <div className="pt-4 border-t border-gray-100 dark:border-gray-700 mt-auto">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide">
-              Authentic Recipe
-            </span>
+            {/* Dynamic Special Tag */}
+            {specialTag === 'favorite' && (
+              <span className="flex items-center gap-1.5 text-xs text-red-600 dark:text-red-400 font-bold uppercase tracking-wide">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                Customer&apos;s Favorite
+              </span>
+            )}
+            {specialTag === 'chef-choice' && (
+              <span className="flex items-center gap-1.5 text-xs text-orange-600 dark:text-orange-400 font-bold uppercase tracking-wide">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                  <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Chef&apos;s Choice
+              </span>
+            )}
+            {specialTag === 'popular' && (
+              <span className="flex items-center gap-1.5 text-xs text-yellow-600 dark:text-yellow-400 font-bold uppercase tracking-wide">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                </svg>
+                Most Popular
+              </span>
+            )}
+            {!specialTag && (
+              <span className="text-xs text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide">
+                Authentic Recipe
+              </span>
+            )}
             <div className="flex gap-1.5" aria-hidden="true">
               <div className="w-2 h-2 rounded-full bg-red-500"></div>
               <div className="w-2 h-2 rounded-full bg-orange-500"></div>
