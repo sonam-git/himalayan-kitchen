@@ -47,7 +47,7 @@ const MenuSection = () => {
       specialTag: 'chef-choice' as const,
     },
     {
-      name: 'Thali Set',
+      name: 'Lunch Special',
       description: 'A traditional Nepali meal set with rice, daal, vegetables, and choice of protein. Available in both veg and non-veg.',
       image: '/images/food/thaliset.jpg',
       vegetarian: false,
@@ -93,12 +93,21 @@ const MenuSection = () => {
     },
     {
       name:'Briyani',
-      description: 'Aromatic basmati rice caramelized with onion, house spices, herbs, and choice of meat or vegetables. Available in both veg and non-veg.',
+      description: 'Aromatic basmati rice caramelized with onion, house spices, herbs, and choice of meat or vegetables. Available in different meat options.',
       image: '/images/food/briyani.jpeg',
       vegetarian: false,
       vegan: false,
       bothVegNonVeg: true,
       specialTag: 'favorite' as const,
+    },
+        {
+      name:'Chicken Tikka Masala',
+      description: 'Aromatic chicken tikka cooked in a creamy tomato sauce with spices. Available in different meat options.',
+      image: '/images/food/tika masala.jpg',
+      vegetarian: false,
+      vegan: false,
+      bothVegNonVeg: false,
+      specialTag: 'popular' as const,
     }
   ];
 

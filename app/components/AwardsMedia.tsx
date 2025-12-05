@@ -1,15 +1,34 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const AwardsMedia = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState("");
   const [modalAlt, setModalAlt] = useState("");
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400; // Adjust based on card width
+      const newScrollPosition = scrollContainerRef.current.scrollLeft + 
+        (direction === 'left' ? -scrollAmount : scrollAmount);
+      
+      scrollContainerRef.current.scrollTo({
+        left: newScrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const images = [
     {
       src: "/images/awards/hk-rg1.jpg",
+      alt: "Award Certificate",
+      caption: "Certificate of Excellence"
+    },
+     {
+      src: "/images/awards/nf-award.jpeg",
       alt: "Award Certificate",
       caption: "Certificate of Excellence"
     },
@@ -58,20 +77,110 @@ const AwardsMedia = () => {
             Honored by the community and featured in renowned publications for our culinary excellence and service.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full items-center justify-center" role="list" aria-label="Awards and media features">
-          {images.map((img) => (
-            <div key={img.src} className="flex flex-col items-center" role="listitem">
-              <button
-                className="focus:outline-none"
-                onClick={() => openModal(img.src, img.alt)}
-                aria-label={`View full ${img.alt}`}
-                tabIndex={0}
+        {/* Horizontal Scrollable Gallery */}
+        <div className="relative w-full group/gallery">
+          {/* Left Scroll Button */}
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 text-gray-800 dark:text-white rounded-full p-3 shadow-lg opacity-0 group-hover/gallery:opacity-100 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            aria-label="Scroll left"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Right Scroll Button */}
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 text-gray-800 dark:text-white rounded-full p-3 shadow-lg opacity-0 group-hover/gallery:opacity-100 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            aria-label="Scroll right"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+            role="list" 
+            aria-label="Awards and media features"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            {images.map((img) => (
+              <div 
+                key={img.src} 
+                className="shrink-0 w-80 sm:w-96 snap-center" 
+                role="listitem"
               >
-                <Image src={img.src} alt={img.alt} width={400} height={288} className="rounded-xl shadow-lg w-full h-72 object-cover mb-4 transition-transform duration-200 hover:scale-105 cursor-pointer" />
-              </button>
-              <p className="text-gray-700 dark:text-gray-200 font-semibold text-center font-[Georgia,'Times_New_Roman',Times,serif]">{img.caption}</p>
-            </div>
-          ))}
+                <button
+                  className="focus:outline-none w-full group"
+                  onClick={() => openModal(img.src, img.alt)}
+                  aria-label={`View full ${img.alt}`}
+                  tabIndex={0}
+                >
+                  <div className="relative overflow-hidden rounded-xl mb-4 p-3 bg-gradient-to-br from-yellow-100 via-white to-yellow-50 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-xl">
+                    {/* Inner border frame */}
+                    <div className="relative border-4 border-yellow-400/40 dark:border-yellow-600/40 rounded-lg overflow-hidden shadow-inner">
+                      {/* Additional decorative border */}
+                      <div className="absolute inset-0 border-2 border-white/60 dark:border-gray-600/60 rounded-lg pointer-events-none z-10"></div>
+                      
+                      <Image 
+                        src={img.src} 
+                        alt={img.alt} 
+                        width={400} 
+                        height={300} 
+                        className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer" 
+                      />
+                      
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-gray-800/90 rounded-full p-3 shadow-lg">
+                          <svg 
+                            className="w-6 h-6 text-gray-800 dark:text-white" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                              strokeWidth={2} 
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" 
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Corner decorations */}
+                    <div className="absolute top-1 left-1 w-4 h-4 border-t-2 border-l-2 border-yellow-500 dark:border-yellow-400"></div>
+                    <div className="absolute top-1 right-1 w-4 h-4 border-t-2 border-r-2 border-yellow-500 dark:border-yellow-400"></div>
+                    <div className="absolute bottom-1 left-1 w-4 h-4 border-b-2 border-l-2 border-yellow-500 dark:border-yellow-400"></div>
+                    <div className="absolute bottom-1 right-1 w-4 h-4 border-b-2 border-r-2 border-yellow-500 dark:border-yellow-400"></div>
+                  </div>
+                </button>
+                <p className="text-gray-700 dark:text-gray-200 font-semibold text-center font-[Georgia,'Times_New_Roman',Times,serif] px-2">
+                  {img.caption}
+                </p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Scroll Indicator */}
+          <div className="flex justify-center gap-2 mt-2 mb-4">
+            {images.map((_, index) => (
+              <div 
+                key={index} 
+                className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-600"
+                aria-hidden="true"
+              />
+            ))}
+          </div>
         </div>
       </div>
       {/* Modal for full image view */}

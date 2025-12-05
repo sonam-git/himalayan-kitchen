@@ -4,35 +4,23 @@ import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 
 export default function Intro() {
-  const [textVisible, setTextVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const textRef = useRef(null);
   
   useEffect(() => {
-    const textObserver = new window.IntersectionObserver(
+    const observer = new window.IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTextVisible(true);
-          textObserver.disconnect();
+          setIsVisible(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
-    if (textRef.current) textObserver.observe(textRef.current);
-    
-    // Observer for auto-expand/collapse based on scroll position
-    const sectionObserver = new window.IntersectionObserver(
-      ([entry]) => {
-        setIsExpanded(entry.isIntersecting);
-      },
-      { threshold: 0.2 } // Triggers when 20% of the section is visible
-    );
-    if (sectionRef.current) sectionObserver.observe(sectionRef.current);
+    if (sectionRef.current) observer.observe(sectionRef.current);
     
     return () => {
-      textObserver.disconnect();
-      sectionObserver.disconnect();
+      observer.disconnect();
     };
   }, []);
 
@@ -56,25 +44,16 @@ export default function Intro() {
       </div>
       {/* Main content centered on top of bg */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 py-6">
-        <div
-          ref={textRef}
-          className={`w-full flex flex-col items-center justify-center transition-all duration-700 ease-out
-            ${textVisible ? 'opacity-100 scale-100 translate-x-0' : 'opacity-0 scale-90 translate-x-10'}
-          `}
-        >
-          {/* Header - No longer clickable, just displays title */}
+        <div className="w-full flex flex-col items-center justify-center">
+          {/* Header */}
           <div className="w-full flex flex-col items-center justify-center px-4 py-2">
-            <h2 className={`text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-yellow-300 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center transition-all duration-700 ease-out ${textVisible ? 'opacity-100 scale-100 translate-y-0 delay-100' : 'opacity-0 scale-90 translate-y-8'}`}>
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-yellow-300 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center">
               Welcome to Himalayan Kitchen Marin
             </h2>
           </div>
 
-          {/* Expandable Content - Auto-expands on scroll */}
-          <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out w-full ${
-              isExpanded ? 'max-h-[600px] sm:max-h-[700px] lg:max-h-[400px] opacity-100 mt-2 sm:mt-4 lg:mt-6' : 'max-h-0 opacity-0 mt-0'
-            }`}
-          >
+          {/* Content - Always visible, no dropdown animation */}
+          <div className="w-full mt-2 sm:mt-4 lg:mt-6">
             {/* Responsive Layout: 
                 Mobile: Images side by side on top, text below
                 Desktop: Three columns (Boy | Text | Girl) */}
@@ -82,11 +61,13 @@ export default function Intro() {
               
               {/* Mobile: Both Images Side by Side - Hidden on Desktop */}
               <div className="w-full flex lg:hidden items-center justify-center gap-2 sm:gap-3 order-1">
-                {/* Left Image: Sherpa Boy */}
-                <div className="w-1/2 flex flex-col items-center justify-center">
+                {/* Left Image: Sherpa Boy - Slide from left */}
+                <div className={`w-1/2 flex flex-col items-center justify-center transition-all duration-1000 ease-out ${
+                  isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+                }`}>
                   <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                     <Image
-                      src="/images/other/SherpaBoy.png"
+                      src="/images/other/namasteBoy.png"
                       alt="Sherpa boy welcoming you to our restaurant"
                       fill
                       className="object-contain"
@@ -95,11 +76,13 @@ export default function Intro() {
                   </div>
                 </div>
                 
-                {/* Right Image: Sherpa Girl */}
-                <div className="w-1/2 flex flex-col items-center justify-center">
+                {/* Right Image: Sherpa Girl - Slide from right */}
+                <div className={`w-1/2 flex flex-col items-center justify-center transition-all duration-1000 ease-out ${
+                  isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+                }`}>
                   <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                     <Image
-                      src="/images/other/SherpaGirl.png"
+                      src="/images/other/namasteGirl.png"
                       alt="Sherpa girl welcoming you to our restaurant"
                       fill
                       className="object-contain"
@@ -109,11 +92,13 @@ export default function Intro() {
                 </div>
               </div>
 
-              {/* Desktop: Left Image - Sherpa Boy */}
-              <div className="hidden lg:flex w-full lg:w-1/3 flex-col items-center justify-center order-1 lg:order-1">
+              {/* Desktop: Left Image - Sherpa Boy - Slide from left */}
+              <div className={`hidden lg:flex w-full lg:w-1/3 flex-col items-center justify-center order-1 lg:order-1 transition-all duration-1000 ease-out ${
+                isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+              }`}>
                 <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                   <Image
-                    src="/images/other/SherpaBoy.png"
+                    src="/images/other/namasteBoy.png"
                     alt="Sherpa boy welcoming you to our restaurant"
                     fill
                     className="object-contain"
@@ -182,11 +167,13 @@ export default function Intro() {
                 </div>
               </div>
 
-              {/* Desktop: Right Image - Sherpa Girl */}
-              <div className="hidden lg:flex w-full lg:w-1/3 flex-col items-center justify-center order-3 lg:order-3">
+              {/* Desktop: Right Image - Sherpa Girl - Slide from right */}
+              <div className={`hidden lg:flex w-full lg:w-1/3 flex-col items-center justify-center order-3 lg:order-3 transition-all duration-1000 ease-out ${
+                isVisible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+              }`}>
                 <div className="relative w-full aspect-3/4 transition-all duration-300 hover:scale-105">
                   <Image
-                    src="/images/other/SherpaGirl.png"
+                    src="/images/other/namasteGirl.png"
                     alt="Sherpa girl welcoming you to our restaurant"
                     fill
                     className="object-contain"

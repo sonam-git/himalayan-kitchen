@@ -7,30 +7,102 @@ import MobileBottomBar from './components/MobileBottomBar';
 import Image from "next/image";
 import ScrollToTop from './components/ScrollToTop';
 import Script from "next/script";
+import StructuredData from './components/StructuredData';
+import type { Metadata } from 'next';
 
 
 const inter = Inter({ 
   subsets: ["latin"],
   variable: "--font-inter",
   display: 'swap',
+  preload: true,
 });
 
 const playfairDisplay = Playfair_Display({ 
   subsets: ["latin"],
   variable: "--font-playfair",
   display: 'swap',
+  preload: true,
 });
 
 const dancingScript = Dancing_Script({ 
   subsets: ["latin"],
   variable: "--font-dancing",
   display: 'swap',
+  preload: false,
 });
 
-export const metadata = {
-  title: "Himalayan Kitchen | Authentic Himalayan Cuisine in San Rafael",
-  description: "Experience authentic Himalayan flavors at Himalayan Kitchen in San Rafael. Family-owned restaurant serving traditional Nepali and Tibetan dishes made fresh with love.",
-  keywords: "Himalayan restaurant, Nepali food, Tibetan cuisine, San Rafael dining, authentic Asian food",
+export const metadata: Metadata = {
+  metadataBase: new URL('https://himalayankitchenmarin.com'),
+  title: {
+    default: "Himalayan Kitchen Marin | Authentic Nepali, Indian & Tibetan Restaurant San Rafael",
+    template: "%s | Himalayan Kitchen Marin"
+  },
+  description: "Award-winning Sherpa-owned restaurant in San Rafael serving authentic Himalayan, Nepali, and Tibetan cuisine. Featuring momos, curries, thukpa, and traditional dishes. Dine-in, takeout, and catering available.",
+  keywords: [
+    "Himalayan restaurant San Rafael",
+    "Nepali food San Rafael", 
+    "Indian cuisine Marin County",
+    "Tibetan cuisine Marin County",
+    "momos near me",
+    "authentic Asian restaurant",
+    "Sherpa restaurant California",
+    "Himalayan Kitchen",
+    "best Nepali restaurant Bay Area",
+    "Tibetan food San Rafael",
+    "catering San Rafael",
+    "takeout San Rafael"
+  ],
+  authors: [{ name: "Himalayan Kitchen Marin" }],
+  creator: "Himalayan Kitchen Marin",
+  publisher: "Himalayan Kitchen Marin",
+  formatDetection: {
+    email: false,
+    address: true,
+    telephone: true,
+  },
+  openGraph: {
+    title: "Himalayan Kitchen Marin | Authentic Nepali & Tibetan Restaurant",
+    description: "Experience authentic Himalayan flavors in San Rafael. Family-owned Sherpa restaurant serving traditional Nepali and Tibetan dishes made fresh with love.",
+    url: 'https://himalayankitchenmarin.com',
+    siteName: 'Himalayan Kitchen Marin',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: '/images/gallery/dining1.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Himalayan Kitchen Restaurant Interior',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Himalayan Kitchen Marin | Authentic Himalayan Cuisine',
+    description: 'Award-winning Sherpa-owned restaurant in San Rafael serving authentic Himalayan, Nepali, and Tibetan cuisine.',
+    images: ['/images/gallery/dining1.jpeg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your Google Search Console verification
+    // yandex: 'your-yandex-verification',
+    // bing: 'your-bing-verification',
+  },
+  alternates: {
+    canonical: 'https://himalayankitchenmarin.com',
+  },
+  category: 'restaurant',
 };
 
 export default function RootLayout({
@@ -41,6 +113,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <head>
+        {/* Structured Data for SEO */}
+        <StructuredData />
+        
+        {/* DNS Prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://cdn.userway.org" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://cdn.userway.org" crossOrigin="anonymous" />
+        
         {/* UserWay Accessibility Widget Configuration */}
         <script
           dangerouslySetInnerHTML={{

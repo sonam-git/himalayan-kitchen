@@ -1,15 +1,37 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import PrayerFlagBorder from './PrayerFlagBorder';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.75; // Play a bit faster and smoother
+    const videoEl = videoRef.current;
+    if (videoEl) {
+      videoEl.playbackRate = 0.75; // Play a bit faster and smoother
+      
+      // Optimize video loading
+      const handleLoadedData = () => {
+        setVideoLoaded(true);
+        setVideoError(false);
+      };
+      
+      const handleError = () => {
+        setVideoError(true);
+        setVideoLoaded(false);
+      };
+      
+      videoEl.addEventListener('loadeddata', handleLoadedData);
+      videoEl.addEventListener('error', handleError);
+      
+      return () => {
+        videoEl.removeEventListener('loadeddata', handleLoadedData);
+        videoEl.removeEventListener('error', handleError);
+      };
     }
   }, []);
 
@@ -19,35 +41,62 @@ const Hero = () => {
       aria-labelledby="hero-heading"
       className="relative w-full flex flex-col items-stretch justify-center overflow-hidden"
     >
-      {/* Visually hidden heading for screen readers */}
-      <h1 id="hero-heading" className="sr-only">Welcome to Himalayan Kitchen Marin</h1>
+      {/* SEO-optimized heading */}
+      <h1 id="hero-heading" className="sr-only">
+        Himalayan Kitchen Marin - Authentic Sherpa Restaurant in San Rafael, California | Nepalese & Tibetan Cuisine
+      </h1>
       {/* Skip to menu anchor for accessibility */}
-      <a href="#menu" className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-yellow-200 text-black px-4 py-2 rounded shadow-lg">Skip to Menu</a>
+      <a href="#menu" className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-yellow-200 text-black px-4 py-2 rounded shadow-lg">
+        Skip to Menu
+      </a>
       {/* Mobile: stacked, Desktop: overlay */}
       <div className="flex flex-col w-full gap-0">
         {/* Video Section */}
         <div className="relative w-full h-[45vh] xl:h-screen flex items-end justify-center shrink-0">
           {/* TV frame */}
           <div className="absolute inset-0 rounded-none xl:rounded-[3.5rem] border-18 xl:border-32 border-gray-100 bg-linear-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl tv-frame" aria-hidden="true"></div>
-          {/* Video with TV glass effect */}
+          
+          {/* Fallback Image - Shows when video fails */}
+          {videoError && (
+            <div className="absolute inset-0 w-full h-full rounded-none xl:rounded-[3rem] overflow-hidden">
+              <Image
+                src="/images/food/food.jpg"
+                alt="Himalayan Kitchen Restaurant - Delicious Himalayan Cuisine"
+                fill
+                className="object-cover rotate-90 scale-150"
+                priority
+              />
+              <div className="absolute inset-0 bg-black/40" aria-hidden="true"></div>
+            </div>
+          )}
+          
+          {/* Optimized Video with preload and poster */}
           <video
             ref={videoRef}
             src="/videos/introMov.mp4"
+            poster="/images/gallery/dining1.jpeg"
             autoPlay
             loop
             muted
             playsInline
-            className="object-cover w-full h-full rounded-none xl:rounded-[3rem] shadow-xl tv-glass"
-            style={{ filter: 'contrast(1.1) brightness(1.02) saturate(1.05)' }}
+            preload="metadata"
+            className={`object-cover w-full h-full rounded-none xl:rounded-[3rem] shadow-xl transition-opacity duration-500 ${
+              videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ filter: 'contrast(1.05) brightness(1.01) saturate(1.02)' }}
             aria-hidden="true"
             tabIndex={-1}
-          />
-          {/* Dark overlay for video */}
-          <div className="absolute inset-0 rounded-none xl:rounded-[3rem] bg-linear-to-b from-black/50 via-black/30 to-black/50 pointer-events-none z-10" aria-hidden="true"></div>
-          {/* Scanline/overlay effect */}
-          <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] mix-blend-soft-light opacity-40 tv-scanlines" aria-hidden="true"></div>
+          >
+            <source src="/videos/introMov.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          
+          {/* Dark overlay for video - Reduced opacity for less blur */}
+          <div className="absolute inset-0 rounded-none xl:rounded-[3rem] bg-linear-to-b from-black/30 via-black/15 to-black/30 pointer-events-none z-10" aria-hidden="true"></div>
+          {/* Scanline/overlay effect - Reduced opacity */}
+          <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] mix-blend-soft-light opacity-20 tv-scanlines" aria-hidden="true"></div>
           {/* Subtle inner shadow for glass */}
-          <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] shadow-[inset_0_8px_32px_#000a,inset_0_-8px_32px_#000a]" aria-hidden="true"></div>
+          <div className="pointer-events-none absolute inset-0 rounded-none xl:rounded-[3rem] shadow-[inset_0_4px_16px_#0008,inset_0_-4px_16px_#0008]" aria-hidden="true"></div>
         </div>
         <div className="block xl:hidden w-full">
         <PrayerFlagBorder />
@@ -57,16 +106,26 @@ const Hero = () => {
           <div className="flex flex-col items-center justify-start  sm:px-8 xl:px-0 w-full xl:bg-transparent m-0 xl:mt-26 pb-4 drop-shadow-2xl shadow-yellow-200">
                 <Image 
                   src="/images/logo/mountain-sketch.png" 
-                  alt="Mountain Sketch" 
+                  alt="Himalayan Mountain Logo - Himalayan Kitchen Restaurant" 
                   width={280} 
                   height={60} 
                   className="mx-auto w-full mb-2 h-12 sm:h-16 md:h-20 object-contain opacity-90" 
                   priority
+                  loading="eager"
                 />
             <div className="flex flex-row items-stretch justify-center w-full max-w-5xl mx-auto gap-2">
               {/* Left vertical image */}
               <div className="flex flex-col items-center justify-center w-auto self-stretch">
-                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon right" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-cover filter invert brightness-200" aria-hidden="true" />
+                <Image 
+                  src="/images/logo/bnw-tt.png" 
+                  alt="Tashi Tagye - Eight Auspicious Symbols" 
+                  height={400} 
+                  width={120} 
+                  className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-cover filter invert brightness-200" 
+                  aria-hidden="true"
+                  loading="eager"
+                  priority
+                />
               </div>
               <div className="flex-1 flex flex-col items-center justify-center">
             
@@ -79,11 +138,20 @@ const Hero = () => {
               </div>
               {/* Right vertical image */}
               <div className="flex flex-col items-center justify-center w-auto self-stretch">
-                <Image src="/images/logo/bnw-tt.png" alt="Decorative Tashi Tagye icon right" height={400} width={120} className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-cover filter invert brightness-200" aria-hidden="true" />
+                <Image 
+                  src="/images/logo/bnw-tt.png" 
+                  alt="Tashi Tagye - Eight Auspicious Symbols" 
+                  height={400} 
+                  width={120} 
+                  className="h-full w-14 xs:w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36 object-cover filter invert brightness-200" 
+                  aria-hidden="true"
+                  loading="eager"
+                  priority
+                />
               </div>
             </div>
             <p className="text-base sm:text-lg md:text-2xl text-white/90 text-center max-w-4xl mb-4 px-2 font-serif drop-shadow-lg ">
-              Experience authentic Himalayan flavors, crafted with passion and tradition.
+              Sherpa-owned restaurant from Nepal serving authentic Himalayan flavors crafted with passion and tradition in San Rafael, California.
             </p>
             {/* Action Buttons - always below subtext, never overlapping */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 xl:gap-5 justify-center items-stretch sm:items-center hero-buttons w-full max-w-2xl px-4 mx-auto mb-0 mt-2">
