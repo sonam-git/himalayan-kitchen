@@ -166,9 +166,7 @@ export async function POST(req: Request) {
     const msg = {
       to: process.env.RESTAURANT_EMAIL!,
       from: process.env.RESTAURANT_EMAIL!,
-      subject: `Contact Form    }
-    
-    if (eafeName}`,
+      subject: `Contact Form from ${safeName}`,
       replyTo: safeEmail,
       text: `Name: ${safeName}\nEmail: ${safeEmail}\nMessage: ${safeMessage}`,
       html: `<p><strong>Name:</strong> ${safeName}</p><p><strong>Email:</strong> ${safeEmail}</p><p><strong>Message:</strong><br/>${safeMessage}</p>`

@@ -64,7 +64,13 @@ const Contact = () => {
                 Contact Us
               </h2>
               <p className="text-lg md:text-xl text-gray-800 dark:text-white max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
-                We&apos;d love to hear from you! Send us a message or reach out using the info below.
+                We&apos;d love to hear from you! Send us a message or reach out using the info below. For catering inquiries, please use our{' '}
+                <a 
+                  href="/catering" 
+                  className="text-orange-600 dark:text-yellow-300 font-bold hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-200 no-underline"
+                >
+                  Catering Inquiry Form
+                </a>.
               </p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -72,6 +78,7 @@ const Contact = () => {
               <div className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border border-gray-800 dark:border-gray-400">
                 {/* <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Contact Us</h2> */}
                 <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-describedby="contact-form-desc">
+                    <h2 className="text-xl font-bold sm:text-xl mb-6 text-gray-900 dark:text-white text-center">Get in Touch</h2>
                   <div id="contact-form-desc" className="sr-only">Contact form to send a message to Himalayan Kitchen. All fields are required.</div>
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Name</label>

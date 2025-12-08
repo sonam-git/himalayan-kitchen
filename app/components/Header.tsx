@@ -37,12 +37,12 @@ const Header = () => {
                     <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500/30 via-orange-500/30 to-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
                   </div>
                   <div className="flex flex-col justify-center space-y-0.5 pb-1">
-                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-gradient-to-r from-red-700 via-red-600 to-red-800 dark:text-yellow-300 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-900 group-hover:via-red-700 group-hover:to-red-900 dark:group-hover:from-red-200 dark:group-hover:via-yellow-300 dark:group-hover:to-orange-300 transition-all duration-700">
+                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-gradient-to-r from-red-700 via-red-600 to-red-800 dark:text-yellow-300 bg-clip-text text-transparent leading-[1.05] tracking-[0.055em] md:tracking-[0.058em] lg:tracking-[0.062em] xl:tracking-[0.065em] group-hover:from-red-900 group-hover:via-red-700 group-hover:to-red-900 dark:group-hover:from-red-200 dark:group-hover:via-yellow-300 dark:group-hover:to-orange-300 transition-all duration-700">
                       HIMALAYAN
                     </h1>
-                    <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-[0.30em] md:tracking-[0.32em] lg:tracking-[0.34em] xl:tracking-[0.36em] font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
+                    <p className=" pb-1 text-lg md:text-xl lg:text-2xl xl:text-3xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-[0.20em] md:tracking-[0.21em] lg:tracking-[0.22em] xl:tracking-[0.26em] font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
                     <div className="relative">
-                      <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-300 -mt-1 tracking-[0.15em] md:tracking-[0.16em] lg:tracking-[0.17em] opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
+                      <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium text-gray-600 dark:text-gray-300 -mt-1 tracking-[0.01em] md:tracking-[0.012em] lg:tracking-[0.015em] xl:tracking-[0.018em] opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
                       <div className="w-0 h-0.5 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 group-hover:w-full transition-[width] duration-700 rounded-full mt-0.5"></div>
                     </div>
                   </div>
@@ -57,7 +57,7 @@ const Header = () => {
                     { id: 'about', label: 'About', href: '/about', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> },
                     { id: 'menu', label: 'Menu | Order', href: '/menu', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /> },
                     { id: 'gallery', label: 'Gallery', href: '/gallery', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /> },
-                    { id: 'catering', label: 'Caterings', href: '/catering', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M8 17l4-4 4 4m0 0V7a4 4 0 00-8 0v10z" /> },
+                    { id: 'catering', label: 'Catering', href: '/catering', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M8 17l4-4 4 4m0 0V7a4 4 0 00-8 0v10z" /> },
                     { id: 'contact', label: 'Contact', href: '/contact', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /> }
                   ].map(({ id, label, href, icon }) => {
            if (id === 'menu') {

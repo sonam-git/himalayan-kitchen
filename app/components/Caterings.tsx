@@ -19,18 +19,64 @@ const Caterings = () => {
   const [status, setStatus] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    if (e.target.name === "deliveryType") setForm({ ...form, deliveryType: e.target.value });
+    const { name, value } = e.target;
+    
+    // For phone input, only allow digits
+    if (name === "phone") {
+      const digits = value.replace(/\D/g, "");
+      setForm({ ...form, [name]: digits });
+    } else if (name === "deliveryType") {
+      setForm({ ...form, deliveryType: value });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
+
+  // Format phone number as XXX-XXX-XXXX for submission
+  const formatPhoneForSubmit = (phone: string) => {
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length === 10) {
+      return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+    }
+    return phone;
+  };
+
+  // Format datetime to readable format: "December 8 2025 11:29AM"
+  const formatDateTimeForSubmit = (datetime: string) => {
+    if (!datetime) return datetime;
+    
+    const date = new Date(datetime);
+    const months = ["January", "February", "March", "April", "May", "June", 
+                    "July", "August", "September", "October", "November", "December"];
+    
+    const month = months[date.getMonth()];
+    const day = date.getDate();
+    const year = date.getFullYear();
+    let hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Convert 0 to 12
+    
+    return `${month} ${day} ${year} ${hours}:${minutes}${ampm}`;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("Sending...");
     try {
+      // Format phone number and datetime before sending
+      const formattedData = {
+        ...form,
+        phone: formatPhoneForSubmit(form.phone),
+        datetime: formatDateTimeForSubmit(form.datetime)
+      };
+      
       const res = await fetch("/api/catering", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(formattedData),
       });
       if (res.ok) {
         setStatus("success");
@@ -96,7 +142,13 @@ const Caterings = () => {
           <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-200 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
             Let us bring authentic Himalayan flavors to your next event. Fill
             out the form below and our team will contact you to confirm your
-            catering request.
+            catering inquiry or order. For other subject or inquiries, please use our{' '}
+                <a
+                  href="/contact"
+                  className="text-orange-600 dark:text-yellow-300 font-bold hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-200 no-underline"
+                >
+                  Contact Form
+                </a>.
           </p>
           <div className="flex justify-center mt-8">
             <div className="w-24 h-1 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full"></div>
@@ -104,8 +156,8 @@ const Caterings = () => {
         </div>
         {/* Form - Second Row, Full Width */}
         <form className="w-full bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border border-gray-600 dark:border-gray-400" onSubmit={handleSubmit} role="form" aria-describedby="catering-form-desc">
-          <h2 className="text-xl font-bold sm:text-xl mb-6 text-gray-900 dark:text-white text-center">Catering Request</h2>
-          <div id="catering-form-desc" className="sr-only">Catering request form for Himalayan Kitchen. All fields are required unless marked optional.</div>
+          <h2 className="text-xl font-bold sm:text-xl mb-6 text-gray-900 dark:text-white text-center">Catering Inquiry Form</h2>
+          <div id="catering-form-desc" className="sr-only">Catering inquiry form for Himalayan Kitchen. All fields are required unless marked optional.</div>
           <div className="space-y-6">
             <div>
               <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
@@ -145,12 +197,13 @@ const Caterings = () => {
                   name="phone"
                   required
                   aria-label="Phone Number"
-                  placeholder="000-000-0000"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  placeholder="1234567890"
+                  maxLength={10}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
                   value={form.phone}
                   onChange={handleChange}
                 />
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Enter 10-digit phone number</p>
               </div>
             </div>
             {/* Date and Number of Guests in one row */}
@@ -273,7 +326,7 @@ const Caterings = () => {
               type="submit"
               className="w-full py-3 px-6 bg-yellow-600 border-2 border-white hover:bg-white hover:text-yellow-800 text-white font-bold rounded-lg transition-all duration-300 shadow-lg font-[Georgia,'Times_New_Roman',Times,serif]"
             >
-              Send Catering Request
+              Send Catering Inquiry
             </button>
             
             {/* Enhanced Status Messages with Auto-Dismiss */}
@@ -285,7 +338,7 @@ const Caterings = () => {
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
                   <p className="text-blue-700 dark:text-blue-300 font-semibold font-[Georgia,'Times_New_Roman',Times,serif]">
-                    Sending your catering request...
+                    Sending your catering inquiry...
                   </p>
                 </div>
               )}
@@ -302,10 +355,10 @@ const Caterings = () => {
                     </div>
                     <div className="flex flex-col">
                       <p className="text-green-800 dark:text-green-200 font-bold text-lg font-[Georgia,'Times_New_Roman',Times,serif]">
-                        Catering Request Sent! ✨
+                        Catering Inquiry Sent! ✨
                       </p>
                       <p className="text-green-700 dark:text-green-300 text-sm font-[Georgia,'Times_New_Roman',Times,serif]">
-                        Thank you! We&apos;ll review your request and get back to you soon.
+                        Thank you! We&apos;ll review your order and get back to you soon.
                       </p>
                     </div>
                   </div>
