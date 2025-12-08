@@ -14,8 +14,8 @@ export default {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        sans: ['Roboto', 'system-ui', 'sans-serif'],
+        serif: ['Kadwa', 'Georgia', 'Times New Roman', 'serif'],
         script: ['var(--font-dancing)', 'Dancing Script', 'cursive'],
         montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },

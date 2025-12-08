@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer id="contact" aria-labelledby="footer-heading" className="bg-[#2c0808] dark:bg-[#2a0a0a] border-t-2 text-white overflow-hidden w-full max-w-full  transition-colors duration-300" tabIndex={-1}>
+    <footer id="contact" aria-labelledby="footer-heading" className="bg-gray-400 dark:bg-[#2a0a0a] border-t-2 text-white overflow-hidden w-full max-w-full  transition-colors duration-300" tabIndex={-1}>
       <h2 id="footer-heading" className="sr-only">Contact and Social Links</h2>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[auto_auto_auto] lg:grid-rows-2 gap-10 w-full">
@@ -83,20 +83,20 @@ const Footer = () => {
           <div className="flex flex-col items-start justify-between h-full order-3 lg:order-none lg:col-start-1 lg:row-span-2">
             {/* Logo above heading using Next.js Image */}
             <Image src="/images/hk-logo.jpg" alt="Himalayan Kitchen Logo" width={96} height={96} className="mb-4" />
-            <h3 className="text-2xl font-bold mb-2 text-white" tabIndex={0}>HIMALAYAN KITCHEN MARIN</h3>
-            <h3 className="text-2xl font-semibold mb-2 dark:text-white" tabIndex={0}>
+            <h3 className="text-2xl font-bold mb-2 text-gray-800 dark:text-white" tabIndex={0}>HIMALAYAN KITCHEN MARIN</h3>
+            <h3 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white" tabIndex={0}>
               हिमालयन किचन  |  ཧི་མ་ལ་ཡན་ཀི་ཇན།
             </h3>
-            <p className="text-gray-300 dark:text-gray-400 mb-6 leading-relaxed font-serif">
+            <p className=" text-gray-800 dark:text-gray-300 mb-6 leading-relaxed font-serif">
               Serving and sharing the Himalayan cuisines & cultures. Born and raised in the mountains, 
               we bring authentic flavors from the roof of the world to your table.
             </p>
             <div className="mb-4 w-full ">
-              <span className="text-2xl font-mono  text-transparent bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-100 bg-clip-text mb-2 drop-shadow-lg flex items-center gap-2" aria-hidden="true">
+              <span className="text-2xl font-mono text-gray-800 dark:text-transparent bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-100 bg-clip-text mb-2 drop-shadow-lg flex items-center gap-2" aria-hidden="true">
                 {/* ...svg... */}
                 Stay connected with us
               </span>
-              <div className="flex justify-between items-center w-full px-3 py-3 rounded-xl bg-white dark:bg-yellow-100 backdrop-blur-md shadow-inner border border-gray-200 dark:border-gray-700" role="list" aria-label="Social links">
+              <div className="flex justify-between items-center w-full px-3 py-3 rounded-xl bg-white dark:bg-gray-200 backdrop-blur-md shadow-inner border border-gray-200 dark:border-gray-700" role="list" aria-label="Social links">
                 {/* Facebook Icon */}
                 <div className="flex flex-col items-center gap-1" role="listitem">
                   <a
@@ -179,8 +179,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-400 dark:border-gray-500 mt-8 pt-8 text-center">
-          <p className="text-gray-400 dark:text-gray-400 text-sm font-serif">
+        <div className="border-t border-gray-800 dark:border-gray-500 mt-8 pt-8 text-center">
+          <p className="text-gray-800 dark:text-gray-400 text-sm font-serif">
             | &copy; {new Date().getFullYear()} Himalayan Kitchen, San Rafael, CA | All rights reserved |
           </p>
         </div>

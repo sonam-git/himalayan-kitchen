@@ -39,12 +39,12 @@ const Hero = () => {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative w-full flex flex-col items-stretch justify-center overflow-hidden"
+      className="relative w-full flex flex-col items-stretch justify-center overflow-hidden -mt-32 md:-mt-36 lg:-mt-44 xl:-mt-48"
     >
       {/* SEO-optimized heading */}
       <h1 id="hero-heading" className="sr-only">
         Himalayan Kitchen Marin - Authentic Sherpa Restaurant in San Rafael,
-        California | Nepalese & Tibetan Cuisine
+        California | Indian Nepalese & Tibetan Cuisine
       </h1>
       {/* Skip to menu anchor for accessibility */}
       <a
@@ -121,32 +121,34 @@ const Hero = () => {
           <PrayerFlagBorder />
         </div>
         {/* Content Section: below video on mobile, overlay on desktop */}
-        <div className="relative w-full xl:absolute xl:inset-0 xl:flex xl:items-start xl:justify-center z-10 py-2 xl:py-0">
-          <div className="flex flex-col items-center justify-start sm:px-8 xl:px-0 w-full xl:mt-20 pb-4 xl:gap-8">
-            <Image
-              src="/images/logo/mountain-sketch.png"
-              alt="Himalayan Mountain Logo - Himalayan Kitchen Restaurant"
-              width={280}
-              height={60}
-              className="w-full mb-2 h-12 sm:h-16 md:h-20 object-contain opacity-90 text-white"
-              priority
-              loading="eager"
-            />
-            <h2
-              className="max-w-3xl text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-extrabold text-gray-600 dark:text-white text-center drop-shadow-2xl leading-tight"
-            >
-              Taste From The
-              <span
-                className="block text-yellow-700 dark:text-[#efc335] tracking-wide text-[1.25em] md:text-[1.28em] uppercase font-bold"
+        <div className="relative w-full xl:absolute xl:inset-0 xl:flex xl:items-end xl:justify-center xl:pb-16 z-10 py-2 xl:py-0">
+          <div className="flex flex-col items-center justify-start sm:px-8 xl:px-0 w-full pb-4 gap-4 xl:gap-6">
+            <div className="flex flex-col items-center xl:backdrop-blur-lg xl:bg-black/20 xl:rounded-2xl xl:px-12 xl:py-8 xl:shadow-2xl">
+              <Image
+                src="/images/logo/mountain-sketch.png"
+                alt="Himalayan Mountain Logo - Himalayan Kitchen Restaurant"
+                width={280}
+                height={60}
+                className="w-full mb-2 h-12 sm:h-16 md:h-20 object-contain opacity-90 text-white"
+                priority
+                loading="eager"
+              />
+              <h2
+                className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-extrabold text-gray-600 dark:text-white xl:text-white text-center drop-shadow-2xl leading-tight"
               >
-                HIMALAYAS
-              </span>
-            </h2>
-            <p className="text-base sm:text-lg md:text-2xl text-gray-800 dark:text-white/90 text-center max-w-4xl mb-4 xl:mb-0 px-2 font-serif drop-shadow-lg">
-              Sherpa-owned restaurant from Nepal serving authentic Himalayan
-              flavors crafted with passion and tradition in San Rafael,
-              California.
-            </p>
+                Taste From The
+                <span
+                  className="block text-yellow-700 dark:text-[#efc335] xl:text-[#efc335] tracking-wide text-[1.25em] md:text-[1.28em] uppercase font-bold"
+                >
+                  HIMALAYAS
+                </span>
+              </h2>
+              <p className="text-base sm:text-lg md:text-2xl text-gray-800 dark:text-white/90 xl:text-white text-center px-2 font-serif drop-shadow-lg">
+                Sherpa-owned restaurant from Nepal serving authentic Himalayan
+                flavors crafted with passion and tradition in San Rafael,
+                California.
+              </p>
+            </div>
             {/* Action Button */}
             <button
               onClick={() =>

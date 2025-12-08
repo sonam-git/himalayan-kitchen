@@ -67,7 +67,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.userway.org https://acc.userway.org https://www.googletagmanager.com https://order.toasttab.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.userway.org; font-src 'self' https://fonts.gstatic.com https://cdn.userway.org data:; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.userway.org https://acc.userway.org https://api.userway.org https://www.google-analytics.com; frame-src 'self' https://cdn.userway.org https://acc.userway.org https://order.toasttab.com https://www.google.com; object-src 'none'; base-uri 'self';"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.userway.org https://acc.userway.org https://www.googletagmanager.com https://order.toasttab.com https://www.facebook.com https://connect.facebook.net https://www.instagram.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.userway.org; font-src 'self' https://fonts.gstatic.com https://cdn.userway.org data:; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.userway.org https://acc.userway.org https://api.userway.org https://www.google-analytics.com https://www.facebook.com https://www.instagram.com; frame-src 'self' https://cdn.userway.org https://acc.userway.org https://order.toasttab.com https://www.google.com https://www.facebook.com https://www.instagram.com; object-src 'none'; base-uri 'self';"
           }
         ],
       },

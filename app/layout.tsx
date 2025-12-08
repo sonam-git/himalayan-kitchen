@@ -153,7 +153,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           <ScrollToTop />
-          <main className="py-0 sm:py-0 lg:py-28 lg:mt-0">{children}</main>
+          <main className="pt-32 md:pt-36 lg:pt-44 xl:pt-48 py-0 sm:py-0 lg:py-28 lg:mt-0">{children}</main>
           <Footer />
           <div className="md:hidden">
             <MobileBottomBar />

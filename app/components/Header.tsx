@@ -24,7 +24,7 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className="w-full bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
           <div className="max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-            <div className="flex items-center justify-between h-20 md:h-24 py-3 md:py-4">
+            <div className="flex items-center justify-between h-24 md:h-28 lg:h-32 py-4 md:py-5 lg:py-6">
               {/* Logo / Title */}
               <div className="flex items-center shrink-0 py-2">
                 <div className="flex items-center space-x-3 md:space-x-4 lg:space-x-6 group cursor-pointer">
@@ -40,9 +40,9 @@ const Header = () => {
                     <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-gradient-to-r from-red-700 via-red-600 to-red-800 dark:text-yellow-300 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-900 group-hover:via-red-700 group-hover:to-red-900 dark:group-hover:from-red-200 dark:group-hover:via-yellow-300 dark:group-hover:to-orange-300 transition-all duration-700">
                       HIMALAYAN
                     </h1>
-                    <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-[0.24em] font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
+                    <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-[0.30em] md:tracking-[0.32em] lg:tracking-[0.34em] xl:tracking-[0.36em] font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
                     <div className="relative">
-                      <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-300 -mt-1 tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
+                      <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-300 -mt-1 tracking-[0.15em] md:tracking-[0.16em] lg:tracking-[0.17em] opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
                       <div className="w-0 h-0.5 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 group-hover:w-full transition-[width] duration-700 rounded-full mt-0.5"></div>
                     </div>
                   </div>
