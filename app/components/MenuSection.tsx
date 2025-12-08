@@ -18,8 +18,10 @@ const MenuSection = () => {
     let showTimer: NodeJS.Timeout;
     let hideTimer: NodeJS.Timeout;
     if (modalOpen && selectedIndex !== null) {
+      // Show text after 2 seconds
       showTimer = setTimeout(() => setShowModalText(true), 2000);
-      hideTimer = setTimeout(() => setShowModalText(false), 25000); // 2s show + 25s visible
+      // Hide text after 25 seconds total (2s delay + 23s visible)
+      hideTimer = setTimeout(() => setShowModalText(false), 25000);
     }
     return () => {
       clearTimeout(showTimer);
@@ -103,7 +105,7 @@ const MenuSection = () => {
         {
       name:'Chicken Tikka Masala',
       description: 'Aromatic chicken tikka cooked in a creamy tomato sauce with spices. Available in different meat options.',
-      image: '/images/food/tika masala.jpg',
+      image: '/images/food/chicken-tikka.jpeg',
       vegetarian: false,
       vegan: false,
       bothVegNonVeg: false,
@@ -114,19 +116,23 @@ const MenuSection = () => {
   const openModal = (idx: number) => {
     setSelectedIndex(idx);
     setModalOpen(true);
+    setShowModalText(false); // Reset text visibility when opening modal
   };
   const closeModal = () => {
     setModalOpen(false);
     setSelectedIndex(null);
+    setShowModalText(false); // Reset text visibility when closing modal
   };
   const prevItem = () => {
     if (selectedIndex !== null) {
       setSelectedIndex((selectedIndex - 1 + featuredDishes.length) % featuredDishes.length);
+      setShowModalText(false); // Reset text when changing items
     }
   };
   const nextItem = () => {
     if (selectedIndex !== null) {
       setSelectedIndex((selectedIndex + 1) % featuredDishes.length);
+      setShowModalText(false); // Reset text when changing items
     }
   };
 
@@ -167,7 +173,7 @@ const MenuSection = () => {
         <MenuHeading/>
         {/* Featured Dishes Section */}
         <div className="mt-4 mb-4">
-          <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-linear-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
+          <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-600 dark:border-orange-400/60 bg-white dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
             <div className="relative z-10">
               <div ref={featuredDishesScrollRef} className="flex gap-6 overflow-x-auto pb-2 px-2 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent featured-dishes-scroll">
                 {featuredDishes.map((dish, idx) => (
@@ -205,7 +211,7 @@ const MenuSection = () => {
                   </svg>
                 </button>
                 <button
-                  className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white text-sm md:text-lg font-extrabold shadow-xl border-2 border-white hover:bg-gray-100 hover:text-gray-900 hover:border-orange-400 hover:[&>svg]:text-orange-500 hover:[&>svg]:stroke-orange-500 hover:bg-gradient-to-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline font-[Georgia,'Times_New_Roman',Times,serif]"
+                  className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white text-sm md:text-lg font-extrabold shadow-xl border-2 border-white hover:bg-gray-100 hover:text-gray-900 hover:border-orange-400 hover:[&>svg]:text-orange-500 hover:[&>svg]:stroke-orange-500 hover:bg-gradient-to-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline font-[Georgia,'Times_New_Roman',Times,serif]"
                   onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
                   tabIndex={0}
                   aria-label="Go to full menu ordering page"
@@ -263,7 +269,7 @@ const MenuSection = () => {
             />
             {/* Title & description overlay at bottom, styled like Gallery, delayed show and auto-hide */}
             {showModalText && (
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30">
+              <div className="absolute bottom-0 left-0 right-0 mb-0 w-full px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center border-t border-yellow-300/40 z-30 animate-slide-up">
                 <h2 id="modal-dish-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
                   {featuredDishes[selectedIndex].name}
                 </h2>
@@ -281,7 +287,7 @@ const MenuSection = () => {
             <button
               aria-label="Previous"
               onClick={e => { e.stopPropagation(); prevItem(); }}
-              className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
               <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -290,7 +296,7 @@ const MenuSection = () => {
             <button
               aria-label="Close"
               onClick={e => { e.stopPropagation(); closeModal(); }}
-              className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              className="bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
               <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -299,7 +305,7 @@ const MenuSection = () => {
             <button
               aria-label="Next"
               onClick={e => { e.stopPropagation(); nextItem(); }}
-              className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+              className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
               <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

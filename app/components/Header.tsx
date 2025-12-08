@@ -7,15 +7,6 @@ import { useTheme } from '../context/ThemeContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-// Extend Window interface for UserWay
-declare global {
-  interface Window {
-    UserWay?: {
-      widgetOpen: () => void;
-    };
-  }
-}
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
@@ -28,44 +19,39 @@ const Header = () => {
     return pathname.startsWith(href);
   };
 
-  // Function to trigger UserWay accessibility widget
-  const openAccessibilityWidget = () => {
-    if (typeof window !== 'undefined' && window.UserWay) {
-      window.UserWay.widgetOpen();
-    }
-  };
-
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className="w-full bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
           <div className="max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-            <div className="flex items-center justify-between h-20 md:h-24">
+            <div className="flex items-center justify-between h-20 md:h-24 py-3 md:py-4">
               {/* Logo / Title */}
-              <div className="flex items-center shrink-0">
+              <div className="flex items-center shrink-0 py-2">
                 <div className="flex items-center space-x-3 md:space-x-4 lg:space-x-6 group cursor-pointer">
                   <div className="relative w-14 h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 rounded-full overflow-hidden ring-4 ring-red-500/60 dark:ring-red-600/40 shadow-2xl group-hover:shadow-red-500/50 dark:group-hover:shadow-red-400/50 transition-all duration-700 group-hover:ring-red-400/90 dark:group-hover:ring-red-600/70 group-hover:ring-8">
-                    <div className="absolute inset-0 bg-linear-to-br from-red-100/40 to-orange-100/40 dark:from-red-900/40 dark:to-orange-900/40"></div>
-                    <div className="absolute -inset-2 bg-linear-to-r from-red-400 via-orange-400 to-yellow-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-700 animate-spin blur-md"></div>
-                    <div className="relative w-full h-full group-hover:scale-110 transition-all duration-700 group-hover:rotate-360 transform-gpu perspective-1000">
+                    <div className="absolute inset-0 bg-gradient-to-br from-red-100/40 to-orange-100/40 dark:from-red-900/40 dark:to-orange-900/40"></div>
+                    <div className="absolute -inset-2 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-700 animate-spin blur-md"></div>
+                    <div className="relative w-full h-full group-hover:scale-110 transition-all duration-1000 group-hover:rotate-[360deg] transform-gpu perspective-1000">
                       <Image src="/images/hk-logo.jpg" alt="Himalayan Kitchen Logo" width={72} height={72} className="object-cover w-full h-full relative z-10 rounded-full shadow-inner" priority />
                     </div>
-                    <div className="absolute inset-0 rounded-full bg-linear-to-r from-red-500/30 via-orange-500/30 to-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500/30 via-orange-500/30 to-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
                   </div>
-                  <div className="flex flex-col justify-center space-y-0.5">
-                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-linear-to-r from-[#D4AF37] to-[#D4AF37] dark:from-yellow-300 dark:via-gray-50 dark:to-yellow-400 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-600 group-hover:via-yellow-500 group-hover:to-orange-600 dark:group-hover:from-red-200 dark:group-hover:via-yellow-200 dark:group-hover:to-orange-200 transition-all duration-700">
+                  <div className="flex flex-col justify-center space-y-0.5 pb-1">
+                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-gradient-to-r from-red-700 via-red-600 to-red-800 dark:text-yellow-300 bg-clip-text text-transparent leading-[1.05] tracking-tight group-hover:from-red-900 group-hover:via-red-700 group-hover:to-red-900 dark:group-hover:from-red-200 dark:group-hover:via-yellow-300 dark:group-hover:to-orange-300 transition-all duration-700">
                       HIMALAYAN
                     </h1>
-                    <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-wide font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
-                    <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-300 -mt-1 tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
-                    <div className="w-0 h-0.5 bg-linear-to-r from-red-500 to-orange-500 group-hover:w-full transition-[width] duration-700 rounded-full"></div>
+                    <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-[0.24em] font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
+                    <div className="relative">
+                      <p className="text-xs md:text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-300 -mt-1 tracking-widest opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
+                      <div className="w-0 h-0.5 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 group-hover:w-full transition-[width] duration-700 rounded-full mt-0.5"></div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Desktop Navigation */}
-              <nav className="hidden xl:flex items-center justify-center flex-1 px-4 xl:px-8" aria-label="Primary Navigation" role="navigation">
-                <div className="flex items-center gap-6 xl:gap-8 2xl:gap-10">
+              <nav className="hidden xl:flex items-center justify-center flex-1 px-4 xl:px-8 py-2" aria-label="Primary Navigation" role="navigation">
+                <div className="flex items-center gap-6 xl:gap-8 2xl:gap-10 py-1">
                   {[
                     { id: 'home', label: 'Home', href: '/', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /> },
                     { id: 'about', label: 'About', href: '/about', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /> },
@@ -91,16 +77,16 @@ const Header = () => {
                             <svg className="w-7 h-7 mb-1 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">{icon}</svg>
                             <span className="relative text-sm xl:text-base font-medium tracking-wide">
                               {label}
-                              <span className="block mt-1 h-0.5 rounded-full transition-all duration-300 w-0 group-hover:w-full bg-linear-to-r from-red-500 to-orange-500"></span>
+                              <span className="block mt-1 h-0.5 rounded-full transition-all duration-300 w-0 group-hover:w-full bg-gradient-to-r from-red-500 to-orange-500"></span>
                             </span>
                           </button>
                           {isMenuDropdownOpen && (
-                            <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 flex flex-col animate-fade-in">
+                            <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl z-50 flex flex-col animate-dropdown">
                               <a
                                 href="https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-red-300 dark:hover:bg-red-800 rounded-t-xl focus:outline-none focus:bg-red-100 dark:focus:bg-red-700 transition-colors duration-200"
+                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-red-600 hover:text-white dark:hover:bg-red-800 rounded-t-xl focus:outline-none focus:bg-red-100 dark:focus:bg-red-700 transition-colors duration-200"
                                 tabIndex={0}
                                 aria-label="Order Online (opens in new tab)"
                                 onMouseDown={e => e.preventDefault()}
@@ -110,7 +96,7 @@ const Header = () => {
                                 href="https://order.toasttab.com/egiftcards/himalayan-kitchen-227-3rd-st"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-green-50 dark:hover:bg-green-900 rounded-b-xl focus:outline-none focus:bg-green-100 dark:focus:bg-green-800 transition-colors duration-200"
+                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-green-600 hover:text-white dark:hover:bg-green-900 rounded-b-xl focus:outline-none focus:bg-green-100 dark:focus:bg-green-800 transition-colors duration-200"
                                 tabIndex={0}
                                 aria-label="Buy Gift Card (opens in new tab)"
                                 onMouseDown={e => e.preventDefault()}
@@ -138,7 +124,7 @@ const Header = () => {
                           </svg>
                           <span className="relative text-sm xl:text-base font-medium tracking-wide">
                             {label}
-                            <span className={`block mt-1 h-0.5 rounded-full transition-all duration-300 ${isActive(href) ? 'w-full bg-linear-to-r from-red-500 to-orange-500' : 'w-0 group-hover:w-full bg-linear-to-r from-red-500 to-orange-500'}`}></span>
+                            <span className={`block mt-1 h-0.5 rounded-full transition-all duration-300 ${isActive(href) ? 'w-full bg-gradient-to-r from-red-500 to-orange-500' : 'w-0 group-hover:w-full bg-gradient-to-r from-red-500 to-orange-500'}`}></span>
                           </span>
                         </span>
                       </Link>
@@ -148,7 +134,7 @@ const Header = () => {
               </nav>
 
               {/* Right Side Actions */}
-              <div className="flex items-center gap-3 md:gap-4 lg:gap-5 xl:gap-6 shrink-0">
+              <div className="flex items-center gap-3 md:gap-4 lg:gap-5 xl:gap-6 shrink-0 py-2">
                 {/* Theme Toggle - always visible on xl+ */}
                 <button 
                   onClick={toggleTheme} 
@@ -166,6 +152,23 @@ const Header = () => {
                     </svg>
                   )}
                 </button>
+                {/* Theme Toggle - mobile only (icon only, left of hamburger) */}
+                <button 
+                  onClick={toggleTheme} 
+                  aria-label="Toggle dark mode" 
+                  aria-pressed={isDarkMode} 
+                  className="xl:hidden inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gray-800 dark:bg-yellow-900 hover:bg-gray-700 dark:hover:bg-yellow-600 border-2 border-gray-300 dark:border-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-400/50 dark:focus:ring-yellow-400/50 hover:scale-105 active:scale-95"
+                >
+                  {isDarkMode ? (
+                    <svg className="w-6 h-6 transition-all duration-500 animate-pulse text-yellow-200" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-6 h-6 text-white transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                  )}
+                </button>
                 {/* Hamburger menu button - visible only below xl */}
                 <button 
                   onClick={() => setIsMenuOpen(!isMenuOpen)} 
@@ -179,18 +182,6 @@ const Header = () => {
                     <span className={`h-1 rounded-full bg-gray-800 dark:bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0 scale-0' : ''}`}></span>
                     <span className={`h-1 rounded-full bg-gray-800 dark:bg-white transition-all duration-300 origin-center ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
                   </div>
-                </button>
-                {/* Accessibility button only on desktop */}
-                <button
-                  aria-label="Open Accessibility Widget"
-                  className="hidden xl:flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-blue-100 dark:bg-blue-900 border-2 border-white dark:border-white shadow-lg hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
-                  onClick={openAccessibilityWidget}
-                  type="button"
-                >
-                  <svg className="w-7 h-7 text-blue-700 dark:text-blue-200" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <circle cx="12" cy="7" r="2.5" />
-                    <path d="M12 21v-6m0 0c-2.5 0-5-1-7-2m7 2c2.5 0 5-1 7-2M12 15V9m-5 2l-2-2m14 2l2-2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
                 </button>
               </div>
             </div>
@@ -213,11 +204,11 @@ const Header = () => {
             role="dialog"
             aria-modal="true"
             tabIndex={-1}
-            className="xl:hidden absolute left-0 right-0 top-full z-60 bg-white dark:bg-gray-900 shadow-2xl border-b-2 border-red-500/20 dark:border-red-400/20 animate-slide-down overflow-visible"
+            className="xl:hidden absolute left-0 right-0 top-full z-60 bg-white text-gray-800 dark:bg-gray-900 shadow-2xl border-b-2 border-red-500/20 dark:border-red-400/20 animate-slide-down overflow-visible"
             // style={{ backgroundImage: 'url(/images/other/aboutSketch)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: 'rgba(255,255,255,0.7)' }}
           >
             {/* Overlay for readability */}
-            <div className="absolute inset-0 bg-white dark:bg-gray-900/40 backdrop-blur-md backdrop-saturate-150 pointer-events-none z-0" />
+            <div className="absolute inset-0 bg-white text-gray-800 dark:bg-gray-900/40 backdrop-blur-md backdrop-saturate-150 pointer-events-none z-0" />
             <div className="relative flex flex-col py-3 px-6 gap-1 z-10">
               {[
                 { id: 'home', label: 'Home', icon: (
@@ -275,40 +266,6 @@ const Header = () => {
                   </Link>
                 );
               })}
-              {/* Action buttons row: Theme Toggle, Accessibility */}
-              <div className="grid grid-cols-2 gap-3 mt-3 mb-1 w-full">
-                {/* Theme Toggle Button with text */}
-                <button
-                  onClick={toggleTheme}
-                  aria-label="Toggle dark mode"
-                  aria-pressed={isDarkMode}
-                  className="flex flex-row items-center justify-center w-full h-12 rounded-xl bg-gray-800 dark:bg-yellow-900 text-white dark:text-yellow-200 border-2 border-white dark:border-white shadow-lg hover:bg-gray-700 dark:hover:bg-yellow-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400/50 dark:focus:ring-yellow-400/50 hover:scale-105 active:scale-95 gap-2"
-                >
-                  {isDarkMode ? (
-                    <svg className="w-6 h-6 transition-all duration-500 animate-pulse text-yellow-200" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  ) : (
-                    <svg className="w-6 h-6 text-white transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                  )}
-                  <span className="ml-1 font-semibold text-base select-none">{isDarkMode ? 'Light' : 'Dark'}</span>
-                </button>
-                {/* Accessibility Button with text */}
-                <button
-                  aria-label="Open Accessibility Widget"
-                  className="flex flex-row items-center justify-center w-full h-12 rounded-xl bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 border-2 border-white dark:border-white shadow-lg hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 gap-2"
-                  onClick={() => { openAccessibilityWidget(); setIsMenuOpen(false); }}
-                  type="button"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                    <circle cx="12" cy="7" r="2.5" />
-                    <path d="M12 21v-6m0 0c-2.5 0-5-1-7-2m7 2c2.5 0 5-1 7-2M12 15V9m-5 2l-2-2m14 2l2-2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="ml-1 font-semibold text-base select-none">Accessibility</span>
-                </button>
-              </div>
             </div>
             {/* Prayer Flag Border at bottom of dropdown, always visible and not cut off */}
             <div className="relative w-full z-20">

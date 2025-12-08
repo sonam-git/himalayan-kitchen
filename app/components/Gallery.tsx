@@ -133,19 +133,17 @@ const Gallery = () => {
   const openMainModal = (index: number) => {
     setMainModalIndex(index);
     setMainModalOpen(true);
-    setShowMainModalText(false); // Hide text initially
+    setShowMainModalText(false); // Reset text visibility when opening modal
   };
 
-  // Delay showing modal text by 2s, hide after 5s
+  // Delay showing modal text by 2s, hide after 25s
   const [showMainModalText, setShowMainModalText] = useState(false);
   useEffect(() => {
     let showTimer: NodeJS.Timeout;
     let hideTimer: NodeJS.Timeout;
     if (mainModalOpen) {
       showTimer = setTimeout(() => setShowMainModalText(true), 2000);
-      hideTimer = setTimeout(() => setShowMainModalText(false), 25000); // 2s show + 25s visible
-    } else {
-      setShowMainModalText(false);
+      hideTimer = setTimeout(() => setShowMainModalText(false), 25000); // 2s delay + 23s visible
     }
     return () => {
       clearTimeout(showTimer);
@@ -153,13 +151,20 @@ const Gallery = () => {
     };
   }, [mainModalOpen, mainModalIndex]);
 
-  const closeMainModal = () => setMainModalOpen(false);
-  const nextMainModal = () =>
+  const closeMainModal = () => {
+    setMainModalOpen(false);
+    setShowMainModalText(false); // Reset text when closing
+  };
+  const nextMainModal = () => {
     setMainModalIndex((i) => (i + 1) % galleryItems.length);
-  const prevMainModal = () =>
+    setShowMainModalText(false); // Reset text when changing items
+  };
+  const prevMainModal = () => {
     setMainModalIndex(
       (i) => (i - 1 + galleryItems.length) % galleryItems.length
     );
+    setShowMainModalText(false); // Reset text when changing items
+  };
 
   // Food Gallery Items
   const foodGalleryItems = [
@@ -222,13 +227,29 @@ const Gallery = () => {
   // Food Modal State
   const [foodModalOpen, setFoodModalOpen] = useState(false);
   const [foodModalIndex, setFoodModalIndex] = useState(0);
-  const closeFoodModal = () => setFoodModalOpen(false);
-  const nextFoodModal = () =>
+  
+  const openFoodModal = (idx: number) => {
+    setFoodModalIndex(idx);
+    setFoodModalOpen(true);
+    setShowFoodModalText(false); // Reset text when opening
+  };
+  
+  const closeFoodModal = () => {
+    setFoodModalOpen(false);
+    setShowFoodModalText(false); // Reset text when closing
+  };
+  
+  const nextFoodModal = () => {
     setFoodModalIndex((i) => (i + 1) % foodGalleryItems.length);
-  const prevFoodModal = () =>
+    setShowFoodModalText(false); // Reset text when changing items
+  };
+  
+  const prevFoodModal = () => {
     setFoodModalIndex(
       (i) => (i - 1 + foodGalleryItems.length) % foodGalleryItems.length
     );
+    setShowFoodModalText(false); // Reset text when changing items
+  };
 
   // Show more/less state for modals
   const [showFullMainDesc, setShowFullMainDesc] = useState(false);
@@ -331,31 +352,28 @@ const Gallery = () => {
           }`}
         >
           <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
-            <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
+            <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+            <span className="inline-block px-6 py-2 mt-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-600 dark:border-yellow-400 rounded-full text-gray-800 dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
               Visual Journey
             </span>
-            <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+            <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
           </div>
-          <h2
-            id="gallery-heading"
-            className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6"
-          >
+       <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6">
             Our Gallery
           </h2>
 
-          {/* <p className="text-lg md:text-xl text-gray-200 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed">
+           <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-800 dark:text-gray-100">
            Discover our signature dishes, cozy ambiance, and heartwarming visits from popular personalities, friends, family, and customers of Himalayan Kitchen worldwide.
-          </p> */}
+          </p>
         </div>
-        <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-linear-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
+        <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-600 dark:border-orange-400/60 bg-white dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
           <div className="relative z-10">
             {/* Heading and description for Main Gallery */}
             <div className="mb-4 text-center max-w-2xl mx-auto">
-              <h2 className="text-2xl md:text-3xl text-white font-black bg-clip-text pt-4 mb-2">
+              <h2 className="text-2xl md:text-3xl text-gray-800 dark:text-white font-black bg-clip-text pt-4 mb-2">
                 Moments at Our Table
               </h2>
-              <p className="text-sm sm:text-base font-medium text-gray-100 dark:text-gray-100 font-[Georgia,'Times_New_Roman',Times,serif]">
+              <p className="text-sm sm:text-base font-medium text-gray-800 dark:text-gray-100 font-[Georgia,'Times_New_Roman',Times,serif]">
               A visual journey through the cherished memories, beloved guests, and lively atmosphere that make our restaurant special. See how visitors from near and far enjoy their Himalayan dining experience.
               </p>
             </div>
@@ -371,7 +389,7 @@ const Gallery = () => {
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   {/* Image Container */}
-                  <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex flex-col justify-end">
+                  <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex flex-col justify-end">
                     <button
                       className="w-full h-full focus:outline-none"
                       onClick={() => openMainModal(index)}
@@ -387,7 +405,7 @@ const Gallery = () => {
                       priority={index < 3}
                     />
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
                     {/* Number Badge */}
                     <div className="absolute top-4 right-4 w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg">
                       <span className="text-orange-600 dark:text-orange-400 font-bold text-sm">
@@ -481,9 +499,11 @@ const Gallery = () => {
             aria-modal="true"
             aria-labelledby="gallery-modal-title"
             className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
+            onClick={closeMainModal}
             onKeyDown={handleModalKeyDown}
           >
-            <div className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
+            <div
+              className="relative max-w-3xl w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Decorative Frame fits image */}
@@ -492,14 +512,14 @@ const Gallery = () => {
               <Image
                 src={galleryItems[mainModalIndex].image}
                 alt={galleryItems[mainModalIndex].title}
-                width={600}
-                height={400}
+                width={1200}
+                height={800}
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
                 priority
               />
-              {/* Title and Description overlay at bottom, styled like Gallery, delayed show and auto-hide */}
+              {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
               {showMainModalText && (
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30">
+                <div className="absolute bottom-0 left-0 right-0 mb-0 w-full px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center border-t border-yellow-300/40 z-30 animate-slide-up">
                   <h2 id="main-modal-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
                     {galleryItems[mainModalIndex].title}
                   </h2>
@@ -528,7 +548,7 @@ const Gallery = () => {
               <button
                 aria-label="Previous"
                 onClick={e => { e.stopPropagation(); prevMainModal(); }}
-                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -537,7 +557,7 @@ const Gallery = () => {
               <button
                 aria-label="Close"
                 onClick={e => { e.stopPropagation(); closeMainModal(); }}
-                className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -546,7 +566,7 @@ const Gallery = () => {
               <button
                 aria-label="Next"
                 onClick={e => { e.stopPropagation(); nextMainModal(); }}
-                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -556,14 +576,14 @@ const Gallery = () => {
           </div>
         )}
         {/* Food Gallery Section */}
-        <div className="mt-8 relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-linear-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
+        <div className="mt-8 relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-600 dark:border-orange-400/60 bg-white dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
           <div className="relative z-10">
             {/* Heading and description for Food Gallery */}
             <div className="mb-4 text-center max-w-2xl mx-auto">
-              <h2 className="text-2xl md:text-3xl text-white font-black bg-clip-text pt-4 mb-2">
+              <h2 className="text-2xl md:text-3xl text-gray-800 dark:text-white font-black bg-clip-text pt-4 mb-2">
                 A Feast For Your Eyes
               </h2>
-              <p className="text-sm sm:text-base text-gray-100 dark:text-gray-300 font-medium font-[Georgia,'Times_New_Roman',Times,serif]">
+              <p className="text-sm sm:text-base text-gray-800 dark:text-gray-300 font-medium font-[Georgia,'Times_New_Roman',Times,serif]">
                 A showcase of our most popular, authentic & mouth-watering
                 Himalayan dishes. Let the gallery inspire your next dining
                 experience!
@@ -580,10 +600,7 @@ const Gallery = () => {
                 >
                   <button
                     className="w-full h-full focus:outline-none"
-                    onClick={() => {
-                      setFoodModalIndex(idx);
-                      setFoodModalOpen(true);
-                    }}
+                    onClick={() => openFoodModal(idx)}
                     aria-label={`View full ${item.title}`}
                     style={{ position: "absolute", inset: 0, zIndex: 2 }}
                   ></button>
@@ -648,7 +665,7 @@ const Gallery = () => {
           </div>
         </div>
         <div className="w-full flex justify-center items-center">
-          <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
+          <div className="h-1 w-2/3 sm:w-1/2 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
         </div>
         {/* Food Modal */}
         {foodModalOpen && (
@@ -674,9 +691,9 @@ const Gallery = () => {
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
                 priority
               />
-              {/* Title and Description overlay at bottom, styled like Gallery, delayed show and auto-hide */}
+              {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
               {showFoodModalText && (
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-0 w-[95%] max-w-xl px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center animate-fade-in border-t border-yellow-300/40 z-30">
+                <div className="absolute bottom-0 left-0 right-0 mb-0 w-full px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center border-t border-yellow-300/40 z-30 animate-slide-up">
                   <h2 id="food-modal-title" className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline">
                     {foodGalleryItems[foodModalIndex].title}
                   </h2>
@@ -697,8 +714,8 @@ const Gallery = () => {
                 </div>
               )}
             </div>
-            {/* Controls always below the modal image */}
-            <div className="flex justify-center items-center gap-8 mt-10 z-50 relative"
+            {/* Controls always below the modal box */}
+            <div className="flex justify-center items-center gap-10 mt-10 z-50 relative"
               style={{ marginTop: '2.5rem' }}
               aria-label="Food modal controls"
               onClick={e => e.stopPropagation()}
@@ -706,7 +723,7 @@ const Gallery = () => {
               <button
                 aria-label="Previous"
                 onClick={e => { e.stopPropagation(); prevFoodModal(); }}
-                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -715,7 +732,7 @@ const Gallery = () => {
               <button
                 aria-label="Close"
                 onClick={closeFoodModal}
-                className="bg-linear-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -724,7 +741,7 @@ const Gallery = () => {
               <button
                 aria-label="Next"
                 onClick={e => { e.stopPropagation(); nextFoodModal(); }}
-                className="bg-linear-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
+                className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
               >
                 <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

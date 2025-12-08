@@ -64,16 +64,16 @@ const AwardsMedia = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
                   <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="flex-1 h-px bg-yellow-400/60 dark:bg-yellow-400/40" />
-          <span className="inline-block px-6 py-2 mt-4 bg-yellow-500/10 dark:bg-yellow-400/20 border border-yellow-200 dark:border-yellow-400 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
+          <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+          <span className="inline-block px-6 py-2 mt-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-400 rounded-full text-gray-800 dark:text-yellow-100 font-semibold text-sm uppercase tracking-wider mb-6">
           Recognition and Press
           </span>
-          <div className="flex-1 h-px bg-yellow-400/60 dark:bg-yellow-400/40" />
+          <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-          <h2 id="awards-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-200 dark:text-gray-50 mb-6" tabIndex={0}>
-            Awards & <span className="bg-linear-to-r from-yellow-200 via-white to-yellow-200 dark:from-orange-400 bg-clip-text text-transparent">Media</span>
+          <h2 id="awards-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6" tabIndex={0}>
+            Awards & <span className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 dark:from-yellow-300 dark:via-orange-300 dark:to-yellow-400 bg-clip-text text-transparent">Media</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
+          <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 max-w-2xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
             Honored by the community and featured in renowned publications for our culinary excellence and service.
           </p>
         </div>
@@ -164,7 +164,7 @@ const AwardsMedia = () => {
                     <div className="absolute bottom-1 right-1 w-4 h-4 border-b-2 border-r-2 border-yellow-500 dark:border-yellow-400"></div>
                   </div>
                 </button>
-                <p className="text-gray-700 dark:text-gray-200 font-semibold text-center font-[Georgia,'Times_New_Roman',Times,serif] px-2">
+                <p className="text-gray-800 dark:text-gray-200 font-semibold text-center font-[Georgia,'Times_New_Roman',Times,serif] px-2">
                   {img.caption}
                 </p>
               </div>
@@ -176,7 +176,7 @@ const AwardsMedia = () => {
             {images.map((_, index) => (
               <div 
                 key={index} 
-                className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-600"
+                className="w-2 h-2 rounded-full bg-orange-400/60 dark:bg-yellow-500/60"
                 aria-hidden="true"
               />
             ))}
@@ -185,10 +185,10 @@ const AwardsMedia = () => {
       </div>
       {/* Modal for full image view */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80" onClick={closeModal} role="dialog" aria-modal="true" aria-labelledby="awards-modal-title">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 dark:bg-black/95" onClick={closeModal} role="dialog" aria-modal="true" aria-labelledby="awards-modal-title">
           <div className="relative max-w-3xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()} tabIndex={-1} ref={el => { if (el) el.focus(); }}>
             <button
-              className="absolute top-2 right-2 text-white text-3xl font-bold bg-black bg-opacity-40 rounded-full px-3 py-1 hover:bg-opacity-70 focus:outline-none"
+              className="absolute top-2 right-2 text-white text-3xl font-bold bg-gray-900/60 dark:bg-gray-800/60 hover:bg-gray-900/80 dark:hover:bg-gray-800/80 rounded-full px-3 py-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
               onClick={closeModal}
               aria-label="Close full image view"
             >

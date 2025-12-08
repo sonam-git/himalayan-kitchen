@@ -1,4 +1,10 @@
 import type { NextConfig } from 'next';
+import bundleAnalyzer from '@next/bundle-analyzer';
+
+// Bundle analyzer configuration
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 const nextConfig: NextConfig = {
   // Image Optimization
@@ -25,7 +31,7 @@ const nextConfig: NextConfig = {
   // Production optimizations
   productionBrowserSourceMaps: false,
   
-  // Security headers
+  // Security headers and caching
   async headers() {
     return [
       {
@@ -58,9 +64,50 @@ const nextConfig: NextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=(self)'
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.userway.org https://acc.userway.org https://www.googletagmanager.com https://order.toasttab.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.userway.org; font-src 'self' https://fonts.gstatic.com https://cdn.userway.org data:; img-src 'self' data: https: blob:; connect-src 'self' https://cdn.userway.org https://acc.userway.org https://api.userway.org https://www.google-analytics.com; frame-src 'self' https://cdn.userway.org https://acc.userway.org https://order.toasttab.com https://www.google.com; object-src 'none'; base-uri 'self';"
           }
         ],
       },
+      // Cache static assets aggressively
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        source: '/fonts/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      }
     ];
   },
 
@@ -75,5 +122,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Export config with bundle analyzer wrapper
+export default withBundleAnalyzer(nextConfig);
 

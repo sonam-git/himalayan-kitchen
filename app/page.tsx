@@ -1,13 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import MenuSection from "./components/MenuSection";
-import Gallery from "./components/Gallery";
-import Reviews from "./components/Reviews";
-import GiftCard from "./components/GiftCard";
 import Intro from "./components/Intro";
+
+// Dynamic imports for below-fold components to reduce initial bundle
+const MenuSection = dynamic(() => import("./components/MenuSection"), {
+  loading: () => <div className="min-h-[400px] bg-gray-100 dark:bg-gray-800 animate-pulse rounded-lg" />,
+  ssr: true,
+});
+
+const Gallery = dynamic(() => import("./components/Gallery"), {
+  loading: () => <div className="min-h-[500px] bg-gray-100 dark:bg-gray-800 animate-pulse rounded-lg" />,
+  ssr: false, // Gallery can be client-only
+});
+
+const Reviews = dynamic(() => import("./components/Reviews"), {
+  loading: () => <div className="min-h-[300px] bg-gray-100 dark:bg-gray-800 animate-pulse rounded-lg" />,
+  ssr: true,
+});
+
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);

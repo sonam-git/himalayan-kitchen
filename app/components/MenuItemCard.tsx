@@ -57,7 +57,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
   return (
     <Wrapper {...wrapperProps}>
       {/* Food Image */}
-      <div className="relative h-48 sm:h-56 md:h-52 lg:h-56 bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 overflow-hidden shrink-0 rounded-2xl">
+      <div className="relative h-48 sm:h-56 md:h-52 lg:h-56 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 overflow-hidden shrink-0 rounded-2xl">
         <Image 
           src={image} 
           alt={`Photo of ${name}`} 
@@ -67,7 +67,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           priority={index < 3}
         />
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         {/* Badges Container - Top Left */}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {/* Both Veg & Non-Veg Indicator (for items available in both variants) */}
@@ -98,7 +98,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           )}
         </div>
         {/* Decorative corner accent */}
-        <div className="absolute bottom-0 right-0 w-20 h-20 bg-linear-to-tl from-orange-500/20 to-transparent rounded-tl-full"></div>
+        <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-orange-500/20 to-transparent rounded-tl-full"></div>
       </div>
       {/* Food Details */}
       <div className="p-5 sm:p-6 lg:p-7 flex flex-col ">
@@ -107,7 +107,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300 leading-tight flex-1">
             {name}
           </h4>
-          <div className="bg-linear-to-r from-red-600 to-orange-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg shrink-0 flex items-center gap-1" title="Food icon" aria-label="Food icon">
+          <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg shrink-0 flex items-center gap-1" title="Food icon" aria-label="Food icon">
             {/* Food icon: fork, spoon, and plate SVG */}
             <svg fill="#fff" viewBox="0 -24.48 122.88 122.88" version="1.1" xmlns="http://www.w3.org/2000/svg"  width="22" height="22" aria-hidden="true">
               <g>

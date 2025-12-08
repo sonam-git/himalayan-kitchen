@@ -60,7 +60,7 @@ const MobileBottomBar = () => {
           className="flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 active:scale-95 group"
           aria-label="Instagram"
         >
-          <div className="w-8 h-8 mb-1 flex items-center justify-center rounded-lg bg-linear-to-tr from-yellow-400 via-pink-500 to-purple-600 dark:from-yellow-700 dark:via-pink-800 dark:to-purple-900 group-hover:scale-110 transition-transform duration-200" aria-hidden="true">
+          <div className="w-8 h-8 mb-1 flex items-center justify-center rounded-lg bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 dark:from-yellow-700 dark:via-pink-800 dark:to-purple-900 group-hover:scale-110 transition-transform duration-200" aria-hidden="true">
             <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5a5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5a3.75 3.75 0 0 0 0-7.5zm5.25.75a1 1 0 1 1-2 0a1 1 0 0 1 2 0z"/>
             </svg>

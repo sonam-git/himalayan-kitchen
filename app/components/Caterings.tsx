@@ -81,29 +81,29 @@ const Caterings = () => {
         {/* Section Header Styled Like Services */}
         <div className="text-center mb-10">
              <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
-          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
+          <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+          <span className="inline-block px-6 py-2 mt-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-400 rounded-full text-gray-800 dark:text-yellow-100 font-semibold text-sm uppercase tracking-wider mb-6">
             Caterings and Services
           </span>
-          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+          <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6">
             Catering{" "}
-          <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">
+          
               Service
-            </span>
+        
           </h2>
-          <p className="text-xl md:text-2xl text-gray-100 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
+          <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-200 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
             Let us bring authentic Himalayan flavors to your next event. Fill
             out the form below and our team will contact you to confirm your
             catering request.
           </p>
           <div className="flex justify-center mt-8">
-            <div className="w-24 h-1 bg-linear-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 rounded-full"></div>
           </div>
         </div>
         {/* Form - Second Row, Full Width */}
-        <form className="w-full bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700" onSubmit={handleSubmit} role="form" aria-describedby="catering-form-desc">
+        <form className="w-full bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border border-gray-600 dark:border-gray-400" onSubmit={handleSubmit} role="form" aria-describedby="catering-form-desc">
           <h2 className="text-xl font-bold sm:text-xl mb-6 text-gray-900 dark:text-white text-center">Catering Request</h2>
           <div id="catering-form-desc" className="sr-only">Catering request form for Himalayan Kitchen. All fields are required unless marked optional.</div>
           <div className="space-y-6">
@@ -291,9 +291,9 @@ const Caterings = () => {
               )}
               
               {status === "success" && (
-                <div className="flex items-center justify-center gap-3 p-5 bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-900/40 dark:to-emerald-900/40 border-2 border-green-400 dark:border-green-500 rounded-xl shadow-xl animate-fade-in relative overflow-hidden">
+                <div className="flex items-center justify-center gap-3 p-5 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/40 dark:to-emerald-900/40 border-2 border-green-400 dark:border-green-500 rounded-xl shadow-xl animate-fade-in relative overflow-hidden">
                   {/* Animated background shimmer */}
-                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                   <div className="relative z-10 flex items-center gap-3">
                     <div className="shrink-0">
                       <svg className="w-7 h-7 text-green-600 dark:text-green-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -43,3 +43,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# turbopack cache
+.turbo
+
+# documentation files (except README.md)
+*.md
+!README.md

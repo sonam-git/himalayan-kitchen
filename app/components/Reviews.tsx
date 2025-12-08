@@ -105,46 +105,35 @@ const Reviews = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm font-body"
+      className="relative  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none w-full rounded-2xl sm:rounded-3xl">
         <div className="absolute top-0 -left-48 w-96 h-96 bg-orange-500/5 dark:bg-orange-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 -right-48 w-96 h-96 bg-red-500/5 dark:bg-red-500/10 rounded-full blur-3xl"></div>
       </div>
-      {/* <div className="absolute inset-0 w-full h-full z-0"> */}
-        {/* <Image
-          src="/images/other/stone.webp"
-          alt="Menu Background"
-          fill
-          priority
-          className="object-cover w-full h-full rounded-2xl sm:rounded-3xl opacity-100 bg-fixed"
-        /> */}
-          {/* <div className="absolute inset-0 bg-linear-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80 dark:from-black/80 dark:via-gray-900/70 dark:to-black/80 rounded-2xl sm:rounded-3xl"></div> */}
-      {/* </div> */}
-
       <div className="relative z-10 max-w-7xl mx-auto sm:px-6 lg:px-8 font-headline">
         {/* Header Section */}
         <div
           className={`text-center mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
               <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
-          <span className="inline-block px-6 py-2 mt-4 bg-linear-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-100 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6 font-headline">
+          <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+          <span className="inline-block px-6 py-2 mt-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-400/50 dark:border-yellow-300/50 rounded-full text-gray-800 dark:text-white font-semibold text-sm uppercase tracking-wider mb-6 font-headline">
            Customer Reviews
           </span>
-          <div className="flex-1 h-px bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+          <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-3 font-headline">
+    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6">
       Dining Stories
     </h2>
-     <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-white mb-4 font-[Georgia,'Times_New_Roman',Times,serif]">
-     Real experiences from guests who’ve shared a meal—and a moment—with us.
+     <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-700 dark:text-gray-200 mb-4 font-[Georgia,'Times_New_Roman',Times,serif]">
+     Real experiences from guests who&#39;ve shared a meal—and a moment—with us.
     </p>
 
           {/* Rating Display */}
           <div className="flex justify-center items-center gap-4 sm:gap-8 mb-3 flex-nowrap sm:flex-wrap font-headline">
-          <div className="text-5xl sm:text-7xl md:text-8xl font-bold text-white dark:bg-linear-to-br dark:from-yellow-300 dark:to-yellow-500 dark:bg-clip-text dark:text-transparent drop-shadow-lg">
+          <div className="text-5xl sm:text-7xl md:text-8xl font-bold text-gray-900 bg-gradient-to-br from-orange-500 to-red-500 dark:from-yellow-300 dark:to-yellow-500 bg-clip-text text-transparent drop-shadow-lg">
             4.8
           </div>
           <div className="flex flex-col items-start min-w-[140px] sm:min-w-0">
@@ -160,10 +149,10 @@ const Reviews = () => {
                 </svg>
               ))}
             </div>
-            <p className="text-gray-100 dark:text-gray-300 text-xs sm:text-base font-medium italic font-body font-[Georgia,'Times_New_Roman',Times,serif]">
+            <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-base font-medium italic font-body font-[Georgia,'Times_New_Roman',Times,serif]">
               Based on 200+ Google & Yelp Reviews
             </p>
-            <p className="text-gray-100 dark:text-gray-400 text-xs sm:text-sm font-body font-[Georgia,'Times_New_Roman',Times,serif]">
+            <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-body font-[Georgia,'Times_New_Roman',Times,serif]">
               ⭐ Rated Excellent
             </p>
           </div>
@@ -171,7 +160,7 @@ const Reviews = () => {
         </div>
 
         {/* Decorated container for review grid */}
-        <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-300/60 dark:border-orange-400/60 bg-black/40 dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-linear-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
+        <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-600 dark:border-orange-400/60 bg-gray-200 dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
           <div className="relative z-10">
             {/* Reviews: horizontal scroll on all screens, show 3 at a time on large screens */}
             <div
@@ -189,9 +178,14 @@ const Reviews = () => {
                     key={review.id}
                     className={`group relative flex flex-col justify-between
                       h-[370px] sm:h-[400px] w-full
-                      dark:bg-linear-to-br dark:from-gray-800/80 dark:to-gray-900/80 dark:border-gray-200/50 dark:hover:border-yellow-500/50 dark:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 dark:text-gray-200 dark:hover:text-white dark:border dark:backdrop-blur-sm
-                      bg-white border-gray-300 hover:border-yellow-600 shadow-lg hover:shadow-2xl hover:shadow-yellow-500/10 text-gray-900 
-                      rounded-2xl border transition-all duration-500 transform hover:-translate-y-2
+                      bg-white dark:bg-gray-800
+                      border border-gray-300 dark:border-gray-700
+                      hover:border-orange-400 dark:hover:border-yellow-500/50
+                      shadow-lg hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-yellow-500/10
+                      text-gray-900 dark:text-gray-200
+                      hover:text-gray-900 dark:hover:text-white
+                      backdrop-blur-sm
+                      rounded-2xl transition-all duration-500 transform hover:-translate-y-2
                       ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
                       font-body
                       sm:p-8 p-4
@@ -244,7 +238,7 @@ const Reviews = () => {
                     </blockquote>
                     <footer className="mt-auto pt-2 border-t border-gray-200 dark:border-gray-700 flex items-center gap-3 font-body">
                     {/* Author initial circle */}
-                    <span className="flex items-center justify-center w-9 h-9 border-2 border-white rounded-full bg-linear-to-br from-orange-400 via-red-400 to-yellow-400 dark:bg-linear-to-br dark:from-orange-400 dark:via-red-400 dark:to-yellow-400 text-white font-bold text-md shadow-md">
+                    <span className="flex items-center justify-center w-9 h-9 border-2 border-orange-200 dark:border-orange-600 rounded-full bg-gradient-to-br from-orange-400 via-red-400 to-yellow-400 dark:bg-gradient-to-br dark:from-orange-500 dark:via-red-500 dark:to-yellow-500 text-white font-bold text-md shadow-md">
                       {review.author.trim().charAt(0)}
                     </span>
                     <span className="font-semibold text-gray-900 dark:text-white font-headline">{review.author}</span>
@@ -257,26 +251,26 @@ const Reviews = () => {
             {/* Slide controls below reviews for all screens */}
             <div className="flex justify-between items-center mt-1 px-2">
               <button
-                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"
+                className="rounded-full p-2 bg-white/90 dark:bg-gray-800/90 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-300 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"
                 onClick={() => scrollReviews('left')}
                 aria-label="Scroll reviews left"
                 type="button"
               >
                 {/* Modern left arrow icon */}
-                <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2.5" fill="none" />
                   <path d="M14.5 8l-4 4 4 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </svg>
               </button>
-              <span className="text-xs text-gray-100 dark:text-gray-100 font-semibold tracking-wide">Slide for more</span>
+              <span className="text-xs text-gray-700 dark:text-gray-300 font-semibold tracking-wide">Slide for more</span>
               <button
-                className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"
+                className="rounded-full p-2 bg-white/90 dark:bg-gray-800/90 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-300 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"
                 onClick={() => scrollReviews('right')}
                 aria-label="Scroll reviews right"
                 type="button"
               >
                 {/* Modern right arrow icon */}
-                <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2.5" fill="none" />
                   <path d="M9.5 8l4 4-4 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </svg>
@@ -284,7 +278,7 @@ const Reviews = () => {
             </div>
             {/* Decorative bottom bar */}
             <div className="w-full flex justify-center items-center">
-              <div className="h-1 w-2/3 sm:w-1/2 bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
+              <div className="h-1 w-2/3 sm:w-1/2 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full shadow-md my-2 sm:my-4 opacity-80" />
             </div>
           </div>
         </div>

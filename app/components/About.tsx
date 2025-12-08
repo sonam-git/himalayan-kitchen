@@ -66,21 +66,21 @@ const About = () => {
               }`}
             >
              <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="flex-1 h-px bg-yellow-400/60 dark:bg-yellow-400/40" />
-          <span className="inline-block px-6 py-2 mt-4 bg-yellow-500/10 dark:bg-yellow-400/20 border border-yellow-200 dark:border-yellow-400 rounded-full text-white dark:text-white font-semibold text-sm uppercase tracking-wider mb-6">
+          <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
+          <span className="inline-block px-6 py-2 mt-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 dark:from-yellow-400/20 dark:to-red-400/20 border border-yellow-200 dark:border-yellow-400 rounded-full text-gray-800 dark:text-yellow-100 font-semibold text-sm uppercase tracking-wider mb-6">
            Our Story
           </span>
-          <div className="flex-1 h-px bg-yellow-400/60 dark:bg-yellow-400/40" />
+          <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-300 dark:text-white mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6">
                 Taste From{" "}
-              <span className="bg-linear-to-r from-white via-yellow-500 to-white bg-clip-text text-transparent">
+            
                   The Himalayas
-                </span>
+           
               </h2>
-              <p className="text-xl md:text-2xl text-gray-100 dark:text-gray-50 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
+              <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
                 Where ancient traditions meet modern culinary excellence in
-                the heart of San Rafael
+                the heart of San Rafael.
               </p>
             </div>
           </div>
@@ -132,31 +132,31 @@ const About = () => {
                 <div className="flex justify-center items-end mb-4 pb-2">
                   <div className="flex items-end space-x-1">
                     <div className="flex flex-col items-center">
-                      <div className="w-1 h-16 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                      <div className="w-1 h-16 bg-gradient-to-b from-gray-400 to-gray-600"></div>
                       <div className="w-14 h-12 bg-blue-500 border-2 border-blue-700 flex items-center justify-center text-white text-sm font-bold shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
                         <span className="opacity-80">॰</span>
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
-                      <div className="w-1 h-20 bg-linear-to-b from-gray-100 to-gray-200"></div>
+                      <div className="w-1 h-20 bg-gradient-to-b from-gray-100 to-gray-200"></div>
                       <div className="w-14 h-12 bg-gray-200 border-2 border-gray-400 flex items-center justify-center text-gray-800 text-sm font-bold shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
                         <span className="opacity-80">॰</span>
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
-                      <div className="w-1 h-14 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                      <div className="w-1 h-14 bg-gradient-to-b from-gray-400 to-gray-600"></div>
                       <div className="w-14 h-12 bg-red-500 border-2 border-red-700 flex items-center justify-center text-white text-sm font-bold shadow-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
                         <span className="opacity-80">॰</span>
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
-                      <div className="w-1 h-18 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                      <div className="w-1 h-18 bg-gradient-to-b from-gray-400 to-gray-600"></div>
                       <div className="w-14 h-12 bg-green-600 border-2 border-green-800 flex items-center justify-center text-white text-sm font-bold shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
                         <span className="opacity-80">॰</span>
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
-                      <div className="w-1 h-16 bg-linear-to-b from-gray-400 to-gray-600"></div>
+                      <div className="w-1 h-16 bg-gradient-to-b from-gray-400 to-gray-600"></div>
                       <div className="w-14 h-12 bg-yellow-400 border-2 border-yellow-600 flex items-center justify-center text-gray-800 text-sm font-bold shadow-xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
                         <span className="opacity-80">॰</span>
                       </div>
@@ -168,7 +168,7 @@ const About = () => {
                   <div className="relative w-[260px] h-10 flex items-center justify-center overflow-hidden">
                     <span
                       key={greetingIndex}
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-md font-bold text-center text-transparent bg-linear-to-r from-yellow-200 to-yellow-400 dark:from-yellow-300 dark:to-yellow-500 bg-clip-text transition-all duration-700 ease-in-out animate-slide-horizontal"
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-md font-bold text-center text-transparent bg-gradient-to-r from-yellow-200 to-yellow-400 dark:from-yellow-300 dark:to-yellow-500 bg-clip-text transition-all duration-700 ease-in-out animate-slide-horizontal"
                       style={{ whiteSpace: "nowrap" }}
                     >
                       {greetings[greetingIndex]}
@@ -176,7 +176,7 @@ const About = () => {
                   </div>
                   <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
                 </div>
-                <div className="text-md text-center text-white dark:text-white italic px-5 sm:px-0">
+                <div className="text-md text-center text-yellow-100 dark:text-gray-200 italic px-5 sm:px-0">
                   &quot;From our Sherpa family to yours, we warmly welcome you.&quot;
                 </div>
               </div>
@@ -193,36 +193,36 @@ const About = () => {
               }`}
             >
               <div className="prose prose-lg space-y-6">
-                <p className="text-md leading-relaxed text-white dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
-                  <span className="font-bold text-yellow-200 dark:text-yellow-400">
+                <p className="text-md leading-relaxed text-gray-800 dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
+                  <span className="font-bold text-orange-600 dark:text-yellow-400">
                     Himalayan Kitchen Marin
                   </span>{" "}
                   is a Sherpa-owned restaurant born in the mountains of Nepal and brought with love to the heart of San Rafael. Our story begins high in the Himalayas, where our family grew up surrounded by snow peaks, prayer flags, and warm kitchens filled with the aroma of momo, slow-cooked curries, and freshly ground spices. Food was never just food—it was culture, comfort, and connection, prepared with patience and shared with generosity.
                 </p>
 
-                <p className="text-md leading-relaxed text-white dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
+                <p className="text-md leading-relaxed text-gray-800 dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
                   When we came to Marin, we carried a simple dream: to share the flavors and hospitality we were raised with. On{" "}
-                  <span className="font-bold text-yellow-200 dark:text-yellow-400">
+                  <span className="font-bold text-orange-600 dark:text-yellow-400">
                     February 24, 2023
                   </span>
                   , we opened our doors and welcomed our first guests, beginning a journey that has since connected our Himalayan roots to the vibrant community of Marin. What started as a small family effort has become a place where guests feel at home, where authentic Himalayan cuisines are made the traditional way, and where every plate is prepared with the same care we learned from our parents and grandparents.
                 </p>
 
-                <div className="rounded-xl p-6 border-l-4 border-yellow-500 dark:border-yellow-400">
-                  <p className="text-white dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
+                <div className="rounded-xl p-6 border-l-4 border-orange-500 dark:border-yellow-400 bg-orange-50/50 dark:bg-yellow-900/20">
+                  <p className="text-gray-800 dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
                     The momo you enjoy here is hand-rolled just like back home. Our curries are slow-simmered with house-ground masalas, and our chutneys, tandoori marinades, and spices are prepared fresh to honor true Himalayan flavor.
                   </p>
                 </div>
 
-                <p className="text-md leading-relaxed text-white dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
+                <p className="text-md leading-relaxed text-gray-800 dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
                   Over the years, Himalayan Kitchen has grown into a gathering place for both locals and the Himalayan community. We&apos;ve had the honor of welcoming Everest climbers, community leaders, families, and friends who all bring their own stories into ours. We proudly support local events and teams like Himalayan Sonoma FC, believing that food is one of the most powerful ways to build connection and belonging.
                 </p>
 
-                <p className="text-md leading-relaxed text-white dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
+                <p className="text-md leading-relaxed text-gray-800 dark:text-gray-200 font-[Georgia,'Times_New_Roman',Times,serif]">
                   Everything we serve—from our thukpa to our chow mein to curry specials—is inspired by the recipes and traditions we carried across continents. Our hope is that every guest experiences not just a meal, but the warmth, heart, and heritage of a Himalayan kitchen.
                 </p>
 
-                <p className="text-md leading-relaxed text-yellow-200 dark:text-yellow-400 font-semibold italic font-[Georgia,'Times_New_Roman',Times,serif]">
+                <p className="text-md leading-relaxed text-orange-700 dark:text-yellow-400 font-semibold italic font-[Georgia,'Times_New_Roman',Times,serif]">
                   From the mountains of Nepal to Marin County, thank you for being part of our journey. We are grateful to welcome you to our table and share a taste of home with you.
                 </p>
               </div>
@@ -249,7 +249,7 @@ const About = () => {
                   <span className="relative z-10 text-lg font-[Georgia,'Times_New_Roman',Times,serif]">
                     Call (415) 526-3161
                   </span>
-                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 skew-x-12"></div>
                 </a>
 
                 <a
@@ -343,14 +343,14 @@ const About = () => {
                             <span className="font-bold text-yellow-600 dark:text-yellow-400">
                               Pema Chhiring Sherpa
                             </span>{" "}
-                            <span className=" text-gray-800 ">
+                            <span className=" text-gray-800 dark:text-white ">
                               has successfully scaled the world&apos;s top
                             {" "}
                             mountain an incredible{" "}</span>
                             <span className="font-black text-xl text-yellow-600 dark:text-yellow-400">
                               24 times
                             </span>
-                            <span className=" text-gray-800 ">
+                            <span className=" text-gray-800 dark:text-white ">
                             , making him one of the most accomplished climbers
                             in history.</span>
                           </p>
@@ -367,7 +367,7 @@ const About = () => {
                         <div className="text-xl md:text-2xl font-black text-yellow-600 dark:text-yellow-400">
                           8,848m
                         </div>
-                        <div className="text-[10px] uppercase tracking-wider opacity-90 text-gray-800 dark:text-gray-800">
+                        <div className="text-[10px] uppercase tracking-wider opacity-90 text-gray-800 dark:text-gray-100">
                           Elevation
                         </div>
                       </div>
@@ -375,7 +375,7 @@ const About = () => {
                         <div className="text-xl md:text-2xl font-black text-yellow-600 dark:text-yellow-400">
                           24th
                         </div>
-                        <div className="text-[10px] uppercase tracking-wider opacity-90 text-gray-800 dark:text-gray-800">
+                        <div className="text-[10px] uppercase tracking-wider opacity-90 text-gray-800 dark:text-gray-100">
                           Summit
                         </div>
                       </div>
@@ -383,7 +383,7 @@ const About = () => {
                         <div className="text-xl md:text-2xl font-black text-yellow-600 dark:text-yellow-400">
                           2024
                         </div>
-                        <div className="text-[10px] uppercase tracking-wider opacity-90 text-gray-800 dark:text-gray-800">
+                        <div className="text-[10px] uppercase tracking-wider opacity-90 text-gray-800 dark:text-gray-100">
                           Year
                         </div>
                       </div>
@@ -391,7 +391,7 @@ const About = () => {
                         <div className="text-xl md:text-2xl font-black text-yellow-600 dark:text-yellow-400">
                           🏔️
                         </div>
-                        <div className="text-[10px] uppercase tracking-wider opacity-90 text-gray-800 dark:text-gray-800">
+                        <div className="text-[10px] uppercase tracking-wider opacity-90 text-gray-800 dark:text-gray-100">
                           Legend
                         </div>
                       </div>

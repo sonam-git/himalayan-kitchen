@@ -90,7 +90,7 @@ export default function AnnouncementModal() {
             We’re delighted to have you here. Enjoy authentic Himalayan flavors, heartfelt hospitality, and traditions passed down through generations. <br></br>Thank you for visiting us—your culinary adventure begins now!
           </p>
           <button
-            className="px-6 py-2 rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 text-white font-bold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 text-base sm:text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
+            className="px-6 py-2 rounded-full bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white font-bold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 text-base sm:text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
             onClick={() => setOpen(false)}
             aria-label="Close welcome message"
             type="button"

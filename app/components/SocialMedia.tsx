@@ -12,8 +12,8 @@ const SocialMedia = () => {
               <circle cx="12" cy="12" r="3.5" />
             </svg>
           </div>
-          <h2 id="social-heading" className="text-4xl md:text-5xl font-bold text-transparent bg-linear-to-r from-blue-600 via-pink-500 to-orange-500 bg-clip-text mb-4" tabIndex={0}>Follow Us On Social Media</h2>
-          <p className="text-lg text-gray-100 dark:text-gray-50 max-w-2xl mx-auto mb-8 font-[Georgia,'Times_New_Roman',Times,serif]">Stay connected and see our latest updates, events, and delicious food photos from Facebook and Instagram.</p>
+          <h2 id="social-heading" className="text-4xl md:text-5xl font-bold text-transparent bg-gradient-to-r from-blue-600 via-pink-500 to-orange-500 dark:from-blue-400 dark:via-pink-400 dark:to-orange-400 bg-clip-text mb-4" tabIndex={0}>Follow Us On Social Media</h2>
+          <p className="text-lg text-gray-800 dark:text-gray-200 max-w-2xl mx-auto mb-8 font-[Georgia,'Times_New_Roman',Times,serif]">Stay connected and see our latest updates, events, and delicious food photos from Facebook and Instagram.</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8" role="list" aria-label="Social media feeds">
           {/* Facebook Feed Embed */}
