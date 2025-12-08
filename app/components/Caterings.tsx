@@ -115,7 +115,7 @@ const Caterings = () => {
                 name="fullName"
                 required
                 aria-label="Full Name"
-                placeholder="first and last name"
+                placeholder="First and Last name"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
                 value={form.fullName}
                 onChange={handleChange}
@@ -225,7 +225,7 @@ const Caterings = () => {
                 rows={2}
                 value={form.order}
                 onChange={handleChange}
-                placeholder="List menu items, quantities, or any requests..."
+                placeholder="List menu items you want to have, we will get back to you with options."
               ></textarea>
             </div>
             <div>

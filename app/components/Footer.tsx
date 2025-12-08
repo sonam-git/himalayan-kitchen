@@ -82,7 +82,7 @@ const Footer = () => {
           {/* Restaurant Info & Social - order 3 on mobile, col 1 row 1-2 on large */}
           <div className="flex flex-col items-start justify-between h-full order-3 lg:order-none lg:col-start-1 lg:row-span-2">
             {/* Logo above heading using Next.js Image */}
-            <Image src="/images/hk-logo.jpg" alt="Himalayan Kitchen Logo" width={96} height={96} className="mb-4" />
+            <Image src="/images/himalayan-kitchen-logo.png" alt="Himalayan Kitchen Logo" width={96} height={96} className="mb-4 " />
             <h3 className="text-2xl font-bold mb-2 text-gray-800 dark:text-white" tabIndex={0}>HIMALAYAN KITCHEN MARIN</h3>
             <h3 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white" tabIndex={0}>
               हिमालयन किचन  |  ཧི་མ་ལ་ཡན་ཀི་ཇན།
