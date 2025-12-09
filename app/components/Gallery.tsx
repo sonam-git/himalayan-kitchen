@@ -499,7 +499,6 @@ const Gallery = () => {
             aria-modal="true"
             aria-labelledby="gallery-modal-title"
             className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
-            onClick={closeMainModal}
             onKeyDown={handleModalKeyDown}
           >
             <div
@@ -512,9 +511,8 @@ const Gallery = () => {
               <Image
                 src={galleryItems[mainModalIndex].image}
                 alt={galleryItems[mainModalIndex].title}
-                width={1200}
-                height={800}
-                style={{ width: 'auto', height: 'auto' }}
+                width={600}
+                height={400}
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
                 priority
               />
@@ -599,23 +597,23 @@ const Gallery = () => {
                   key={idx}
                   className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-500 min-w-[80vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl"
                 >
-                  <button
-                    className="w-full h-full focus:outline-none"
-                    onClick={() => openFoodModal(idx)}
-                    aria-label={`View full ${item.title}`}
-                    style={{ position: "absolute", inset: 0, zIndex: 2 }}
-                  ></button>
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={600}
-                    height={400}
-                    style={{ width: 'auto', height: 'auto' }}
-                    className="object-contain w-full h-64 group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
-                    priority={idx < 3}
-                  />
-                  <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
-                    <h3 className="text-lg font-bold mb-1">{item.title}</h3>
+                  <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800">
+                    <button
+                      className="w-full h-full focus:outline-none"
+                      onClick={() => openFoodModal(idx)}
+                      aria-label={`View full ${item.title}`}
+                      style={{ position: "absolute", inset: 0, zIndex: 2 }}
+                    ></button>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
+                      priority={idx < 3}
+                    />
+                    <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
+                      <h3 className="text-lg font-bold mb-1">{item.title}</h3>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -672,11 +670,10 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg transition-all duration-300"
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-modal-title"
-            onClick={closeFoodModal}
           >
             <div
               className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
@@ -690,8 +687,7 @@ const Gallery = () => {
                 alt={foodGalleryItems[foodModalIndex].title}
                 width={600}
                 height={400}
-                style={{ width: 'auto', height: 'auto' }}
-                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-cover z-10"
+                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
                 priority
               />
               {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
