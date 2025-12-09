@@ -19,7 +19,7 @@ const MenuHeading: React.FC = () => (
           </span>
           <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6">
+    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6" id="customer-favorites-heading">
        Customer Favorites
     </h2>
     <p className="text-md sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-900 dark:text-white">

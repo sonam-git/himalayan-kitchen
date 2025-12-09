@@ -41,7 +41,6 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
   const wrapperProps = isButton
     ? {
         type: 'button' as const,
-        role: 'button',
         tabIndex: 0,
         onClick,
         onKeyDown: handleKeyDown,

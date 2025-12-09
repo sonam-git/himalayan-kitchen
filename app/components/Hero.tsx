@@ -153,7 +153,7 @@ const Hero = () => {
                   "noopener,noreferrer"
                 )
               }
-              className="bg-yellow-600 hover:bg-white text-white hover:text-black border-2 border-white hover:border-yellow-500 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 shadow-xl cursor-pointer"
+              className="bg-yellow-600 hover:bg-white text-white hover:text-gray-900 border-2 border-white hover:border-yellow-500 font-bold py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-10 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 flex items-center justify-center gap-2 sm:gap-3 shadow-xl cursor-pointer"
               aria-label="Order food online for delivery or pickup"
             >
               <svg
