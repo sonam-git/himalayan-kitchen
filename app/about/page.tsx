@@ -1,6 +1,7 @@
 import About from '../components/About';
 import AwardsMedia from '../components/AwardsMedia';
 import { Metadata } from 'next';
+import Services from '../components/Services';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -11,5 +12,6 @@ export default function AboutPage() {
   return <div className=" mt-25 lg:mt-0">
     <About />
     <AwardsMedia />
+    <Services />
     </div>;
 }

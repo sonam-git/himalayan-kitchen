@@ -123,7 +123,7 @@ const Caterings = () => {
         <div className="absolute top-1/4 -right-48 w-96 h-96 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl"></div>
       </div>
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 items-center z-10">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 items-center z-10 ">
         {/* Section Header Styled Like Services */}
         <div className="text-center mb-10">
              <div className="flex items-center justify-center gap-4 mb-6">
@@ -155,7 +155,7 @@ const Caterings = () => {
           </div>
         </div>
         {/* Form - Second Row, Full Width */}
-        <form className="w-full bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border border-gray-600 dark:border-gray-400" onSubmit={handleSubmit} role="form" aria-describedby="catering-form-desc">
+        <form className="w-full bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg border border-gray-600 dark:border-gray-400 mb-4" onSubmit={handleSubmit} role="form" aria-describedby="catering-form-desc">
           <h2 className="text-xl font-bold sm:text-xl mb-6 text-gray-900 dark:text-white text-center">Catering Inquiry Form</h2>
           <div id="catering-form-desc" className="sr-only">Catering inquiry form for Himalayan Kitchen. All fields are required unless marked optional.</div>
           <div className="space-y-6">

@@ -332,6 +332,7 @@ const Gallery = () => {
   }
 
   return (
+    <>
     <section
       aria-labelledby="gallery-heading"
       ref={sectionRef}
@@ -490,6 +491,8 @@ const Gallery = () => {
             </div>
           </div>
         </div>
+      </div>
+    </section>
         {/* Main Gallery Modal */}
         {mainModalOpen && (
           <div
@@ -498,7 +501,7 @@ const Gallery = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="gallery-modal-title"
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
+            className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
             onKeyDown={handleModalKeyDown}
           >
             <div
@@ -670,7 +673,7 @@ const Gallery = () => {
         {/* Food Modal */}
         {foodModalOpen && (
           <div
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg transition-all duration-300"
+            className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg transition-all duration-300"
             role="dialog"
             aria-modal="true"
             aria-labelledby="food-modal-title"
@@ -749,8 +752,7 @@ const Gallery = () => {
             </div>
           </div>
         )}
-      </div>
-    </section>
+    </>
   );
 };
 
