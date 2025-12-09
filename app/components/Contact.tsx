@@ -204,16 +204,16 @@ const Contact = () => {
                     </h3>
                     <div className="flex flex-col items-center gap-2 w-full">
                       <span className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
-                        <svg className="w-4 h-4 text-yellow-200" fill="currentColor" viewBox="0 0 24 24"><path d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm0 0c-4.418 0-8 3.582-8 8a8 8 0 0016 0c0-4.418-3.582-8-8-8z" /></svg>
-                        227 3rd St, San Rafael, CA 94901
+                        <svg className="w-4 h-4 text-yellow-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm0 0c-4.418 0-8 3.582-8 8a8 8 0 0016 0c0-4.418-3.582-8-8-8z" /></svg>
+                        <span aria-label="Address: 227 3rd Street, San Rafael, California 94901">227 3rd St, San Rafael, CA 94901</span>
                       </span>
                       <span className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
-                        <svg className="w-4 h-4 text-yellow-200" fill="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                        <a href="tel:(415) 526-3161" className="hover:text-yellow-200 transition-colors">(415) 526-3161</a>
+                        <svg className="w-4 h-4 text-yellow-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                        <a href="tel:+14155263161" className="hover:text-yellow-200 transition-colors" aria-label="Call us at (415) 526-3161">(415) 526-3161</a>
                       </span>
                       <span className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white">
-                        <svg className="w-4 h-4 text-yellow-200" fill="currentColor" viewBox="0 0 24 24"><path d="M16 12v1m0 4v1m-8-5v1m0 4v1m8-10V5a2 2 0 00-2-2H8a2 2 0 00-2 2v2m12 0V5a2 2 0 00-2-2H8a2 2 0 00-2 2v2m12 0V5a2 2 0 00-2-2H8a2 2 0 00-2 2v2" /></svg>
-                        <a href="mailto:himalayankitchenmarin@gmail.com" className="hover:text-yellow-200 transition-colors">himalayankitchenmarin@gmail.com</a>
+                        <svg className="w-4 h-4 text-yellow-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        <a href="mailto:himalayankitchenmarin@gmail.com" className="hover:text-yellow-200 transition-colors break-all" aria-label="Email us at himalayankitchenmarin@gmail.com">himalayankitchenmarin@gmail.com</a>
                       </span>
                     </div>
                   </div>

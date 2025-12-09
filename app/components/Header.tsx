@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50">
+      <header className="fixed top-0 left-0 right-0 z-50" role="banner">
         <div className="w-full bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
           <div className="max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
             <div className="flex items-center justify-between h-24 md:h-28 lg:h-32 py-4 md:py-5 lg:py-6">

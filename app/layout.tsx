@@ -135,10 +135,10 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${playfairDisplay.variable} ${dancingScript.variable} font-sans antialiased overflow-x-hidden `}>
         {/* Full-page blurred background image */}
-        <div className="fixed inset-0 min-h-screen h-screen w-screen -z-10 mt-0">
+        <div className="fixed inset-0 min-h-screen h-screen w-screen -z-10 mt-0" aria-hidden="true">
           <Image
             src="/images/other/TashiTagye.jpg"
-            alt="Page Backdrop"
+            alt=""
             fill
             className="cover w-full h-full scale-105"
             priority
@@ -153,7 +153,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           <ScrollToTop />
-          <main className="pt-32 md:pt-36 lg:pt-44 xl:pt-48 py-0 sm:py-0 lg:py-28 lg:mt-0">{children}</main>
+          <main id="main-content" className="pt-32 md:pt-36 lg:pt-44 xl:pt-48 py-0 sm:py-0 lg:py-28 lg:mt-0">{children}</main>
           <Footer />
           <div className="md:hidden">
             <MobileBottomBar />

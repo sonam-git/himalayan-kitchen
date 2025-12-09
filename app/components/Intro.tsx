@@ -27,14 +27,15 @@ export default function Intro() {
   return (
     <section
       ref={sectionRef}
+      aria-labelledby="intro-heading"
       className="relative flex flex-col items-center justify-center min-h-40 max-w-7xl mx-auto my-4 px-0 py-0 overflow-hidden bg-white/10 dark:bg-black/30 rounded-2xl shadow-[0_8px_32px_0_rgba(180,83,9,0.3),0_0_0_8px_rgba(202,138,4,0.15)] dark:shadow-[0_8px_32px_0_rgba(251,191,36,0.2),0_0_0_8px_rgba(251,191,36,0.08)] drop-shadow-[0_0_32px_rgba(180,83,9,0.25)] dark:drop-shadow-[0_0_32px_rgba(251,191,36,0.2)] border border-yellow-300/40 dark:border-yellow-200/30 backdrop-blur-md backdrop-saturate-150"
       style={{ background: 'none' }}
     >
       {/* Full background image with dark overlay */}
-      <div className="absolute inset-0 w-full h-full z-0 max-w-7xl rounded-2xl">
+      <div className="absolute inset-0 w-full h-full z-0 max-w-7xl rounded-2xl" aria-hidden="true">
         <Image
           src="/images/gallery/dining1.jpeg"
-          alt="Himalayan Kitchen Restaurant Interior"
+          alt=""
           fill
           className="object-fill sm:cover object-center w-full h-full rounded-2xl"
           priority
@@ -48,7 +49,7 @@ export default function Intro() {
           {/* Header */}
           <div className="w-full flex flex-col items-center justify-center px-4 py-2">
             <div className="bg-black/40  backdrop-blur-md rounded-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 ">
-              <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-yellow-100 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center">
+              <h2 id="intro-heading" className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-yellow-100 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center">
                 Welcome to Himalayan Kitchen 
               </h2>
             </div>

@@ -253,7 +253,7 @@ const About = () => {
                   href="https://www.google.com/maps/search/227%203rd%20St,%20San%20Rafael,%20CA%2094901"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center border-3 border-yellow-400 dark:border-yellow-500 hover:border-yellow-500 dark:hover:border-yellow-400 bg-white dark:bg-gray-800 hover:bg-yellow-50 dark:hover:bg-gray-700 text-yellow-700 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-300 font-bold py-2 px-4 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                  className="group relative inline-flex items-center justify-center border-3 border-yellow-400 dark:border-yellow-800 hover:border-yellow-500 dark:hover:border-yellow-400 bg-white dark:bg-gray-700 hover:bg-yellow-50 dark:hover:bg-gray-700 text-yellow-700 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-300 font-bold py-2 px-4 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
                 >
                   <svg
                     className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform duration-300"
@@ -278,6 +278,7 @@ const About = () => {
                 </a>
               </div>
             </div>
+            <div className="block sm:hidden border-t-2 border-gray-400 dark:border-gray-600"></div>
             <div
               className={`relative transform transition-all duration-1000 delay-700 ${
                 isVisible
@@ -291,7 +292,7 @@ const About = () => {
                     src="/images/gallery/everest.JPG"
                     alt="Mt. Everest - World's Highest Peak"
                     fill
-                    className="object-contain bg-white dark:bg-gray-900 shadow-[0_8px_32px_0_rgba(255,255,255,0.25)] "
+                    className="object-cover bg-white dark:bg-gray-900 shadow-[0_8px_32px_0_rgba(255,255,255,0.25)] "
                     priority
                   />
                 </div>

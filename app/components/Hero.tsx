@@ -46,13 +46,6 @@ const Hero = () => {
         Himalayan Kitchen Marin - Authentic Sherpa Restaurant in San Rafael,
         California | Indian Nepalese & Tibetan Cuisine
       </h1>
-      {/* Skip to menu anchor for accessibility */}
-      <a
-        href="#menu"
-        className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-yellow-200 text-black px-4 py-2 rounded shadow-lg"
-      >
-        Skip to Menu
-      </a>
       {/* Mobile: stacked, Desktop: overlay */}
       <div className="flex flex-col w-full gap-0">
         {/* Video Section */}
@@ -68,7 +61,7 @@ const Hero = () => {
             <div className="absolute inset-0 w-full h-full rounded-none xl:rounded-[3rem] overflow-hidden">
               <Image
                 src="/images/food/food.jpg"
-                alt="Himalayan Kitchen Restaurant - Delicious Himalayan Cuisine"
+                alt="Delicious Himalayan cuisine served at Himalayan Kitchen Restaurant"
                 fill
                 className="object-cover rotate-90 scale-150"
                 priority
@@ -135,10 +128,12 @@ const Hero = () => {
               />
               <h2
                 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-extrabold text-gray-600 dark:text-white xl:text-white text-center drop-shadow-2xl leading-tight"
+                aria-label="Taste From The Himalayas"
               >
                 Taste From The
                 <span
                   className="block text-yellow-700 dark:text-[#efc335] xl:text-[#efc335] tracking-wide text-[1.25em] md:text-[1.28em] uppercase font-bold"
+                  aria-hidden="true"
                 >
                   HIMALAYAS
                 </span>
