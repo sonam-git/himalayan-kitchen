@@ -86,7 +86,7 @@ const Header = () => {
                                 href="https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-red-600 hover:text-white dark:hover:bg-red-800 rounded-t-xl focus:outline-none focus:bg-red-100 dark:focus:bg-red-700 transition-colors duration-200"
+                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:no-underline hover:bg-red-600 hover:text-white dark:hover:bg-red-800 rounded-t-xl focus:outline-none focus:bg-red-100 dark:focus:bg-red-700 transition-colors duration-200"
                                 tabIndex={0}
                                 aria-label="Order Online (opens in new tab)"
                                 onMouseDown={e => e.preventDefault()}
@@ -96,7 +96,7 @@ const Header = () => {
                                 href="https://order.toasttab.com/egiftcards/himalayan-kitchen-227-3rd-st"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:bg-green-600 hover:text-white dark:hover:bg-green-900 rounded-b-xl focus:outline-none focus:bg-green-100 dark:focus:bg-green-800 transition-colors duration-200"
+                                className="px-4 py-3 text-base font-semibold text-gray-800 dark:text-white hover:no-underline hover:bg-green-600 hover:text-white dark:hover:bg-green-900 rounded-b-xl focus:outline-none focus:bg-green-100 dark:focus:bg-green-800 transition-colors duration-200"
                                 tabIndex={0}
                                 aria-label="Buy Gift Card (opens in new tab)"
                                 onMouseDown={e => e.preventDefault()}
@@ -108,7 +108,8 @@ const Header = () => {
                       );
                     }
                     return (
-                      <Link key={id} href={href} className="no-underline">
+                      // Menu items and links
+                      <Link key={id} href={href} className="hover:no-underline">
                         <span
                           className={`group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 ${
                             isActive(href)
