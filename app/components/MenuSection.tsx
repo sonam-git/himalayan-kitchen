@@ -264,7 +264,8 @@ const MenuSection = () => {
               alt={featuredDishes[selectedIndex].name}
               width={600}
               height={400}
-              className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
+              className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto object-contain z-10"
+              style={{ maxHeight: '500px' }}
               priority
             />
             {/* Title & description overlay at bottom, styled like Gallery, delayed show and auto-hide */}

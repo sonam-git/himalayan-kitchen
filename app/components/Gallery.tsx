@@ -52,7 +52,7 @@ const Gallery = () => {
       image: "/images/gallery/appa.jpeg",
       title: "Appa Sherpa (Middle) | Ang D Sherpa (Left) | Tamding Sherpa (2nd from left)",
       description:
-        "Legendary mountaineer Appa Sherpa along with another two renowned mountaineers visiting our restaurant. Ang D Sherpa with most sibling to have summited Mt K2 and Mt Makalu respectively.",
+        "Legendary mountaineer Appa Sherpa along with another two renowned mountaineers visiting our restaurant. Ang D Sherpa with most sibling to have summited Mt K2 and Mt Makalu respectively.Tamding Sherpa is known for 14 8000m peaks summited around the world.",
     },
     {
       image: "/images/gallery/hkitchen.jpg",
@@ -455,7 +455,7 @@ const Gallery = () => {
                 </svg>
               </button>
               <span className="text-sm text-gray-800 dark:text-gray-100 text-center font-semibold tracking-wide">
-                |Discover more images by sliding |
+                | Discover more images by sliding |
               </span>
               <button
                 className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
@@ -516,7 +516,8 @@ const Gallery = () => {
                 alt={galleryItems[mainModalIndex].title}
                 width={600}
                 height={400}
-                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
+                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto object-contain z-10"
+                style={{ maxHeight: '500px' }}
                 priority
               />
               {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
@@ -612,6 +613,7 @@ const Gallery = () => {
                       alt={item.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
+                      sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, (max-width: 1280px) 32vw, 28vw"
                       priority={idx < 3}
                     />
                     <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
@@ -690,7 +692,8 @@ const Gallery = () => {
                 alt={foodGalleryItems[foodModalIndex].title}
                 width={600}
                 height={400}
-                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
+                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto object-contain z-10"
+                style={{ maxHeight: '500px' }}
                 priority
               />
               {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
