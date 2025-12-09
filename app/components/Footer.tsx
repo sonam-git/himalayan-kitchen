@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="rounded-2xl relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-400 to-orange-800 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-lg border border-orange-200/40 dark:border-orange-500/30 p-8">
               {/* Background image with blur */}
               <div className="absolute inset-0 w-full h-full z-0">
-                <Image src="/images/other/stone.webp" alt="Stone background" fill priority className="w-full h-full object-cover blur-sm opacity-60" />
+                <Image src="/images/other/stone.webp" alt="Stone background" fill sizes="(max-width: 1024px) 100vw, 50vw" priority className="w-full h-full object-cover blur-sm opacity-60" />
                 <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
               </div>
               <div className="relative ">
@@ -44,7 +44,7 @@ const Footer = () => {
             <div className="rounded-2xl relative overflow-hidden bg-gradient-to-br from-yellow-400 via-orange-200 to-red-300 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 shadow-lg border border-yellow-200/40 dark:border-orange-500/30 p-8">
               {/* Background image with blur */}
               <div className="absolute inset-0 w-full h-full z-0">
-                <Image src="/images/other/stone.webp" alt="Stone background" fill priority className="w-full h-full object-cover blur-sm opacity-60" />
+                <Image src="/images/other/stone.webp" alt="Stone background" fill sizes="(max-width: 1024px) 100vw, 50vw" priority className="w-full h-full object-cover blur-sm opacity-60" />
                 <div className="absolute inset-0 bg-black/40 dark:bg-black/60 mix-blend-multiply rounded-2xl"></div>
               </div>
               <div className="relative ">
@@ -179,9 +179,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-800 dark:border-gray-500 mt-8 pt-8 text-center">
+        <div className="border-t border-gray-800 dark:border-gray-500 mt-8 pt-8 pb-20 xl:pb-8 text-center">
           <p className="text-gray-800 dark:text-gray-400 text-sm font-serif">
-            | &copy; {new Date().getFullYear()} Himalayan Kitchen, San Rafael, CA | All rights reserved |
+            | &copy; {new Date().getFullYear()} Himalayan Kitchen Marin, San Rafael, CA | All rights reserved |
           </p>
         </div>
       </div>

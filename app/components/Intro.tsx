@@ -50,7 +50,7 @@ export default function Intro() {
           <div className="w-full flex flex-col items-center justify-center px-4 py-2">
             <div className="bg-black/40  backdrop-blur-md rounded-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 ">
               <h2 id="intro-heading" className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-yellow-100 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center">
-                Welcome to Himalayan Kitchen 
+                Welcome to Himalayan Kitchen Marin
               </h2>
             </div>
           </div>
@@ -73,6 +73,7 @@ export default function Intro() {
                       src="/images/other/namasteBoy.png"
                       alt="Sherpa boy welcoming you to our restaurant"
                       fill
+                      sizes="(max-width: 1024px) 50vw, 33vw"
                       className="object-contain"
                       priority
                     />
@@ -88,6 +89,7 @@ export default function Intro() {
                       src="/images/other/namasteGirl.png"
                       alt="Sherpa girl welcoming you to our restaurant"
                       fill
+                      sizes="(max-width: 1024px) 50vw, 33vw"
                       className="object-contain"
                       priority
                     />
@@ -104,6 +106,7 @@ export default function Intro() {
                     src="/images/other/namasteBoy.png"
                     alt="Sherpa boy welcoming you to our restaurant"
                     fill
+                    sizes="(max-width: 1024px) 50vw, 33vw"
                     className="object-contain"
                     priority
                   />
@@ -134,7 +137,7 @@ export default function Intro() {
                 {/* Our Story Button with warm styling */}
                 <Link
                   href="/about"
-                  className="group relative inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 lg:px-6 lg:py-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 dark:from-yellow-600 dark:to-orange-600 dark:hover:from-yellow-700 dark:hover:to-orange-700 text-white font-bold shadow-[0_4px_16px_rgba(251,146,60,0.4)] sm:shadow-[0_6px_20px_rgba(251,146,60,0.4)] hover:shadow-[0_8px_24px_rgba(251,146,60,0.6)] hover:scale-105 transition-all duration-300 text-xs sm:text-sm lg:text-base focus:outline-none focus-visible:ring-2 sm:focus-visible:ring-4 focus-visible:ring-yellow-400/50"
+                  className="group relative hover:no-underline inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 lg:px-6 lg:py-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 dark:from-yellow-600 dark:to-orange-600 dark:hover:from-yellow-700 dark:hover:to-orange-700 text-white font-bold shadow-[0_4px_16px_rgba(251,146,60,0.4)] sm:shadow-[0_6px_20px_rgba(251,146,60,0.4)] hover:shadow-[0_8px_24px_rgba(251,146,60,0.6)] hover:scale-105 transition-all duration-300 text-xs sm:text-sm lg:text-base focus:outline-none focus-visible:ring-2 sm:focus-visible:ring-4 focus-visible:ring-yellow-400/50 "
                   aria-label="Read our story on the About page"
                 >
                   <span className="relative z-10 flex items-center gap-1 sm:gap-1.5">
@@ -179,6 +182,7 @@ export default function Intro() {
                     src="/images/other/namasteGirl.png"
                     alt="Sherpa girl welcoming you to our restaurant"
                     fill
+                    sizes="(max-width: 1024px) 50vw, 33vw"
                     className="object-contain"
                     priority
                   />

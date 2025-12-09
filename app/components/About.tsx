@@ -108,6 +108,7 @@ const About = () => {
                     src="/images/other/namasteBoy.png"
                     alt="Boy greeting with Namaste"
                     fill
+                    sizes="(max-width: 640px) 4rem, (max-width: 768px) 8rem, (max-width: 1024px) 10rem, 12rem"
                     className="object-contain object-bottom"
                   />
                 </div>
@@ -120,6 +121,7 @@ const About = () => {
                     src="/images/other/namasteGirl.png"
                     alt="Girl greeting with Namaste"
                     fill
+                    sizes="(max-width: 640px) 4rem, (max-width: 768px) 8rem, (max-width: 1024px) 10rem, 12rem"
                     className="object-contain object-bottom"
                   />
                 </div>

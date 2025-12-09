@@ -514,6 +514,7 @@ const Gallery = () => {
                 alt={galleryItems[mainModalIndex].title}
                 width={1200}
                 height={800}
+                style={{ width: 'auto', height: 'auto' }}
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
                 priority
               />
@@ -607,9 +608,10 @@ const Gallery = () => {
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={500}
-                    height={350}
-                    className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
+                    width={600}
+                    height={400}
+                    style={{ width: 'auto', height: 'auto' }}
+                    className="object-contain w-full h-64 group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
                     priority={idx < 3}
                   />
                   <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
@@ -688,7 +690,8 @@ const Gallery = () => {
                 alt={foodGalleryItems[foodModalIndex].title}
                 width={600}
                 height={400}
-                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-contain z-10"
+                style={{ width: 'auto', height: 'auto' }}
+                className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-[400px] sm:h-[500px] object-cover z-10"
                 priority
               />
               {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
