@@ -182,7 +182,7 @@ const Gallery = () => {
     },
     {
       image: "/images/food/thaliset.jpg",
-      title: "Thali Set",
+      title: "Lunch Special",
       description:
         "A complete meal platter featuring a variety of dishes, including rice, lentils, vegetables, and pickles.",
     },
