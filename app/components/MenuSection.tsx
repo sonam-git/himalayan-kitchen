@@ -175,7 +175,7 @@ const MenuSection = () => {
         <div className="mt-4 mb-4">
           <div className="relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-600 dark:border-orange-400/60 bg-white dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
             <div className="relative z-10">
-              <div ref={featuredDishesScrollRef} className="flex gap-6 overflow-x-auto pb-2 px-2 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent featured-dishes-scroll">
+              <div ref={featuredDishesScrollRef} className="flex gap-6 overflow-x-auto pb-2 px-2 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent featured-dishes-scroll focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-400/70" tabIndex={0} role="region" aria-label="Featured dishes carousel">
                 {featuredDishes.map((dish, idx) => (
                   <div key={dish.name} className="min-w-[320px] max-w-sm w-full shrink-0">
                     <div onClick={() => openModal(idx)} className="cursor-zoom-in h-full">

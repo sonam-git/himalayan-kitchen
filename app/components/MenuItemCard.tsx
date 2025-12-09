@@ -104,10 +104,10 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
       <div className="p-5 sm:p-6 lg:p-7 flex flex-col ">
         {/* Header: Name and Price in same row */}
         <div className="flex items-start justify-between gap-3 mb-3">
-          <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300 leading-tight flex-1">
+          <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-black dark:text-white group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors duration-300 leading-tight flex-1">
             {name}
           </h4>
-          <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg shrink-0 flex items-center gap-1" title="Food icon" aria-label="Food icon">
+          <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg shrink-0 flex items-center gap-1" aria-hidden="true">
             {/* Food icon: fork, spoon, and plate SVG */}
             <svg fill="#fff" viewBox="0 -24.48 122.88 122.88" version="1.1" xmlns="http://www.w3.org/2000/svg"  width="22" height="22" aria-hidden="true">
               <g>

@@ -165,11 +165,12 @@ const Reviews = () => {
             {/* Reviews: horizontal scroll on all screens, show 3 at a time on large screens */}
             <div
               ref={reviewsScrollRef}
-              className="flex gap-4 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 font-body"
+              className="flex gap-4 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 font-body focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-400/70"
               role="region"
               aria-live="polite"
               aria-label="Customer reviews carousel"
               style={{ scrollSnapType: 'x mandatory' }}
+              tabIndex={0}
             >
               {reviews.map((review, index) => {
                 // Remove unused expanded/see more logic
@@ -231,7 +232,7 @@ const Reviews = () => {
                       {review.title}
                     </div>
                     <div className="relative flex-1 flex flex-col min-h-0">
-                      <div className="flex-1 min-h-[100px] max-h-32 sm:max-h-36 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed italic font-poppins">
+                      <div className="flex-1 min-h-[100px] max-h-32 sm:max-h-36 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent text-gray-700 dark:text-gray-200 text-sm md:text-base leading-relaxed italic font-poppins focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70 rounded" tabIndex={0} role="region" aria-label={`Full review text by ${review.author}`}>
                           {review.text}
                         </div>
                       </div>

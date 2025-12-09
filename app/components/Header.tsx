@@ -108,7 +108,7 @@ const Header = () => {
                       );
                     }
                     return (
-                      <Link key={id} href={href}>
+                      <Link key={id} href={href} className="no-underline">
                         <span
                           className={`group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 ${
                             isActive(href)
