@@ -454,8 +454,8 @@ const Gallery = () => {
                   />
                 </svg>
               </button>
-             <span className="text-sm text-gray-800 text-center dark:text-gray-100 font-semibold tracking-wide">
-               | Discover more images by sliding |
+              <span className="text-sm text-gray-800 dark:text-gray-100 text-center font-semibold tracking-wide">
+                |Discover more images by sliding |
               </span>
               <button
                 className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
@@ -578,7 +578,7 @@ const Gallery = () => {
           </div>
         )}
         {/* Food Gallery Section */}
-        <div className="mt-8 relative z-20 w-full my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-600 dark:border-orange-400/60 bg-white dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
+        <div className="relative z-20 w-full max-w-7xl mx-auto my-6 sm:my-10 rounded-3xl shadow-2xl border-4 border-yellow-600 dark:border-orange-400/60 bg-white dark:bg-black/60 backdrop-blur-xl px-0.5 sm:px-3 md:px-6 lg:px-8 py-1.5 sm:py-3 before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-br before:from-yellow-200/10 before:via-orange-200/10 before:to-red-200/10 before:blur-2xl before:z-0 overflow-hidden">
           <div className="relative z-10">
             {/* Heading and description for Food Gallery */}
             <div className="mb-4 text-center max-w-2xl mx-auto">

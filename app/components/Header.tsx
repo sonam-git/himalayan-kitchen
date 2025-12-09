@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50" role="banner">
+      <header className="fixed top-0 left-0 right-0 z-50">
         <div className="w-full bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
           <div className="max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
             <div className="flex items-center justify-between h-24 md:h-28 lg:h-32 py-4 md:py-5 lg:py-6">
@@ -50,7 +50,7 @@ const Header = () => {
               </div>
 
               {/* Desktop Navigation */}
-              <nav className="hidden xl:flex items-center justify-center flex-1 px-4 xl:px-8 py-2" aria-label="Primary Navigation" role="navigation">
+              <nav className="hidden xl:flex items-center justify-center flex-1 px-4 xl:px-8 py-2" aria-label="Primary Navigation">
                 <div className="flex items-center gap-6 xl:gap-8 2xl:gap-10 py-1">
                   {[
                     { id: 'home', label: 'Home', href: '/', icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /> },
@@ -70,7 +70,6 @@ const Header = () => {
                             aria-expanded={isMenuDropdownOpen}
                             className="group flex flex-col items-center justify-center px-2 py-2 transition-colors duration-300 text-gray-600 dark:text-white hover:text-red-500 dark:hover:text-red-400 focus:outline-none"
                             tabIndex={0}
-                            role="button"
                             aria-label="Menu and Order options"
                             type="button"
                           >

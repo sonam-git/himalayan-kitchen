@@ -284,7 +284,6 @@ const Reviews = () => {
                       `}
                     style={{ transitionDelay: `${index * 150}ms` }}
                     aria-label={`Review by ${review.author} from ${review.location}. Click to read full review.`}
-                    role="button"
                     tabIndex={0}
                   >
                     {/* Date, stars, and source icon row */}

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Intro from "./components/Intro";
 
@@ -42,8 +41,7 @@ export default function Home() {
     <div className="relative min-h-screen transition-colors duration-300">
       <div className="relative">
         {/* Main content wrapper */}
-        <main id="main-content" className="w-full">
-          <Header />
+        <div className="w-full">
           {/* Hero - Full width, edge to edge */}
           <Hero />
 
@@ -54,7 +52,7 @@ export default function Home() {
             <Reviews />
             <Gallery />
           </div>
-        </main>
+        </div>
         {/* Scroll-to-top button, not visible at top or in hero/home */}
         {showScrollTop && (
           <button
