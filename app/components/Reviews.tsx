@@ -8,6 +8,11 @@ const Reviews = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   // Add ref for horizontal scroll
   const reviewsScrollRef = useRef<HTMLDivElement>(null);
+  // Modal state for book-style review reading
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedReviewIndex, setSelectedReviewIndex] = useState(0);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,6 +41,79 @@ const Reviews = () => {
     if (reviewsScrollRef.current) {
       const scrollAmount = reviewsScrollRef.current.offsetWidth * 0.8;
       reviewsScrollRef.current.scrollBy({ left: dir === 'right' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  // Modal handlers
+  const openModal = (index: number) => {
+    setSelectedReviewIndex(index);
+    setModalOpen(true);
+    setIsExpanded(false); // Reset expansion when opening modal
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setIsExpanded(false);
+  };
+
+  const nextReview = () => {
+    setSelectedReviewIndex((prev) => (prev + 1) % reviews.length);
+    setIsExpanded(false); // Reset expansion when changing review
+  };
+
+  const prevReview = () => {
+    setSelectedReviewIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+    setIsExpanded(false); // Reset expansion when changing review
+  };
+
+  // Focus modal when opened
+  useEffect(() => {
+    if (modalOpen && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [modalOpen]);
+
+  // Keyboard navigation for modal
+  const handleModalKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!modalOpen) return;
+    
+    const focusable = Array.from(
+      (modalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ) ?? []) as HTMLElement[]
+    ).filter(el => !el.hasAttribute('disabled'));
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    switch (e.key) {
+      case 'Escape':
+        e.preventDefault();
+        closeModal();
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        prevReview();
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        nextReview();
+        break;
+      case 'Tab':
+        if (focusable.length === 0) return;
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+        break;
+      default:
+        break;
     }
   };
 
@@ -103,6 +181,7 @@ const Reviews = () => {
   ];
 
   return (
+    <>
     <section
       ref={sectionRef}
       className="relative  transition-colors duration-300 overflow-hidden w-full rounded-2xl sm:rounded-3xl shadow-sm"
@@ -177,6 +256,13 @@ const Reviews = () => {
                 return (
                   <article
                     key={review.id}
+                    onClick={() => openModal(index)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openModal(index);
+                      }
+                    }}
                     className={`group relative flex flex-col justify-between
                       h-[370px] sm:h-[400px] w-full
                       bg-white dark:bg-gray-800
@@ -194,9 +280,12 @@ const Reviews = () => {
                       sm:rounded-2xl rounded-xl
                       sm:mb-0 mb-4
                       min-w-[85vw] max-w-xs snap-center md:min-w-[45vw] md:max-w-md lg:min-w-[32vw] lg:max-w-lg xl:min-w-[28vw] xl:max-w-xl
+                      cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-400/70
                       `}
                     style={{ transitionDelay: `${index * 150}ms` }}
-                    aria-label={`Review by ${review.author} from ${review.location}`}
+                    aria-label={`Review by ${review.author} from ${review.location}. Click to read full review.`}
+                    role="button"
+                    tabIndex={0}
                   >
                     {/* Date, stars, and source icon row */}
                     <div className="flex items-center gap-2 mb-6">
@@ -263,7 +352,9 @@ const Reviews = () => {
                   <path d="M14.5 8l-4 4 4 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </svg>
               </button>
-              <span className="text-xs text-gray-700 dark:text-gray-300 font-semibold tracking-wide">Slide for more</span>
+            <span className="text-sm text-gray-800 text-center dark:text-gray-100 font-semibold tracking-wide">
+               | Discover more reviews by sliding |
+              </span>
               <button
                 className="rounded-full p-2 bg-white/90 dark:bg-gray-800/90 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-300 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"
                 onClick={() => scrollReviews('right')}
@@ -292,6 +383,163 @@ const Reviews = () => {
         ></div>
       </div>
     </section>
+
+    {/* Book-Style Review Reading Modal */}
+    {modalOpen && (
+      <div
+        ref={modalRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="review-modal-title"
+        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/60 backdrop-blur-md focus:outline-none p-2 sm:p-4"
+        onKeyDown={handleModalKeyDown}
+        onClick={closeModal}
+      >
+        <div
+          className="relative w-full max-w-[95vw] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-gray-800 dark:to-gray-900 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden"
+          style={{
+            boxShadow: '0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+            maxHeight: '90vh',
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Book binding spine effect */}
+          <div className="absolute left-0 top-0 bottom-0 w-3 sm:w-6 md:w-8 bg-gradient-to-r from-amber-700 to-amber-600 dark:from-orange-900 dark:to-orange-800 shadow-inner" />
+          <div className="absolute left-3 sm:left-6 md:left-8 top-0 bottom-0 w-0.5 sm:w-0.5 md:w-1 bg-gradient-to-b from-amber-800/50 via-amber-600/30 to-amber-800/50" />
+          
+          {/* Page content with book texture */}
+          <div className="ml-4 sm:ml-8 md:ml-12 p-3 sm:p-6 md:p-8 lg:p-12 relative overflow-y-auto" style={{ maxHeight: '90vh' }}>
+            {/* Page lines texture */}
+            <div className="absolute inset-0 opacity-10 dark:opacity-5 pointer-events-none"
+              style={{
+                backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 31px, #00000015 31px, #00000015 32px)',
+              }}
+            />
+            
+            {/* Content */}
+            <div className="relative z-10">
+              {/* Header with decorative elements */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4 md:mb-6 pb-2 sm:pb-3 md:pb-4 border-b-2 border-amber-200 dark:border-gray-700">
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 md:gap-3 mb-1.5 sm:mb-2">
+                    <div className="flex text-yellow-500 dark:text-yellow-400">
+                      {[...Array(reviews[selectedReviewIndex].rating)].map((_, i) => (
+                        <svg key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 fill-current" viewBox="0 0 24 24">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <span className="flex items-center gap-1 sm:gap-1.5 md:gap-2 text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400">
+                      {reviews[selectedReviewIndex].source === 'yelp' && (
+                        <Image src="/images/logo/yelp.svg" alt="Yelp" width={14} height={14} className="w-3 h-3 sm:w-4 sm:h-4" />
+                      )}
+                      {reviews[selectedReviewIndex].source === 'google' && (
+                        <Image src="/images/logo/google.svg" alt="Google" width={14} height={14} className="w-3 h-3 sm:w-4 sm:h-4" />
+                      )}
+                      <time dateTime={reviews[selectedReviewIndex].date} className="font-serif">
+                        {new Date(reviews[selectedReviewIndex].date).toLocaleDateString('en-US', { 
+                          year: 'numeric', 
+                          month: 'short', 
+                          day: 'numeric' 
+                        })}
+                      </time>
+                    </span>
+                  </div>
+                  <h2 
+                    id="review-modal-title" 
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white font-serif mb-1 sm:mb-2"
+                  >
+                    {reviews[selectedReviewIndex].title}
+                  </h2>
+                </div>
+              </div>
+
+              {/* Review text with book-style typography */}
+              <div className="mb-4 sm:mb-6 md:mb-8">
+                <div className="relative">
+                  <p className={`text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-gray-800 dark:text-gray-200 font-serif italic indent-3 sm:indent-6 md:indent-8 first-letter:text-2xl sm:first-letter:text-3xl md:first-letter:text-4xl lg:first-letter:text-5xl first-letter:font-bold first-letter:text-orange-600 dark:first-letter:text-yellow-500 first-letter:float-left first-letter:mr-1 sm:first-letter:mr-1.5 md:first-letter:mr-2 first-letter:mt-0 sm:first-letter:mt-0.5 md:first-letter:mt-1 ${!isExpanded && reviews[selectedReviewIndex].text.length > 200 ? 'line-clamp-4 sm:line-clamp-5 md:line-clamp-none' : ''}`}>
+                    {reviews[selectedReviewIndex].text}
+                  </p>
+                  {reviews[selectedReviewIndex].text.length > 200 && (
+                    <button
+                      onClick={() => setIsExpanded(!isExpanded)}
+                      className="mt-2 text-xs sm:text-sm font-semibold text-orange-600 dark:text-yellow-500 hover:text-orange-700 dark:hover:text-yellow-400 underline focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded md:hidden"
+                      aria-expanded={isExpanded}
+                    >
+                      {isExpanded ? 'Read Less' : 'Read More'}
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Author info */}
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4 pt-2 sm:pt-3 md:pt-4 border-t-2 border-amber-200 dark:border-gray-700">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500 dark:from-orange-500 dark:to-yellow-500 flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl shadow-lg flex-shrink-0">
+                  {reviews[selectedReviewIndex].author.trim().charAt(0)}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="font-bold text-gray-900 dark:text-white font-serif text-sm sm:text-base md:text-lg truncate">
+                    {reviews[selectedReviewIndex].author}
+                  </div>
+                  <div className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 truncate">
+                    {reviews[selectedReviewIndex].location}
+                  </div>
+                </div>
+              </div>
+
+              {/* Page number indicator */}
+              <div className="mt-3 sm:mt-4 md:mt-6 lg:mt-8 text-center text-[10px] sm:text-xs md:text-sm text-gray-500 dark:text-gray-400 font-serif">
+                Review {selectedReviewIndex + 1} of {reviews.length}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation buttons - right below the modal */}
+        <div className="flex justify-center items-center gap-6 sm:gap-8 md:gap-8 lg:gap-10 mt-3 sm:mt-4 px-2 sm:px-4" onClick={(e) => e.stopPropagation()}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevReview();
+            }}
+            aria-label="Previous review"
+            className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-full p-2 sm:p-3 md:p-4 shadow-2xl hover:scale-110 transition-transform duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400"
+          >
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              closeModal();
+            }}
+            aria-label="Close review"
+            className="bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black text-white rounded-full p-2 sm:p-3 md:p-4 shadow-2xl hover:scale-110 transition-transform duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400"
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextReview();
+            }}
+            aria-label="Next review"
+            className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-full p-2 sm:p-3 md:p-4 shadow-2xl hover:scale-110 transition-transform duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400"
+          >
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 

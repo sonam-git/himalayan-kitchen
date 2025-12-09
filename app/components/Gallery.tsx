@@ -454,8 +454,8 @@ const Gallery = () => {
                   />
                 </svg>
               </button>
-              <span className="text-sm text-gray-100 dark:text-gray-100 font-semibold tracking-wide">
-                Slide for more
+             <span className="text-sm text-gray-800 text-center dark:text-gray-100 font-semibold tracking-wide">
+               | Discover more images by sliding |
               </span>
               <button
                 className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
@@ -642,8 +642,8 @@ const Gallery = () => {
                   />
                 </svg>
               </button>
-              <span className="text-sm text-gray-100 dark:text-gray-100 font-semibold tracking-wide">
-                Slide for more
+              <span className="text-sm text-gray-800 text-center dark:text-gray-100 font-semibold tracking-wide">
+               | Discover more images by sliding |
               </span>
               <button
                 className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40"
