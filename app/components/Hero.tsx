@@ -127,18 +127,20 @@ const Hero = () => {
                 loading="eager"
               />
               <h2
-                className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-extrabold text-gray-600 dark:text-white xl:text-white text-center drop-shadow-2xl leading-tight"
+                className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-extrabold text-gray-600 dark:text-white xl:text-white text-center drop-shadow-2xl leading-tight mx-auto"
                 aria-label="Taste From The Himalayas"
               >
-                Taste From The
+                <span className="block whitespace-nowrap max-w-[280px] xs:max-w-[350px] sm:max-w-[450px] md:max-w-[560px] lg:max-w-[750px] mx-auto">
+                  Taste From The
+                </span>
                 <span
-                  className="block text-yellow-700 dark:text-[#efc335] xl:text-[#efc335] tracking-wide text-[1.25em] md:text-[1.28em] uppercase font-bold"
+                  className="block whitespace-nowrap text-yellow-700 dark:text-[#efc335] xl:text-[#efc335] tracking-wide text-[1.24em] md:text-[1.26em] uppercase font-bold max-w-[280px] xs:max-w-[350px] sm:max-w-[450px] md:max-w-[560px] lg:max-w-[750px] mx-auto"
                   aria-hidden="true"
                 >
                   HIMALAYAS
                 </span>
               </h2>
-              <p className="text-base sm:text-lg md:text-2xl text-gray-800 dark:text-white/90 xl:text-white text-center px-2 font-serif drop-shadow-lg">
+              <p className="text-base sm:text-lg md:text-2xl text-gray-800 dark:text-white/90 xl:text-white text-justify font-serif drop-shadow-lg max-w-[280px] xs:max-w-[350px] sm:max-w-[450px] md:max-w-[560px] lg:max-w-[750px] mx-auto">
                 Sherpa-owned restaurant from Nepal serving authentic Himalayan
                 flavors crafted with passion and tradition in San Rafael,
                 California.
