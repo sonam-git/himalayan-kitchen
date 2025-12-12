@@ -188,7 +188,7 @@ const Header = () => {
           </div>
         </div>
         <div className="w-full">
-          <div className="hidden xl:block w-full">
+          <div className=" w-full">
             <PrayerFlagBorder />
           </div>
           <hr className="block xl:hidden border-t border-white w-full" />
