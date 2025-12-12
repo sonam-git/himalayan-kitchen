@@ -49,6 +49,12 @@ const Gallery = () => {
         "The only person to have summited Mount Everest 31 times holding Guinness World Record visiting our restaurant.",
     },
        {
+      image: "/images/gallery/first-customer.jpeg",
+      title: "First Customer with Nepali Flag",
+      description:
+        "The first customer who have been to Nepal multiple times to dine at Himalayan Kitchen, marking the beginning of our culinary journey at San Rafael.",
+    },
+       {
       image: "/images/gallery/appa.jpeg",
       title: "Appa Sherpa (Middle) | Ang D Sherpa (Left) | Tamding Sherpa (2nd from left)",
       description:
@@ -221,6 +227,30 @@ const Gallery = () => {
       title: "Kukhura Bhanta | chicken eggplant curry",
       description:
         "Aromatic chicken curry cooked with roasted eggplant and spices, served with rice.",
+    },
+       {
+      image: "/images/food/fried-rice.jpeg",
+      title: "Vegetable Fried Rice",
+      description:
+        "Fragrant fried rice stir-fried with mixed vegetables and soy sauce.",
+    },
+    {
+      image: "/images/food/veg-pakoda.jpeg",
+      title: "Vegetable Pakoda",
+      description:
+        "Crispy fritters made with mixed vegetables and chickpea flour, served with mint chutney.",
+    },
+    {
+      image: "/images/food/haluwa.jpeg",
+      title: "Himalayan Haluwa",
+      description:
+        "A sweet and dense dessert made from semolina, ghee, and sugar, flavored with cardamom and nuts.",
+    },
+    {
+      image: "/images/food/himalayan-tea.jpeg",
+      title: "Himalayan Tea",
+      description:
+        "A soothing blend of traditional Himalayan herbs and spices, served hot.",
     }
   ];
 

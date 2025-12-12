@@ -89,6 +89,17 @@ p {
   }
 }
 
+@keyframes slideUpFromBottom {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .animate-shimmer {
   animation: shimmer 2s infinite;
 }
@@ -193,6 +204,74 @@ select:disabled {
     0 0 0 4px rgba(255, 255, 255, 0.1),
     0 10px 50px rgba(0, 0, 0, 0.5);
 }
+
+/* ===== GOOGLE TRANSLATE UI HIDING ===== */
+/* Hide the banner frame at the top */
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+.goog-te-ftab-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Prevent body from being pushed down */
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+body.translated-ltr,
+body.translated-rtl {
+  top: 0px !important;
+  margin-top: 0 !important;
+}
+
+/* Hide the gadget container visually */
+.goog-te-gadget {
+  color: transparent !important;
+  font-size: 0 !important;
+}
+
+.goog-te-gadget span {
+  display: none !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}
+
+/* Hide skiptranslate iframe */
+.skiptranslate iframe {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+/* Keep the select functional but hidden visually */
+.goog-te-combo {
+  position: absolute !important;
+  left: -9999px !important;
+  opacity: 0.01 !important;
+  width: 1px !important;
+  height: 1px !important;
+}
+
+/* Hide top-level iframes from Google Translate */
+body > iframe.skiptranslate {
+  display: none !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Ensure header stays fixed at top */
+header {
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
+/* ===== END GOOGLE TRANSLATE UI HIDING =====
 
 /* TV Scanlines effect */
 .tv-scanlines {

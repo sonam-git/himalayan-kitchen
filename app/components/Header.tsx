@@ -6,6 +6,7 @@ import PrayerFlagBorder from './PrayerFlagBorder';
 import { useTheme } from '../context/ThemeContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import GoogleTranslateClient from './GoogleTranslateClient';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,11 +37,11 @@ const Header = () => {
                     </div>
                     <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500/30 via-orange-500/30 to-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
                   </div>
-                  <div className="flex flex-col justify-center space-y-0.5 pb-1">
+                  <div className="flex flex-col justify-center space-y-0.5 pb-1 notranslate">
                     <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-black bg-gradient-to-r from-red-700 via-red-600 to-red-800 dark:text-yellow-300 bg-clip-text text-transparent leading-[1.05] tracking-[0.055em] md:tracking-[0.058em] lg:tracking-[0.062em] xl:tracking-[0.065em] group-hover:from-red-900 group-hover:via-red-700 group-hover:to-red-900 dark:group-hover:from-red-200 dark:group-hover:via-yellow-300 dark:group-hover:to-orange-300 transition-all duration-700">
                       HIMALAYAN
                     </h1>
-                    <p className=" pb-1 text-lg md:text-xl lg:text-2xl xl:text-3xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-[0.20em] md:tracking-[0.21em] lg:tracking-[0.22em] xl:tracking-[0.26em] font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
+                    <p className="pb-1 text-lg md:text-xl lg:text-2xl xl:text-3xl font-script text-gray-700 dark:text-white -mt-1.5 tracking-[0.20em] md:tracking-[0.21em] lg:tracking-[0.22em] xl:tracking-[0.26em] font-bold group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500">Kitchen Marin</p>
                     <div className="relative">
                       <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium text-gray-600 dark:text-gray-300 -mt-1 tracking-[0.01em] md:tracking-[0.012em] lg:tracking-[0.015em] xl:tracking-[0.018em] opacity-90 group-hover:opacity-100 group-hover:text-red-500 dark:group-hover:text-red-400 transition-all duration-500">ཧི་མ་ལ་ཡོན་གྱི་ཟས་ཁང་ མ་རིན།</p>
                       <div className="w-0 h-0.5 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 group-hover:w-full transition-[width] duration-700 rounded-full mt-0.5"></div>
@@ -135,6 +136,10 @@ const Header = () => {
 
               {/* Right Side Actions */}
               <div className="flex items-center gap-3 md:gap-4 lg:gap-5 xl:gap-6 shrink-0 py-2">
+                {/* Language Selector - Desktop only */}
+                <div className="hidden xl:block">
+                  <GoogleTranslateClient />
+                </div>
                 {/* Theme Toggle - always visible on xl+ */}
                 <button 
                   onClick={toggleTheme} 

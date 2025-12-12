@@ -53,10 +53,11 @@ export default function Home() {
             <Gallery />
           </div>
         </div>
-        {/* Scroll-to-top button, not visible at top or in hero/home */}
+        
+        {/* Scroll-to-top button - Desktop only */}
         {showScrollTop && (
           <button
-            className="fixed right-6 bottom-24 sm:bottom-6 z-50 flex items-center justify-center w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full shadow-lg cursor-pointer hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            className="hidden xl:flex fixed right-6 bottom-6 z-50 items-center justify-center w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full shadow-lg cursor-pointer hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             onClick={handleScrollToTop}
             aria-label="Scroll to top of page"
             type="button"

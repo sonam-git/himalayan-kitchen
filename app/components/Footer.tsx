@@ -84,7 +84,7 @@ const Footer = () => {
             {/* Logo above heading using Next.js Image */}
             <Image src="/images/himalayan-kitchen-logo.png" alt="Himalayan Kitchen Logo" width={96} height={96} className="mb-4 " />
             <h3 className="text-2xl font-bold mb-2 text-gray-800 dark:text-white" tabIndex={0}>HIMALAYAN KITCHEN MARIN</h3>
-            <h3 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white" tabIndex={0}>
+            <h3 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white notranslate" tabIndex={0}>
               हिमालयन किचन  |  ཧི་མ་ལ་ཡན་ཀི་ཇན།
             </h3>
             <p className=" text-gray-800 dark:text-gray-300 mb-6 leading-relaxed font-serif">

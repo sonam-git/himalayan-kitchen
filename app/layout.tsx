@@ -8,6 +8,7 @@ import Image from "next/image";
 import ScrollToTop from './components/ScrollToTop';
 import StructuredData from './components/StructuredData';
 import ThirdPartyScripts from './components/ThirdPartyScripts';
+import GoogleTranslateClient from './components/GoogleTranslateClient';
 import type { Metadata } from 'next';
 
 
@@ -153,6 +154,12 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           <ScrollToTop />
+          
+          {/* Language Selector - Mobile only (visible on all pages) */}
+          <div className="xl:hidden fixed right-6 bottom-24 sm:bottom-6 z-50">
+            <GoogleTranslateClient />
+          </div>
+          
           <main id="main-content" className="pt-32 md:pt-36 lg:pt-44 xl:pt-48 py-0 sm:py-0 lg:py-28 lg:mt-0">{children}</main>
           <Footer />
           <div className="md:hidden">
