@@ -158,9 +158,9 @@ const GoogleTranslateClient = () => {
     <>
       <div className="relative flex items-center">
         <button
-          className="inline-flex items-center justify-center w-12 h-12 xl:w-14 xl:h-14 
+          className="inline-flex items-center justify-center w-10 h-10 xl:w-14 xl:h-14 
           rounded-full xl:rounded-xl 
-          bg-yellow-100 dark:bg-yellow-100 xl:bg-white xl:dark:bg-yellow-100 
+          bg-yellow-100 dark:bg-yellow-400 xl:bg-white xl:dark:bg-yellow-100 
           hover:bg-yellow-200 dark:hover:bg-white xl:hover:bg-blue-300 xl:dark:hover:bg-blue-300 
           border-2 border-gray-700 dark:border-white xl:border-2 xl:border-gray-300 xl:dark:border-white 
           shadow-lg hover:shadow-xl 

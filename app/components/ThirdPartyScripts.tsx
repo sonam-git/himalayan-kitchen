@@ -79,46 +79,47 @@ export default function ThirdPartyScripts() {
                     if (userwayBtn) {
                       clearInterval(checkUserWay);
                       
-                      /* Apply bottom-left positioning */
+                      /* Apply bottom-left positioning - mirrors translate button on right */
                       var style = document.createElement('style');
                       style.id = 'userway-position-styles';
                       style.textContent = 
-                        '/* Force UserWay button to bottom-left on all screens */' +
+                        '/* Force UserWay button to bottom-left - mirrors translate button position */' +
                         '[data-uw-rm-brl="floating"],' +
                         '#userway_p1,' +
                         '.userway_buttons_wrapper {' +
                         '  position: fixed !important;' +
-                        '  bottom: 32px !important;' +
-                        '  left: 48px !important;' +
                         '  right: auto !important;' +
                         '  top: auto !important;' +
-                        '  z-index: 9999 !important;' +
+                        '  z-index: 50 !important;' +
+                        '  margin: 0 !important;' +
+                        '  padding: 0 !important;' +
                         '}' +
-                        '/* Tablet screens */' +
-                        '@media (max-width: 1280px) {' +
+                        '/* Desktop and large screens (xl+) */' +
+                        '@media (min-width: 1280px) {' +
                         '  [data-uw-rm-brl="floating"],' +
                         '  #userway_p1,' +
                         '  .userway_buttons_wrapper {' +
-                        '    bottom: 28px !important;' +
-                        '    left: 40px !important;' +
-                        '  }' +
-                        '}' +
-                        '/* Mobile responsiveness - above bottom navigation bar */' +
-                        '@media (max-width: 1024px) {' +
-                        '  [data-uw-rm-brl="floating"],' +
-                        '  #userway_p1,' +
-                        '  .userway_buttons_wrapper {' +
-                        '    bottom: 100px !important;' +
+                        '    display: block !important;' +
+                        '    bottom: 48px !important;' +
                         '    left: 48px !important;' +
                         '  }' +
                         '}' +
-                        '/* Extra small screens */' +
-                        '@media (max-width: 640px) {' +
+                        '/* Small screens and up (sm+) */' +
+                        '@media (min-width: 640px) and (max-width: 1279px) {' +
                         '  [data-uw-rm-brl="floating"],' +
                         '  #userway_p1,' +
                         '  .userway_buttons_wrapper {' +
-                        '    bottom: 98px !important;' +
-                        '    left: 40px !important;' +
+                        '    bottom: 48px !important;' +
+                        '    left: 48px !important;' +
+                        '  }' +
+                        '}' +
+                        '/* Mobile (below sm) */' +
+                        '@media (max-width: 639px) {' +
+                        '  [data-uw-rm-brl="floating"],' +
+                        '  #userway_p1,' +
+                        '  .userway_buttons_wrapper {' +
+                        '    bottom: 112px !important;' +
+                        '    left: 48px !important;' +
                         '  }' +
                         '}';
                       
