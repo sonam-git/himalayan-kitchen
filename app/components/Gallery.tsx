@@ -50,9 +50,9 @@ const Gallery = () => {
     },
        {
       image: "/images/gallery/first-customer.jpeg",
-      title: "First Customer with Nepali Flag",
+      title: "Customer with Nepali Flag",
       description:
-        "The first customer who have been to Nepal multiple times to dine at Himalayan Kitchen, marking the beginning of our culinary journey at San Rafael.",
+        "Our regular customer who has been to Nepal multiple times to dine at Himalayan Kitchen, showing the love for our cuisine.",
     },
        {
       image: "/images/gallery/appa.jpeg",
@@ -199,7 +199,7 @@ const Gallery = () => {
         "Marinated meat or vegetables cooked in a traditional clay oven, served with naan and chutney.",
     },
     {
-      image: "/images/food/tika masala.jpg",
+      image:  '/images/food/chicken-tikka.jpeg',
       title: "Tika Masala",
       description:
         "Tender pieces of meat cooked in a rich and creamy tomato-based sauce, served with rice or naan.",
@@ -244,7 +244,7 @@ const Gallery = () => {
       image: "/images/food/haluwa.jpeg",
       title: "Himalayan Haluwa",
       description:
-        "A sweet and dense dessert made from semolina, ghee, and sugar, flavored with cardamom and nuts.",
+        "A sweet and dense dessert made from carrot, semolina, ghee, and sugar, flavored with cardamom and nuts.",
     },
     {
       image: "/images/food/himalayan-tea.jpeg",

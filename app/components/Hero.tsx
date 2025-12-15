@@ -108,7 +108,7 @@ const Hero = () => {
             {/* Optimized Video with preload and poster */}
             <video
               ref={videoRef}
-              src="/videos/introMov.mp4"
+              src="/videos/hero.mp4"
               poster="/images/gallery/dining1.jpeg"
               autoPlay
               loop

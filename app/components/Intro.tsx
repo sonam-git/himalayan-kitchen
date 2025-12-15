@@ -48,8 +48,8 @@ export default function Intro() {
         <div className="w-full flex flex-col items-center justify-center">
           {/* Header */}
           <div className="w-full flex flex-col items-center justify-center px-4 py-2">
-            <div className="bg-black/40  backdrop-blur-md rounded-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 ">
-              <h2 id="intro-heading" className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-yellow-100 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center">
+            <div className="bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 ">
+              <h2 id="intro-heading" className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-orange-600 dark:text-yellow-300 font-serif drop-shadow-xl tracking-tight text-center">
                 Welcome to Himalayan Kitchen Marin
               </h2>
             </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 const LANGUAGES = [
   { code: "en", label: "English", flag: "🇺🇸" },
@@ -153,18 +154,29 @@ const GoogleTranslateClient = () => {
     };
   }, [open]);
 
-  const currentFlag =
-    LANGUAGES.find((l) => l.code === currentLang)?.flag || "🌐";
-
   return (
     <>
       <div className="relative flex items-center">
         <button
-          className="inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 border-2 border-gray-300 dark:border-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-yellow-500/50 hover:scale-105 active:scale-95 text-2xl"
+          className="inline-flex items-center justify-center w-12 h-12 xl:w-14 xl:h-14 
+          rounded-full xl:rounded-xl 
+          bg-yellow-100 dark:bg-yellow-100 xl:bg-white xl:dark:bg-yellow-100 
+          hover:bg-yellow-200 dark:hover:bg-white xl:hover:bg-blue-300 xl:dark:hover:bg-blue-300 
+          border-2 border-gray-700 dark:border-white xl:border-2 xl:border-gray-300 xl:dark:border-white 
+          shadow-lg hover:shadow-xl 
+          transition-all duration-300 cursor-pointer 
+          focus:outline-none focus:ring-2 focus:ring-yellow-500/50 
+          hover:scale-105 active:scale-95 p-2 xl:p-3"
           onClick={() => setOpen(!open)}
           aria-label="Change language"
         >
-          {currentFlag}
+          <Image
+            src="/images/logo/translation.png"
+            alt="Translate"
+            width={40}
+            height={40}
+            className="w-full h-full object-contain"
+          />
         </button>
 
         {/* Backdrop overlay for mobile */}
@@ -196,10 +208,10 @@ const GoogleTranslateClient = () => {
               {LANGUAGES.map((lang) => (
                 <li key={lang.code}>
                   <button
-                    className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-red-50 dark:hover:bg-gray-700 transition-colors duration-200 ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors duration-200 ${
                       currentLang === lang.code
                         ? "bg-red-100 dark:bg-gray-700 font-bold text-red-700 dark:text-yellow-300"
-                        : "text-gray-800 dark:text-gray-200"
+                        : "text-gray-800 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-gray-700/50"
                     }`}
                     onClick={() => handleChange(lang.code)}
                   >

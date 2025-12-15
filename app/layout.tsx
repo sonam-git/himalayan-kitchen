@@ -156,7 +156,7 @@ export default function RootLayout({
           <ScrollToTop />
           
           {/* Language Selector - Mobile only (visible on all pages) */}
-          <div className="xl:hidden fixed right-6 bottom-24 sm:bottom-6 z-50">
+          <div className="xl:hidden fixed right-3 bottom-24 sm:bottom-8 z-50">
             <GoogleTranslateClient />
           </div>
           
