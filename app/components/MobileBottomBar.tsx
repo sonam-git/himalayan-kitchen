@@ -3,7 +3,7 @@ const MobileBottomBar = () => {
     <nav
       aria-label="Mobile navigation"
       role="navigation"
-      className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 z-50 md:hidden mobile-bottom-shadow transition-colors duration-300"
+      className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 z-40 md:hidden mobile-bottom-shadow transition-colors duration-300"
     >
       <div className="grid grid-cols-4 gap-1 px-2 py-2">
         {/* Phone */}

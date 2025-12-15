@@ -16,21 +16,21 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: 'swap',
-  preload: true,
+  preload: true, // Used immediately for body text
 });
 
 const playfairDisplay = Playfair_Display({ 
   subsets: ["latin"],
   variable: "--font-playfair",
   display: 'swap',
-  preload: true,
+  preload: false, // Only used in specific components, not immediately
 });
 
 const dancingScript = Dancing_Script({ 
   subsets: ["latin"],
   variable: "--font-dancing",
   display: 'swap',
-  preload: false,
+  preload: false, // Only used in specific components, not immediately
 });
 
 export const metadata: Metadata = {

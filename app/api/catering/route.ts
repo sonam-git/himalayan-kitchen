@@ -118,6 +118,17 @@ function checkRateLimit(identifier: string): boolean {
 
 export async function POST(req: Request) {
   try {
+    // Check if environment variables are set
+    if (!process.env.SENDGRID_API_KEY) {
+      console.error('SENDGRID_API_KEY is not configured');
+      return NextResponse.json({ error: 'Email service is not configured. Please contact the administrator.' }, { status: 500 });
+    }
+    
+    if (!process.env.RESTAURANT_EMAIL) {
+      console.error('RESTAURANT_EMAIL is not configured');
+      return NextResponse.json({ error: 'Email service is not configured. Please contact the administrator.' }, { status: 500 });
+    }
+    
     // Get IP for rate limiting
     const forwarded = req.headers.get('x-forwarded-for');
     const ip = forwarded ? forwarded.split(',')[0] : 'unknown';
@@ -189,6 +200,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Catering form error:', error);
-    return NextResponse.json({ error: 'Unable to process request.' }, { status: 500 });
+    
+    // Provide more specific error messages
+    if (error && typeof error === 'object' && 'code' in error) {
+      const sgError = error as { code?: number; message?: string };
+      if (sgError.code === 401 || sgError.code === 403) {
+        return NextResponse.json({ error: 'Email service authentication failed. Please contact the administrator.' }, { status: 500 });
+      }
+    }
+    
+    return NextResponse.json({ error: 'Unable to send catering request. Please try again later or contact us directly.' }, { status: 500 });
   }
 }

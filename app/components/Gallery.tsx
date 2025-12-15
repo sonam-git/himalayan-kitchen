@@ -548,7 +548,7 @@ const Gallery = () => {
                 height={400}
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto object-contain z-10"
                 style={{ maxHeight: '500px' }}
-                priority
+                loading="eager"
               />
               {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
               {showMainModalText && (
@@ -724,7 +724,7 @@ const Gallery = () => {
                 height={400}
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto object-contain z-10"
                 style={{ maxHeight: '500px' }}
-                priority
+                loading="eager"
               />
               {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
               {showFoodModalText && (
