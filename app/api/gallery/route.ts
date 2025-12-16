@@ -8,12 +8,25 @@ import { fetchMainGallery, fetchFoodGallery, fetchCustomerGallery, fallbackMainG
  */
 export async function GET() {
   try {
+    // Log environment check
+    console.log('🔍 API Route - Checking Storyblok Token:', {
+      tokenExists: !!process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
+      tokenPrefix: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN?.substring(0, 8) + '...',
+      env: process.env.NODE_ENV
+    });
+
     // Fetch all galleries in parallel
     const [mainGalleryData, foodGalleryData, customerGalleryData] = await Promise.all([
       fetchMainGallery(),
       fetchFoodGallery(),
       fetchCustomerGallery(),
     ]);
+
+    console.log('📊 API Route - Fetched Data:', {
+      mainGalleryItems: mainGalleryData.items.length,
+      foodGalleryItems: foodGalleryData.items.length,
+      customerGalleryItems: customerGalleryData.items.length
+    });
 
     // Use Storyblok data if available, otherwise use fallback
     const mainGallery = mainGalleryData.items.length > 0 ? mainGalleryData : { items: fallbackMainGallery };
@@ -34,7 +47,14 @@ export async function GET() {
         },
       }
     );
-  } catch {
+  } catch (error) {
+    // Log the error for debugging
+    console.error('❌ API Route - Error fetching from Storyblok:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined
+    });
+
     // Return fallback data on error
     return NextResponse.json(
       {

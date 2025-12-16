@@ -54,30 +54,48 @@ export async function listStories(): Promise<void> {
  */
 export async function fetchMainGallery(): Promise<GalleryData> {
   try {
+    console.log('🔍 fetchMainGallery - Checking token:', {
+      tokenExists: !!process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
+      tokenLength: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN?.length,
+      tokenPrefix: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN?.substring(0, 8) + '...'
+    });
+
     if (!process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN || 
         process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN === "your_storyblok_token_here") {
+      console.warn('⚠️ fetchMainGallery - No valid token found');
       return { items: [] };
     }
     
     // Try different possible story paths
     const possiblePaths = ["home", "index", "galleries", "gallery"];
     let response = null;
+    let successfulPath = null;
     
     for (const path of possiblePaths) {
       try {
+        console.log(`🔄 Trying path: ${path}`);
         response = await Storyblok.get(`cdn/stories/${path}`, {
           version: "draft",
           cv: Date.now(),
         });
+        successfulPath = path;
+        console.log(`✅ Successfully fetched from path: ${path}`);
         break;
-      } catch {
+      } catch (error) {
+        console.log(`❌ Failed to fetch from path: ${path}`, error instanceof Error ? error.message : error);
         // Continue to next path
       }
     }
     
     if (!response) {
+      console.error('❌ fetchMainGallery - No valid path found');
       return { items: [] };
     }
+
+    console.log(`📦 fetchMainGallery - Response from ${successfulPath}:`, {
+      hasContent: !!response.data?.story?.content,
+      hasBody: !!response.data?.story?.content?.body
+    });
 
     const content = response.data.story.content as StoryblokPageContent;
     
