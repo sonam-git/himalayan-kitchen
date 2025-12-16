@@ -33,10 +33,10 @@ const Gallery = ({ initialMainGallery, initialFoodGallery, initialCustomerGaller
   // Get title and description from Storyblok or use defaults
   const mainTitle = fetchedMainGallery.items.length > 0 && fetchedMainGallery.title 
     ? fetchedMainGallery.title 
-    : "Himalayan Journey Through Images";
+    : "Moments at Our Table";
   const mainDescription = fetchedMainGallery.items.length > 0 && fetchedMainGallery.description 
     ? fetchedMainGallery.description 
-    : "From legendary mountaineers to heartwarming celebrations, discover the unique stories behind the faces that make Himalayan Kitchen special.";
+    : "A visual journey through the cherished memories, beloved guests, and lively atmosphere that make our restaurant special. See how visitors from near and far enjoy their Himalayan dining experience.";
 
   const foodTitle = fetchedFoodGallery.items.length > 0 && fetchedFoodGallery.title 
     ? fetchedFoodGallery.title 
