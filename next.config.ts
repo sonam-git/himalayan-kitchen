@@ -44,9 +44,8 @@ const nextConfig: NextConfig = {
 
   // Compiler optimizations
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production' ? {
-      exclude: ['error', 'warn'],
-    } : false,
+    // Keep console logs for debugging - can be re-enabled later if needed
+    removeConsole: false,
   },
 
   // Performance optimizations
