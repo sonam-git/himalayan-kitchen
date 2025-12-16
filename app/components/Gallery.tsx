@@ -30,6 +30,23 @@ const Gallery = ({ initialMainGallery, initialFoodGallery, initialCustomerGaller
   const foodGallery = fetchedFoodGallery.items.length > 0 ? fetchedFoodGallery.items : (initialFoodGallery || fallbackFoodGallery);
   const customerGallery = fetchedCustomerGallery.items.length > 0 ? fetchedCustomerGallery.items : (initialCustomerGallery || fallbackCustomerGallery);
 
+  // Debug: Log which data source is being used
+  useEffect(() => {
+    console.log('Gallery Data Source:', {
+      mainGallery: fetchedMainGallery.items.length > 0 ? 'Storyblok' : 'Fallback',
+      foodGallery: fetchedFoodGallery.items.length > 0 ? 'Storyblok' : 'Fallback',
+      customerGallery: fetchedCustomerGallery.items.length > 0 ? 'Storyblok' : 'Fallback'
+    });
+  }, [fetchedMainGallery.items.length, fetchedFoodGallery.items.length, fetchedCustomerGallery.items.length]);
+
+  // Log data source for debugging (client-side only)
+  useEffect(() => {
+    console.log('🖼️ Gallery Data Source:');
+    console.log('Main Gallery:', fetchedMainGallery.items.length > 0 ? '✅ Storyblok' : '⚠️ Fallback');
+    console.log('Food Gallery:', fetchedFoodGallery.items.length > 0 ? '✅ Storyblok' : '⚠️ Fallback');
+    console.log('Customer Gallery:', fetchedCustomerGallery.items.length > 0 ? '✅ Storyblok' : '⚠️ Fallback');
+  }, [fetchedMainGallery.items.length, fetchedFoodGallery.items.length, fetchedCustomerGallery.items.length]);
+
   // Get title and description from Storyblok or use defaults
   const mainTitle = fetchedMainGallery.items.length > 0 && fetchedMainGallery.title 
     ? fetchedMainGallery.title 
