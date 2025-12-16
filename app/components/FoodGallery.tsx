@@ -27,6 +27,7 @@ const FoodGallery = ({
   const [foodModalIndex, setFoodModalIndex] = useState(0);
   const [showFoodModalText, setShowFoodModalText] = useState(false);
   const [showFullFoodDesc, setShowFullFoodDesc] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
 
   // Ref for scroll container
   const foodGalleryRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,7 @@ const FoodGallery = ({
     setFoodModalIndex(idx);
     setFoodModalOpen(true);
     setShowFoodModalText(false); // Reset text when opening
+    setImageLoading(true);
   };
 
   const closeFoodModal = () => {
@@ -45,6 +47,7 @@ const FoodGallery = ({
   const nextFoodModal = () => {
     setFoodModalIndex((i) => (i + 1) % items.length);
     setShowFoodModalText(false); // Reset text when changing items
+    setImageLoading(true);
   };
 
   const prevFoodModal = () => {
@@ -52,6 +55,7 @@ const FoodGallery = ({
       (i) => (i - 1 + items.length) % items.length
     );
     setShowFoodModalText(false); // Reset text when changing items
+    setImageLoading(true);
   };
 
   // Food modal text overlay state (delayed show, auto-hide)
@@ -192,6 +196,12 @@ const FoodGallery = ({
             className="relative max-w-lg w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Loading Spinner */}
+            {imageLoading && (
+              <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/50 rounded-2xl sm:rounded-3xl">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-yellow-400"></div>
+              </div>
+            )}
             {/* Decorative Frame fits image */}
             <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
             {/* Zoomed image */}
@@ -205,6 +215,7 @@ const FoodGallery = ({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               quality={90}
               priority
+              onLoadingComplete={() => setImageLoading(false)}
             />
             {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
             {showFoodModalText && (

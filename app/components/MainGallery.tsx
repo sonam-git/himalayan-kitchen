@@ -27,6 +27,7 @@ const MainGallery = ({
   const [mainModalIndex, setMainModalIndex] = useState(0);
   const [showMainModalText, setShowMainModalText] = useState(false);
   const [showFullMainDesc, setShowFullMainDesc] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
   
   const modalRef = useRef<HTMLDivElement>(null);
   const mainGalleryRef = useRef<HTMLDivElement>(null);
@@ -57,6 +58,7 @@ const MainGallery = ({
     setMainModalIndex(index);
     setMainModalOpen(true);
     setShowMainModalText(false);
+    setImageLoading(true);
   };
 
   const closeMainModal = () => {
@@ -67,11 +69,13 @@ const MainGallery = ({
   const nextMainModal = () => {
     setMainModalIndex((i) => (i + 1) % galleryItems.length);
     setShowMainModalText(false);
+    setImageLoading(true);
   };
 
   const prevMainModal = () => {
     setMainModalIndex((i) => (i - 1 + galleryItems.length) % galleryItems.length);
     setShowMainModalText(false);
+    setImageLoading(true);
   };
 
   // Helper to scroll gallery - scroll by one full card width
@@ -262,6 +266,12 @@ const MainGallery = ({
             className="relative max-w-3xl w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Loading Spinner */}
+            {imageLoading && (
+              <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/50 rounded-2xl sm:rounded-3xl">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-yellow-400"></div>
+              </div>
+            )}
             {/* Decorative Frame */}
             <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
             {/* Zoomed image */}
@@ -275,6 +285,7 @@ const MainGallery = ({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               quality={90}
               priority
+              onLoadingComplete={() => setImageLoading(false)}
             />
             {/* Title and Description overlay */}
             {showMainModalText && (

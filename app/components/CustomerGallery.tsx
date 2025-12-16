@@ -30,6 +30,7 @@ const CustomerGallery = ({
   const [customerModalIndex, setCustomerModalIndex] = useState(0);
   const [showCustomerModalText, setShowCustomerModalText] = useState(false);
   const [showFullCustomerDesc, setShowFullCustomerDesc] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
   
   const modalRef = useRef<HTMLDivElement>(null);
   const customerGalleryRef = useRef<HTMLDivElement>(null);
@@ -60,6 +61,7 @@ const CustomerGallery = ({
     setCustomerModalIndex(index);
     setCustomerModalOpen(true);
     setShowCustomerModalText(false);
+    setImageLoading(true);
   };
 
   const closeCustomerModal = () => {
@@ -70,11 +72,13 @@ const CustomerGallery = ({
   const nextCustomerModal = () => {
     setCustomerModalIndex((i) => (i + 1) % galleryItems.length);
     setShowCustomerModalText(false);
+    setImageLoading(true);
   };
 
   const prevCustomerModal = () => {
     setCustomerModalIndex((i) => (i - 1 + galleryItems.length) % galleryItems.length);
     setShowCustomerModalText(false);
+    setImageLoading(true);
   };
 
   // Early return if no items
@@ -270,6 +274,12 @@ const CustomerGallery = ({
             className="relative max-w-3xl w-full mx-4 rounded-3xl overflow-visible shadow-2xl flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Loading Spinner */}
+            {imageLoading && (
+              <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/50 rounded-2xl sm:rounded-3xl">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-yellow-400"></div>
+              </div>
+            )}
             {/* Decorative Frame */}
             <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
             {/* Zoomed image */}
@@ -283,6 +293,7 @@ const CustomerGallery = ({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               quality={90}
               priority
+              onLoadingComplete={() => setImageLoading(false)}
             />
             {/* Title and Description overlay */}
             {showCustomerModalText && (
