@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState, RefObject } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 // Gallery item type
@@ -175,7 +176,7 @@ const FoodGallery = ({
       </div>
 
       {/* Food Modal */}
-      {foodModalOpen && (
+      {foodModalOpen && typeof document !== 'undefined' && createPortal(
         <div
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg transition-all duration-300"
           role="dialog"
@@ -257,7 +258,8 @@ const FoodGallery = ({
               </svg>
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState, RefObject } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 // Gallery item type
@@ -250,7 +251,7 @@ const CustomerGallery = ({
       </div>
 
       {/* Customer Gallery Modal */}
-      {customerModalOpen && (
+      {customerModalOpen && typeof document !== 'undefined' && createPortal(
         <div
           ref={modalRef}
           tabIndex={-1}
@@ -346,7 +347,8 @@ const CustomerGallery = ({
               </svg>
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
