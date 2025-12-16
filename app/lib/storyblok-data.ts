@@ -430,3 +430,4 @@ export const fallbackCustomerGallery: GalleryItem[] = [
     description: "Guests from the Sherpa community enjoying authentic flavors that remind them of home.",
   },
 ];
+// Build trigger
