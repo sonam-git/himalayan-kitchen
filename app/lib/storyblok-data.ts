@@ -75,7 +75,7 @@ export async function fetchMainGallery(): Promise<GalleryData> {
       try {
         console.log(`🔄 Trying path: ${path}`);
         response = await Storyblok.get(`cdn/stories/${path}`, {
-          version: "draft",
+          version: process.env.NODE_ENV === 'production' ? "published" : "draft",
           cv: Date.now(),
         });
         successfulPath = path;
@@ -174,7 +174,7 @@ export async function fetchFoodGallery(): Promise<GalleryData> {
     for (const path of possiblePaths) {
       try {
         response = await Storyblok.get(`cdn/stories/${path}`, {
-          version: "draft",
+          version: process.env.NODE_ENV === 'production' ? "published" : "draft",
           cv: Date.now(),
         });
         break;
@@ -234,7 +234,7 @@ export async function fetchCustomerGallery(): Promise<GalleryData> {
     for (const path of possiblePaths) {
       try {
         response = await Storyblok.get(`cdn/stories/${path}`, {
-          version: "draft",
+          version: process.env.NODE_ENV === 'production' ? "published" : "draft",
           cv: Date.now(),
         });
         break;
