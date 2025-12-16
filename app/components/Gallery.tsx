@@ -97,6 +97,15 @@ const Gallery = ({
     ? fetchedCustomerGallery.description 
     : (initialCustomerDescription || "A glimpse into the joy and happiness our customers experience at Himalayan Kitchen. From family gatherings to casual dinners with friends, every visit is a celebration of great food and warm hospitality.");
 
+  // Log what titles/descriptions are being used
+  useEffect(() => {
+    console.log('📋 Gallery - Using Titles/Descriptions:', {
+      main: { title: mainTitle, hasDescription: !!mainDescription },
+      food: { title: foodTitle, hasDescription: !!foodDescription },
+      customer: { title: customerTitle, hasDescription: !!customerDescription }
+    });
+  }, [mainTitle, mainDescription, foodTitle, foodDescription, customerTitle, customerDescription]);
+
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 

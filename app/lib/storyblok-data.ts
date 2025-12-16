@@ -115,13 +115,26 @@ export async function fetchMainGallery(): Promise<GalleryData> {
       return { items: [] };
     }
 
-    return {
+    const result = {
       items: mainGalleryBlock.items.map(convertToGalleryItem),
       title: mainGalleryBlock.title,
       description: mainGalleryBlock.description,
     };
+
+    console.log('✅ fetchMainGallery - Success:', {
+      itemCount: result.items.length,
+      title: result.title,
+      description: result.description?.substring(0, 50) + '...',
+      firstItem: result.items[0] ? {
+        title: result.items[0].title,
+        image: result.items[0].image.substring(0, 50) + '...'
+      } : null
+    });
+
+    return result;
     
-  } catch {
+  } catch (error) {
+    console.error('❌ fetchMainGallery - Error:', error);
     return { items: [] };
   }
 }
