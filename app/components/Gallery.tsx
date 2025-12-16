@@ -38,7 +38,7 @@ const Gallery = ({
   initialCustomerDescription
 }: GalleryProps) => {
   // Fetch gallery data with auto-refresh (polls every 30 seconds)
-  const { mainGallery: fetchedMainGallery, foodGallery: fetchedFoodGallery, customerGallery: fetchedCustomerGallery, isLoading } = useGalleryData();
+  const { mainGallery: fetchedMainGallery, foodGallery: fetchedFoodGallery, customerGallery: fetchedCustomerGallery } = useGalleryData();
   
   // Use logic: 
   // 1. If we have fetched data from client-side API, use that (allows live updates)
@@ -55,22 +55,6 @@ const Gallery = ({
   const customerGallery = fetchedCustomerGallery.items.length > 0 
     ? fetchedCustomerGallery.items 
     : (initialCustomerGallery && initialCustomerGallery.length > 0 ? initialCustomerGallery : fallbackCustomerGallery);
-
-  // Determine data source for each gallery
-  const getDataSource = (fetched: number, initial: number | undefined) => {
-    if (fetched > 0) return 'Storyblok (Client)';
-    if (initial && initial > 0) return 'Storyblok (SSR)';
-    return 'Fallback';
-  };
-
-  // Debug: Log which data source is being used (client-side only)
-  useEffect(() => {
-    console.log('🖼️ Gallery Data Source:');
-    console.log('Main Gallery:', getDataSource(fetchedMainGallery.items.length, initialMainGallery?.length));
-    console.log('Food Gallery:', getDataSource(fetchedFoodGallery.items.length, initialFoodGallery?.length));
-    console.log('Customer Gallery:', getDataSource(fetchedCustomerGallery.items.length, initialCustomerGallery?.length));
-    console.log('Loading:', isLoading);
-  }, [fetchedMainGallery.items.length, fetchedFoodGallery.items.length, fetchedCustomerGallery.items.length, initialMainGallery?.length, initialFoodGallery?.length, initialCustomerGallery?.length, isLoading]);
 
   // Get title and description - priority: fetched > initial SSR > defaults
   const mainTitle = (fetchedMainGallery.items.length > 0 && fetchedMainGallery.title) 
@@ -96,15 +80,6 @@ const Gallery = ({
   const customerDescription = (fetchedCustomerGallery.items.length > 0 && fetchedCustomerGallery.description) 
     ? fetchedCustomerGallery.description 
     : (initialCustomerDescription || "A glimpse into the joy and happiness our customers experience at Himalayan Kitchen. From family gatherings to casual dinners with friends, every visit is a celebration of great food and warm hospitality.");
-
-  // Log what titles/descriptions are being used
-  useEffect(() => {
-    console.log('📋 Gallery - Using Titles/Descriptions:', {
-      main: { title: mainTitle, hasDescription: !!mainDescription },
-      food: { title: foodTitle, hasDescription: !!foodDescription },
-      customer: { title: customerTitle, hasDescription: !!customerDescription }
-    });
-  }, [mainTitle, mainDescription, foodTitle, foodDescription, customerTitle, customerDescription]);
 
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);

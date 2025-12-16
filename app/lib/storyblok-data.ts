@@ -54,48 +54,30 @@ export async function listStories(): Promise<void> {
  */
 export async function fetchMainGallery(): Promise<GalleryData> {
   try {
-    console.log('🔍 fetchMainGallery - Checking token:', {
-      tokenExists: !!process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
-      tokenLength: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN?.length,
-      tokenPrefix: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN?.substring(0, 8) + '...'
-    });
-
     if (!process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN || 
         process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN === "your_storyblok_token_here") {
-      console.warn('⚠️ fetchMainGallery - No valid token found');
       return { items: [] };
     }
     
     // Try different possible story paths
     const possiblePaths = ["home", "index", "galleries", "gallery"];
     let response = null;
-    let successfulPath = null;
     
     for (const path of possiblePaths) {
       try {
-        console.log(`🔄 Trying path: ${path}`);
         response = await Storyblok.get(`cdn/stories/${path}`, {
           version: process.env.NODE_ENV === 'production' ? "published" : "draft",
           cv: Date.now(),
         });
-        successfulPath = path;
-        console.log(`✅ Successfully fetched from path: ${path}`);
         break;
-      } catch (error) {
-        console.log(`❌ Failed to fetch from path: ${path}`, error instanceof Error ? error.message : error);
+      } catch {
         // Continue to next path
       }
     }
     
     if (!response) {
-      console.error('❌ fetchMainGallery - No valid path found');
       return { items: [] };
     }
-
-    console.log(`📦 fetchMainGallery - Response from ${successfulPath}:`, {
-      hasContent: !!response.data?.story?.content,
-      hasBody: !!response.data?.story?.content?.body
-    });
 
     const content = response.data.story.content as StoryblokPageContent;
     
@@ -105,53 +87,23 @@ export async function fetchMainGallery(): Promise<GalleryData> {
 
     const gallerySection = content.body.find((item) => item.component === "gallery_section") as StoryblokGallerySection;
     
-    console.log('🔎 Gallery Section Found:', {
-      hasGallerySection: !!gallerySection,
-      hasMainGallery: !!gallerySection?.main_gallery,
-      mainGalleryLength: gallerySection?.main_gallery?.length
-    });
-    
     if (!gallerySection) {
-      console.warn('⚠️ No gallery_section found in content');
       return { items: [] };
     }
 
     const mainGalleryBlock = gallerySection.main_gallery?.[0] as StoryblokMainGallery;
     
-    console.log('🔎 Main Gallery Block:', {
-      hasBlock: !!mainGalleryBlock,
-      hasItems: !!mainGalleryBlock?.items,
-      itemsCount: mainGalleryBlock?.items?.length,
-      title: mainGalleryBlock?.title || 'NO TITLE',
-      description: mainGalleryBlock?.description ? mainGalleryBlock.description.substring(0, 50) + '...' : 'NO DESCRIPTION',
-      rawBlock: JSON.stringify(mainGalleryBlock).substring(0, 200)
-    });
-    
     if (!mainGalleryBlock || !mainGalleryBlock.items) {
-      console.warn('⚠️ No main_gallery block or items found');
       return { items: [] };
     }
 
-    const result = {
+    return {
       items: mainGalleryBlock.items.map(convertToGalleryItem),
       title: mainGalleryBlock.title,
       description: mainGalleryBlock.description,
     };
-
-    console.log('✅ fetchMainGallery - Success:', {
-      itemCount: result.items.length,
-      title: result.title,
-      description: result.description?.substring(0, 50) + '...',
-      firstItem: result.items[0] ? {
-        title: result.items[0].title,
-        image: result.items[0].image.substring(0, 50) + '...'
-      } : null
-    });
-
-    return result;
     
-  } catch (error) {
-    console.error('❌ fetchMainGallery - Error:', error);
+  } catch {
     return { items: [] };
   }
 }
@@ -478,4 +430,3 @@ export const fallbackCustomerGallery: GalleryItem[] = [
     description: "Guests from the Sherpa community enjoying authentic flavors that remind them of home.",
   },
 ];
-// Build trigger

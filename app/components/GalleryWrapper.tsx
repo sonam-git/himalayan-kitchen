@@ -29,25 +29,6 @@ export default async function GalleryWrapper() {
   const initialFoodGallery = foodGalleryData.items.length > 0 ? foodGalleryData.items : fallbackFoodGallery;
   const initialCustomerGallery = customerGalleryData.items.length > 0 ? customerGalleryData.items : fallbackCustomerGallery;
 
-  // Log what we're passing to Gallery component
-  console.log('📤 GalleryWrapper - Passing to Gallery:', {
-    mainGallery: {
-      itemCount: initialMainGallery.length,
-      title: mainGalleryData.title || 'undefined',
-      description: mainGalleryData.description?.substring(0, 50) || 'undefined'
-    },
-    foodGallery: {
-      itemCount: initialFoodGallery.length,
-      title: foodGalleryData.title || 'undefined',
-      description: foodGalleryData.description?.substring(0, 50) || 'undefined'
-    },
-    customerGallery: {
-      itemCount: initialCustomerGallery.length,
-      title: customerGalleryData.title || 'undefined',
-      description: customerGalleryData.description?.substring(0, 50) || 'undefined'
-    }
-  });
-
   return (
     <Gallery 
       initialMainGallery={initialMainGallery} 
