@@ -18,47 +18,84 @@ interface GalleryProps {
   initialMainGallery?: GalleryItem[];
   initialFoodGallery?: GalleryItem[];
   initialCustomerGallery?: GalleryItem[];
+  initialMainTitle?: string;
+  initialMainDescription?: string;
+  initialFoodTitle?: string;
+  initialFoodDescription?: string;
+  initialCustomerTitle?: string;
+  initialCustomerDescription?: string;
 }
 
-const Gallery = ({ initialMainGallery, initialFoodGallery, initialCustomerGallery }: GalleryProps) => {
+const Gallery = ({ 
+  initialMainGallery, 
+  initialFoodGallery, 
+  initialCustomerGallery,
+  initialMainTitle,
+  initialMainDescription,
+  initialFoodTitle,
+  initialFoodDescription,
+  initialCustomerTitle,
+  initialCustomerDescription
+}: GalleryProps) => {
   // Fetch gallery data with auto-refresh (polls every 30 seconds)
-  const { mainGallery: fetchedMainGallery, foodGallery: fetchedFoodGallery, customerGallery: fetchedCustomerGallery } = useGalleryData();
+  const { mainGallery: fetchedMainGallery, foodGallery: fetchedFoodGallery, customerGallery: fetchedCustomerGallery, isLoading } = useGalleryData();
   
-  // Use Storyblok data if available, otherwise fallback to hardcoded arrays
-  // This ensures the gallery always displays content, even if Storyblok API fails
-  const mainGallery = fetchedMainGallery.items.length > 0 ? fetchedMainGallery.items : (initialMainGallery || fallbackMainGallery);
-  const foodGallery = fetchedFoodGallery.items.length > 0 ? fetchedFoodGallery.items : (initialFoodGallery || fallbackFoodGallery);
-  const customerGallery = fetchedCustomerGallery.items.length > 0 ? fetchedCustomerGallery.items : (initialCustomerGallery || fallbackCustomerGallery);
+  // Use logic: 
+  // 1. If we have fetched data from client-side API, use that (allows live updates)
+  // 2. Otherwise, use initial SSR data if available
+  // 3. Finally, fall back to hardcoded arrays
+  const mainGallery = fetchedMainGallery.items.length > 0 
+    ? fetchedMainGallery.items 
+    : (initialMainGallery && initialMainGallery.length > 0 ? initialMainGallery : fallbackMainGallery);
+  
+  const foodGallery = fetchedFoodGallery.items.length > 0 
+    ? fetchedFoodGallery.items 
+    : (initialFoodGallery && initialFoodGallery.length > 0 ? initialFoodGallery : fallbackFoodGallery);
+  
+  const customerGallery = fetchedCustomerGallery.items.length > 0 
+    ? fetchedCustomerGallery.items 
+    : (initialCustomerGallery && initialCustomerGallery.length > 0 ? initialCustomerGallery : fallbackCustomerGallery);
+
+  // Determine data source for each gallery
+  const getDataSource = (fetched: number, initial: number | undefined) => {
+    if (fetched > 0) return 'Storyblok (Client)';
+    if (initial && initial > 0) return 'Storyblok (SSR)';
+    return 'Fallback';
+  };
 
   // Debug: Log which data source is being used (client-side only)
   useEffect(() => {
     console.log('🖼️ Gallery Data Source:');
-    console.log('Main Gallery:', fetchedMainGallery.items.length > 0 ? '✅ Storyblok' : '⚠️ Fallback');
-    console.log('Food Gallery:', fetchedFoodGallery.items.length > 0 ? '✅ Storyblok' : '⚠️ Fallback');
-    console.log('Customer Gallery:', fetchedCustomerGallery.items.length > 0 ? '✅ Storyblok' : '⚠️ Fallback');
-  }, [fetchedMainGallery.items.length, fetchedFoodGallery.items.length, fetchedCustomerGallery.items.length]);
+    console.log('Main Gallery:', getDataSource(fetchedMainGallery.items.length, initialMainGallery?.length));
+    console.log('Food Gallery:', getDataSource(fetchedFoodGallery.items.length, initialFoodGallery?.length));
+    console.log('Customer Gallery:', getDataSource(fetchedCustomerGallery.items.length, initialCustomerGallery?.length));
+    console.log('Loading:', isLoading);
+  }, [fetchedMainGallery.items.length, fetchedFoodGallery.items.length, fetchedCustomerGallery.items.length, initialMainGallery?.length, initialFoodGallery?.length, initialCustomerGallery?.length, isLoading]);
 
-  // Get title and description from Storyblok or use defaults
-  const mainTitle = fetchedMainGallery.items.length > 0 && fetchedMainGallery.title 
+  // Get title and description - priority: fetched > initial SSR > defaults
+  const mainTitle = (fetchedMainGallery.items.length > 0 && fetchedMainGallery.title) 
     ? fetchedMainGallery.title 
-    : "Moments at Our Table";
-  const mainDescription = fetchedMainGallery.items.length > 0 && fetchedMainGallery.description 
+    : (initialMainTitle || "Moments at Our Table");
+  
+  const mainDescription = (fetchedMainGallery.items.length > 0 && fetchedMainGallery.description) 
     ? fetchedMainGallery.description 
-    : "A visual journey through the cherished memories, beloved guests, and lively atmosphere that make our restaurant special. See how visitors from near and far enjoy their Himalayan dining experience.";
+    : (initialMainDescription || "A visual journey through the cherished memories, beloved guests, and lively atmosphere that make our restaurant special. See how visitors from near and far enjoy their Himalayan dining experience.");
 
-  const foodTitle = fetchedFoodGallery.items.length > 0 && fetchedFoodGallery.title 
+  const foodTitle = (fetchedFoodGallery.items.length > 0 && fetchedFoodGallery.title) 
     ? fetchedFoodGallery.title 
-    : "A Feast For Your Eyes";
-  const foodDescription = fetchedFoodGallery.items.length > 0 && fetchedFoodGallery.description 
+    : (initialFoodTitle || "A Feast For Your Eyes");
+  
+  const foodDescription = (fetchedFoodGallery.items.length > 0 && fetchedFoodGallery.description) 
     ? fetchedFoodGallery.description 
-    : "A showcase of our most popular, authentic & mouth-watering Himalayan dishes. Let the gallery inspire your next dining experience!";
+    : (initialFoodDescription || "A showcase of our most popular, authentic & mouth-watering Himalayan dishes. Let the gallery inspire your next dining experience!");
 
-  const customerTitle = fetchedCustomerGallery.items.length > 0 && fetchedCustomerGallery.title 
+  const customerTitle = (fetchedCustomerGallery.items.length > 0 && fetchedCustomerGallery.title) 
     ? fetchedCustomerGallery.title 
-    : "Smiles & Satisfaction";
-  const customerDescription = fetchedCustomerGallery.items.length > 0 && fetchedCustomerGallery.description 
+    : (initialCustomerTitle || "Smiles & Satisfaction");
+  
+  const customerDescription = (fetchedCustomerGallery.items.length > 0 && fetchedCustomerGallery.description) 
     ? fetchedCustomerGallery.description 
-    : "A glimpse into the joy and happiness our customers experience at Himalayan Kitchen. From family gatherings to casual dinners with friends, every visit is a celebration of great food and warm hospitality.";
+    : (initialCustomerDescription || "A glimpse into the joy and happiness our customers experience at Himalayan Kitchen. From family gatherings to casual dinners with friends, every visit is a celebration of great food and warm hospitality.");
 
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);

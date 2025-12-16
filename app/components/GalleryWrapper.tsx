@@ -29,5 +29,17 @@ export default async function GalleryWrapper() {
   const initialFoodGallery = foodGalleryData.items.length > 0 ? foodGalleryData.items : fallbackFoodGallery;
   const initialCustomerGallery = customerGalleryData.items.length > 0 ? customerGalleryData.items : fallbackCustomerGallery;
 
-  return <Gallery initialMainGallery={initialMainGallery} initialFoodGallery={initialFoodGallery} initialCustomerGallery={initialCustomerGallery} />;
+  return (
+    <Gallery 
+      initialMainGallery={initialMainGallery} 
+      initialFoodGallery={initialFoodGallery} 
+      initialCustomerGallery={initialCustomerGallery}
+      initialMainTitle={mainGalleryData.title}
+      initialMainDescription={mainGalleryData.description}
+      initialFoodTitle={foodGalleryData.title}
+      initialFoodDescription={foodGalleryData.description}
+      initialCustomerTitle={customerGalleryData.title}
+      initialCustomerDescription={customerGalleryData.description}
+    />
+  );
 }
