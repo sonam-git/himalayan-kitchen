@@ -16,6 +16,30 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'a.storyblok.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.storyblok.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img2.storyblok.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+    // Loader configuration for optimal quality
+    loader: 'default',
+    // Disable static image imports optimization to ensure all images go through Next.js Image Optimization
+    unoptimized: false,
   },
 
   // Compiler optimizations
@@ -67,7 +91,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.userway.org https://acc.userway.org https://www.googletagmanager.com https://order.toasttab.com https://www.facebook.com https://connect.facebook.net https://www.instagram.com https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.userway.org https://translate.googleapis.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com https://cdn.userway.org data:; img-src 'self' data: https: blob: http://translate.google.com; connect-src 'self' https://cdn.userway.org https://acc.userway.org https://api.userway.org https://www.google-analytics.com https://www.facebook.com https://www.instagram.com https://translate.googleapis.com https://translate-pa.googleapis.com; frame-src 'self' https://cdn.userway.org https://acc.userway.org https://order.toasttab.com https://www.google.com https://www.facebook.com https://www.instagram.com https://translate.google.com https://translate.googleapis.com; object-src 'none'; base-uri 'self';"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.userway.org https://acc.userway.org https://www.googletagmanager.com https://order.toasttab.com https://www.facebook.com https://connect.facebook.net https://www.instagram.com https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://app.storyblok.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.userway.org https://translate.googleapis.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com https://cdn.userway.org data:; img-src 'self' data: https: blob: http://translate.google.com https://a.storyblok.com https://*.storyblok.com; connect-src 'self' https://cdn.userway.org https://acc.userway.org https://api.userway.org https://www.google-analytics.com https://www.facebook.com https://www.instagram.com https://translate.googleapis.com https://translate-pa.googleapis.com https://api.storyblok.com https://api-us.storyblok.com; frame-src 'self' https://cdn.userway.org https://acc.userway.org https://order.toasttab.com https://www.google.com https://www.facebook.com https://www.instagram.com https://translate.google.com https://translate.googleapis.com https://app.storyblok.com; object-src 'none'; base-uri 'self';"
           }
         ],
       },

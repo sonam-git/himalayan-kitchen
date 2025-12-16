@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { optimizeStoryblokImage, isStoryblokImage, getBlurDataURL } from '../lib/storyblok-image';
 
 interface OptimizedImageProps {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   className?: string;
   priority?: boolean;
   sizes?: string;
@@ -17,10 +18,13 @@ interface OptimizedImageProps {
   loading?: 'lazy' | 'eager';
   placeholder?: 'blur' | 'empty';
   blurDataURL?: string;
+  // Storyblok-specific options
+  storyblokOptimize?: boolean;
 }
 
 /**
  * OptimizedImage component with progressive loading and blur placeholder
+ * Supports both local images and Storyblok CDN images
  * Improves LCP and reduces layout shift
  */
 export default function OptimizedImage({
@@ -36,14 +40,23 @@ export default function OptimizedImage({
   objectFit = 'cover',
   loading = 'lazy',
   placeholder = 'blur',
-  blurDataURL
+  blurDataURL,
+  storyblokOptimize = true,
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  // Generate a simple blur placeholder if not provided
-  const defaultBlurDataURL = 
-    'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg==';
+  // Optimize Storyblok images if enabled
+  const optimizedSrc = storyblokOptimize && isStoryblokImage(src) 
+    ? optimizeStoryblokImage(src, { 
+        width: fill ? undefined : width, 
+        height: fill ? undefined : height,
+        quality 
+      })
+    : src;
+
+  // Generate a blur placeholder
+  const finalBlurDataURL = blurDataURL || getBlurDataURL(src);
 
   const commonProps = {
     quality,
@@ -56,14 +69,14 @@ export default function OptimizedImage({
     ...(priority && { priority: true }),
     ...(loading && { loading }),
     ...(sizes && { sizes }),
-    ...(placeholder === 'blur' && { placeholder, blurDataURL: blurDataURL || defaultBlurDataURL })
+    ...(placeholder === 'blur' && { placeholder, blurDataURL: finalBlurDataURL })
   };
 
   if (hasError) {
     return (
       <div 
         className={`${className} flex items-center justify-center bg-gray-200 dark:bg-gray-800`}
-        style={{ width, height }}
+        style={{ width: fill ? '100%' : width, height: fill ? '100%' : height }}
         role="img"
         aria-label={`Failed to load: ${alt}`}
       >
@@ -76,7 +89,7 @@ export default function OptimizedImage({
     return (
       <Image
         {...commonProps}
-        src={src}
+        src={optimizedSrc}
         alt={alt}
         fill
         style={{ objectFit }}
@@ -84,10 +97,16 @@ export default function OptimizedImage({
     );
   }
 
+  // For non-fill mode, width and height are required
+  if (!width || !height) {
+    console.warn('OptimizedImage: width and height are required when fill=false');
+    return null;
+  }
+
   return (
     <Image
       {...commonProps}
-      src={src}
+      src={optimizedSrc}
       alt={alt}
       width={width}
       height={height}

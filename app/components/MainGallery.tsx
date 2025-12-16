@@ -10,76 +10,68 @@ interface GalleryItem {
   description: string;
 }
 
-interface CustomerGalleryProps {
-  items?: GalleryItem[];
+interface MainGalleryProps {
+  items: GalleryItem[];
   title?: string;
   description?: string;
 }
 
-const CustomerGallery = ({ 
-  items = [], 
-  title = "Smiles & Satisfaction",
-  description = "A glimpse into the joy and happiness our customers experience at Himalayan Kitchen. From family gatherings to casual dinners with friends, every visit is a celebration of great food and warm hospitality."
-}: CustomerGalleryProps) => {
-  // Use items with fallback
-  const galleryItems = items || [];
-  
+const MainGallery = ({ 
+  items: galleryItems, 
+  title = "Moments at Our Table",
+  description = "A visual journey through the cherished memories, beloved guests, and lively atmosphere that make our restaurant special. See how visitors from near and far enjoy their Himalayan dining experience."
+}: MainGalleryProps) => {
   // Modal State
-  const [customerModalOpen, setCustomerModalOpen] = useState(false);
-  const [customerModalIndex, setCustomerModalIndex] = useState(0);
-  const [showCustomerModalText, setShowCustomerModalText] = useState(false);
-  const [showFullCustomerDesc, setShowFullCustomerDesc] = useState(false);
+  const [mainModalOpen, setMainModalOpen] = useState(false);
+  const [mainModalIndex, setMainModalIndex] = useState(0);
+  const [showMainModalText, setShowMainModalText] = useState(false);
+  const [showFullMainDesc, setShowFullMainDesc] = useState(false);
   
   const modalRef = useRef<HTMLDivElement>(null);
-  const customerGalleryRef = useRef<HTMLDivElement>(null);
+  const mainGalleryRef = useRef<HTMLDivElement>(null);
 
   // Focus modal when opened
   useEffect(() => {
-    if (customerModalOpen && modalRef.current) {
+    if (mainModalOpen && modalRef.current) {
       modalRef.current.focus();
     }
-  }, [customerModalOpen]);
+  }, [mainModalOpen]);
 
   // Delay showing modal text by 2s, hide after 25s
   useEffect(() => {
     let showTimer: NodeJS.Timeout;
     let hideTimer: NodeJS.Timeout;
-    if (customerModalOpen) {
-      showTimer = setTimeout(() => setShowCustomerModalText(true), 2000);
-      hideTimer = setTimeout(() => setShowCustomerModalText(false), 25000);
+    if (mainModalOpen) {
+      showTimer = setTimeout(() => setShowMainModalText(true), 2000);
+      hideTimer = setTimeout(() => setShowMainModalText(false), 25000);
     }
     return () => {
       clearTimeout(showTimer);
       clearTimeout(hideTimer);
     };
-  }, [customerModalOpen, customerModalIndex]);
+  }, [mainModalOpen, mainModalIndex]);
 
   // Modal functions
-  const openCustomerModal = (index: number) => {
-    setCustomerModalIndex(index);
-    setCustomerModalOpen(true);
-    setShowCustomerModalText(false);
+  const openMainModal = (index: number) => {
+    setMainModalIndex(index);
+    setMainModalOpen(true);
+    setShowMainModalText(false);
   };
 
-  const closeCustomerModal = () => {
-    setCustomerModalOpen(false);
-    setShowCustomerModalText(false);
+  const closeMainModal = () => {
+    setMainModalOpen(false);
+    setShowMainModalText(false);
   };
 
-  const nextCustomerModal = () => {
-    setCustomerModalIndex((i) => (i + 1) % galleryItems.length);
-    setShowCustomerModalText(false);
+  const nextMainModal = () => {
+    setMainModalIndex((i) => (i + 1) % galleryItems.length);
+    setShowMainModalText(false);
   };
 
-  const prevCustomerModal = () => {
-    setCustomerModalIndex((i) => (i - 1 + galleryItems.length) % galleryItems.length);
-    setShowCustomerModalText(false);
+  const prevMainModal = () => {
+    setMainModalIndex((i) => (i - 1 + galleryItems.length) % galleryItems.length);
+    setShowMainModalText(false);
   };
-
-  // Early return if no items
-  if (!galleryItems || galleryItems.length === 0) {
-    return null;
-  }
 
   // Helper to scroll gallery
   const scrollGallery = (ref: RefObject<HTMLDivElement | null>, dir: "left" | "right") => {
@@ -94,7 +86,7 @@ const CustomerGallery = ({
 
   // Modal Keyboard Accessibility
   function handleModalKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
-    if (!customerModalOpen) return;
+    if (!mainModalOpen) return;
     const focusable = Array.from(
       (modalRef.current?.querySelectorAll(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -106,15 +98,15 @@ const CustomerGallery = ({
     switch (e.key) {
       case "Escape":
         e.preventDefault();
-        closeCustomerModal();
+        closeMainModal();
         break;
       case "ArrowLeft":
         e.preventDefault();
-        prevCustomerModal();
+        prevMainModal();
         break;
       case "ArrowRight":
         e.preventDefault();
-        nextCustomerModal();
+        nextMainModal();
         break;
       case "Tab":
         if (focusable.length === 0) return;
@@ -149,9 +141,9 @@ const CustomerGallery = ({
             </p>
           </div>
 
-          {/* Customer Gallery - horizontal scroll */}
+          {/* Main Gallery - horizontal scroll */}
           <div
-            ref={customerGalleryRef}
+            ref={mainGalleryRef}
             className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 border-t-2 border-yellow-200 dark:border-gray-700 pt-2"
           >
             {galleryItems.map((item, index) => (
@@ -164,7 +156,7 @@ const CustomerGallery = ({
                 <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex flex-col justify-end">
                   <button
                     className="w-full h-full focus:outline-none"
-                    onClick={() => openCustomerModal(index)}
+                    onClick={() => openMainModal(index)}
                     aria-label={`View full ${item.title}`}
                     style={{ position: "absolute", inset: 0, zIndex: 2 }}
                   ></button>
@@ -198,7 +190,7 @@ const CustomerGallery = ({
           <div className="flex justify-between items-center mt-1 px-2">
             <button
               className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
-              onClick={() => scrollGallery(customerGalleryRef, "left")}
+              onClick={() => scrollGallery(mainGalleryRef, "left")}
               aria-label="Scroll left"
             >
               <svg
@@ -224,7 +216,7 @@ const CustomerGallery = ({
             </span>
             <button
               className="rounded-full p-2 bg-white/80 dark:bg-gray-800/80 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-200 dark:border-orange-700"
-              onClick={() => scrollGallery(customerGalleryRef, "right")}
+              onClick={() => scrollGallery(mainGalleryRef, "right")}
               aria-label="Scroll right"
             >
               <svg
@@ -249,14 +241,14 @@ const CustomerGallery = ({
         </div>
       </div>
 
-      {/* Customer Gallery Modal */}
-      {customerModalOpen && (
+      {/* Main Gallery Modal */}
+      {mainModalOpen && (
         <div
           ref={modalRef}
           tabIndex={-1}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="customer-modal-title"
+          aria-labelledby="gallery-modal-title"
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/70 backdrop-blur-lg focus:outline-none"
           onKeyDown={handleModalKeyDown}
         >
@@ -268,8 +260,8 @@ const CustomerGallery = ({
             <div className="absolute inset-0 z-20 rounded-2xl sm:rounded-3xl border-4 border-yellow-400/80 dark:border-orange-400/80 shadow-[0_0_40px_10px_rgba(255,186,0,0.15)] pointer-events-none" />
             {/* Zoomed image */}
             <Image
-              src={galleryItems[customerModalIndex].image}
-              alt={galleryItems[customerModalIndex].title}
+              src={galleryItems[mainModalIndex].image}
+              alt={galleryItems[mainModalIndex].title}
               width={1200}
               height={800}
               className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto object-contain z-10"
@@ -279,24 +271,24 @@ const CustomerGallery = ({
               priority
             />
             {/* Title and Description overlay */}
-            {showCustomerModalText && (
+            {showMainModalText && (
               <div className="absolute bottom-0 left-0 right-0 mb-0 w-full px-4 py-4 bg-black/40 dark:bg-black/60 backdrop-blur-xl rounded-b-2xl text-white text-center drop-shadow-lg flex flex-col items-center border-t border-yellow-300/40 z-30 animate-slide-up">
                 <h2
-                  id="customer-modal-title"
+                  id="main-modal-title"
                   className="text-lg sm:text-2xl font-serif font-bold text-white mb-1 drop-shadow-lg font-headline"
                 >
-                  {galleryItems[customerModalIndex].title}
+                  {galleryItems[mainModalIndex].title}
                 </h2>
                 <p className="text-sm italic sm:text-base text-gray-100 mb-0 font-body font-[Georgia,'Times_New_Roman',Times,serif]">
-                  {showFullCustomerDesc || galleryItems[customerModalIndex].description.length <= 180
-                    ? galleryItems[customerModalIndex].description
-                    : `${galleryItems[customerModalIndex].description.slice(0, 180)}...`}
-                  {galleryItems[customerModalIndex].description.length > 180 && (
+                  {showFullMainDesc || galleryItems[mainModalIndex].description.length <= 180
+                    ? galleryItems[mainModalIndex].description
+                    : `${galleryItems[mainModalIndex].description.slice(0, 180)}...`}
+                  {galleryItems[mainModalIndex].description.length > 180 && (
                     <button
                       className="ml-2 text-yellow-300 underline text-sm font-bold focus:outline-none"
-                      onClick={() => setShowFullCustomerDesc((v) => !v)}
+                      onClick={() => setShowFullMainDesc((v) => !v)}
                     >
-                      {showFullCustomerDesc ? "Less" : "More"}
+                      {showFullMainDesc ? "Less" : "More"}
                     </button>
                   )}
                 </p>
@@ -313,7 +305,7 @@ const CustomerGallery = ({
               aria-label="Previous"
               onClick={(e) => {
                 e.stopPropagation();
-                prevCustomerModal();
+                prevMainModal();
               }}
               className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
@@ -325,7 +317,7 @@ const CustomerGallery = ({
               aria-label="Close"
               onClick={(e) => {
                 e.stopPropagation();
-                closeCustomerModal();
+                closeMainModal();
               }}
               className="bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
@@ -337,7 +329,7 @@ const CustomerGallery = ({
               aria-label="Next"
               onClick={(e) => {
                 e.stopPropagation();
-                nextCustomerModal();
+                nextMainModal();
               }}
               className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-400 text-white dark:text-gray-100 rounded-full p-3 md:p-4 shadow-xl hover:scale-110 focus:outline-none border-2 border-white/70 dark:border-gray-700 transition-transform duration-200"
             >
@@ -352,4 +344,4 @@ const CustomerGallery = ({
   );
 };
 
-export default CustomerGallery;
+export default MainGallery;

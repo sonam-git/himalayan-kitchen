@@ -32,7 +32,7 @@ const MenuSection = () => {
   const featuredDishes = [
     {
       name: 'Mo:Mo',
-      description: 'Dumplings filled with ground chicken or vegetables, cabbage, onions, herbs & chef\'s spices. Available in both veg and non-veg.',
+      description: 'Himalayan handmade dumplings with authentic Nepali taste. Available in Veg, Chicken, Pork & Paneer.',
       image: '/images/food/momo.jpeg',
       vegetarian: false,
       vegan: false,
@@ -68,7 +68,7 @@ const MenuSection = () => {
     },
     {
       name: 'Chowmein',
-      description: 'Stir-fried noodles with fresh vegetables and your choice of protein. Available in both veg and non-veg.',
+      description: 'Nepalease style stir fired noodles with vegetables and other choice of protein.',
       image: '/images/food/chowmien.jpg',
       vegetarian: false,
       vegan: false,
@@ -86,7 +86,7 @@ const MenuSection = () => {
     },
     {
       name: 'Sag Paneer',
-      description: 'Fresh spinach cooked with homemade cheese cube in creamy tomato and onion based sauce.(we can make it vegan)',
+      description: 'Fresh spinach and cheese cube cooked in creamy tomato and onion based sauce with touch of cream.',
       image: '/images/food/saag-panir.jpeg',
       vegetarian: true,
       vegan: false,
