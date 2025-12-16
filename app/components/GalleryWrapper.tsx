@@ -25,9 +25,9 @@ export default async function GalleryWrapper() {
   const customerGalleryData = await fetchCustomerGallery();
 
   // Use Storyblok data if available, otherwise use fallback
-  const initialMainGallery = mainGalleryData.length > 0 ? mainGalleryData : fallbackMainGallery;
-  const initialFoodGallery = foodGalleryData.length > 0 ? foodGalleryData : fallbackFoodGallery;
-  const initialCustomerGallery = customerGalleryData.length > 0 ? customerGalleryData : fallbackCustomerGallery;
+  const initialMainGallery = mainGalleryData.items.length > 0 ? mainGalleryData.items : fallbackMainGallery;
+  const initialFoodGallery = foodGalleryData.items.length > 0 ? foodGalleryData.items : fallbackFoodGallery;
+  const initialCustomerGallery = customerGalleryData.items.length > 0 ? customerGalleryData.items : fallbackCustomerGallery;
 
   return <Gallery initialMainGallery={initialMainGallery} initialFoodGallery={initialFoodGallery} initialCustomerGallery={initialCustomerGallery} />;
 }
