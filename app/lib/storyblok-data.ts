@@ -105,13 +105,30 @@ export async function fetchMainGallery(): Promise<GalleryData> {
 
     const gallerySection = content.body.find((item) => item.component === "gallery_section") as StoryblokGallerySection;
     
+    console.log('🔎 Gallery Section Found:', {
+      hasGallerySection: !!gallerySection,
+      hasMainGallery: !!gallerySection?.main_gallery,
+      mainGalleryLength: gallerySection?.main_gallery?.length
+    });
+    
     if (!gallerySection) {
+      console.warn('⚠️ No gallery_section found in content');
       return { items: [] };
     }
 
     const mainGalleryBlock = gallerySection.main_gallery?.[0] as StoryblokMainGallery;
     
+    console.log('🔎 Main Gallery Block:', {
+      hasBlock: !!mainGalleryBlock,
+      hasItems: !!mainGalleryBlock?.items,
+      itemsCount: mainGalleryBlock?.items?.length,
+      title: mainGalleryBlock?.title || 'NO TITLE',
+      description: mainGalleryBlock?.description ? mainGalleryBlock.description.substring(0, 50) + '...' : 'NO DESCRIPTION',
+      rawBlock: JSON.stringify(mainGalleryBlock).substring(0, 200)
+    });
+    
     if (!mainGalleryBlock || !mainGalleryBlock.items) {
+      console.warn('⚠️ No main_gallery block or items found');
       return { items: [] };
     }
 
