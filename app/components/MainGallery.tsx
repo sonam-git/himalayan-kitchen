@@ -74,14 +74,19 @@ const MainGallery = ({
     setShowMainModalText(false);
   };
 
-  // Helper to scroll gallery
+  // Helper to scroll gallery - scroll by one full card width
   const scrollGallery = (ref: RefObject<HTMLDivElement | null>, dir: "left" | "right") => {
     if (ref.current) {
-      const scrollAmount = ref.current.offsetWidth * 0.8;
-      ref.current.scrollBy({
-        left: dir === "right" ? scrollAmount : -scrollAmount,
-        behavior: "smooth",
-      });
+      // Get the first gallery item to determine its width
+      const firstItem = ref.current.querySelector('div[class*="group relative"]') as HTMLElement;
+      if (firstItem) {
+        // Scroll by the full width of one card including gap (24px = gap-6)
+        const scrollAmount = firstItem.offsetWidth + 24;
+        ref.current.scrollBy({
+          left: dir === "right" ? scrollAmount : -scrollAmount,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
