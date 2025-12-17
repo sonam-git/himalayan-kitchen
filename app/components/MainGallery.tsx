@@ -172,7 +172,7 @@ const MainGallery = ({
           {/* Main Gallery - horizontal scroll */}
           <div
             ref={mainGalleryRef}
-            className="flex gap-6 overflow-x-auto pb-2 px-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 border-t-2 border-yellow-200 dark:border-gray-700 pt-2"
+            className="flex gap-6 overflow-x-auto pb-2 px-1 md:px-6 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent snap-x snap-mandatory min-w-0 border-t-2 border-yellow-200 dark:border-gray-700 pt-2"
           >
             {galleryItems.map((item, index) => (
               <div
