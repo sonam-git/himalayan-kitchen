@@ -10,6 +10,7 @@ import StructuredData from './components/StructuredData';
 import ThirdPartyScripts from './components/ThirdPartyScripts';
 import GoogleTranslateClient from './components/GoogleTranslateClient';
 import AIAssistant from './components/AIAssistant';
+import AnnouncementModal from './components/AnnouncementModal';
 import type { Metadata } from 'next';
 
 
@@ -180,6 +181,9 @@ export default function RootLayout({
           {/* AI Assistant - Inside ThemeProvider for dark mode support */}
           <AIAssistant />
         </ThemeProvider>
+        
+        {/* Announcement Modal - Shows on first visit (outside ThemeProvider) */}
+        <AnnouncementModal />
         
         {/* Third-party scripts loaded after interactive */}
         <ThirdPartyScripts />
