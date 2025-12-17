@@ -97,14 +97,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/images/logo/logo-transparentbg.png' },
-      { url: '/images/logo/logo-transparentbg.png', sizes: '32x32', type: 'image/png' },
-      { url: '/images/logo/logo-transparentbg.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
     apple: [
-      { url: '/images/logo/logo-transparentbg.png' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: ['/images/logo/logo-transparentbg.png'],
+    shortcut: ['/favicon-32x32.png'],
   },
   verification: {
     google: 'your-google-verification-code', // Add your Google Search Console verification
