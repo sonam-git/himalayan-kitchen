@@ -36,11 +36,37 @@ const Reviews = () => {
     };
   }, []);
 
-  // Helper to scroll reviews
+  // Helper to scroll reviews - scroll by one full review card width
   const scrollReviews = (dir: 'left' | 'right') => {
     if (reviewsScrollRef.current) {
-      const scrollAmount = reviewsScrollRef.current.offsetWidth * 0.8;
-      reviewsScrollRef.current.scrollBy({ left: dir === 'right' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+      const container = reviewsScrollRef.current;
+      const firstItem = container.querySelector('article') as HTMLElement;
+      
+      if (firstItem) {
+        // Get full card width including gap (16px = gap-4)
+        const cardWidth = firstItem.offsetWidth;
+        const gap = 16;
+        const scrollAmount = cardWidth + gap;
+        
+        // Calculate new scroll position
+        const currentScroll = container.scrollLeft;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        let newScroll: number;
+        
+        if (dir === 'right') {
+          newScroll = Math.min(currentScroll + scrollAmount, maxScroll);
+        } else {
+          newScroll = Math.max(currentScroll - scrollAmount, 0);
+        }
+        
+        // Only scroll if we're not already at the boundary
+        if (newScroll !== currentScroll) {
+          container.scrollTo({
+            left: newScroll,
+            behavior: 'smooth',
+          });
+        }
+      }
     }
   };
 

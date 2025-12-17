@@ -95,6 +95,17 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: [
+      { url: '/images/logo/logo-transparentbg.png' },
+      { url: '/images/logo/logo-transparentbg.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/logo/logo-transparentbg.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/logo/logo-transparentbg.png' },
+    ],
+    shortcut: ['/images/logo/logo-transparentbg.png'],
+  },
   verification: {
     google: 'your-google-verification-code', // Add your Google Search Console verification
     // yandex: 'your-yandex-verification',

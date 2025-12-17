@@ -81,15 +81,33 @@ const MainGallery = ({
   // Helper to scroll gallery - scroll by one full card width
   const scrollGallery = (ref: RefObject<HTMLDivElement | null>, dir: "left" | "right") => {
     if (ref.current) {
-      // Get the first gallery item to determine its width
-      const firstItem = ref.current.querySelector('div[class*="group relative"]') as HTMLElement;
+      const container = ref.current;
+      const firstItem = container.querySelector('div[class*="group relative"]') as HTMLElement;
+      
       if (firstItem) {
-        // Scroll by the full width of one card including gap (24px = gap-6)
-        const scrollAmount = firstItem.offsetWidth + 24;
-        ref.current.scrollBy({
-          left: dir === "right" ? scrollAmount : -scrollAmount,
-          behavior: "smooth",
-        });
+        // Get full card width including gap (24px = gap-6)
+        const cardWidth = firstItem.offsetWidth;
+        const gap = 24;
+        const scrollAmount = cardWidth + gap;
+        
+        // Calculate new scroll position
+        const currentScroll = container.scrollLeft;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        let newScroll: number;
+        
+        if (dir === "right") {
+          newScroll = Math.min(currentScroll + scrollAmount, maxScroll);
+        } else {
+          newScroll = Math.max(currentScroll - scrollAmount, 0);
+        }
+        
+        // Only scroll if we're not already at the boundary
+        if (newScroll !== currentScroll) {
+          container.scrollTo({
+            left: newScroll,
+            behavior: "smooth",
+          });
+        }
       }
     }
   };
