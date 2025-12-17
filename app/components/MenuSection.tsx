@@ -231,14 +231,14 @@ const MenuSection = () => {
                   </svg>
                 </button>
                 <button
-                  className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-yellow-600 dark:bg-yellow-900/40 text-gray-100 dark:text-gray-900 text-sm md:text-lg font-extrabold shadow-xl border-2 border-white dark:border-gray-800 hover:bg-yellow-100 hover:text-yellow-800 dark:hover:bg-yellow-300 hover:border-orange-400 hover:[&>svg]:text-orange-500 hover:[&>svg]:stroke-orange-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline font-[Georgia,'Times_New_Roman',Times,serif]"
+                  className="relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-full bg-yellow-600 dark:bg-gray-800 text-white dark:text-orange-300 text-sm md:text-lg font-extrabold shadow-xl border-2 border-white dark:border-yellow-200 hover:bg-yellow-100 hover:text-yellow-800 dark:hover:bg-gray-800 dark:hover:text-orange-300 hover:border-orange-400 dark:hover:border-orange-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-200 active:scale-95 cursor-pointer select-none group min-w-40 md:min-w-[200px] no-underline font-[Georgia,'Times_New_Roman',Times,serif]"
                   onClick={() => window.open('https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st', '_blank', 'noopener,noreferrer')}
                   tabIndex={0}
                   aria-label="Go to full menu ordering page"
                   type="button"
                 >
-                  <svg className="w-5 h-5 md:w-6 md:h-6 text-white dark:text-gray-900 hover:text-orange-800 transition-colors duration-300 drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-white dark:text-orange-300 group-hover:text-orange-500 dark:group-hover:text-orange-300 transition-colors duration-300 drop-shadow-lg" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
                   <span className="drop-shadow font-extrabold tracking-wide group-hover:no-underline group-hover:decoration-orange-400 group-hover:decoration-2 group-hover:animate-[flip_0.6s_ease-in-out] transition-all duration-200 no-underline font-[Georgia,'Times_New_Roman',Times,serif]">View Full Menu</span>
                 </button>
