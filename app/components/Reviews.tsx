@@ -167,12 +167,12 @@ const Reviews = () => {
     {
       id: 3,
       rating: 5,
-      title: "We found a hidden gem of San Rafael.",
-      text: "Himalayan Kitchen is so good! The food, service and portions are so great. And the spot doesn’t look like it from the outside but the inside is cute and it has a great atmosphere to it.",
-      author: "Shawnee T.",
+      title: "The food and service defines why this place is so popular.",
+      text: "Came for dinner on a Wednesday night and it was almost a full house! As we ate, more people came and all tables were filled except one. What a popular place. I can see why because their food is absolutely delicious and flavorful.",
+      author: "Bonnie N.",
       location: "Novato, CA",
       source: "yelp",
-      date: "2025-08-01",
+      date: "2025-12-07",
     },
     {
       id: 4,
