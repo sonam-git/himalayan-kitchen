@@ -198,7 +198,27 @@ const MenuSection = () => {
                   className="rounded-full p-2 md:p-3 bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-yellow-100 dark:hover:bg-yellow-900 border-2 border-orange-300 dark:border-orange-700 transition w-10 h-10 md:w-12 md:h-12 flex items-center justify-center group"
                   onClick={() => {
                     if (featuredDishesScrollRef.current) {
-                      featuredDishesScrollRef.current.scrollBy({ left: -featuredDishesScrollRef.current.offsetWidth, behavior: 'smooth' });
+                      const container = featuredDishesScrollRef.current;
+                      const firstItem = container.querySelector('div[class*="min-w-"]') as HTMLElement;
+                      
+                      if (firstItem) {
+                        // Get full card width including gap (24px = gap-6)
+                        const cardWidth = firstItem.offsetWidth;
+                        const gap = 24;
+                        const scrollAmount = cardWidth + gap;
+                        
+                        // Calculate new scroll position
+                        const currentScroll = container.scrollLeft;
+                        const newScroll = Math.max(currentScroll - scrollAmount, 0);
+                        
+                        // Only scroll if we're not already at the boundary
+                        if (newScroll !== currentScroll) {
+                          container.scrollTo({
+                            left: newScroll,
+                            behavior: 'smooth',
+                          });
+                        }
+                      }
                     }
                   }}
                   aria-label="Show previous dish"
@@ -226,7 +246,28 @@ const MenuSection = () => {
                   className="rounded-full p-2 md:p-3 bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-yellow-100 dark:hover:bg-yellow-900 border-2 border-orange-300 dark:border-orange-700 transition w-10 h-10 md:w-12 md:h-12 flex items-center justify-center group"
                   onClick={() => {
                     if (featuredDishesScrollRef.current) {
-                      featuredDishesScrollRef.current.scrollBy({ left: featuredDishesScrollRef.current.offsetWidth, behavior: 'smooth' });
+                      const container = featuredDishesScrollRef.current;
+                      const firstItem = container.querySelector('div[class*="min-w-"]') as HTMLElement;
+                      
+                      if (firstItem) {
+                        // Get full card width including gap (24px = gap-6)
+                        const cardWidth = firstItem.offsetWidth;
+                        const gap = 24;
+                        const scrollAmount = cardWidth + gap;
+                        
+                        // Calculate new scroll position
+                        const currentScroll = container.scrollLeft;
+                        const maxScroll = container.scrollWidth - container.clientWidth;
+                        const newScroll = Math.min(currentScroll + scrollAmount, maxScroll);
+                        
+                        // Only scroll if we're not already at the boundary
+                        if (newScroll !== currentScroll) {
+                          container.scrollTo({
+                            left: newScroll,
+                            behavior: 'smooth',
+                          });
+                        }
+                      }
                     }
                   }}
                   aria-label="Show next dish"
