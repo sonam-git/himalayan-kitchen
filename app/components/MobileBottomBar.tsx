@@ -1,3 +1,5 @@
+'use client';
+
 const MobileBottomBar = () => {
   return (
     <nav
@@ -19,22 +21,25 @@ const MobileBottomBar = () => {
           </div>
           <span className="text-xs font-bold text-green-700 dark:text-green-400 group-hover:text-green-800 dark:group-hover:text-green-300 transition-colors drop-shadow-sm">Call</span>
         </a>
-        {/* Address */}
-        <a
-          href="https://www.google.com/maps/search/227%203rd%20St,%20San%20Rafael,%20CA%2094901"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-200 hover:bg-green-50 dark:hover:bg-blue-900/30 active:scale-95 group"
-          aria-label="View map location"
+        {/* AI Assistant */}
+        <button
+          onClick={() => {
+            // Trigger AI Assistant open
+            const event = new CustomEvent('openAIAssistant');
+            window.dispatchEvent(event);
+          }}
+          className="flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-200 hover:bg-green-50 dark:hover:bg-green-900/30 active:scale-95 group"
+          aria-label="Open AI Assistant"
         >
-          <div className="w-10 h-10 mb-1 flex items-center justify-center rounded-xl bg-gradient-to-br from-green-400 to-green-600 dark:from-blue-500 dark:to-blue-700 shadow-lg shadow-green-500/50 dark:shadow-blue-400/30 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-green-500/60 dark:group-hover:shadow-blue-400/40 transition-all duration-200" aria-hidden="true">
+          <div className="w-10 h-10 mb-1 flex items-center justify-center rounded-xl bg-gradient-to-br from-green-400 to-green-600 dark:from-green-500 dark:to-green-700 shadow-lg shadow-green-500/50 dark:shadow-green-400/30 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-green-500/60 dark:group-hover:shadow-green-400/40 transition-all duration-200 relative" aria-hidden="true">
+            {/* Sparkle effect */}
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-300 dark:bg-green-400 rounded-full animate-pulse"></div>
             <svg className="w-5 h-5 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
           </div>
-          <span className="text-xs font-bold text-green-700 dark:text-blue-400 group-hover:text-green-800 dark:group-hover:text-blue-300 transition-colors drop-shadow-sm">Map</span>
-        </a>
+          <span className="text-xs font-bold text-green-700 dark:text-green-400 group-hover:text-green-800 dark:group-hover:text-green-300 transition-colors drop-shadow-sm">AI Chat</span>
+        </button>
         {/* Order Online - Featured */}
         <a
           href="https://order.toasttab.com/online/himalayan-kitchen-227-3rd-st"

@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollToTop';
 import StructuredData from './components/StructuredData';
 import ThirdPartyScripts from './components/ThirdPartyScripts';
 import GoogleTranslateClient from './components/GoogleTranslateClient';
+import AIAssistant from './components/AIAssistant';
 import type { Metadata } from 'next';
 
 
@@ -175,6 +176,9 @@ export default function RootLayout({
           <div className="md:hidden">
             <MobileBottomBar />
           </div>
+          
+          {/* AI Assistant - Inside ThemeProvider for dark mode support */}
+          <AIAssistant />
         </ThemeProvider>
         
         {/* Third-party scripts loaded after interactive */}
