@@ -58,7 +58,7 @@ export default function Intro() {
           />
           {/* Enhanced dark overlay for better text contrast */}
           <div
-            className="absolute inset-0 bg-black/40 dark:bg-black/80 mix-blend-multiply"
+            className="absolute inset-0 bg-black/40 dark:bg-black/40 mix-blend-multiply"
             aria-hidden="true"
           ></div>
         </div>
