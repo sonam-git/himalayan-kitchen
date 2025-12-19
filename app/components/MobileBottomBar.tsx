@@ -23,7 +23,7 @@ const MobileBottomBar = () => {
         </a>
         {/* Directions/Map */}
         <a
-          href="https://maps.app.goo.gl/bvfE74q7v7oSDe4A8"
+          href="https://maps.google.com/?q=227+3rd+Street,+San+Rafael,+CA+94901"
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/30 active:scale-95 group"
