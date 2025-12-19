@@ -116,6 +116,7 @@ export const metadata: Metadata = {
     canonical: 'https://himalayankitchenmarin.com',
   },
   category: 'restaurant',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -126,6 +127,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden" data-scroll-behavior="smooth">
       <head>
+        {/* PWA Meta Tags */}
+        <meta name="theme-color" content="#f97316" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="HK Marin" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        
         {/* Structured Data for SEO */}
         <StructuredData />
         
