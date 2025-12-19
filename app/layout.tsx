@@ -73,10 +73,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/gallery/dining1.jpeg',
+        url: '/images/hkmarin-logo.png',
         width: 1200,
         height: 630,
-        alt: 'Himalayan Kitchen Restaurant Interior',
+        alt: 'Himalayan Kitchen Marin - Authentic Nepali & Tibetan Restaurant',
       },
     ],
   },
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Himalayan Kitchen Marin | Authentic Himalayan Cuisine',
     description: 'Award-winning Sherpa-owned restaurant in San Rafael serving authentic Himalayan, Nepali, and Tibetan cuisine.',
-    images: ['/images/gallery/dining1.jpeg'],
+    images: ['/images/hkmarin-logo.png'],
   },
   robots: {
     index: true,
