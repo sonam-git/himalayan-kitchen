@@ -378,7 +378,7 @@ const Reviews = () => {
                 </svg>
               </button>
             <span className="text-sm text-gray-800 text-center dark:text-gray-100 font-semibold tracking-wide">
-               | Discover more reviews by sliding |
+               ← Swipe For More → 
               </span>
               <button
                 className="rounded-full p-2 bg-white/90 dark:bg-gray-800/90 shadow hover:bg-orange-100 dark:hover:bg-orange-900 transition disabled:opacity-40 border border-orange-300 dark:border-orange-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 font-[Georgia,'Times_New_Roman',Times,serif]"

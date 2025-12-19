@@ -41,7 +41,7 @@ const MenuSection = () => {
     },
     {
       name: 'Tandoori Chicken',
-      description: 'Juicy half chicken or whole chicken.',
+      description: 'Juicy half chicken or whole chicken barbecued in tandoori oven.',
       image: '/images/food/tandoori.jpg',
       vegetarian: false,
       vegan: false,
@@ -86,7 +86,7 @@ const MenuSection = () => {
     },
     {
       name: 'Sag Paneer',
-      description: 'Fresh spinach and cheese cube cooked in creamy tomato and onion based sauce with touch of cream.',
+      description: 'Fresh spinach and cheese cube cooked in tomato and onion based sauce with touch of cream.',
       image: '/images/food/saag-panir.jpeg',
       vegetarian: true,
       vegan: false,
@@ -104,7 +104,7 @@ const MenuSection = () => {
     },
         {
       name:'Chicken Tikka Masala',
-      description: 'Aromatic chicken tikka cooked in a creamy tomato sauce with spices. Available in different meat options.',
+      description: 'Tandoori cooked boneless chicken breast cooked in a creamy tomato onion sauce with spices. Available in different meat options.',
       image: '/images/food/chicken-tikka.jpeg',
       vegetarian: false,
       vegan: false,
