@@ -144,7 +144,7 @@ const Caterings = () => {
             out the form below and our team will contact you to confirm your
             catering inquiry or order. For other subject or inquiries, please use our{' '}
                 <a
-                  href="/contact"
+                  href="/contact-us"
                   className="text-orange-600 dark:text-yellow-300 font-bold hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-200 no-underline"
                 >
                   Contact Form
