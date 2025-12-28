@@ -255,7 +255,7 @@ const Reviews = () => {
               ))}
             </div>
             <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-base font-medium italic font-body font-[Georgia,'Times_New_Roman',Times,serif]">
-              Based on 200+ Google & Yelp Reviews
+              Based on 500+ Google & Yelp Reviews
             </p>
             <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-body font-[Georgia,'Times_New_Roman',Times,serif]">
               ⭐ Rated Excellent
