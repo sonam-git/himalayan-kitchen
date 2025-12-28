@@ -51,7 +51,7 @@ export default function AccessibilityPage() {
           {/* Introduction */}
           <section>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              This is an accessibility statement from <strong>Himalayan Kitchen Marin</strong>.
+              This is an accessibility statement from <strong>Himalayan Kitchen Marin</strong>. We are committed to ensuring digital accessibility for people with disabilities. We are also continually improving the user experience for everyone, and applying the relevant accessibility standards.
             </p>
           </section>
 
@@ -237,8 +237,7 @@ export default function AccessibilityPage() {
             <div className="bg-orange-50 dark:bg-gray-700 rounded-lg p-6">
               <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <strong>Himalayan Kitchen Marin</strong><br />
-                Management, Himalayan Kitchen Marin<br />
-                Owner, Himalayan Kitchen Marin
+                Management | Owner<br />
               </p>
             </div>
           </section>
