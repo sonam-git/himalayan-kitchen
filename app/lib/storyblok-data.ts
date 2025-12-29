@@ -29,7 +29,8 @@ export interface GalleryData {
 function convertToGalleryItem(item: StoryblokGalleryItem): GalleryItem {
   return {
     image: item.image?.filename || "",
-    title: item.title || "",
+    // Use title first, then image alt text, then a descriptive fallback
+    title: item.title || item.image?.alt || "Gallery image",
     description: item.description || "",
   };
 }
