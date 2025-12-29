@@ -271,6 +271,31 @@ header {
   top: 0 !important;
   z-index: 9999 !important;
 }
+
+/* Hide Google Translate voting forms from accessibility tools */
+#goog-gt-votingForm,
+.VIpgJd-yAWNEb-hvhgNd-aXYTce,
+#goog-gt-votingInputSrcLang,
+#goog-gt-votingInputTrgLang,
+#goog-gt-votingInputSrcText,
+#goog-gt-votingInputTrgText,
+#goog-gt-votingInputVote {
+  display: none !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Hide all Google Translate internal UI elements */
+.skiptranslate iframe,
+.goog-te-banner-frame,
+.VIpgJd-yAWNEb-hvhgNd,
+[id^="goog-gt-"] {
+  display: none !important;
+  visibility: hidden !important;
+}
 /* ===== END GOOGLE TRANSLATE UI HIDING =====
 
 /* TV Scanlines effect */

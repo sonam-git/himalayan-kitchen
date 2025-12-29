@@ -226,7 +226,7 @@ const GoogleTranslateClient = () => {
           </div>
         )}
         {/* Google Translate Widget - Hidden but functional */}
-        <div id="google_translate_element" style={{ display: "none" }} />
+        <div id="google_translate_element" style={{ display: "none" }} aria-hidden="true" />
       </div>
     </>
   );
