@@ -184,13 +184,13 @@ const Footer = () => {
             We strive to make our website accessible to everybody.{' '}
             <a 
               href="/accessibility" 
-              className="text-orange-800 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+              className="text-orange-900 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 no-underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
               aria-label="Learn more about our accessibility commitment"
             >
               Learn more
             </a>
           </p>
-          <p className="text-gray-800 dark:text-gray-400 text-sm font-serif">
+          <p className="text-gray-800 dark:text-gray-400 text-sm font-serif no-underline">
             | &copy; {new Date().getFullYear()} Himalayan Kitchen Marin, San Rafael, CA | All rights reserved |
           </p>
         </div>

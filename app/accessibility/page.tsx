@@ -76,7 +76,7 @@ export default function AccessibilityPage() {
               Conformance status
             </h2>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              The <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 underline transition-colors" target="_blank" rel="noopener noreferrer">Web Content Accessibility Guidelines (WCAG)</a> defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA. Himalayan Kitchen Marin is <strong>partially conformant</strong> with <strong>WCAG 2.1 level AA</strong>. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
+              The <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" className="text-orange-700 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 underline transition-colors" target="_blank" rel="noopener noreferrer">Web Content Accessibility Guidelines (WCAG)</a> defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA. Himalayan Kitchen Marin is <strong>partially conformant</strong> with <strong>WCAG 2.1 level AA</strong>. Partially conformant means that some parts of the content do not fully conform to the accessibility standard.
             </p>
 
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 mt-6">
@@ -102,7 +102,7 @@ export default function AccessibilityPage() {
                   <p className="font-semibold text-gray-900 dark:text-white">Phone:</p>
                   <a 
                     href="tel:+14155263161"
-                    className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors"
+                    className="text-orange-700 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 transition-colors"
                   >
                     415 526 3161
                   </a>
@@ -114,7 +114,7 @@ export default function AccessibilityPage() {
                   <p className="font-semibold text-gray-900 dark:text-white">E-mail:</p>
                   <a 
                     href="mailto:himalayankitchenmarin@gmail.com"
-                    className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors underline break-all"
+                    className="text-orange-700 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 transition-colors no-underline break-all"
                   >
                     himalayankitchenmarin@gmail.com
                   </a>
@@ -130,11 +130,12 @@ export default function AccessibilityPage() {
               <div className="flex items-start gap-3">
                 <span className="text-2xl">🔗</span>
                 <div>
+                  <p className="font-semibold text-gray-900 dark:text-white">Contact Form:</p>
                   <Link 
                     href="/contact-us"
-                    className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors underline break-all"
+                    className="text-orange-700 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 transition-colors no-underline "
                   >
-                    https://www.himalayankitchenmarin.com/contact-us
+                    Submit a message through our contact form
                   </Link>
                 </div>
               </div>
@@ -248,7 +249,7 @@ export default function AccessibilityPage() {
               Date
             </h2>
             <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              This statement was created on <strong>28 December 2025</strong> using the <a href="https://www.w3.org/WAI/planning/statements/" className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 underline transition-colors" target="_blank" rel="noopener noreferrer">W3C Accessibility Statement Generator Tool</a>.
+              This statement was created on <strong>28 December 2025</strong> using the <a href="https://www.w3.org/WAI/planning/statements/" className="text-orange-700 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 underline transition-colors" target="_blank" rel="noopener noreferrer">W3C Accessibility Statement Generator Tool</a>.
             </p>
           </section>
         </div>

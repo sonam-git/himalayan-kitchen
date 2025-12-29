@@ -72,7 +72,7 @@ const About = () => {
           </span>
           <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-700 dark:text-yellow-300 mb-6">
                From the Himalayas to Marin{" "}
               </h2>
               <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-100 max-w-3xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
