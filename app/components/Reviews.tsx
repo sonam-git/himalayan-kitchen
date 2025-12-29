@@ -314,7 +314,7 @@ const Reviews = () => {
                   >
                     {/* Date, stars, and source icon row */}
                     <div className="flex items-center gap-2 mb-6">
-                    <time dateTime={review.date} className="text-xs text-gray-400 dark:text-gray-500 font-semibold font-body">
+                    <time dateTime={review.date} className="text-xs text-gray-700 dark:text-gray-200 font-semibold font-body">
                       {review.date}
                     </time>
                     <span className="sr-only" id={`review-rating-${review.id}`}>{review.rating} out of 5 stars</span>
@@ -326,7 +326,7 @@ const Reviews = () => {
                       ))}
                     </div>
                     {/* Source icon with aria-label */}
-                    <span className="ml-auto flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500 font-semibold font-body" aria-label={`Source: ${review.source}`} title={`Source: ${review.source}`}>
+                    <span className="ml-auto flex items-center gap-1 text-xs text-gray-700 dark:text-gray-200 font-semibold font-body" aria-label={`Source: ${review.source}`} title={`Source: ${review.source}`}>
                       {review.source === 'yelp' && (
                         <Image src="/images/logo/yelp.svg" alt="Yelp logo" width={20} height={20} className="inline-block w-5 h-5" />
                       )}
