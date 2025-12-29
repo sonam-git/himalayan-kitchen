@@ -225,8 +225,20 @@ const GoogleTranslateClient = () => {
             </ul>
           </div>
         )}
-        {/* Google Translate Widget - Hidden but functional */}
-        <div id="google_translate_element" style={{ display: "none" }} aria-hidden="true" />
+        {/* Google Translate Widget - Completely hidden from view and accessibility tree */}
+        <div 
+          id="google_translate_element" 
+          style={{ 
+            display: "none", 
+            visibility: "hidden", 
+            width: 0, 
+            height: 0, 
+            overflow: "hidden",
+            position: "absolute",
+            left: "-9999px"
+          }} 
+          aria-hidden="true"
+        />
       </div>
     </>
   );
