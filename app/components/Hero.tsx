@@ -71,7 +71,7 @@ const Hero = () => {
               <span className="block lg:inline mb-1 lg:mb-0 whitespace-nowrap">
                 TASTE FROM THE{" "}
               </span>
-              <span className="block lg:inline text-yellow-600 dark:text-yellow-400 whitespace-nowrap">
+              <span className="block lg:inline text-yellow-800 dark:text-yellow-100 whitespace-nowrap">
                 HIMALAYAS
               </span>
             </h2>
@@ -137,7 +137,7 @@ const Hero = () => {
         {/* Bottom Section: Description + Buttons */}
         <div className="flex flex-col items-center text-center gap-4 sm:gap-5 lg:gap-3">
           {/* Description */}
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 dark:text-gray-300 font-light tracking-wide max-w-4xl mx-auto px-4 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-900 dark:text-white font-light tracking-wide max-w-4xl mx-auto px-4 leading-relaxed">
             Sherpa-owned restaurant from Nepal serving authentic Himalayan
             flavors crafted with passion and tradition in San Rafael, California.
           </p>

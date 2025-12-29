@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState, RefObject } from "react";
+import { useEffect, useRef, useState, RefObject } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 

@@ -310,10 +310,10 @@ const Gallery = ({
               </span>
               <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
             </div>
-            <h2 id="gallery-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6">
+            <h2 id="gallery-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-800 dark:text-yellow-200 mb-6">
               Our Gallery
             </h2>
-            <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-800 dark:text-gray-100">
+            <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-900 dark:text-white">
               Discover our signature dishes, cozy ambiance, and heartwarming visits from popular personalities, friends, family, and customers of Himalayan Kitchen worldwide.
             </p>
           </div>

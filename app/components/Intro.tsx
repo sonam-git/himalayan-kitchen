@@ -35,7 +35,7 @@ export default function Intro() {
         <div className="w-full  px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 shadow-lg ">
           <h2
             id="intro-heading"
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-orange-700 dark:text-yellow-300 font-serif drop-shadow-xl tracking-tight text-center"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-yellow-800 dark:text-yellow-200 font-serif drop-shadow-xl tracking-tight text-center"
           >
             Welcome to Himalayan Kitchen
           </h2>

@@ -229,10 +229,10 @@ const Reviews = () => {
           </span>
           <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-700 dark:text-yellow-300 mb-6">
+    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-800 dark:text-yellow-200 mb-6">
       Dining Stories
     </h2>
-     <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-700 dark:text-gray-200 mb-4 font-[Georgia,'Times_New_Roman',Times,serif]">
+     <p className="text-md sm:text-xs md:text-lg max-w-3xl mx-auto leading-relaxed text-gray-900 dark:text-white mb-4 font-[Georgia,'Times_New_Roman',Times,serif]">
      Real experiences from guests who&#39;ve shared a meal—and a moment—with us.
     </p>
 
@@ -242,7 +242,7 @@ const Reviews = () => {
             4.8
           </div>
           <div className="flex flex-col items-start min-w-[140px] sm:min-w-0">
-            <div className="flex text-yellow-400 text-2xl sm:text-3xl mb-1 font-headline">
+            <div className="flex text-yellow-800 dark:text-yellow-400 text-2xl sm:text-3xl mb-1 font-headline">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
@@ -254,10 +254,10 @@ const Reviews = () => {
                 </svg>
               ))}
             </div>
-            <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-base font-medium italic font-body font-[Georgia,'Times_New_Roman',Times,serif]">
+            <p className="text-gray-900 dark:text-white text-xs sm:text-base font-medium italic font-body font-[Georgia,'Times_New_Roman',Times,serif]">
               Based on 500+ Google & Yelp Reviews
             </p>
-            <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-body font-[Georgia,'Times_New_Roman',Times,serif]">
+            <p className="ttext-gray-900 dark:text-white text-xs sm:text-sm font-body font-[Georgia,'Times_New_Roman',Times,serif]">
               ⭐ Rated Excellent
             </p>
           </div>
@@ -357,7 +357,7 @@ const Reviews = () => {
                       {review.author.trim().charAt(0)}
                     </span>
                     <span className="font-semibold text-gray-900 dark:text-white font-headline">{review.author}</span>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 font-body">{review.location}</span>
+                    <span className="text-xs text-gray-700 dark:text-gray-200 font-body">{review.location}</span>
                   </footer>
                 </article>
                 );

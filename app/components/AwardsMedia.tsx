@@ -70,10 +70,10 @@ const AwardsMedia = () => {
           </span>
           <div className="flex-1 h-px bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 opacity-60" />
         </div>
-          <h2 id="awards-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6" tabIndex={0}>
-            Awards & <span className="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 dark:from-yellow-300 dark:via-orange-300 dark:to-yellow-400 bg-clip-text text-transparent">Media</span>
+          <h2 id="awards-heading" className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-yellow-800 dark:text-yellow-200 mb-6" tabIndex={0}>
+            Awards & Media
           </h2>
-          <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 max-w-2xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
+          <p className="text-lg md:text-xl text-gray-800 dark:text-gray-100 max-w-2xl mx-auto leading-relaxed font-[Georgia,'Times_New_Roman',Times,serif]">
             Honored by the community and featured in renowned publications for our culinary excellence and service.
           </p>
         </div>
