@@ -18,7 +18,7 @@ const MenuHeading: React.FC = () => (
     </div>
     <h2
       className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-orange-600 dark:text-yellow-300 mb-6"
-      id="customer-favorites-heading"
+      id="menu-heading"
     >
       Customer Favorites
     </h2>
