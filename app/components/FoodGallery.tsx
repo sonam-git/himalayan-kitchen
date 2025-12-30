@@ -141,7 +141,7 @@ const FoodGallery = ({
                   ></button>
                   <Image
                     src={item.image}
-                    alt={item.title}
+                    alt={item.description}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
                     sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, (max-width: 1280px) 32vw, 28vw"
