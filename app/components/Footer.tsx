@@ -180,19 +180,28 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-gray-800 dark:border-gray-500 mt-8 pt-8 pb-20 xl:pb-8 text-center">
-          <p className="text-gray-800 dark:text-gray-300 text-sm font-serif mb-2">
+          <p className="text-gray-800 dark:text-gray-300 text-sm font-serif mb-2 text-center">
             We strive to make our website accessible to everybody.{' '}
             <a 
               href="/accessibility" 
-              className="text-orange-900 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 no-underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+              className="text-gray-950 dark:text-yellow-100 hover:text-orange-700 dark:hover:text-orange-300 no-underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
               aria-label="Learn more about our accessibility commitment"
             >
               Learn more
             </a>
           </p>
-          <p className="text-gray-800 dark:text-gray-400 text-sm font-serif no-underline">
-            | &copy; {new Date().getFullYear()} Himalayan Kitchen Marin, San Rafael, CA | All rights reserved |
-          </p>
+          <div className="text-gray-800 dark:text-gray-400 text-sm font-serif text-center flex flex-col items-center justify-center sm:flex-row sm:items-center sm:justify-center gap-2 sm:gap-4">
+            <span>| Copyright &copy; {new Date().getFullYear()} Himalayan Kitchen Marin |</span>
+            <a
+              href="/accessibility-statement.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-950 dark:text-yellow-100 hover:text-orange-700 dark:hover:text-orange-300 no-underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+              aria-label="View accessibility statement as PDF"
+            >
+             | Accessibility Statement |
+            </a>
+          </div>
         </div>
       </div>
     </footer>
