@@ -185,9 +185,8 @@ const Footer = () => {
             <a 
               href="/accessibility" 
               className="text-gray-950 dark:text-yellow-100 hover:text-orange-700 dark:hover:text-orange-300 no-underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
-              aria-label="Learn more about our accessibility commitment"
             >
-              Learn more
+              View our accessibility commitment
             </a>
           </p>
           <div className="text-gray-800 dark:text-gray-400 text-sm font-serif text-center flex flex-col items-center justify-center sm:flex-row sm:items-center sm:justify-center gap-2 sm:gap-4">
