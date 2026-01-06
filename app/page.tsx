@@ -1,9 +1,23 @@
+import dynamic from 'next/dynamic';
 import Hero from "./components/Hero";
 import Intro from "./components/Intro";
-import MenuSection from "./components/MenuSection";
-import GalleryWrapper from "./components/GalleryWrapper";
-import Reviews from "./components/Reviews";
-import ScrollToTopButton from "./components/ScrollToTopButton";
+
+// Lazy load below-the-fold components for better mobile performance
+const MenuSection = dynamic(() => import('./components/MenuSection'), {
+  loading: () => <div className="animate-pulse bg-gray-100 dark:bg-gray-800 h-96 rounded-lg" />,
+});
+
+const GalleryWrapper = dynamic(() => import('./components/GalleryWrapper'), {
+  loading: () => <div className="animate-pulse bg-gray-100 dark:bg-gray-800 h-96 rounded-lg" />,
+});
+
+const Reviews = dynamic(() => import('./components/Reviews'), {
+  loading: () => <div className="animate-pulse bg-gray-100 dark:bg-gray-800 h-96 rounded-lg" />,
+});
+
+const ScrollToTopButton = dynamic(() => import('./components/ScrollToTopButton'), {
+  loading: () => null,
+});
 
 export default function Home() {
   return (

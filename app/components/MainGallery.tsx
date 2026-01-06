@@ -193,9 +193,9 @@ const MainGallery = ({
                     alt={item.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out rounded-3xl"
-                    sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, (max-width: 1280px) 32vw, 28vw"
-                    quality={85}
-                    priority={index < 3}
+                    sizes="(max-width: 640px) 80vw, (max-width: 768px) 85vw, (max-width: 1024px) 45vw, (max-width: 1280px) 32vw, 28vw"
+                    quality={80}
+                    loading={index < 2 ? "eager" : "lazy"}
                   />
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
@@ -300,9 +300,9 @@ const MainGallery = ({
               height={800}
               className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto object-contain z-10"
               style={{ maxHeight: "80vh" }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-              quality={90}
-              priority
+              sizes="(max-width: 640px) 95vw, (max-width: 768px) 90vw, (max-width: 1200px) 80vw, 1200px"
+              quality={85}
+              loading="eager"
               onLoadingComplete={() => setImageLoading(false)}
             />
             {/* Title and Description overlay */}

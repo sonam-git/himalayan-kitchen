@@ -38,48 +38,60 @@ const GoogleTranslateClient = () => {
   const [currentLang, setCurrentLang] = useState("en");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Initialize Google Translate
+  // Initialize Google Translate - DELAYED FOR MOBILE PERFORMANCE
   useEffect(() => {
     // Prevent multiple initializations
     if (window.googleTranslateElementInit) {
       return;
     }
 
-    let initAttempts = 0;
-    const maxAttempts = 5;
+    // PERFORMANCE OPTIMIZATION: Delay loading by 3 seconds after page load
+    const loadGoogleTranslate = () => {
+      let initAttempts = 0;
+      const maxAttempts = 5;
 
-    window.googleTranslateElementInit = function () {
-      const initWidget = () => {
-        if (window.google?.translate?.TranslateElement) {
-          try {
-            new window.google.translate.TranslateElement(
-              {
-                pageLanguage: "en",
-                includedLanguages: LANGUAGES.map((l) => l.code).join(","),
-                autoDisplay: false,
-              },
-              "google_translate_element"
-            );
-          } catch (error) {
-            console.error("Google Translate initialization error:", error);
+      window.googleTranslateElementInit = function () {
+        const initWidget = () => {
+          if (window.google?.translate?.TranslateElement) {
+            try {
+              new window.google.translate.TranslateElement(
+                {
+                  pageLanguage: "en",
+                  includedLanguages: LANGUAGES.map((l) => l.code).join(","),
+                  autoDisplay: false,
+                },
+                "google_translate_element"
+              );
+            } catch (error) {
+              console.error("Google Translate initialization error:", error);
+            }
+          } else if (initAttempts < maxAttempts) {
+            initAttempts++;
+            setTimeout(initWidget, 500);
           }
-        } else if (initAttempts < maxAttempts) {
-          initAttempts++;
-          setTimeout(initWidget, 500);
-        }
+        };
+        initWidget();
       };
-      initWidget();
+
+      // Load the Google Translate script
+      const script = document.createElement("script");
+      script.src =
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      script.async = true;
+      script.onerror = () => {
+        console.error("Failed to load Google Translate script");
+      };
+      document.body.appendChild(script);
     };
 
-    // Load the Google Translate script
-    const script = document.createElement("script");
-    script.src =
-      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    script.async = true;
-    script.onerror = () => {
-      console.error("Failed to load Google Translate script");
-    };
-    document.body.appendChild(script);
+    // DELAY LOADING UNTIL PAGE IS FULLY LOADED + 3 SECONDS
+    if (document.readyState === 'complete') {
+      setTimeout(loadGoogleTranslate, 3000);
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(loadGoogleTranslate, 3000);
+      });
+    }
 
     // Aggressively hide Google Translate banner
     const hideGoogleBar = () => {

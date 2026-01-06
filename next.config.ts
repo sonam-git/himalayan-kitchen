@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   // Image Optimization
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
@@ -36,16 +36,20 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-    // Loader configuration for optimal quality
     loader: 'default',
-    // Disable static image imports optimization to ensure all images go through Next.js Image Optimization
     unoptimized: false,
   },
 
   // Compiler optimizations
   compiler: {
-    // Keep console logs for debugging - can be re-enabled later if needed
-    removeConsole: false,
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
+  },
+
+  // Experimental features for performance
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@headlessui/react'],
   },
 
   // Performance optimizations

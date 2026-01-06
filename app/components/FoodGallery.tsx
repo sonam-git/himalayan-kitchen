@@ -144,9 +144,9 @@ const FoodGallery = ({
                     alt={item.description}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
-                    sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, (max-width: 1280px) 32vw, 28vw"
-                    quality={85}
-                    priority={idx < 3}
+                    sizes="(max-width: 640px) 80vw, (max-width: 768px) 85vw, (max-width: 1024px) 45vw, (max-width: 1280px) 32vw, 28vw"
+                    quality={80}
+                    loading={idx < 2 ? "eager" : "lazy"}
                   />
                   <div className="absolute bottom-0 left-0 w-full px-4 py-3 bg-black/60 dark:bg-black/70 text-white text-center">
                     <h3 className="text-lg font-bold mb-1">{item.title}</h3>
@@ -230,9 +230,9 @@ const FoodGallery = ({
               height={800}
               className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-auto object-contain z-10"
               style={{ maxHeight: '80vh' }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-              quality={90}
-              priority
+              sizes="(max-width: 640px) 95vw, (max-width: 768px) 90vw, (max-width: 1200px) 80vw, 1200px"
+              quality={85}
+              loading="eager"
               onLoadingComplete={() => setImageLoading(false)}
             />
             {/* Title and Description overlay at bottom, delayed show and auto-hide with slide-up animation */}
